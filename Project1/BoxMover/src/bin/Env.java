@@ -53,10 +53,31 @@ public class Env {
         TOKEN_TARGET_BLOCK_EMPTY = '○',
         TOKEN_WALL = '■';
 
-    public static final char
-        KEY_UP = 'w',
-        KEY_DOWN = 's',
-        KEY_LEFT = 'a',
-        KEY_RIGHT = 'd',
-        KEY_EXIT = 'e';
+    public static final int
+        CMD_TYPE_NO_ARG = 0,
+        CMD_TYPE_INT_OPT_ARG = 1,
+        CMD_TYPE_INT_REQ_ARG = 2;
+
+    public static final Object[]
+        CMD_UP =        {"w", CMD_TYPE_INT_OPT_ARG},
+        CMD_DOWN =      {"s", CMD_TYPE_INT_OPT_ARG},
+        CMD_LEFT =      {"s", CMD_TYPE_INT_OPT_ARG},
+        CMD_RIGHT =     {"s", CMD_TYPE_INT_OPT_ARG},
+        CMD_EXIT =      {"s", CMD_TYPE_NO_ARG},
+        CMD_RESTART =   {"s", CMD_TYPE_NO_ARG},
+        CMD_BACK =      {"s", CMD_TYPE_INT_OPT_ARG},
+        CMD_CHOICE =    {"s", CMD_TYPE_INT_REQ_ARG},
+        CMD_HELP =      {"s", CMD_TYPE_NO_ARG};
+
+    public static final Object[][] COMMANDS = {
+        CMD_UP,
+        CMD_DOWN,
+        CMD_LEFT,
+        CMD_RIGHT,
+        CMD_EXIT,
+        CMD_RESTART,
+        CMD_BACK,
+        CMD_CHOICE,
+        CMD_HELP
+    };
 }

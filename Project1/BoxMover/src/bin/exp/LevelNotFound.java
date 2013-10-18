@@ -1,4 +1,4 @@
-package bin.Exception;
+package bin.exp;
 
 /**
  * Copyright : all rights reserved,rapidhere@gmail.com

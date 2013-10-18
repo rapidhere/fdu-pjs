@@ -1,4 +1,4 @@
-package bin.Widget;
+package bin.widget;
 
 import bin.Env;
 

@@ -1,4 +1,4 @@
-package bin.Exception;
+package bin.ui;
 
 /**
  * Copyright : all rights reserved,rapidhere@gmail.com
@@ -7,5 +7,7 @@ package bin.Exception;
  * Version :
  * Usage :
  */
-public class BMException extends Exception {
+
+abstract public class GenericUI {
+
 }

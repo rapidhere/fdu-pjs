@@ -1,7 +1,7 @@
-package bin.Widget;
+package bin.widget;
 
-import bin.Exception.LevelNotFound;
-import bin.IOHelper.IOHelper;
+import bin.exp.LevelNotFound;
+import bin.io.IOHelper;
 import bin.Env;
 
 import java.util.ArrayList;
@@ -95,14 +95,6 @@ public class BMMap {
         for(int i = 0;i < box_arr.size();i ++) {
             boxes[i] = (BMBox)box_arr.get(i);
         }
-    }
-
-    public int getHeight() {
-        return height;
-    }
-
-    public int getWidth() {
-        return width;
     }
 
     public BMWidget getWidgetAt(int i,int j) {

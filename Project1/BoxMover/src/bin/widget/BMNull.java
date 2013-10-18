@@ -1,4 +1,4 @@
-package bin.Widget;
+package bin.widget;
 
 import bin.Env;
 /**
@@ -8,9 +8,9 @@ import bin.Env;
  * Version :
  * Usage :
  */
-public class BMWall extends BMWidget {
-    public BMWall(int x,int y) {
-        super(Env.BLOCK_NUM_WALL, x, y, Env.TOKEN_WALL);
+public class BMNull extends BMWidget {
+    public BMNull(int x,int y) {
+        super(Env.BLOCK_NUM_NULL, x, y, Env.TOKEN_NULL);
     }
 
     public boolean isPassable() {

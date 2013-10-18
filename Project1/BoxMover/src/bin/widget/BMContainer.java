@@ -1,4 +1,4 @@
-package bin.Widget;
+package bin.widget;
 
 /**
  * Copyright : all rights reserved,rapidhere@gmail.com
