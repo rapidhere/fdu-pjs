@@ -11,11 +11,13 @@ import bin.Env;
 abstract public class BMWidget {
     protected int pos_x, pos_y;
     protected int type_id;
+    protected char token;
 
-    public BMWidget(int type_id, int x, int y) {
+    public BMWidget(int type_id, int x, int y, char token) {
         this.type_id = type_id;
         pos_x = x;
         pos_y = y;
+        this.token = token;
     }
 
     public int getTypeId() {
@@ -30,16 +32,8 @@ abstract public class BMWidget {
         return pos_y;
     }
 
-    public void move(int dir) {
-        switch (dir) {
-            case Env.DIRECTION_RIGHT:   pos_y += 1; break;
-            case Env.DIRECTION_LEFT:    pos_y -= 1; break;
-            case Env.DIRECTION_UP:      pos_x -= 1; break;
-            case Env.DIRECTION_DOWN:    pos_x += 1; break;
-        }
-        return;
+    public char getToken() {
+        return token;
     }
-
-    abstract public char getToken();
     abstract public boolean isPassable();
 }

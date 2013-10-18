@@ -10,14 +10,10 @@ import bin.Env;
  */
 public class BMNull extends BMWidget {
     public BMNull(int x,int y) {
-        super(Env.BLOCK_NUM_NULL, x, y);
-    }
-
-    public char getToken() {
-        return Env.TOKEN_NULL;
+        super(Env.BLOCK_NUM_NULL, x, y, Env.TOKEN_NULL);
     }
 
     public boolean isPassable() {
-        return true;
+        return false;
     }
 }

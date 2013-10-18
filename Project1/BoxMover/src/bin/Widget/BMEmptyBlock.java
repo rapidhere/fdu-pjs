@@ -9,16 +9,8 @@ import bin.Env;
  * Version :
  * Usage :
  */
-public class BMEmptyBlock extends BMWidget {
+public class BMEmptyBlock extends BMContainer {
     public BMEmptyBlock(int x,int y) {
-        super(Env.BLOCK_NUM_EMPTY, x, y);
-    }
-
-    public char getToken() {
-        return Env.TOKEN_EMPTY;
-    }
-
-    public boolean isPassable() {
-        return true;
+        super(Env.BLOCK_NUM_EMPTY, x, y, Env.TOKEN_EMPTY);
     }
 }

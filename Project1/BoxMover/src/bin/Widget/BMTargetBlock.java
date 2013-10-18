@@ -9,36 +9,23 @@ import bin.Env;
  * Version :
  * Usage :
  */
-public class BMTargetBlock extends BMWidget {
-    boolean filled = false;
-
+public class BMTargetBlock extends BMContainer {
     public BMTargetBlock(int x,int y) {
-        this(x, y, false);
-    }
-
-    public BMTargetBlock(int x,int y, boolean filled) {
-        super(Env.BLOCK_NUM_TARGET, x, y);
-
-        setFilled(filled);
-    }
-
-    public void setFilled(boolean flag) {
-        filled = flag;
-    }
-
-    public boolean isFilled() {
-        return filled;
-    }
-
-    public boolean isPassable() {
-        return filled;
+        super(Env.BLOCK_NUM_TARGET, x, y, Env.TOKEN_TARGET_BLOCK_EMPTY);
     }
 
     public char getToken() {
-        if(isFilled()) {
+        if(inner != null && inner.getTypeId() == Env.BLOCK_NUM_BOX) {
             return Env.TOKEN_TARGET_BLOCK_FILLED;
-        } else {
-            return Env.TOKEN_TARGET_BLOCK_EMPTY;
         }
+
+        return super.getToken();
+    }
+
+    public boolean isFilled() {
+        if(inner != null && inner.getTypeId() == Env.BLOCK_NUM_BOX) {
+            return true;
+        }
+        return false;
     }
 }

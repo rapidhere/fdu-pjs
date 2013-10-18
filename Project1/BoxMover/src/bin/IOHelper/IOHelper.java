@@ -28,7 +28,8 @@ public class IOHelper {
             width = input.nextInt();
             height = input.nextInt();
 
-            map = new char[height][];
+            map = new char[height][width];
+            input.nextLine();
             for(int i = 0;i < height;i ++) {
                 map[i] = input.nextLine().toCharArray();
             }
@@ -50,15 +51,42 @@ public class IOHelper {
     }
 
     static Scanner input = new Scanner(System.in);
-    static char getChar() {
-        return (char)input.nextByte();
+    static public char getChar() {
+        while(true) {
+            String buffer = input.nextLine();
+            if(buffer.length() != 0) {
+                return buffer.charAt(0);
+            }
+        }
     }
 
-    static char getLowerChar() {
+    static public char getLowerChar() {
         char ch = getChar();
         if(ch >= 'A' && ch <= 'Z') {
             ch = (char)('a' + ch - 'A');
         }
         return ch;
+    }
+
+    static public void putChar(char ch) {
+        System.out.print(ch);
+    }
+
+    static public void putCharArray(char[] ch_arr) {
+        for(int i = 0;i < ch_arr.length;i ++) {
+            putChar(ch_arr[i]);
+        }
+    }
+
+    static public void putEOL() {
+        System.out.println();
+    }
+
+    static public void putStringLine(String s) {
+        System.out.println(s);
+    }
+
+    static public void putError(String err_info) {
+        putStringLine("Error: " + err_info);
     }
 }

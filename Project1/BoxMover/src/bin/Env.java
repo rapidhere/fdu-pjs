@@ -8,7 +8,7 @@ package bin;
  * Usage :
  */
 public class Env {
-    public static final String MAP_DIR = "./map";
+    public static final String MAP_DIR = "./maps";
 
     public static String getMap(int level) {
         return MAP_DIR + "/" + level + ".map";
@@ -37,6 +37,13 @@ public class Env {
         DIRECTION_UP = 2,
         DIRECTION_DOWN = 3;
 
+    public static final int[] DIRECTIONS= {
+        DIRECTION_LEFT,
+        DIRECTION_RIGHT,
+        DIRECTION_UP,
+        DIRECTION_DOWN
+    };
+
     public static final char
         TOKEN_BOX = '□',
         TOKEN_EMPTY = ' ',
@@ -49,6 +56,7 @@ public class Env {
     public static final char
         KEY_UP = 'w',
         KEY_DOWN = 's',
-        KEY_LEFT = 'l',
-        KEY_RIGHT = 'r';
+        KEY_LEFT = 'a',
+        KEY_RIGHT = 'd',
+        KEY_EXIT = 'e';
 }

@@ -9,7 +9,7 @@ import bin.Env;
  * Version :
  * Usage :
  */
-public class BMPerson extends BMWidget {
+public class BMPerson extends BMMovable {
     private int face_dir;
 
     public BMPerson(int x,int y) {
@@ -17,7 +17,7 @@ public class BMPerson extends BMWidget {
     }
 
     public BMPerson(int x,int y, int face_dir) {
-        super(Env.BLOCK_NUM_PERSON, x, y);
+        super(Env.BLOCK_NUM_PERSON, x, y, Env.TOKEN_PERSON);
         setFace(face_dir);
     }
 
@@ -27,10 +27,6 @@ public class BMPerson extends BMWidget {
 
     public int getFace() {
         return face_dir;
-    }
-
-    public char getToken() {
-        return Env.TOKEN_PERSON;
     }
 
     public boolean isPassable() {

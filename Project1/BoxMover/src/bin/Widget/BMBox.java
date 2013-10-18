@@ -9,16 +9,8 @@ import bin.Env;
  * Version :
  * Usage :
  */
-public class BMBox extends BMWidget {
+public class BMBox extends BMMovable {
     public BMBox(int x,int y) {
-        super(Env.BLOCK_NUM_BOX, x, y);
-    }
-
-    public char getToken() {
-        return Env.TOKEN_BOX;
-    }
-
-    public boolean isPassable() {
-        return false;
+        super(Env.BLOCK_NUM_BOX, x, y, Env.TOKEN_BOX);
     }
 }
