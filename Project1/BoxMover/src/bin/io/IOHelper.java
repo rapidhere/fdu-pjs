@@ -60,22 +60,18 @@ public class IOHelper {
         }
     }
 
-    static public char getLowerChar() {
-        char ch = getChar();
-        if(ch >= 'A' && ch <= 'Z') {
-            ch = (char)('a' + ch - 'A');
+    static public String getLowerStringLine() {
+        while (true) {
+            String ret = input.nextLine();
+            if(ret.length() != 0) {
+                ret.toLowerCase();
+                return ret;
+            }
         }
-        return ch;
     }
 
     static public void putChar(char ch) {
         System.out.print(ch);
-    }
-
-    static public void putCharArray(char[] ch_arr) {
-        for(int i = 0;i < ch_arr.length;i ++) {
-            putChar(ch_arr[i]);
-        }
     }
 
     static public void putEOL() {
@@ -84,6 +80,10 @@ public class IOHelper {
 
     static public void putStringLine(String s) {
         System.out.println(s);
+    }
+
+    static public void putString(String s) {
+        System.out.print(s);
     }
 
     static public void putError(String err_info) {

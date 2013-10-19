@@ -21,6 +21,10 @@ public class Command {
         this.arg = arg;
     }
 
+    public String getCommandName() {
+        return cmd_name;
+    }
+
     public int getArgument() {
         if(arg == null) {
             return 0;

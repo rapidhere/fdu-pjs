@@ -15,7 +15,7 @@ public class ArgumentError extends BMException {
         this.ex_info = ex_info;
     }
 
-    public String get_exString() {
+    public String getExString() {
         return ex_info;
     }
 }

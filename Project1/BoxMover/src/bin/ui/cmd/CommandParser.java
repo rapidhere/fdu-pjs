@@ -2,6 +2,8 @@ package bin.ui.cmd;
 
 import bin.Env;
 import bin.exp.ArgumentError;
+import bin.exp.CommandNotFound;
+import bin.exp.MatchMoreThanOneCommand;
 
 /**
  * Copyright : all rights reserved,rapidhere@gmail.com
@@ -11,111 +13,90 @@ import bin.exp.ArgumentError;
  * Usage :
  */
 public class CommandParser {
-    private class CommandCharNode{
-        int child[] = new int[26];
-        int cmd_id;
-
-        boolean end_flag = false;
-
-        CommandCharNode() {
-            for(int i = 0;i < child.length;i ++)
-                child[i] = -1;
-
-            cmd_id = -1;
-        }
-    }
-
-    private CommandCharNode[] cmd_trie = new CommandCharNode[1000];
-    int ncmd_trie = 0;
-    private int[] cmds = new int[100];
-    private int ncmd = 0;
-
+    CommandTrie trie = new CommandTrie();
     private CommandParser() {
         for(int i = 0;i < Env.COMMANDS.length;i ++) {
-            Object[] cmd = Env.COMMANDS[i];
-            registerCommand((String)cmd[0], (Integer)cmd[1]);
+            String cmd_name = (String)Env.COMMANDS[i][0];
+            int cmd_type = (Integer)Env.COMMANDS[i][1];
+
+            trie.registerCommand(cmd_name, cmd_type);
         }
+
+        trie.buildTrie();
     }
 
-    public void registerCommand(String cmd_name,int CMD_TYPE) {
-        // TODO
-    }
-
-    public Command parseArgument(String cmd_line)
-    throws ArgumentError {
+    public Command parseCommandLine(String cmd_line)
+    throws CommandNotFound, ArgumentError, MatchMoreThanOneCommand {
         int space_pos = cmd_line.indexOf(' ');
 
+        String cmd_name;
         Object arg;
-        String cmd_name = cmd_line.substring(0, space_pos);
         if(space_pos == -1) {
-            arg = "";
+            cmd_name = cmd_line;
+            arg = null;
         } else {
             arg = cmd_line.substring(space_pos + 1);
+            cmd_name = cmd_line.substring(0, space_pos);
         }
 
-        int ptr = 0;
-        int cmd_id = -1;
-
-        for(int i = 0;i < cmd_name.length();i ++) {
-            int ind = cmd_name.charAt(i) - 'a';
-            CommandCharNode cur = cmd_trie[ptr];
-
-            if(cur.child[ind] == -1) {
+        trie.parseCommandName(cmd_name);
+        switch (trie.getCommandArgumentType()) {
+            case Env.CMD_TYPE_NO_ARG:
+                arg = filterNone(arg);
                 break;
-            }
-
-            ptr = cur.child[ind];
-            if(cmd_trie[ptr].cmd_id != -1) {
-                cmd_id = cmd_trie[ptr].cmd_id;
-            }
+            case Env.CMD_TYPE_INT_REQ_ARG:
+                arg = filterIntegerRequire(arg);
+                break;
+            case Env.CMD_TYPE_INT_OPT_ARG:
+                arg = filterIntegerOptional(arg);
+                break;
         }
 
-        // TODO
-
-        if(arg == null) {
-            return new Command(cmd_name);
+        if(arg != null) {
+            return new Command(trie.getCommandFullName(), Integer.parseInt((String)arg));
         } else {
-            return new Command(cmd_name, (Integer)arg);
+            return new Command(trie.getCommandFullName());
         }
-
     }
 
-    private Object filterNone(String a)
+    static private Object filterNone(Object arg)
     throws ArgumentError {
-        if(a != "") {
-            throw new ArgumentError("Needs no Argument!");
+        if(arg != null) {
+            throw new ArgumentError("This Command takes no argument!");
         }
+
         return null;
     }
 
-    private Object filterIntegerRequire(String a)
+    static private Object filterIntegerRequire(Object arg)
     throws ArgumentError {
-        try {
-            Integer.parseInt(a);
-        } catch (NumberFormatException e) {
-            throw new ArgumentError("Must input a integer!");
-        }
+         try {
+            Integer.parseInt((String)arg);
+         } catch (Exception e) {
+             throw new ArgumentError("This Command require a integer argument!");
+         }
 
-        return a;
+        return arg;
     }
 
-    private Object filterIntegerOptional(String a)
+    static private Object filterIntegerOptional(Object arg)
     throws ArgumentError {
-        if(a == "") {
-            return null;
-        }
-        try {
-            Integer.parseInt(a);
-        } catch (NumberFormatException e) {
-            throw new ArgumentError("Must input a integer or None!");
+        if(arg == null) {
+            return arg;
         }
 
-        return a;
+        try {
+            Integer.parseInt((String)arg);
+        } catch (Exception e) {
+            throw new ArgumentError("This Command require a integer argument or none!");
+        }
+
+        return arg;
     }
 
-    static CommandParser _instance = null;
+    static private CommandParser _instance = null;
 
-    static CommandParser getCommandParser() {
+    static public CommandParser getCommandParser() {
         if(_instance == null) {
             _instance = new CommandParser();
         }

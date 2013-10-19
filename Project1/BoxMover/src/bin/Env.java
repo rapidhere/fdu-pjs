@@ -58,26 +58,26 @@ public class Env {
         CMD_TYPE_INT_OPT_ARG = 1,
         CMD_TYPE_INT_REQ_ARG = 2;
 
-    public static final Object[]
-        CMD_UP =        {"w", CMD_TYPE_INT_OPT_ARG},
-        CMD_DOWN =      {"s", CMD_TYPE_INT_OPT_ARG},
-        CMD_LEFT =      {"s", CMD_TYPE_INT_OPT_ARG},
-        CMD_RIGHT =     {"s", CMD_TYPE_INT_OPT_ARG},
-        CMD_EXIT =      {"s", CMD_TYPE_NO_ARG},
-        CMD_RESTART =   {"s", CMD_TYPE_NO_ARG},
-        CMD_BACK =      {"s", CMD_TYPE_INT_OPT_ARG},
-        CMD_CHOICE =    {"s", CMD_TYPE_INT_REQ_ARG},
-        CMD_HELP =      {"s", CMD_TYPE_NO_ARG};
+    public static final String
+        CMD_UP = "w",
+        CMD_DOWN = "s",
+        CMD_RIGHT = "d",
+        CMD_LEFT = "a",
+        CMD_EXIT = "exit",
+        CMD_RESTART = "restart",
+        CMD_BACK = "back",
+        CMD_CHOSE = "chose",
+        CMD_HELP = "help";
 
     public static final Object[][] COMMANDS = {
-        CMD_UP,
-        CMD_DOWN,
-        CMD_LEFT,
-        CMD_RIGHT,
-        CMD_EXIT,
-        CMD_RESTART,
-        CMD_BACK,
-        CMD_CHOICE,
-        CMD_HELP
+        {CMD_UP,        CMD_TYPE_INT_OPT_ARG},
+        {CMD_DOWN,      CMD_TYPE_INT_OPT_ARG},
+        {CMD_RIGHT,     CMD_TYPE_INT_OPT_ARG},
+        {CMD_LEFT,      CMD_TYPE_INT_OPT_ARG},
+        {CMD_EXIT,      CMD_TYPE_NO_ARG},
+        {CMD_RESTART,   CMD_TYPE_NO_ARG},
+        {CMD_BACK,      CMD_TYPE_INT_OPT_ARG},
+        {CMD_CHOSE,     CMD_TYPE_INT_REQ_ARG},
+        {CMD_HELP,      CMD_TYPE_NO_ARG},
     };
 }

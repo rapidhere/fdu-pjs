@@ -13,6 +13,7 @@ import java.util.ArrayList;
  * Version :
  * Usage :
  */
+
 public class BMMap {
     private int width, height;
     private BMWidget map[][];
@@ -101,13 +102,12 @@ public class BMMap {
         return map[i][j];
     }
 
-    public void draw() {
-        for(int i = 0;i < height;i ++) {
-            for(int j = 0;j < width;j ++) {
-                IOHelper.putChar(map[i][j].getToken());
-            }
-            IOHelper.putEOL();
-        }
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
     }
 
     public void movePerson(int dir) {
