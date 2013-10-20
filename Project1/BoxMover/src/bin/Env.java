@@ -56,7 +56,7 @@ public class Env {
     public static final int
         CMD_TYPE_NO_ARG = 0,
         CMD_TYPE_INT_OPT_ARG = 1,
-        CMD_TYPE_INT_REQ_ARG = 2;
+        CMD_TYPE_INT_RANGE_ARG = 2;
 
     public static final String
         CMD_UP = "w",
@@ -77,7 +77,7 @@ public class Env {
         {CMD_EXIT,      CMD_TYPE_NO_ARG},
         {CMD_RESTART,   CMD_TYPE_NO_ARG},
         {CMD_BACK,      CMD_TYPE_INT_OPT_ARG},
-        {CMD_CHOSE,     CMD_TYPE_INT_REQ_ARG},
+        {CMD_CHOSE,     CMD_TYPE_INT_RANGE_ARG},
         {CMD_HELP,      CMD_TYPE_NO_ARG},
     };
 }

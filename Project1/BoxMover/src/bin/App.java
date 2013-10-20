@@ -13,8 +13,6 @@ import bin.ui.generic.GenericUIFactory;
 import bin.ui.textbaseui.TextBaseUIFactory;
 import bin.widget.BMMap;
 
-import java.util.TooManyListenersException;
-
 /**
  * Copyright : all rights reserved,rapidhere@gmail.com
  * Mail: rapidhere@gmail.com
@@ -68,11 +66,13 @@ public class App {
 
         map.loadMap(level);
 
+        map_ui.getIOHandler().putStringLine("Level " + level);
+
         while (true) {
             if(map.isWon()) {
-
+                return STATE_VICTORY;
             } else if(map.isFailed()) {
-
+                return STATE_FAILED;
             }
 
             map_ui.setMap(map);
@@ -106,11 +106,15 @@ public class App {
             } else if(cmd.getCommandName().compareTo(Env.CMD_RESTART) == 0) {
                 return STATE_RESTART;
             } else if(cmd.getCommandName().compareTo(Env.CMD_BACK) == 0) {
-
+                if(!cmd.hasArgument()) {
+                    map.moveBack(1);
+                } else {
+                    map.moveBack(cmd.getArgument());
+                }
             } else if(cmd.getCommandName().compareTo(Env.CMD_CHOSE) == 0) {
                 chose_lv = cmd.getArgument();
                 return STATE_CHOSE;
-            } else if(cmd.getCommandName() == Env.CMD_EXIT) {
+            } else if(cmd.getCommandName().compareTo(Env.CMD_EXIT) == 0) {
                 return STATE_EXIT;
             }
 
@@ -121,6 +125,26 @@ public class App {
         int level = 1;
         while (true) {
             int stat = playLevel(level);
+            switch (stat) {
+                case STATE_RESTART:
+                    break;
+                case STATE_CHOSE:
+                    level = chose_lv;
+                    break;
+                case STATE_EXIT:
+                    return STATE_EXIT;
+                case STATE_VICTORY:
+                    if(level == Env.MAX_LEVEL) {
+                        return STATE_VICTORY;
+                    }
+
+                    map_ui.getIOHandler().putStringLine("Good Job ...");
+                    map_ui.getIOHandler().putStringLine("Now next level ...");
+                    level += 1;
+                    break;
+                case STATE_FAILED:
+                    map_ui.getIOHandler().putStringLine("T T sorry, try again ...");
+            }
         }
     }
 
@@ -134,6 +158,13 @@ public class App {
                     return;
                 case STATE_START:
                     stat = startPlay();
+                    switch (stat) {
+                        case STATE_EXIT:
+                            return;
+                        case STATE_VICTORY:
+                            menu_ui.getIOHandler().putStringLine("Congratulations! You've done all the levels!");
+                            break;
+                    }
                     break;
             }
         }

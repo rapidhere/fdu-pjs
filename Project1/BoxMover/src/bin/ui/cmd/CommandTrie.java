@@ -98,6 +98,9 @@ public class CommandTrie {
         int i;
         for(i = 0;i < cmd_name.length();i ++) {
             int ind = cmd_name.charAt(i) - 'a';
+            if(ind < 0 || ind >= 26) {
+                throw new CommandNotFound(cmd_name);
+            }
 
             if(ptr.child[ind] == null) {
                 break;

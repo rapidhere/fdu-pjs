@@ -20,6 +20,10 @@ public class BMMap {
     private BMPerson person;
     private BMTargetBlock target_blocks[];
     private BMBox boxes[];
+    private int push_stack_dir[] = new int[1000];
+    private int push_stack_cur_x[] = new int[1000];
+    private int push_stack_cur_y[] = new int[1000];
+    private int n_push_stack = 0;
 
 
     static private int
@@ -28,8 +32,13 @@ public class BMMap {
 
     static private boolean vis[][] = new boolean[100][100];
 
+    private int cur_level;
+
     public void loadMap(int level)
     throws LevelNotFound {
+        n_push_stack = 0;
+        cur_level = level;
+
         IOHelper ioh = new IOHelper();
         ioh.readMap(level);
 
@@ -139,6 +148,11 @@ public class BMMap {
                 ((BMContainer)getWidgetAt(box_nx, box_ny)).putIn(box);
                 next.putIn(person);
                 cur.putOut();
+
+                /* This is a push operation*/
+                push_stack_dir[n_push_stack] = dir;
+                push_stack_cur_x[n_push_stack] = box.getX();
+                push_stack_cur_y[n_push_stack ++] = box.getY();
             }
         }
     }
@@ -245,5 +259,43 @@ public class BMMap {
             }
         }
         return true;
+    }
+
+    public void moveBack(int step) {
+        if(step < 1) step = 1;
+        if(step > n_push_stack || n_push_stack == 0) {
+            try {
+                loadMap(cur_level);
+            } catch (LevelNotFound e) {
+
+            }
+            return;
+        }
+
+        for(int i = 0;i < step;i ++,n_push_stack --) {
+            int dir = push_stack_dir[n_push_stack - 1],
+                x = push_stack_cur_x[n_push_stack - 1],
+                y = push_stack_cur_y[n_push_stack - 1];
+
+            int pos[];
+            BMContainer con1, con2;
+
+            con1 = (BMContainer)getWidgetAt(x, y);
+            BMBox box = (BMBox)con1.getInner();
+            con1.putOut();
+
+            // Move person to attach the box
+            con1 = (BMContainer)getWidgetAt(person.getX(), person.getY());
+            con1.putOut();
+
+            pos = box.moveBack(dir);
+            person.moveTo(pos[0], pos[1]);
+            pos = person.moveBack(dir);
+            ((BMContainer)getWidgetAt(pos[0], pos[1])).putIn(person);
+
+            // Move the box
+            pos = box.moveBack(dir);
+            ((BMContainer)getWidgetAt(pos[0], pos[1])).putIn(box);
+        }
     }
 }

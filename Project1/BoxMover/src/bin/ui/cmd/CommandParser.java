@@ -44,8 +44,8 @@ public class CommandParser {
             case Env.CMD_TYPE_NO_ARG:
                 arg = filterNone(arg);
                 break;
-            case Env.CMD_TYPE_INT_REQ_ARG:
-                arg = filterIntegerRequire(arg);
+            case Env.CMD_TYPE_INT_RANGE_ARG:
+                arg = filterIntegerRange(arg);
                 break;
             case Env.CMD_TYPE_INT_OPT_ARG:
                 arg = filterIntegerOptional(arg);
@@ -68,13 +68,18 @@ public class CommandParser {
         return null;
     }
 
-    static private Object filterIntegerRequire(Object arg)
+    static private Object filterIntegerRange(Object arg)
     throws ArgumentError {
-         try {
-            Integer.parseInt((String)arg);
-         } catch (Exception e) {
-             throw new ArgumentError("This Command require a integer argument!");
-         }
+        int a;
+        try {
+            a = Integer.parseInt((String)arg);
+        } catch (Exception e) {
+            throw new ArgumentError("This Command require a integer argument!");
+        }
+
+        if(a < 1 || a > Env.MAX_LEVEL) {
+            throw new ArgumentError("Please give a integer between 1 and " + Env.MAX_LEVEL + "!");
+        }
 
         return arg;
     }
