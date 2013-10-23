@@ -1,28 +1,28 @@
-package bin.ui.cmd;
+package bin.ui.generic;
 
 /**
  * Copyright : all rights reserved,rapidhere@gmail.com
  * Mail: rapidhere@gmail.com
- * Class :
- * Version :
- * Usage :
+ * Class : Command
+ * Version : ver 0.1
+ * Usage : The Generic Command
  */
 public class Command {
     Object arg;
-    String cmd_name;
+    int cmd_id;
 
-    public Command(String cmd_name) {
-        this.cmd_name = cmd_name;
+    public Command(int cmd_id) {
+        this.cmd_id = cmd_id;
         arg = null;
     }
 
-    public Command(String cmd_name,int arg) {
-        this.cmd_name = cmd_name;
+    public Command(int cmd_id,int arg) {
+        this.cmd_id = cmd_id;
         this.arg = arg;
     }
 
-    public String getCommandName() {
-        return cmd_name;
+    public int getCommandId() {
+        return cmd_id;
     }
 
     public int getArgument() {

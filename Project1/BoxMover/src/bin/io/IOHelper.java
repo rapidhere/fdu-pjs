@@ -89,4 +89,8 @@ public class IOHelper {
     static public void putError(String err_info) {
         putStringLine("Error: " + err_info);
     }
+
+    static public void putSolidLine() {
+        putStringLine("--------------------------");
+    }
 }

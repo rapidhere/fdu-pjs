@@ -33,9 +33,11 @@ public class BMMap {
     static private boolean vis[][] = new boolean[100][100];
 
     private int cur_level;
+    private int cur_step;
 
     public void loadMap(int level)
     throws LevelNotFound {
+        cur_step = 0;
         n_push_stack = 0;
         cur_level = level;
 
@@ -138,6 +140,7 @@ public class BMMap {
         if(next.isPassable()) {
             next.putIn(person);
             cur.putOut();
+            cur_step ++;
         } else if(next.getInner().getTypeId() == Env.BLOCK_NUM_BOX) {
             BMBox box = (BMBox)next.getInner();
             next_pos = box.move(dir);
@@ -149,6 +152,7 @@ public class BMMap {
                 next.putIn(person);
                 cur.putOut();
 
+                cur_step ++;
                 /* This is a push operation*/
                 push_stack_dir[n_push_stack] = dir;
                 push_stack_cur_x[n_push_stack] = box.getX();
@@ -262,10 +266,13 @@ public class BMMap {
     }
 
     public void moveBack(int step) {
+        cur_step ++;
         if(step < 1) step = 1;
         if(step > n_push_stack || n_push_stack == 0) {
             try {
+                int t = cur_step;
                 loadMap(cur_level);
+                cur_step = t;
             } catch (LevelNotFound e) {
 
             }
@@ -297,5 +304,9 @@ public class BMMap {
             pos = box.moveBack(dir);
             ((BMContainer)getWidgetAt(pos[0], pos[1])).putIn(box);
         }
+    }
+
+    public int getCurrentStep() {
+        return cur_step;
     }
 }

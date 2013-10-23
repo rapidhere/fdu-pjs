@@ -3,9 +3,9 @@ package bin;
 /**
  * Copyright : all rights reserved,rapidhere@gmail.com
  * Mail: rapidhere@gmail.com
- * Class :
- * Version :
- * Usage :
+ * Class : Env
+ * Version : ver 0.1
+ * Usage : Define the Environment of the game
  */
 public class Env {
     public static final String MAP_DIR = "./maps";
@@ -54,30 +54,13 @@ public class Env {
         TOKEN_WALL = '■';
 
     public static final int
-        CMD_TYPE_NO_ARG = 0,
-        CMD_TYPE_INT_OPT_ARG = 1,
-        CMD_TYPE_INT_RANGE_ARG = 2;
-
-    public static final String
-        CMD_UP = "w",
-        CMD_DOWN = "s",
-        CMD_RIGHT = "d",
-        CMD_LEFT = "a",
-        CMD_EXIT = "exit",
-        CMD_RESTART = "restart",
-        CMD_BACK = "back",
-        CMD_CHOSE = "chose",
-        CMD_HELP = "help";
-
-    public static final Object[][] COMMANDS = {
-        {CMD_UP,        CMD_TYPE_INT_OPT_ARG},
-        {CMD_DOWN,      CMD_TYPE_INT_OPT_ARG},
-        {CMD_RIGHT,     CMD_TYPE_INT_OPT_ARG},
-        {CMD_LEFT,      CMD_TYPE_INT_OPT_ARG},
-        {CMD_EXIT,      CMD_TYPE_NO_ARG},
-        {CMD_RESTART,   CMD_TYPE_NO_ARG},
-        {CMD_BACK,      CMD_TYPE_INT_OPT_ARG},
-        {CMD_CHOSE,     CMD_TYPE_INT_RANGE_ARG},
-        {CMD_HELP,      CMD_TYPE_NO_ARG},
-    };
+        CMD_UP = 0,
+        CMD_DOWN = 1,
+        CMD_RIGHT = 2,
+        CMD_LEFT = 3,
+        CMD_EXIT = 4,
+        CMD_RESTART = 5,
+        CMD_BACK = 6,
+        CMD_CHOSE = 7,
+        CMD_HELP = 8;
 }

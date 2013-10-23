@@ -8,19 +8,5 @@ package bin.ui.generic;
  * Usage :
  */
 abstract public class GenericUI {
-    protected IOHandler ioh = null;
-
-    public void setIOHandler(IOHandler ioh) {
-        this.ioh = ioh;
-    }
-
-    abstract void draw();
-
-    public String getCommand() {
-        return ioh.getStringLine();
-    }
-
-    public IOHandler getIOHandler() {
-        return ioh;
-    }
+    abstract public void draw();
 }

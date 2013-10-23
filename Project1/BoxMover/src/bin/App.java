@@ -1,40 +1,36 @@
 package bin;
 
-import bin.exp.ArgumentError;
-import bin.exp.CommandNotFound;
 import bin.exp.LevelNotFound;
-import bin.exp.MatchMoreThanOneCommand;
 import bin.io.IOHelper;
-import bin.ui.cmd.CommandParser;
-import bin.ui.cmd.Command;
-import bin.ui.generic.GenericMapUI;
-import bin.ui.generic.GenericMenuUI;
-import bin.ui.generic.GenericUIFactory;
+import bin.ui.generic.*;
+import bin.ui.textbaseui.cmd.CommandParser;
 import bin.ui.textbaseui.TextBaseUIFactory;
 import bin.widget.BMMap;
 
 /**
  * Copyright : all rights reserved,rapidhere@gmail.com
  * Mail: rapidhere@gmail.com
- * Class :
- * Version :
- * Usage :
+ * Class : App
+ * Version : ver 0.1
+ * Usage : The main application of the game
  */
 
 public class App {
     GenericUIFactory uifac = new TextBaseUIFactory();
     GenericMenuUI menu_ui = uifac.getMenuUI();
     GenericMapUI map_ui = uifac.getMapUI();
+    GenericInfoUI info_ui = uifac.getInfoUI();
 
     static private final int
-        STATE_EXIT = 0,
-        STATE_START = 1,
-        STATE_RESTART = 2,
-        STATE_CHOSE = 3,
-        STATE_VICTORY = 4,
-        STATE_FAILED = 5;
+        RUN_STATE_START_MENU = 0,
+        RUN_STATE_START_GAME = 1,
+        RUN_STATE_LEVEL_START = 2,
+        RUN_STATE_LEVEL_VICTORY = 3,
+        RUN_STATE_LEVEL_FAILED = 4,
+        RUN_STATE_VICTORY = 5,
+        RUN_STATE_EXIT = 6;
 
-    static private int chose_lv;
+    static private int curlv;
 
     private int startMenu() {
         String[] items= {
@@ -45,128 +41,119 @@ public class App {
         while (true) {
             menu_ui.setMenu(items, "Box Mover v 0.1");
             menu_ui.draw();
-            int index;
-            try {
-                index = Integer.parseInt(menu_ui.getCommand());
-            } catch (NumberFormatException e) {
-                continue;
-            }
+            int index = menu_ui.getChoice();
 
             switch (index) {
-                case 0: return STATE_START;
-                case 1: return STATE_EXIT;
+                case 0: return RUN_STATE_START_GAME;
+                case 1: return RUN_STATE_EXIT;
             }
         }
     }
 
-    private int playLevel(int level)
+    private int playLevel()
     throws LevelNotFound {
+        info_ui.setTitle("Level " + curlv);
+        info_ui.setContent("Let's push!!!\n");
+        info_ui.draw();
+
         BMMap map = new BMMap();
-        CommandParser cp = CommandParser.getCommandParser();
 
-        map.loadMap(level);
-
-        map_ui.getIOHandler().putStringLine("Level " + level);
+        map.loadMap(curlv);
 
         while (true) {
             if(map.isWon()) {
-                return STATE_VICTORY;
+                return RUN_STATE_LEVEL_VICTORY;
             } else if(map.isFailed()) {
-                return STATE_FAILED;
+                return RUN_STATE_LEVEL_FAILED;
             }
 
             map_ui.setMap(map);
+            map_ui.setCurStep(map.getCurrentStep());
             map_ui.draw();
 
-            Command cmd;
-            while (true) {
-                try {
-                    cmd = cp.parseCommandLine(map_ui.getCommand());
+            Command cmd = map_ui.getCommand();
+            map_ui.setInfo(null);
+            switch (cmd.getCommandId()) {
+                case Env.CMD_EXIT:
+                    return RUN_STATE_EXIT;
+                case Env.CMD_CHOSE:
+                    curlv = cmd.getArgument();
+                    return RUN_STATE_LEVEL_START;
+                case Env.CMD_BACK:
+                    if(cmd.hasArgument()) {
+                        map.moveBack(cmd.getArgument());
+                    } else {
+                        map.moveBack(1);
+                    }
                     break;
-                } catch (CommandNotFound cnf) {
-                    map_ui.getIOHandler().putError("Cannot found cmd: "+ cnf.getCommandName());
-                } catch (ArgumentError ae) {
-                    map_ui.getIOHandler().putError(ae.getExString());
-                } catch (MatchMoreThanOneCommand m) {
-                    String es = "Command " + m.getCmdName() + " Matched more than one command:\n";
-                    for(int i = 0;i < m.getMatchedSize();i ++)
-                        es += "\t" + m.get(i);
-                    map_ui.getIOHandler().putError(es);
-                }
+                case Env.CMD_RESTART:
+                    return RUN_STATE_LEVEL_START;
+                case Env.CMD_HELP:
+                    break;
+                case Env.CMD_UP:
+                    map.movePerson(Env.DIRECTION_UP);
+                    break;
+                case Env.CMD_DOWN:
+                    map.movePerson(Env.DIRECTION_DOWN);
+                    break;
+                case Env.CMD_LEFT:
+                    map.movePerson(Env.DIRECTION_LEFT);
+                    break;
+                case Env.CMD_RIGHT:
+                    map.movePerson(Env.DIRECTION_RIGHT);
+                    break;
             }
-
-            if(cmd.getCommandName().compareTo(Env.CMD_UP) == 0) {
-                map.movePerson(Env.DIRECTION_UP);
-            } else if(cmd.getCommandName().compareTo(Env.CMD_DOWN) == 0) {
-                map.movePerson(Env.DIRECTION_DOWN);
-            } else if(cmd.getCommandName().compareTo(Env.CMD_LEFT) == 0) {
-                map.movePerson(Env.DIRECTION_LEFT);
-            } else if(cmd.getCommandName().compareTo(Env.CMD_RIGHT) == 0) {
-                map.movePerson(Env.DIRECTION_RIGHT);
-            } else if(cmd.getCommandName().compareTo(Env.CMD_RESTART) == 0) {
-                return STATE_RESTART;
-            } else if(cmd.getCommandName().compareTo(Env.CMD_BACK) == 0) {
-                if(!cmd.hasArgument()) {
-                    map.moveBack(1);
-                } else {
-                    map.moveBack(cmd.getArgument());
-                }
-            } else if(cmd.getCommandName().compareTo(Env.CMD_CHOSE) == 0) {
-                chose_lv = cmd.getArgument();
-                return STATE_CHOSE;
-            } else if(cmd.getCommandName().compareTo(Env.CMD_EXIT) == 0) {
-                return STATE_EXIT;
-            }
-
         }
     }
-    private int startPlay()
-    throws LevelNotFound {
-        int level = 1;
-        while (true) {
-            int stat = playLevel(level);
-            switch (stat) {
-                case STATE_RESTART:
-                    break;
-                case STATE_CHOSE:
-                    level = chose_lv;
-                    break;
-                case STATE_EXIT:
-                    return STATE_EXIT;
-                case STATE_VICTORY:
-                    if(level == Env.MAX_LEVEL) {
-                        return STATE_VICTORY;
-                    }
 
-                    map_ui.getIOHandler().putStringLine("Good Job ...");
-                    map_ui.getIOHandler().putStringLine("Now next level ...");
-                    level += 1;
-                    break;
-                case STATE_FAILED:
-                    map_ui.getIOHandler().putStringLine("T T sorry, try again ...");
-            }
+    private int startPlay() {
+        curlv = 1;
+        return RUN_STATE_LEVEL_START;
+    }
+
+    private int levelFailed() {
+        info_ui.setTitle("Lose ~");
+        info_ui.setContent("You failed at Level " + curlv + "\nPlease Try again :(\n");
+        info_ui.draw();
+        return RUN_STATE_LEVEL_START;
+    }
+
+    private int levelVictory() {
+        if(curlv == Env.MAX_LEVEL) {
+            return RUN_STATE_VICTORY;
         }
+        info_ui.setTitle("WoHoo ~");
+        info_ui.setContent("You've finish " + curlv + "\nNow is next level :)\n");
+        info_ui.draw();
+        curlv ++;
+        return RUN_STATE_LEVEL_START;
+    }
+
+    private int victory() {
+        info_ui.setTitle("Awesome!");
+        info_ui.setContent("You've finish the hardest level!\nCongratulations!\n");
+        info_ui.draw();
+        return RUN_STATE_START_MENU;
+    }
+
+    private int runState(int stat)
+    throws LevelNotFound {
+        switch (stat) {
+            case RUN_STATE_START_MENU: return startMenu();
+            case RUN_STATE_START_GAME: return startPlay();
+            case RUN_STATE_LEVEL_START: return playLevel();
+            case RUN_STATE_VICTORY: return victory();
+            case RUN_STATE_LEVEL_VICTORY: return levelVictory();
+            case RUN_STATE_LEVEL_FAILED: return levelFailed();
+        }
+        return RUN_STATE_EXIT;
     }
 
     private void mainLoop()
     throws LevelNotFound {
-        while (true) {
-            int stat = startMenu();
-
-            switch (stat) {
-                case STATE_EXIT:
-                    return;
-                case STATE_START:
-                    stat = startPlay();
-                    switch (stat) {
-                        case STATE_EXIT:
-                            return;
-                        case STATE_VICTORY:
-                            menu_ui.getIOHandler().putStringLine("Congratulations! You've done all the levels!");
-                            break;
-                    }
-                    break;
-            }
+        int stat = RUN_STATE_START_MENU;
+        while (stat != RUN_STATE_EXIT) {
+            stat = runState(stat);
         }
     }
 

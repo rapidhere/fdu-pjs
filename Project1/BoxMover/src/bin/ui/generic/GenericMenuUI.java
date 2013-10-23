@@ -9,18 +9,12 @@ package bin.ui.generic;
  */
 abstract public class GenericMenuUI extends GenericUI {
     abstract protected void drawTitle(String title);
-    abstract protected void drawSingleMenuItem(int index, String item);
 
-    private String[] menu_items;
-    private String menu_title;
+    protected String[] menu_items;
+    protected String menu_title;
     public GenericMenuUI() {}
 
-    protected void drawMenu() {
-        ioh.putEOL();
-        for(int i = 0;i < menu_items.length;i ++) {
-            drawSingleMenuItem(i, menu_items[i]);
-        }
-    }
+    abstract protected void drawMenu();
 
     public void setMenu(String[] menu_items, String menu_title) {
         this.menu_items = menu_items;
@@ -32,8 +26,5 @@ abstract public class GenericMenuUI extends GenericUI {
         drawMenu();
     }
 
-    public String getCommand() {
-        ioh.putString("Please Choose:");
-        return super.getCommand();
-    }
+    abstract public int getChoice();
 }

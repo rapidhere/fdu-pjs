@@ -1,4 +1,4 @@
-package bin.ui.cmd;
+package bin.ui.textbaseui.cmd;
 
 import bin.exp.CommandNotFound;
 import bin.exp.MatchMoreThanOneCommand;

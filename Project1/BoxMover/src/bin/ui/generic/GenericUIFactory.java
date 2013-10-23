@@ -10,4 +10,5 @@ package bin.ui.generic;
 abstract public class GenericUIFactory {
     public abstract GenericMapUI getMapUI();
     public abstract GenericMenuUI getMenuUI();
+    public abstract GenericInfoUI getInfoUI();
 }
