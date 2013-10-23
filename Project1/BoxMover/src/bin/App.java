@@ -16,10 +16,10 @@ import bin.widget.BMMap;
  */
 
 public class App {
-    GenericUIFactory uifac = new TextBaseUIFactory();
-    GenericMenuUI menu_ui = uifac.getMenuUI();
-    GenericMapUI map_ui = uifac.getMapUI();
-    GenericInfoUI info_ui = uifac.getInfoUI();
+    private GenericUIFactory uifac = new TextBaseUIFactory();
+    private GenericMenuUI menu_ui = uifac.getMenuUI();
+    private GenericMapUI map_ui = uifac.getMapUI();
+    private GenericInfoUI info_ui = uifac.getInfoUI();
 
     static private final int
         RUN_STATE_START_MENU = 0,

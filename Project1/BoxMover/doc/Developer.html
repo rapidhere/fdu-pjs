@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title> BoxMover开发手册 </title>
+        <style>
+            * {
+                margin: 0px;
+                padding: 0px;
+            }
+
+            h1 {
+                font-family: serif;
+            }
+
+            body {
+                background-color: #efefef;
+            }
+
+            #total-wrapper {
+                width: 960px;
+                box-shadow: 2px 2px 3px #afafaf;
+                background-color: #efffef;
+                padding : 30px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            #title-wrapper {
+                margin-bottom: 10px;
+            }
+            
+            #title-wrapper h1 {
+                font-family: "Arial", sans-serif;
+                font-size: 30px;
+                text-align: center;
+                margin-bottom : 10px;
+                color: #2f452f;
+            }
+
+            #title-wrapper p {
+                font-family: "Arial", sans-serif;
+                font-size: 15px;
+                text-align: right;
+                margin-right: 20px;
+                color: #5f7f5f;
+                font-style: italic;
+            }
+
+            #content-wrapper {
+
+            }
+
+            h1.chapter {
+                font-size: 18px;
+                font-weight: bold;
+                color: #3f5f3f;
+                font-family: "Times New Roman", serif;
+                margin-bottom : 8px;
+            }
+
+            div.chapter-wrapper {
+                margin-left: 20px;
+                margin-bottom: 10px;
+            }
+
+            div.section-wrapper {
+                margin-left: 10px;
+                margin-bottom: 5px;
+            }
+
+            h1.section {
+                font-size: 17px;
+                font-weight: bold;
+                color: #476747;
+                margin-bottom: 8px;
+            }
+
+            div.subsection-wrapper {
+                margin-left: 6px;
+                margin-bottom: 3px;
+            }
+
+            h1.subsection {
+                font-size: 16px;
+                font-weight: bold;
+                color: #4f6f4f;
+                margin-bottom: 5px;
+            }
+            
+            #content-wrapper p.text {
+                font-size: 15px;
+                color: #2f3f3f;
+                margin-bottom : 5px;
+                text-indent: 30px;
+                font-family: "Arial", sans-serif;
+            }
+
+            #content-wrapper p.code {
+                font-size: 15px;
+                color: #2f3f3f;
+                margin-bottom : 5px;
+                font-family: "Consolas", monospace;
+                white-space: pre;
+                text-align: left;
+                box-shadow: 2px 2px 3px #9f9f9f;
+                padding : 5px;
+                background-color : #e7e7e7;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div id="total-wrapper">
+            <div id="title-wrapper">
+                <h1> BoxMover开发手册 </h1>
+                <p> Fudan University, Software Engeering 2013, 董奇</p>
+                <p> Email: rapidhere@gmail.com </p>
+                <p> Github: https://www.github.com/rapidhere RapiD LoVe LMD</p>
+            </div>
+
+            <div id="content-wrapper">
+                <h1 class="chapter"> 1. Introduction </h1>
+                <div class="chapter-wrapper">
+                <h1 class="section"> 1.1 关于推箱子游戏 </h1>
+                    <div class="section-wrapper">
+                        <p class="text">
+                        推箱子游戏是我们大家都熟知的游戏。玩家控制一个工人，在地图上推动箱子到制定的位置上。箱子只能被推动，并且玩家一次只能推动一个箱子。当所有的箱子都被移动到指定的位置的时候，玩家获得胜利。
+                        </p>
+                        <p class="text">
+                        BoxMover ver0.1 给出了一个简单实现的推箱子游戏。目前BoxMover没有GUI界面，只能通过命令行与用户交互游戏。但是BoxMover内部实现中为实现GUI做了充分的准备，将在下个版本中实现GUI界面。
+                        </p>
+                    </div>
+
+                    <h1 class="section"> 1.2 总体结构 </h1>
+                    <div class="section-wrapper">
+                        <p class="text">
+                        BoxMover的所有需要的内容都部署在一个文件夹中。BoxMover.class是运行程序的主类。bin中部署了所有BoxMover运行需要的代码。docs目录中有开发和用户文档。maps目录储存了所有的地图。下面我们将对BoxMover的代码结构作出介绍。
+                        </p>
+                        <p class="text">
+                        BoxMover.class是程序的主类，游戏从这个地方开始云行。BoxMover只负责调用bin.App的run方法来运行程序，不处理任何其他事物。
+                        </p>
+                        <p class="text">
+                        在bin包中我们部署了所有的代码，App.class代表了应用程序，该类只有一个对外接口，就是run函数。调用run函数将会启动整个程序。
+                        run函数运行时，将会调用内部的mainLoop函数。App将会存储当前程序运行的状态，并且通过状态来选择当前应该进行的步骤，具体的步骤有具体的状态值和对应的函数相匹配。mainLoop不断的通过当前的状态值类运行对应的函数，同时运行的函数返回一个状态值，来指明下一步的状态值，或者说让mainLoop结束循环。
+                        </p>
+                        <p class="text">
+                        BoxMover实际是一个MVC结构的程序。bin.widget.BMMap代表着Model，ui代表着View，而App则是Controller。每一次mainLoop调用的函数，都将通过特定的ui向用户输出信息，并通过ui从用户处获得信息，再将信息处理，同时将BMMap同步到最新的状态。ui实际是部署在bin.ui中的某一个特定ui，目前我们只实现了TextBaseUI，只能通过命令行与用户交互。但是我们提供了一个通用的GenericUI抽象包，通过继承这个包中的特定类，我们可以写出一个完美替换TextBaseUI的GUI界面，因为TextBaseUI包也是从GenericUI中继承过来的。具体的方法参见下文中的reference。
+                        </p>
+                        <p class="text">
+                        bin包下还有一个Env.class，该类定义了程序运行必须的常量和一些设置。bin.widget定义了程序的数据模型，bin.exp定义了程序运行可能会抛出的异常，bin.io仅仅为了自己写的IOHelper存在。
+                        </p>
+                    </div>
+                </div>
+
+                <h1 class="chapter"> 2. References </h1>
+                <div class="chapter-wrapper">
+                    <h1 class="section"> 2.1 class BoxMover </h1>
+                    <div class="section-wrapper">                        
+                        <p class="code">public class BoxMover {
+    static public void main(String args[]);
+}</p>
+                        <p class="text">
+                        该类是应用程序的入口，仅仅包含一个静态的main方法用来运行程序
+                        </p>
+
+                    </div>
+
+                    <h1 class="section"> 2.2 bin包的基本类 </h1>
+                    <div class="section-wrapper">
+                        <p class="text">bin包部署了程序运行所需要的所有代码</p>
+                        <h1 class="subsection"> 2.2.1 bin.App </h1>
+                        <div class="subsection-wrapper">
+                            <p class="code">public class App {
+    private GenericUIFactory uifac;
+    private GenericMenuUI;
+    private GenericMapUI;
+    private GerericInfoUI;
+
+    static private final int
+        RUN_STATE_START_MENU,
+        RUN_STATE_START_GAME,
+        RUN_STATE_LEVEL_START,
+        RUN_STATE_LEVEL_VICOTRY,
+        RUN_STATE_LEVEL_FAILED,
+        RUN_STATE_VICOTRY,
+        RUN_STATE_EXIT;
+
+    static private curlv;
+
+    public int run();
+    private void mainLoop() throws LevelNotFound;
+
+    private int runState(int stat) throws LevelNotFound;
+    
+    private int startMenu();
+    private int startPlay();
+    private int playLevel();
+    private int levelVictory();
+    private int levelFailed();
+    private int victory();
+}</p>
+                            <p class="text">应用程序类，代表了整个游戏。该类仅仅含有一个公共接口run。run函数运行应用程序，同时返回运行结果用于返回给调用者。一般的，运行成功返回0,失败返回-1。</p>
+                            <p class="text">类中定义的一组Generic开头的变量是用来获得UI的变量。GenericUIFactory是一个UI工厂，后面的所有UI元素都是通过这个工厂类返回的。具体内容参见bin.ui包。一组私有的final int变量以RUN_STATE_开头，代表了程序当前的运行状态。私有变量curlv代表了当前游戏运行到的关卡数。</p>
+                            <p class="text">mainLoop函数由run调用。函数内部是一个死循环。mainLoop不断的检查一个存储着程序状态的stat值，这个stat值是类内部定义的RUN_STATE_开头的常量中的一个。当stat是RUN_STATE_EXIT的时候，mainLoop将会结束，否则mainLoop将会调用runState函数来运行状态值对应的函数，这些函数在类定义的最后部分给出。这些函数没有参数，返回一个int值表示程序下一步应当处于的状态，runState()将会返回这个状态值，供mainLoop做下一步判断。</p>
+                        </div>
+
+                        <h1 class="subsection"> 2.2.2 bin.Env </h1>
+                        <div class="subsection-wrapper">
+                            <p class="text">
+                            bin.Env类定义了程序运行必要的常量和设置。我们不在这里给出Env的内容。在后面的使用到Env的地方，我们将会给出相关的Env值。
+                            </p>
+                        </div>
+
+                        <h1 class="subsection"> 2.2.3 bin.io.IOHelper </h1>
+                        <div class="subsection-wrapper">
+                            <p class="code">public class IOHelper {
+    private int width, height;
+    private char[][] map;
+    static private Scanner input;
+
+    public void readMap(int level) throws LevelNotFound;
+    public int getMapAt(int x, int y);
+    public int getHeight();
+    public int getWidth();
+
+    static public char getChar();
+    static public String getLowerStringLine();
+    static public void putChar(char ch);
+    static public void putEOL();
+    static public void putStringLine(String s);
+    static public void putString(String s);
+    static public void putError(String err_info);
+    static public void putSolidLine();
+}</p>
+                            <p class="text">bin.io包中仅仅含有一个单独的IOHelper类。之所以将这个类单独放一个包，当然是为了方便TA发现，这个Helper真的是我自己写的啦～～。IOHelper定义了一个读取地图的方法和一组静态的用于和标准输入输出交互的函数。注意到读取地图的方法都不是静态的，在读取地图的时候需要先实例化出来一个具体的Helper，并且readMap应该是首先调用的一个方法。</p>
+                        </div>
+
+                        <h1 class="subsection"> 2.2.4 bin.exp </h1>
+                        <div class="subsection-wrapper">
+                            <p class="code">public class BMException extends Exception {
+}</p>
+                            <p class="text">bin.exp包定义了在BoxMover运行过程中可能抛出的异常。BMException是这些所有异常的基类，所有抛出的异常都是BMException的子类型。</p>
+
+                            <p class="code">public class LevelNotFound extends Exception {
+    public LevelNotFound(int level);
+    public int getLevel();
+}</p>
+                            <p class="text">LevelNotFound异常在bin.io.IOHelper.readMap()中抛出。当制定的level所对应的map文件没有找到的时候抛出，通过getLevel()方法得到产生异常的level值</p>
+
+                            <p class="code">public class ArgumentError extends Exception {
+    public ArgumentError(String ex_info);
+    public String getExString();
+}</p>
+                            <p class="text">这个异常和以下的两个异常都是在bin.ui.textbaseui.cmd包中产生的。这些异常都是在用户输入的命令有错误的时候产生的。ArgumentError在用户输入的命令正确，但是参数有问题的时候产生。这个异常并不包含特定参数异常信息，只有包含一个异常信息，通过getExString得到这个信息并且输出，应用程序不应该对这个异常做更多的处理。</p>
+                            <p class="code">public class CommandNotFound extends Exception {
+    public CommandNotFound(String cmd_name);
+    public String getCommandName();
+}</p>
+                            <p class="text">CommandNotFound异常在输入的命令不存在的时候抛出，通过getCommandName()得到产生的异常的命令</p>
+                            <p class="code">public class MatchMoreThanOneCommand extends Exception {
+    public MatchMoreThanOneCommand(String cmd_name);
+    public int getMatchedSize();
+    public String get(int index);
+    public void appendNewMatch(String cmd);
+    public String getCmdName();
+}</p>
+                            <p class="text">MatchMoreThanOneCommand是在用户输入的命令匹配了BoxMover的多个命令时抛出的。getMatchedSize()返回匹配的命令数量。getCmdName()返回产生这个异常的命令。get()函数返回指定下标的匹配到的命令</p>
+                            <h1 class="text"> </h1>
+                        </div>
+                    </div>
+
+                    <h1 class="section"> 2.3 bin.ui </h1>
+                    <div class="section-wrapper">
+                        <h1 class="subsection"> 2.3.1 总述 </h1>
+                        <div class="subsection-wrapper">
+                            <p class="text">
+                            bin.ui包是BoxMover MVC结构中的View部分。为了适应未来加入GUI界面的规划，bin.ui包对用户界面部分进行了适度的抽象。bin.ui.generic包定义了所有BoxMover的抽象模型。任何一个BoxMover的ui都应当通过bin.ui.generic来设计，实现bin.ui.generic要求的接口，以便在需要的时候BoxMover可以替换ui。bin.ui的设计使用了抽象工厂(Abstract Factory)模式，抽象的工厂由bin.ui.generic.GenericUIFactory定义，任何一个具体的ui都应当继承并且实现这个UIFactory，并且所有的UI元素都应该使用这个工厂来产生。
+                            </p>
+                        </div>
+
+                        <h1 class="subsection"> 2.3.2 bin.ui.generic </h1>
+                        <div class="subsection-wrapper">
+                            <h1 class="subsection"> 2.3.2.1 bin.ui.generic的UI元素 </h1>
+                            <div class="subsection-wrapper">
+                                <p class="code">abstract public class GenericUI {
+    abstract public void draw();
+}</p>
+                                <p class="text">GenericUI定义了所有BoxMover的UI的基本结构。这些UI元素仅仅需要实现一个draw函数，在需要的时候由应用程序调用，来绘制出UI。所有的UI元素都从这个GenericUI中继承过来。在BoxMover中，我们定义了三种必须的UI: MenuUI, MapUI和InfoUI。</p>
+                                <p class="code">abstract public class GenericMenuUI extends GenericUI {
+    protected String menu_items[];
+    protected String menu_title;
+
+    abstract protected void drawMenu();
+    abstract protected void drawTitle(String title);
+    abstract public int getChoice();
+    
+    public void setMenu(String menu_items[], String menu_title);
+    public void draw();
+}</p>
+                                <p class="text">GenericMenuUI定义了MenuUI的借口和基本实现。MenuUI用于在屏幕上绘制一个菜单并且允许程序获得用户选取的选项。GenericMenuUI已经实现了draw函数，具体类需要自己实现drawMenu和drawTitle来完成具体绘制。同时也需要实现getChoice来实现具体获得选项的能力。</p>
+                                <p class="code">abstract public class GenericMapUI extends GenericUI {
+    protected BMMap map;
+    protected int cur_step;
+    protected String info;
+
+    public void setMap(BMMap map);
+    public void setCurStep(int t);
+    public void setInfo(String info);
+
+    abstract public void putError(String err);
+    abstract public Command getCommand();
+    abstract public void draw();
+}</p>
+                                <p class="text">MapUI用于在屏幕上绘制游戏界面。游戏界面主要是地图界面，同时也应当可以绘制一些附加信息和显示当前的游戏步数。同时，显示游戏中的一些错误信息没有在draw中实现，单独实现为putError。getCommand返回一个用户指令。</p>
+                                <p class="code">abstract public class GenericInfoUI extends GenericUI {
+    protected String title, content;
+
+    public void setTitle(String title);
+    public void setContent(String content);
+
+    abstract public void draw();
+}</p>
+                                <p class="text">InfoUI在屏幕上绘制一个提示信息。通常来说这个UI在游戏开始，关卡切换，退出游戏的时候使用。一个InfoUI应当包括一个title和一个content</p>
+                            </div>
+
+                            <h1 class="subsection"> 2.3.2.2 bin.ui.generic.GenericUIFactory </h1>
+                            <div class="subsection-wrapper">
+                                <p class="code">abstract public class GenericUIFactory {
+    public abstract GenericMapUI getMapUI();
+    public abstract GenericMenuUI getMenuUI();
+    public abstract GenericInfoUI getInfoUI();
+}</p>
+                                <p class="text">
+                                    UIFactory是构建UI元素的工厂类，要使用某个UI，只能通过UIFactory定义的方法来获得。GenericUIFactory定义了抽象的UIFactory结构，要实现一个新的UI包必须实现具体的GenericUIFacotry
+                                </p>
+                            </div>
+
+                            <h1 class="subsection"> 2.3.2.3 bin.ui.generic.Command </h1>
+                            <div class="subsection-wrapper">
+                                <p class="code">public class Command {
+    public Command(int cmd_id);
+    public Command(int cmd_id, int arg);
+
+    public int getCommandId();
+    public int getArgument();
+    public boolean hasArgument();
+}</p>
+                                <p class="text">
+                                    Command结构专门用于表示MapUI返回的用户指令。BoxMover的命令由一个Id来表示，Id的值定义在Env中
+                                </p>
+                                <p class="code">public static final int
+    CMD_UP = 0,
+    CMD_DOWN = 1,
+    CMD_RIGHT = 2,
+    CMD_LEFT = 3,
+    CMD_EXIT = 4,
+    CMD_RESTART = 5,
+    CMD_BACK = 6,
+    CMD_CHOSE = 7,
+    CMD_HELP = 8;</p>
+                                <p class="text">
+                                    BoxMover的命令中只有两中状态，带一个整数参数，或者没有参数。目前Command的实现具有局限性，没有强制性要求一个命令是否有参数，或者参数的类型。这个缺失将在今后的设计中进行修补。</p>
+                            </div>
+                        </div>
+
+                        <h1 class="subsection"> 2.3.3 bin.ui.textbaseui </h1>
+                        <div class="subsection-wrapper">
+                            <h1 class="subsection"> 2.3.3.1 总述 </h1>
+                            <div class="subsection-wrapper">
+                                <p class="text">
+                                在GenericUI提供的接口的基础上，BoxMover已经实现了一个非常简单的命令行交互界面。由于目前没有办法在win-cmd上按位置绘制图元，严重限制了接口设计的范围。目前这个UI不能刷新已经有的图像，不能越行绘制，只能按行按列依次绘制。
+                                TextBaseUI使用的输入输出句柄都由IOhelper提供。关于TextBaseUI的具体内容不再赘述。
+                                </p>
+
+                            </div>
+
+                            <h1 class="subsection"> 2.3.3.2 bin.ui.textbaseui.cmd </h1>
+                            <div class="subsection-wrapper">
+                                <p class="text">由于在TextBaseUI下，用户只能通过命令行输入字符串来表示命令，所以我们需要一个基于字符来解析命令的工具。同时为了减少用户的输入量，为了表达一个命令，用户只需要输入使这个命令可以区别于其他命令的最短前缀就可以了。为了实现这个功能，我们需要构建一棵命令字母树。</p>
+                                <p class="code">class CommandTrieNode {
+    public int cmd_id;
+    public CommandTrieNode child[];
+
+    public int getChildrenCount();
+}
+    
+public class CommandTrie {
+    public void registerCommand(String cmd_name, int arg_type);
+    public void buildTrie();
+    public void parseCommandName(String cmd_name)
+        throws CommandNotFound, MatchMoreThanOneCommand;
+    public String getCommandFullName();
+    public int getCommandArgumentType();
+}</p>
+                                <p class="text">CommandTrieNode表示字母树中的一个节点。其中cmd_id由CommadTrie分配，不一定是命令本省的CMDId。child是这个节点的所有子节点。getChildrenCount返回这个节点的儿子数目。CommandTrie代表了命令字母树。registerCommand向字母树中注册一个命令，同时指出命令的参数类型。参数类型在CommandParser中定义。这是一个设计缺陷，在今后的重构中需要修改。buildTrie建立字母树。parseCommandName分析指定的cmd，并通过getCommandFullName和getCommandArgumentType返回命令的全名和参数类型。</p>
+
+                                <p class="code">public class CommandParser {
+    public static final int
+        CMD_TYPE_NO_ARG,
+        CMD_TYPE_INT_OPT_ARG,
+        CMD_TYPE_INT_RANGE_ARG;
+
+    public static final String
+        CMD_UP,
+        CMD_DOWN,
+        CMD_RIGHT,
+        CMD_LEFT,
+        CMD_EXIT,
+        CMD_RESTART,
+        CMD_BACK,
+        CMD_CHOSE,
+        CMD_HELP;
+
+    public static final Object[][] COMMANDS;
+
+    private CommandParser();
+    public Command parseCommandLine(String cmd_line)
+        throws CommandNotFound, ArgumentError, MatchMoreThanOneCommand;
+    static public CommandParser getCommandParser();
+}</p>
+                                <p class="text">CommandParser被实现成一个单件(Singleton)，其构造函数是私有的，不能直接访问。parseCommandLine分析一条字符串，同时返回一个Command，在必要的时候抛出异常。</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h1 class="section"> 2.4 bin.widget </h1>
+                    <div class="section-wrapper">
+                    </div>
+                </div>
+                <h1 class="chapter"> 3. TODOs &amp; Bugs </h1>
+                <div class="chapter-wrapper">
+                    <p class="text"> 1. Help 命令还没有写 </p>
+                    <p class="text"> 2. 下个版本中将加入GUI </p>
+                </div>
+            </div>
+        </div>
+    
+
+</body></html>

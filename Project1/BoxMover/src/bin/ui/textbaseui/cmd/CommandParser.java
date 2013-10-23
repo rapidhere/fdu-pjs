@@ -88,7 +88,7 @@ public class CommandParser {
         }
     }
 
-    static final Object[][] NAME_TO_ID_MAP = {
+    static private final Object[][] NAME_TO_ID_MAP = {
         {CMD_UP,        Env.CMD_UP},
         {CMD_DOWN,      Env.CMD_DOWN},
         {CMD_RIGHT,     Env.CMD_RIGHT},
@@ -99,7 +99,7 @@ public class CommandParser {
         {CMD_HELP,      Env.CMD_HELP},
         {CMD_EXIT,      Env.CMD_EXIT},
     };
-    static int toCommandId(String cmd_name) {
+    static private int toCommandId(String cmd_name) {
         for(int i = 0;i < NAME_TO_ID_MAP.length;i ++) {
             if(cmd_name.compareTo((String)NAME_TO_ID_MAP[i][0]) == 0) {
                 return (Integer)NAME_TO_ID_MAP[i][1];

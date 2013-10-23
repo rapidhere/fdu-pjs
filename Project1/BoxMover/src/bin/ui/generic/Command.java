@@ -8,8 +8,8 @@ package bin.ui.generic;
  * Usage : The Generic Command
  */
 public class Command {
-    Object arg;
-    int cmd_id;
+    private Object arg;
+    private int cmd_id;
 
     public Command(int cmd_id) {
         this.cmd_id = cmd_id;

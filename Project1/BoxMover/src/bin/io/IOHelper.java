@@ -50,7 +50,7 @@ public class IOHelper {
         return width;
     }
 
-    static Scanner input = new Scanner(System.in);
+    static private Scanner input = new Scanner(System.in);
     static public char getChar() {
         while(true) {
             String buffer = input.nextLine();

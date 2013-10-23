@@ -10,7 +10,6 @@ import bin.exp.MatchMoreThanOneCommand;
  * Version :
  * Usage :
  */
-
 class CommandTrieNode {
     public int cmd_id;
     public CommandTrieNode child[] = new CommandTrieNode[26];
@@ -143,7 +142,7 @@ public class CommandTrie {
         return cmd_type;
     }
 
-    static void appendMatchCommands(MatchMoreThanOneCommand e, CommandTrieNode ptr, String cur) {
+    static private void appendMatchCommands(MatchMoreThanOneCommand e, CommandTrieNode ptr, String cur) {
         if(ptr.getChildrenCount() == 0) {
             e.appendNewMatch(cur);
             return;
