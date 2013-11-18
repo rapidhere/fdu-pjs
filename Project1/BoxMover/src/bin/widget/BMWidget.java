@@ -1,5 +1,7 @@
 package bin.widget;
 
+import java.io.Serializable;
+
 /**
  * Copyright : all rights reserved,rapidhere@gmail.com
  * Mail: rapidhere@gmail.com
@@ -7,7 +9,7 @@ package bin.widget;
  * Version :
  * Usage :
  */
-abstract public class BMWidget {
+abstract public class BMWidget implements Serializable {
     protected int pos_x, pos_y;
     protected int type_id;
     protected char token;

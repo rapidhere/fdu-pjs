@@ -3,7 +3,6 @@ package bin;
 import bin.exp.LevelNotFound;
 import bin.io.IOHelper;
 import bin.ui.generic.*;
-import bin.ui.textbaseui.cmd.CommandParser;
 import bin.ui.textbaseui.TextBaseUIFactory;
 import bin.widget.BMMap;
 
@@ -28,13 +27,15 @@ public class App {
         RUN_STATE_LEVEL_VICTORY = 3,
         RUN_STATE_LEVEL_FAILED = 4,
         RUN_STATE_VICTORY = 5,
-        RUN_STATE_EXIT = 6;
+        RUN_STATE_LOAD_SAVE = 6,
+        RUN_STATE_EXIT = 7;
 
-    static private int curlv;
+    static private BMMap curmap;
 
     private int startMenu() {
         String[] items= {
             "Start",
+            "Load",
             "Exit",
         };
 
@@ -45,20 +46,19 @@ public class App {
 
             switch (index) {
                 case 0: return RUN_STATE_START_GAME;
-                case 1: return RUN_STATE_EXIT;
+                case 1: return RUN_STATE_LOAD_SAVE;
+                case 2: return RUN_STATE_EXIT;
             }
         }
     }
 
-    private int playLevel()
+    private int play()
     throws LevelNotFound {
-        info_ui.setTitle("Level " + curlv);
+        info_ui.setTitle("Level " + curmap.getLevel());
         info_ui.setContent("Let's push!!!\n");
         info_ui.draw();
 
-        BMMap map = new BMMap();
-
-        map.loadMap(curlv);
+        BMMap map = curmap;
 
         while (true) {
             if(map.isWon()) {
@@ -77,7 +77,8 @@ public class App {
                 case Env.CMD_EXIT:
                     return RUN_STATE_EXIT;
                 case Env.CMD_CHOSE:
-                    curlv = cmd.getArgument();
+                    curmap = new BMMap();
+                    curmap.loadLevel(cmd.getArgument());
                     return RUN_STATE_LEVEL_START;
                 case Env.CMD_BACK:
                     if(cmd.hasArgument()) {
@@ -88,6 +89,12 @@ public class App {
                     break;
                 case Env.CMD_RESTART:
                     return RUN_STATE_LEVEL_START;
+                case Env.CMD_SAVE:
+                    map.saveGame();
+                    map_ui.setInfo("Game saved as " + Env.getSaveFileName() + "\n");
+                    break;
+                case Env.CMD_BACKMENU:
+                    return RUN_STATE_START_MENU;
                 case Env.CMD_HELP:
                     break;
                 case Env.CMD_UP:
@@ -106,26 +113,30 @@ public class App {
         }
     }
 
-    private int startPlay() {
-        curlv = 1;
+    private int startPlay()
+    throws LevelNotFound {
+        curmap = new BMMap();
+        curmap.loadLevel(1);
         return RUN_STATE_LEVEL_START;
     }
 
     private int levelFailed() {
         info_ui.setTitle("Lose ~");
-        info_ui.setContent("You failed at Level " + curlv + "\nPlease Try again :(\n");
+        info_ui.setContent("You failed at Level " + curmap.getLevel() + "\nPlease Try again :(\n");
         info_ui.draw();
         return RUN_STATE_LEVEL_START;
     }
 
-    private int levelVictory() {
-        if(curlv == Env.MAX_LEVEL) {
+    private int levelVictory()
+    throws LevelNotFound {
+        if(curmap.getLevel() == Env.MAX_LEVEL) {
             return RUN_STATE_VICTORY;
         }
         info_ui.setTitle("WoHoo ~");
-        info_ui.setContent("You've finish " + curlv + "\nNow is next level :)\n");
+        info_ui.setContent("You've finish " + curmap.getLevel() + "\nNow is next level :)\n");
         info_ui.draw();
-        curlv ++;
+        int lv = curmap.getLevel() + 1;
+        curmap.loadLevel(lv);
         return RUN_STATE_LEVEL_START;
     }
 
@@ -136,15 +147,32 @@ public class App {
         return RUN_STATE_START_MENU;
     }
 
+    private int loadSave() {
+        String[] list = BMMap.getSaveList();
+        if(list.length == 0) {
+            info_ui.setTitle("Error");
+            info_ui.setContent("No saved game(s) found!");
+            info_ui.draw();
+            return RUN_STATE_START_MENU;
+        }
+        menu_ui.setMenu(list, "Chose saved game(s)");
+        menu_ui.draw();
+        String ch = list[menu_ui.getChoice()];
+
+        curmap = BMMap.readGame(ch);
+        return RUN_STATE_LEVEL_START;
+    }
+
     private int runState(int stat)
     throws LevelNotFound {
         switch (stat) {
             case RUN_STATE_START_MENU: return startMenu();
             case RUN_STATE_START_GAME: return startPlay();
-            case RUN_STATE_LEVEL_START: return playLevel();
+            case RUN_STATE_LEVEL_START: return play();
             case RUN_STATE_VICTORY: return victory();
             case RUN_STATE_LEVEL_VICTORY: return levelVictory();
             case RUN_STATE_LEVEL_FAILED: return levelFailed();
+            case RUN_STATE_LOAD_SAVE: return loadSave();
         }
         return RUN_STATE_EXIT;
     }

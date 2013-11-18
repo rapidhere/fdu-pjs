@@ -10,39 +10,39 @@
     <ignored path="Project1.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/BoxMover.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1382054005442" ignored="false" />
-    <file path="/App.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1382504998370" ignored="false" />
-    <file path="/fragment.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1382247852329" ignored="false" />
+    <file path="/App.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1384778395522" ignored="false" />
+    <file path="/fragment.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1382602873830" ignored="false" />
     <file path="/Dummy.txt" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1382005910238" ignored="false" />
     <file path="/Wall.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1382006251935" ignored="false" />
     <file path="/BMWidget Class.txt.ft" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1382006486996" ignored="false" />
     <file path="/File Header.txt.ft" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1382007312733" ignored="false" />
     <file path="/Application.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1382007346064" ignored="false" />
-    <file path="/BMWall.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1382058176576" ignored="false" />
-    <file path="/BMPerson.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1382057712403" ignored="false" />
-    <file path="/BMBox.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1382078115677" ignored="false" />
+    <file path="/BMWall.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1382602557895" ignored="false" />
+    <file path="/BMPerson.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1382602543934" ignored="false" />
+    <file path="/BMBox.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1382602518913" ignored="false" />
     <file path="/BMNullWidget.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1382007494800" ignored="false" />
-    <file path="/BMEmptyBlock.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1382057563989" ignored="false" />
-    <file path="/IOHelper.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1382507692401" ignored="false" />
+    <file path="/BMEmptyBlock.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1382602529196" ignored="false" />
+    <file path="/IOHelper.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1382602881392" ignored="false" />
     <file path="/TargetBlock.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1382007908120" ignored="false" />
-    <file path="/Env.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1382497378490" ignored="false" />
+    <file path="/Env.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1384778338131" ignored="false" />
     <file path="/BMException.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1382009134531" ignored="false" />
     <file path="/IOHelperException.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1382009333098" ignored="false" />
     <file path="/IOHelperFileNotFound.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1382012442263" ignored="false" />
     <file path="/IOHelperLevelNotFound.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1382009404894" ignored="false" />
-    <file path="/BMWidget.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1382057604929" ignored="false" />
-    <file path="/BMMap.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1382495912067" ignored="false" />
+    <file path="/BMWidget.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1384773481721" ignored="false" />
+    <file path="/BMMap.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1384775825615" ignored="false" />
     <file path="/LevelNotFound.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1382012442796" ignored="false" />
-    <file path="/BMTargetBlock.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1382068563253" ignored="false" />
-    <file path="/BMNull.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1382058642981" ignored="false" />
-    <file path="/BMContainer.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1382077793141" ignored="false" />
+    <file path="/BMTargetBlock.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1382602551235" ignored="false" />
+    <file path="/BMNull.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1382602537476" ignored="false" />
+    <file path="/BMContainer.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1382602079638" ignored="false" />
     <file path="/BMMoveable.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1382057669664" ignored="false" />
     <file path="/BMMovable.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1382249197432" ignored="false" />
     <file path="/GenericUI.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1382494805352" ignored="false" />
     <file path="/Command.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1382526789490" ignored="false" />
-    <file path="/CommandParser.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1382530988144" ignored="false" />
+    <file path="/CommandParser.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1384778353100" ignored="false" />
     <file path="/CommandArgument.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1382086231138" ignored="false" />
     <file path="/ArgumentError.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1382166596111" ignored="false" />
-    <file path="/CommandTrie.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1382530057199" ignored="false" />
+    <file path="/CommandTrie.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1384777914319" ignored="false" />
     <file path="/CommandNotFound.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1382166581852" ignored="false" />
     <file path="/MatchMoreThanOneCommand.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1382178563750" ignored="false" />
     <file path="/MenuUI.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1382168653152" ignored="false" />
@@ -57,7 +57,7 @@
     <file path="/TextBaseMenuUI.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1382496944754" ignored="false" />
     <file path="/GenericInfoUI.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1382495361752" ignored="false" />
     <file path="/TextBaseInfoUI.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1382496766288" ignored="false" />
-    <file path="$PROJECT_DIR$/BoxMover/doc/Developer.html" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1382531289296" ignored="false" />
+    <file path="/empty" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1384775065139" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,7 +109,23 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
-    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true" />
+    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
+      <breakpoint url="file://$PROJECT_DIR$/BoxMover/src/bin/ui/textbaseui/TextBaseMapUI.java" line="43" class="bin.ui.textbaseui.TextBaseMapUI" package="bin.ui.textbaseui">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+    </line_breakpoints>
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -119,10 +135,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="CommandTrie.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/BoxMover/src/bin/ui/textbaseui/cmd/CommandTrie.java">
+      <file leaf-file-name="App.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/BoxMover/src/bin/App.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="140" column="4" selection-start="3431" selection-end="3466" vertical-scroll-proportion="0.0">
+            <state line="96" column="47" selection-start="2926" selection-end="2926" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -131,7 +147,27 @@
       <file leaf-file-name="CommandParser.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/BoxMover/src/bin/ui/textbaseui/cmd/CommandParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="152" column="50" selection-start="4421" selection-end="4467" vertical-scroll-proportion="0.64705884">
+            <state line="32" column="28" selection-start="806" selection-end="806" vertical-scroll-proportion="0.9816754">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Env.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/BoxMover/src/bin/Env.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="82" column="21" selection-start="2073" selection-end="2073" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BMMap.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/BoxMover/src/bin/widget/BMMap.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="155" column="55" selection-start="4911" selection-end="4911" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -147,30 +183,29 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/BoxMover/src/bin/ui/generic/GenericUI.java" />
-        <option value="$PROJECT_DIR$/BoxMover/src/bin/ui/generic/GenericMenuUI.java" />
-        <option value="$PROJECT_DIR$/BoxMover/src/bin/ui/generic/GenericInfoUI.java" />
-        <option value="$PROJECT_DIR$/BoxMover/src/bin/ui/generic/GenericMapUI.java" />
+        <option value="$PROJECT_DIR$/BoxMover/src/bin/ui/generic/Command.java" />
+        <option value="$PROJECT_DIR$/BoxMover/src/bin/widget/BMContainer.java" />
+        <option value="$PROJECT_DIR$/BoxMover/src/bin/widget/BMBox.java" />
+        <option value="$PROJECT_DIR$/BoxMover/src/bin/widget/BMEmptyBlock.java" />
+        <option value="$PROJECT_DIR$/BoxMover/src/bin/widget/BMNull.java" />
+        <option value="$PROJECT_DIR$/BoxMover/src/bin/widget/BMPerson.java" />
+        <option value="$PROJECT_DIR$/BoxMover/src/bin/widget/BMTargetBlock.java" />
+        <option value="$PROJECT_DIR$/BoxMover/src/bin/widget/BMWall.java" />
+        <option value="$PROJECT_DIR$/BoxMover/src/bin/io/IOHelper.java" />
+        <option value="$PROJECT_DIR$/BoxMover/src/bin/widget/BMWidget.java" />
+        <option value="$PROJECT_DIR$/BoxMover/save/empty" />
         <option value="$PROJECT_DIR$/BoxMover/src/bin/widget/BMMap.java" />
-        <option value="$PROJECT_DIR$/BoxMover/src/bin/ui/generic/GenericUIFactory.java" />
-        <option value="$PROJECT_DIR$/BoxMover/src/bin/ui/textbaseui/TextBaseUIFactory.java" />
-        <option value="$PROJECT_DIR$/BoxMover/src/bin/ui/textbaseui/TextBaseInfoUI.java" />
-        <option value="$PROJECT_DIR$/BoxMover/src/bin/ui/textbaseui/TextBaseMenuUI.java" />
-        <option value="$PROJECT_DIR$/BoxMover/src/bin/ui/textbaseui/TextBaseMapUI.java" />
+        <option value="$PROJECT_DIR$/BoxMover/src/bin/ui/textbaseui/cmd/CommandTrie.java" />
         <option value="$PROJECT_DIR$/BoxMover/src/bin/Env.java" />
         <option value="$PROJECT_DIR$/BoxMover/src/bin/App.java" />
-        <option value="$PROJECT_DIR$/BoxMover/src/bin/io/IOHelper.java" />
-        <option value="$PROJECT_DIR$/BoxMover/src/bin/ui/generic/Command.java" />
-        <option value="$PROJECT_DIR$/BoxMover/src/bin/ui/textbaseui/cmd/CommandTrie.java" />
         <option value="$PROJECT_DIR$/BoxMover/src/bin/ui/textbaseui/cmd/CommandParser.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1365" />
-    <option name="y" value="-4" />
-    <option name="width" value="1368" />
-    <option name="height" value="773" />
+    <option name="y" value="24" />
+    <option name="width" value="1366" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -200,7 +235,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -261,20 +295,13 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ui" />
+              <option name="myItemId" value="save" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -283,7 +310,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="options.lastSelected" value="fileTemplates" />
+    <property name="options.lastSelected" value="reference.settingsdialog.IDE.editor.colors.Console Font" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="recentsLimit" value="5" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/out/BoxMover" />
@@ -294,9 +321,9 @@
     <property name="restartRequiresConfirmation" value="true" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="dynamic.classpath" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RunManager" selected="Application.BoxMover">
     <configuration default="false" name="BoxMover" type="Application" factoryName="Application" temporary="true">
@@ -345,17 +372,20 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
+    <configuration default="true" type="XSLT" factoryName="XSLT">
+      <option name="myOutputFile" />
+      <option name="myOpenOutputFile" value="false" />
+      <option name="myOpenInBrowser" value="false" />
+      <option name="mySmartErrorHandling" value="true" />
+      <option name="myRunnerPort" value="34873" />
+      <option name="myVmArguments" />
+      <option name="myWorkingDirectory" />
+      <option name="myModule" />
+      <option name="myJdk" />
+      <parameters />
+      <OutputType value="CONSOLE" save-to-file="false" />
+      <FileType name="XML" />
+      <JdkChoice value="FROM_MODULE" />
       <method />
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
@@ -386,20 +416,17 @@
       <listeners />
       <method />
     </configuration>
-    <configuration default="true" type="XSLT" factoryName="XSLT">
-      <option name="myOutputFile" />
-      <option name="myOpenOutputFile" value="false" />
-      <option name="myOpenInBrowser" value="false" />
-      <option name="mySmartErrorHandling" value="true" />
-      <option name="myRunnerPort" value="34873" />
-      <option name="myVmArguments" />
-      <option name="myWorkingDirectory" />
-      <option name="myModule" />
-      <option name="myJdk" />
-      <parameters />
-      <OutputType value="CONSOLE" save-to-file="false" />
-      <FileType name="XML" />
-      <JdkChoice value="FROM_MODULE" />
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -498,7 +525,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1365" y="-4" width="1368" height="773" extended-state="6" />
+    <frame x="0" y="24" width="1366" height="744" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -512,19 +539,19 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32744783" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32905295" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.6581059" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.67255217" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34285715" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.6581059" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34189406" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32744783" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32744783" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -593,106 +620,102 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/BoxMover/src/bin/App.java">
+    <entry file="file://$PROJECT_DIR$/BoxMover/src/bin/widget/BMEmptyBlock.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="12" selection-start="580" selection-end="580" vertical-scroll-proportion="-2.3529413">
-          <folding />
-        </state>
+        <state line="13" column="28" selection-start="280" selection-end="280" vertical-scroll-proportion="0.3277311" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BoxMover/src/bin/io/IOHelper.java">
+    <entry file="file://$PROJECT_DIR$/BoxMover/src/bin/widget/BMNull.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="96" column="19" selection-start="2218" selection-end="2218" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
+        <state line="12" column="28" selection-start="264" selection-end="264" vertical-scroll-proportion="0.30252102" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BoxMover/src/bin/exp/BMException.java">
+    <entry file="file://$PROJECT_DIR$/BoxMover/src/bin/widget/BMPerson.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="13" selection-start="158" selection-end="158" vertical-scroll-proportion="0.22689076" />
+        <state line="19" column="28" selection-start="395" selection-end="395" vertical-scroll-proportion="0.44537815" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BoxMover/src/bin/exp/LevelNotFound.java">
+    <entry file="file://$PROJECT_DIR$/BoxMover/src/bin/widget/BMTargetBlock.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="13" selection-start="158" selection-end="158" vertical-scroll-proportion="0.22689076" />
+        <state line="13" column="28" selection-start="282" selection-end="282" vertical-scroll-proportion="0.3277311" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BoxMover/src/bin/exp/ArgumentError.java">
+    <entry file="file://$PROJECT_DIR$/BoxMover/src/bin/widget/BMWall.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="13" selection-start="159" selection-end="159" vertical-scroll-proportion="0.25210086" />
+        <state line="12" column="28" selection-start="264" selection-end="264" vertical-scroll-proportion="0.30252102" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BoxMover/src/bin/exp/CommandNotFound.java">
+    <entry file="file://$PROJECT_DIR$/BoxMover/src/bin/widget/BMWidget.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="13" selection-start="158" selection-end="158" vertical-scroll-proportion="0.22689076" />
+        <state line="11" column="55" selection-start="233" selection-end="233" vertical-scroll-proportion="0.11764706" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BoxMover/src/bin/exp/MatchMoreThanOneCommand.java">
+    <entry file="file://$PROJECT_DIR$/BoxMover/src/bin/ui/generic/Command.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="13" selection-start="188" selection-end="188" vertical-scroll-proportion="0.30252102" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BoxMover/src/bin/ui/generic/GenericMenuUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="22" selection-start="284" selection-end="284" vertical-scroll-proportion="0.30252102">
+        <state line="27" column="31" selection-start="544" selection-end="544" vertical-scroll-proportion="0.6806723">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/BoxMover/src/bin/ui/generic/GenericMapUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="33" selection-start="551" selection-end="551" vertical-scroll-proportion="0.7058824">
+        <state line="11" column="22" selection-start="200" selection-end="200" vertical-scroll-proportion="-0.057803467">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BoxMover/src/bin/ui/generic/GenericInfoUI.java">
+    <entry file="file://$PROJECT_DIR$/BoxMover/src/bin/io/IOHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="22" selection-start="174" selection-end="174" vertical-scroll-proportion="0.22689076">
+        <state line="67" column="0" selection-start="1643" selection-end="1643" vertical-scroll-proportion="0.30104712">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BoxMover/src/bin/ui/generic/GenericUI.java">
+    <entry file="file://$PROJECT_DIR$/BoxMover/src/bin/ui/textbaseui/TextBaseMapUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="22" selection-start="174" selection-end="174" vertical-scroll-proportion="0.22689076">
+        <state line="43" column="0" selection-start="1128" selection-end="1128" vertical-scroll-proportion="0.30104712">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BoxMover/src/bin/ui/generic/GenericUIFactory.java">
+    <entry file="file://$PROJECT_DIR$/BoxMover/save/empty">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="0" selection-start="193" selection-end="331" vertical-scroll-proportion="0.25210086">
-          <folding />
-        </state>
+        <state line="0" column="25" selection-start="25" selection-end="25" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BoxMover/src/bin/Env.java">
+    <entry file="file://$PROJECT_DIR$/BoxMover/src/bin/widget/BMMap.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="74" selection-start="1013" selection-end="1013" vertical-scroll-proportion="0.19327731">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BoxMover/src/bin/ui/generic/Command.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="12" selection-start="247" selection-end="247" vertical-scroll-proportion="0.21008404">
+        <state line="155" column="55" selection-start="4911" selection-end="4911" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/BoxMover/src/bin/ui/textbaseui/cmd/CommandTrie.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="140" column="4" selection-start="3431" selection-end="3466" vertical-scroll-proportion="0.0">
+        <state line="100" column="26" selection-start="2474" selection-end="2474" vertical-scroll-proportion="0.56806284">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BoxMover/src/bin/Env.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="82" column="21" selection-start="2073" selection-end="2073" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BoxMover/src/bin/App.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="96" column="47" selection-start="2926" selection-end="2926" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/BoxMover/src/bin/ui/textbaseui/cmd/CommandParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="152" column="50" selection-start="4421" selection-end="4467" vertical-scroll-proportion="0.64705884">
+        <state line="32" column="28" selection-start="806" selection-end="806" vertical-scroll-proportion="0.9816754">
           <folding />
         </state>
       </provider>

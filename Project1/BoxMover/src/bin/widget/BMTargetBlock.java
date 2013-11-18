@@ -11,7 +11,7 @@ import bin.Env;
  */
 public class BMTargetBlock extends BMContainer {
     public BMTargetBlock(int x,int y) {
-        super(Env.BLOCK_NUM_TARGET, x, y, Env.TOKEN_TARGET_BLOCK_EMPTY);
+        super(Env.BLOCK_TYPE_TARGET, x, y, Env.TOKEN_TARGET_BLOCK_EMPTY);
     }
 
     public char getToken() {

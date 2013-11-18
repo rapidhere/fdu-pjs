@@ -29,6 +29,8 @@ public class CommandParser {
         CMD_RESTART = "restart",
         CMD_BACK = "back",
         CMD_CHOSE = "chose",
+        CMD_SAVE = "gsave",
+        CMD_BACKMENU = "main",
         CMD_HELP = "help";
 
     public static final Object[][] COMMANDS = {
@@ -40,6 +42,8 @@ public class CommandParser {
         {CMD_RESTART,   CMD_TYPE_NO_ARG},
         {CMD_BACK,      CMD_TYPE_INT_OPT_ARG},
         {CMD_CHOSE,     CMD_TYPE_INT_RANGE_ARG},
+        {CMD_SAVE,      CMD_TYPE_NO_ARG},
+        {CMD_BACKMENU,  CMD_TYPE_NO_ARG},
         {CMD_HELP,      CMD_TYPE_NO_ARG},
     };
 
@@ -97,6 +101,8 @@ public class CommandParser {
         {CMD_BACK,      Env.CMD_BACK},
         {CMD_CHOSE,     Env.CMD_CHOSE},
         {CMD_HELP,      Env.CMD_HELP},
+        {CMD_SAVE,      Env.CMD_SAVE},
+        {CMD_BACKMENU,  Env.CMD_BACKMENU},
         {CMD_EXIT,      Env.CMD_EXIT},
     };
     static private int toCommandId(String cmd_name) {

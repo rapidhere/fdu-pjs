@@ -1,5 +1,8 @@
 package bin;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * Copyright : all rights reserved,rapidhere@gmail.com
  * Mail: rapidhere@gmail.com
@@ -9,9 +12,15 @@ package bin;
  */
 public class Env {
     public static final String MAP_DIR = "./maps";
+    public static final String SAVE_DIR = "./save";
 
     public static String getMap(int level) {
         return MAP_DIR + "/" + level + ".map";
+    }
+
+    public static String getSaveFileName() {
+        SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-HH-mm-ss");
+        return SAVE_DIR + "/" + sdf.format(new Date()) + ".save";
     }
 
     public static final int MAX_LEVEL = 9;
@@ -28,8 +37,15 @@ public class Env {
         BLOCK_NUM_EMPTY = 2,
         BLOCK_NUM_BOX = 3,
         BLOCK_NUM_TARGET = 4,
-        BLOCK_NUM_PERSON = PLAYER_FACE_EAST,
         BLOCK_NUM_FILLED_TARGET = 9;
+
+    public static final int
+        BLOCK_TYPE_NULL = 0,
+        BLOCK_TYPE_WALL = 1,
+        BLOCK_TYPE_EMPTY = 2,
+        BLOCK_TYPE_BOX = 3,
+        BLOCK_TYPE_TARGET = 4,
+        BLOCK_TYPE_PERSON = 5;
 
     public static final int
         DIRECTION_LEFT = 0,
@@ -62,5 +78,7 @@ public class Env {
         CMD_RESTART = 5,
         CMD_BACK = 6,
         CMD_CHOSE = 7,
-        CMD_HELP = 8;
+        CMD_SAVE = 8,
+        CMD_BACKMENU = 9,
+        CMD_HELP = 10;
 }

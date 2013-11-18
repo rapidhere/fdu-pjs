@@ -4,6 +4,7 @@ import bin.exp.LevelNotFound;
 import bin.io.IOHelper;
 import bin.Env;
 
+import java.io.*;
 import java.util.ArrayList;
 
 /**
@@ -14,7 +15,7 @@ import java.util.ArrayList;
  * Usage :
  */
 
-public class BMMap {
+public class BMMap implements Serializable {
     private int width, height;
     private BMWidget map[][];
     private BMPerson person;
@@ -35,7 +36,11 @@ public class BMMap {
     private int cur_level;
     private int cur_step;
 
-    public void loadMap(int level)
+    public int getLevel() {
+        return cur_level;
+    }
+
+    public void loadLevel(int level)
     throws LevelNotFound {
         cur_step = 0;
         n_push_stack = 0;
@@ -109,6 +114,45 @@ public class BMMap {
         }
     }
 
+    public void saveGame() {
+        try {
+            FileOutputStream fs = new FileOutputStream(Env.getSaveFileName());
+            ObjectOutputStream os = new ObjectOutputStream(fs);
+            os.writeObject(this);
+            os.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public static String[] getSaveList() {
+        File dir = new File(Env.SAVE_DIR);
+        File files[] = dir.listFiles();
+        ArrayList t = new ArrayList();
+        for(int i = 0;i < files.length;i ++) {
+            if(files[i].isFile() && files[i].getName().endsWith(".save")) {
+                t.add(new String(files[i].getName()));
+            }
+        }
+        String ret[] = new String[t.size()];
+        for(int i = 0;i < t.size();i ++)
+            ret[i] = (String)t.get(i);
+        return ret;
+    }
+
+    public static BMMap readGame(String save_name) {
+        BMMap map = null;
+        try {
+            FileInputStream fs = new FileInputStream(Env.SAVE_DIR + "/" + save_name);
+            ObjectInputStream os = new ObjectInputStream(fs);
+            map = (BMMap)os.readObject();
+            os.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return map;
+    }
+
     public BMWidget getWidgetAt(int i,int j) {
         return map[i][j];
     }
@@ -141,7 +185,7 @@ public class BMMap {
             next.putIn(person);
             cur.putOut();
             cur_step ++;
-        } else if(next.getInner().getTypeId() == Env.BLOCK_NUM_BOX) {
+        } else if(next.getInner().getTypeId() == Env.BLOCK_TYPE_BOX) {
             BMBox box = (BMBox)next.getInner();
             next_pos = box.move(dir);
             int box_nx = next_pos[0],
@@ -217,7 +261,7 @@ public class BMMap {
                         queue_y[tail ++] = cy;
                     } else if(getWidgetAt(cx, cy) instanceof BMContainer) {
                         BMContainer con = (BMContainer)getWidgetAt(cx, cy);
-                        if(con.getInner().getTypeId() == Env.BLOCK_NUM_BOX) {
+                        if(con.getInner().getTypeId() == Env.BLOCK_TYPE_BOX) {
                             BMBox box = (BMBox)con.getInner();
 
                             if(isBoxMovable(box)) {
@@ -271,7 +315,7 @@ public class BMMap {
         if(step > n_push_stack || n_push_stack == 0) {
             try {
                 int t = cur_step;
-                loadMap(cur_level);
+                loadLevel(cur_level);
                 cur_step = t;
             } catch (LevelNotFound e) {
 
@@ -285,7 +329,7 @@ public class BMMap {
                 y = push_stack_cur_y[n_push_stack - 1];
 
             int pos[];
-            BMContainer con1, con2;
+            BMContainer con1;
 
             con1 = (BMContainer)getWidgetAt(x, y);
             BMBox box = (BMBox)con1.getInner();

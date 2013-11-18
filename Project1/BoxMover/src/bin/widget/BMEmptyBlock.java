@@ -11,6 +11,6 @@ import bin.Env;
  */
 public class BMEmptyBlock extends BMContainer {
     public BMEmptyBlock(int x,int y) {
-        super(Env.BLOCK_NUM_EMPTY, x, y, Env.TOKEN_EMPTY);
+        super(Env.BLOCK_TYPE_EMPTY, x, y, Env.TOKEN_EMPTY);
     }
 }

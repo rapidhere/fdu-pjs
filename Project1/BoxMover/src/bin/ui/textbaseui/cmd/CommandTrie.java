@@ -12,7 +12,7 @@ import bin.exp.MatchMoreThanOneCommand;
  */
 class CommandTrieNode {
     public int cmd_id;
-    public CommandTrieNode child[] = new CommandTrieNode[26];
+    public CommandTrieNode child[] = new CommandTrieNode[27];
 
     CommandTrieNode() {
         cmd_id = -1;
@@ -126,7 +126,11 @@ public class CommandTrie {
 
             for(i = 0;i < ptr.child.length;i ++) {
                 if(ptr.child[i] != null) {
-                    cmd_full_name += (char)('a' + i);
+                    if(i != 26) {
+                        cmd_full_name += (char)('a' + i);
+                    } else {
+                        cmd_full_name += '#';
+                    }
                     ptr = ptr.child[i];
                 }
             }

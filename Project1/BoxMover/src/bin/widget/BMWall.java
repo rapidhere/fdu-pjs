@@ -10,7 +10,7 @@ import bin.Env;
  */
 public class BMWall extends BMWidget {
     public BMWall(int x,int y) {
-        super(Env.BLOCK_NUM_WALL, x, y, Env.TOKEN_WALL);
+        super(Env.BLOCK_TYPE_WALL, x, y, Env.TOKEN_WALL);
     }
 
     public boolean isPassable() {

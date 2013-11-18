@@ -64,7 +64,7 @@ public class IOHelper {
         while (true) {
             String ret = input.nextLine();
             if(ret.length() != 0) {
-                ret.toLowerCase();
+                ret = ret.toLowerCase();
                 return ret;
             }
         }
