@@ -60,15 +60,6 @@ public class Env {
         DIRECTION_DOWN
     };
 
-    public static final char
-        TOKEN_BOX = '□',
-        TOKEN_EMPTY = ' ',
-        TOKEN_NULL = ' ',
-        TOKEN_PERSON = '☆',
-        TOKEN_TARGET_BLOCK_FILLED = '●',
-        TOKEN_TARGET_BLOCK_EMPTY = '○',
-        TOKEN_WALL = '■';
-
     public static final int
         CMD_UP = 0,
         CMD_DOWN = 1,

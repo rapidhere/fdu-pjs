@@ -11,6 +11,6 @@ import bin.Env;
  */
 public class BMBox extends BMMovable {
     public BMBox(int x,int y) {
-        super(Env.BLOCK_TYPE_BOX, x, y, Env.TOKEN_BOX);
+        super(Env.BLOCK_TYPE_BOX, x, y);
     }
 }

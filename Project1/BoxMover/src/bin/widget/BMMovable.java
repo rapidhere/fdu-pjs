@@ -10,8 +10,8 @@ import bin.Env;
  * Usage :
  */
 abstract public class BMMovable extends BMWidget {
-    public BMMovable(int type_id, int x, int y, char token) {
-        super(type_id, x, y, token);
+    public BMMovable(int type_id, int x, int y) {
+        super(type_id, x, y);
     }
 
     public boolean isPassable() {

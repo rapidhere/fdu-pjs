@@ -12,13 +12,11 @@ import java.io.Serializable;
 abstract public class BMWidget implements Serializable {
     protected int pos_x, pos_y;
     protected int type_id;
-    protected char token;
 
-    public BMWidget(int type_id, int x, int y, char token) {
+    public BMWidget(int type_id, int x, int y) {
         this.type_id = type_id;
         pos_x = x;
         pos_y = y;
-        this.token = token;
     }
 
     public int getTypeId() {
@@ -33,8 +31,5 @@ abstract public class BMWidget implements Serializable {
         return pos_y;
     }
 
-    public char getToken() {
-        return token;
-    }
     abstract public boolean isPassable();
 }

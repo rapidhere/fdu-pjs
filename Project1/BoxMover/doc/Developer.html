@@ -1,112 +1,22 @@
 <!DOCTYPE html>
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title> BoxMover开发手册 </title>
-        <style>
-            * {
-                margin: 0px;
-                padding: 0px;
-            }
-
-            h1 {
-                font-family: serif;
-            }
-
-            body {
-                background-color: #efefef;
-            }
-
-            #total-wrapper {
-                width: 960px;
-                box-shadow: 2px 2px 3px #afafaf;
-                background-color: #efffef;
-                padding : 30px;
-                margin-left: auto;
-                margin-right: auto;
-            }
-
-            #title-wrapper {
-                margin-bottom: 10px;
-            }
-            
-            #title-wrapper h1 {
-                font-family: "Arial", sans-serif;
-                font-size: 30px;
-                text-align: center;
-                margin-bottom : 10px;
-                color: #2f452f;
-            }
-
-            #title-wrapper p {
-                font-family: "Arial", sans-serif;
-                font-size: 15px;
-                text-align: right;
-                margin-right: 20px;
-                color: #5f7f5f;
-                font-style: italic;
-            }
-
-            #content-wrapper {
-
-            }
-
-            h1.chapter {
-                font-size: 18px;
-                font-weight: bold;
-                color: #3f5f3f;
-                font-family: "Times New Roman", serif;
-                margin-bottom : 8px;
-            }
-
-            div.chapter-wrapper {
-                margin-left: 20px;
-                margin-bottom: 10px;
-            }
-
-            div.section-wrapper {
-                margin-left: 10px;
-                margin-bottom: 5px;
-            }
-
-            h1.section {
-                font-size: 17px;
-                font-weight: bold;
-                color: #476747;
-                margin-bottom: 8px;
-            }
-
-            div.subsection-wrapper {
-                margin-left: 6px;
-                margin-bottom: 3px;
-            }
-
-            h1.subsection {
-                font-size: 16px;
-                font-weight: bold;
-                color: #4f6f4f;
-                margin-bottom: 5px;
-            }
-            
-            #content-wrapper p.text {
-                font-size: 15px;
-                color: #2f3f3f;
-                margin-bottom : 5px;
-                text-indent: 30px;
-                font-family: "Arial", sans-serif;
-            }
-
-            #content-wrapper p.code {
-                font-size: 15px;
-                color: #2f3f3f;
-                margin-bottom : 5px;
-                font-family: "Consolas", monospace;
-                white-space: pre;
-                text-align: left;
-                box-shadow: 2px 2px 3px #9f9f9f;
-                padding : 5px;
-                background-color : #e7e7e7;
-            }
-
-        </style>
+        <link type="text/css" rel="stylesheet" href="./docs.css"></link>
+        <link type="text/css" rel="stylesheet" href="./highlight/style.css"></link>
+        <script src="./jquery.min.js" type="text/javascript"></script>
+        <script src="./highlight/highlight.min.js"></script>
+        <script>
+            hljs.initHighlightingOnLoad();
+            $(document).ready(function() {
+                $("p.code").each(function(i, e) {
+                    var t = $(e);
+                    t.wrapInner("<pre class='code'></pre>");
+                    t = t.children()[0];
+                    $(t).unwrap();
+                    hljs.highlightBlock(t);
+                });
+            });
+        </script>
     </head>
     <body>
         <div id="total-wrapper">
@@ -133,7 +43,7 @@
                     <h1 class="section"> 1.2 总体结构 </h1>
                     <div class="section-wrapper">
                         <p class="text">
-                        BoxMover的所有需要的内容都部署在一个文件夹中。BoxMover.class是运行程序的主类。bin中部署了所有BoxMover运行需要的代码。docs目录中有开发和用户文档。maps目录储存了所有的地图。下面我们将对BoxMover的代码结构作出介绍。
+                        BoxMover的所有需要的内容都部署在一个文件夹中。BoxMover.class是运行程序的主类。bin中部署了所有BoxMover运行需要的代码。docs目录中有开发和用户文档。maps目录储存了所有的地图。save目录用来储存游戏。下面我们将对BoxMover的代码结构作出介绍。
                         </p>
                         <p class="text">
                         BoxMover.class是程序的主类，游戏从这个地方开始云行。BoxMover只负责调用bin.App的run方法来运行程序，不处理任何其他事物。
@@ -182,9 +92,10 @@
         RUN_STATE_LEVEL_VICOTRY,
         RUN_STATE_LEVEL_FAILED,
         RUN_STATE_VICOTRY,
+        RUN_STATE_LOAD_SAVE,
         RUN_STATE_EXIT;
 
-    static private curlv;
+    static private BMMap curmap;
 
     public int run();
     private void mainLoop() throws LevelNotFound;
@@ -193,13 +104,14 @@
     
     private int startMenu();
     private int startPlay();
-    private int playLevel();
+    private int play();
     private int levelVictory();
     private int levelFailed();
     private int victory();
+    private int loadSave();
 }</p>
                             <p class="text">应用程序类，代表了整个游戏。该类仅仅含有一个公共接口run。run函数运行应用程序，同时返回运行结果用于返回给调用者。一般的，运行成功返回0,失败返回-1。</p>
-                            <p class="text">类中定义的一组Generic开头的变量是用来获得UI的变量。GenericUIFactory是一个UI工厂，后面的所有UI元素都是通过这个工厂类返回的。具体内容参见bin.ui包。一组私有的final int变量以RUN_STATE_开头，代表了程序当前的运行状态。私有变量curlv代表了当前游戏运行到的关卡数。</p>
+                            <p class="text">类中定义的一组Generic开头的变量是用来获得UI的变量。GenericUIFactory是一个UI工厂，后面的所有UI元素都是通过这个工厂类返回的。具体内容参见bin.ui包。一组私有的final int变量以RUN_STATE_开头，代表了程序当前的运行状态。私有变量curmap代表了当前游戏运行的地图对象。</p>
                             <p class="text">mainLoop函数由run调用。函数内部是一个死循环。mainLoop不断的检查一个存储着程序状态的stat值，这个stat值是类内部定义的RUN_STATE_开头的常量中的一个。当stat是RUN_STATE_EXIT的时候，mainLoop将会结束，否则mainLoop将会调用runState函数来运行状态值对应的函数，这些函数在类定义的最后部分给出。这些函数没有参数，返回一个int值表示程序下一步应当处于的状态，runState()将会返回这个状态值，供mainLoop做下一步判断。</p>
                         </div>
 
@@ -232,6 +144,7 @@
     static public void putSolidLine();
 }</p>
                             <p class="text">bin.io包中仅仅含有一个单独的IOHelper类。之所以将这个类单独放一个包，当然是为了方便TA发现，这个Helper真的是我自己写的啦～～。IOHelper定义了一个读取地图的方法和一组静态的用于和标准输入输出交互的函数。注意到读取地图的方法都不是静态的，在读取地图的时候需要先实例化出来一个具体的Helper，并且readMap应该是首先调用的一个方法。</p>
+                            <p class="text">同时说明一下，IOHelper中没有实现游戏的存取，该功能在bin.widget中实现。</p>
                         </div>
 
                         <h1 class="subsection"> 2.2.4 bin.exp </h1>
@@ -356,7 +269,8 @@
     CMD_RESTART = 5,
     CMD_BACK = 6,
     CMD_CHOSE = 7,
-    CMD_HELP = 8;</p>
+    CMD_SAVE = 8,
+    CMD_HELP = 9;</p>
                                 <p class="text">
                                     BoxMover的命令中只有两中状态，带一个整数参数，或者没有参数。目前Command的实现具有局限性，没有强制性要求一个命令是否有参数，或者参数的类型。这个缺失将在今后的设计中进行修补。</p>
                             </div>
@@ -368,14 +282,14 @@
                             <div class="subsection-wrapper">
                                 <p class="text">
                                 在GenericUI提供的接口的基础上，BoxMover已经实现了一个非常简单的命令行交互界面。由于目前没有办法在win-cmd上按位置绘制图元，严重限制了接口设计的范围。目前这个UI不能刷新已经有的图像，不能越行绘制，只能按行按列依次绘制。
-                                TextBaseUI使用的输入输出句柄都由IOhelper提供。关于TextBaseUI的具体内容不再赘述。
+                                TextBaseUI使用的输入输出句柄都由IOhelper提供。关于TextBaseUI的具体内容不再赘述，只是追加说明，TextBaseUI的MapUI提供了绘制地图所需要的TOKEN，并且该UI的getToken方法提供了从BMWidget对象中绘制TOKEN的方法。
                                 </p>
 
                             </div>
 
                             <h1 class="subsection"> 2.3.3.2 bin.ui.textbaseui.cmd </h1>
                             <div class="subsection-wrapper">
-                                <p class="text">由于在TextBaseUI下，用户只能通过命令行输入字符串来表示命令，所以我们需要一个基于字符来解析命令的工具。同时为了减少用户的输入量，为了表达一个命令，用户只需要输入使这个命令可以区别于其他命令的最短前缀就可以了。为了实现这个功能，我们需要构建一棵命令字母树。</p>
+                                <p class="text">由于在TextBaseUI下，用户只能通过命令行输入字符串来表示命令，所以我们需要一个基于字符来解析命令的工具。同时为了减少用户的输入量，为了表达一个命令，用户只需要输入使这个命令可以区别于其他命令的最短前缀就可以了。为了实现这个功能，我们需要构建一棵命令字母树。目前字母树实现没有完成，不能存在有一个命令是另一个命令前缀这种情况。</p>
                                 <p class="code">class CommandTrieNode {
     public int cmd_id;
     public CommandTrieNode child[];
@@ -391,7 +305,7 @@ public class CommandTrie {
     public String getCommandFullName();
     public int getCommandArgumentType();
 }</p>
-                                <p class="text">CommandTrieNode表示字母树中的一个节点。其中cmd_id由CommadTrie分配，不一定是命令本省的CMDId。child是这个节点的所有子节点。getChildrenCount返回这个节点的儿子数目。CommandTrie代表了命令字母树。registerCommand向字母树中注册一个命令，同时指出命令的参数类型。参数类型在CommandParser中定义。这是一个设计缺陷，在今后的重构中需要修改。buildTrie建立字母树。parseCommandName分析指定的cmd，并通过getCommandFullName和getCommandArgumentType返回命令的全名和参数类型。</p>
+                                <p class="text">CommandTrieNode表示字母树中的一个节点。其中cmd_id由CommadTrie分配，不一定是命令本身的CMDId。child是这个节点的所有子节点。getChildrenCount返回这个节点的儿子数目。CommandTrie代表了命令字母树。registerCommand向字母树中注册一个命令，同时指出命令的参数类型。参数类型在CommandParser中定义。这是一个设计缺陷，在今后的重构中需要修改。buildTrie建立字母树。parseCommandName分析指定的cmd，并通过getCommandFullName和getCommandArgumentType返回命令的全名和参数类型。</p>
 
                                 <p class="code">public class CommandParser {
     public static final int
@@ -408,9 +322,12 @@ public class CommandTrie {
         CMD_RESTART,
         CMD_BACK,
         CMD_CHOSE,
+        CMD_SAVE,
         CMD_HELP;
 
     public static final Object[][] COMMANDS;
+
+    static private final Object[] NAME_TO_ID_MAP;
 
     private CommandParser();
     public Command parseCommandLine(String cmd_line)
@@ -418,18 +335,176 @@ public class CommandTrie {
     static public CommandParser getCommandParser();
 }</p>
                                 <p class="text">CommandParser被实现成一个单件(Singleton)，其构造函数是私有的，不能直接访问。parseCommandLine分析一条字符串，同时返回一个Command，在必要的时候抛出异常。</p>
+                                <p class="text">当Env添加一个新的命令的时候，为了在textbaseui中增加相应的支持，需要在CommandParser中定义一个新的CMD_变量，指定新命令的命令行全称，同时在COMMANDS数组中添加该命令的说明，指定命令的参数类型，之后在NAME_TO_ID_MAP中添加该命令到命令行全称的映射。</p>
                             </div>
                         </div>
                     </div>
                     
                     <h1 class="section"> 2.4 bin.widget </h1>
                     <div class="section-wrapper">
+                        <h1 class="subsection"> 2.4.1 总述 </h1>
+                        <div class="subsection-wrapper">
+                            <p class="text"> bin.widget中包含了BoxMover所有的对象模型。widget包分为两类，BMWidget和BMMap。BMWidget代表地图的一个单元格的模型，BMMap代表整个地图。</p>
+                        </div>
+                        <h1 class="subsection"> 2.4.2 BMWidget </h1>
+                        <div class="subsection-wrapper">
+                            <h1 class="subsection"> 2.4.2.1 bin.widget.BMWidget </h1>
+                            <div class="subsection-wrapper">
+                                <p class="code">abstract public class BMWidget implements Serializable {
+    public BMWidget(int type_id, int x, int y);
+    public getTypeId();
+    public int getX();
+    public int getY();
+
+    abstract public boolean isPassable();
+}</p>
+                                <p class="text">BMWidget 定义了地图中一个单元格模型的通用接口。TypeId定义在Env中，用来区分不同的BMWidget。isPassable表示这个单元是否可以通过。BMWidget实现了持久化接口，这为保存地图信息提供了支持。</p>
+                                <p class="text">TypeId列表如下所示:</p>
+                                <p class="code">public static final int
+    BLOCK_TYPE_NULL = 0,
+    BLOCK_TYPE_WALL = 1,
+    BLOCK_TYPE_EMPTY = 2,
+    BLOCK_TYPE_BOX = 3,
+    BLOCK_TYPE_TARGET = 4,
+    BLOCK_TYPE_PERSON = 5;
+</p>
+                            </div>
+
+                            <h1 class="subsection"> 2.4.2.2 bin.widget.BMMovable </h1>
+                            <div class="subsection-wrapper">
+                                <p class="code">abstract public class BMMovable extends BMWidget {
+    public BMMovable(int type_id, int x,int y);
+
+    public boolean isPassable();
+
+    public int[] move(int dir);
+    public int[] moveBack(int dir);
+
+    public void moveTo(int x,int y);
+    public void moveTo(int dir);
+}</p>
+                                <p class="text">定义一类特殊的BMWidget，这类Widget具有移动能力。在BoxMover中，可以移动的单位都是不可以通过的，所以BMMovable实现了默认的isPassable函数，该函数总是返回fasle。</p>
+                                <p class="text">move, moveBack, moveTo函数定义了BMMovable的移动能力。由于BMWidget之间相互独立，并没有直接实现move功能。move和moveBack函数根据给定的方向返回单位从当前位置沿着指定方向正向或者反向移动后的位置。dir所取值的四个方向在Env中给出了定义。</p>
+                                <p class="code">public static final int
+    DIRECTION_LEFT = 0,
+    DIRECTION_RIGHT = 1,
+    DIRECTION_UP = 2,
+    DIRECTION_DOWN = 3;
+</p>
+                                <p class="text">moveTo函数则让单位移动到指定的位置。这只是改变了类内部存储的位置信息，如果在外部有维护的额外位置信息，需要额外的代码来处理</p>
+                            </div>
+
+                            <h1 class="subsection"> 2.4.2.3 bin.widget.BMContainer </h1>
+                            <div class="subsection-wrapper">
+                                <p class="code">abstract public class BMContainer extends BMWidget {
+    public BMContainer(int type_id, int x, int y);
+
+    public boolean isPassable();
+
+    public void putIn(BMMovable w);
+    public void putOut();
+    public BMMovable getInner();
+}</p>
+                                <p class="text">定义一类特殊的BMWidget，他们在地图中充当容器的作用，用来容纳BMMovable元素，BMMovable在BMContainer上移动。isPassable函数返回BMCotainer是否容纳一个元素。</p>
+                            </div>
+                            
+                            <h1 class="subsection"> 2.4.2.4 bin.widget.BMWall </h1>
+                            <div class="subsection-wrapper">
+                                <p class="code">public class BMWall extends BMWidget {
+    public BMWall(int x, int y);
+    
+    public boolean isPassable();
+}</p>
+                                <p class="text">BMWall表示地图中的墙元素，isPassable总是返回false;</p>
+                            </div>
+                            
+                            <h1 class="subsection"> 2.4.2.5 bin.widget BMNull </h1>
+                            <div class="subsection-wrapper">
+                                <p class="code">public class BMNull extends BMWidget {
+    public BMNull(int x, int y);
+
+    public isPassable();
+}</p>
+                                <p class="text">BMNull代表地图墙外的空白单元格，虽然从来不会真正的使用到这个类的任何方法，但是isPassable总是返回false</p>
+                            </div>
+
+                            <h1 class="subsection"> 2.4.2.6 bin.widget.BMBox </h1>
+                            <div class="subsection-wrapper">
+                                <p class="code">public class BMBox extends BMMovable {
+    public BMBox(int x, int y);
+}</p>
+                                <p class="text">BMBox是一个可以移动的Widget，其方法全部继承至BMMovable。</p>
+                            </div>
+
+                            <h1 class="subsection"> 2.4.2.7 bin.widget.BMPerson </h1>
+                            <div class="subsection-wrapper">
+                                <p class="code">public class BMPerson extends BMMovable {
+    public BMPerson(int x, int y);
+    public BMPerson(int x, int y, int face_dir);
+
+    public void setFace(int f);
+    public int getFace();
+}</p>
+                                <p class="text">BMPerson指游戏中推动箱子的工人。提供了两个构造函数，区别在于是否指明人的面朝方向。面朝方向在当前版本中不被支持，但是在今后的版本中会获得利用。使用setFace和getFace来操作设定和获取面朝方向。</p>
+                            </div>
+                            
+                            <h1 class="subsection"> 2.4.2.8 bin.widget.BMEmptyBlock </h1>
+                            <div class="subsection-wrapper">
+                                <p class="code">public class BMEmptyBlock extends BMContainer {
+    public BMEmptyBlock(int x, int y);
+}</p>
+                                <p class="text">地图中普通的可以通过的格子。其方法全部继承于BMContainer</p>
+                            </div>
+
+                            <h1 class="subsection"> 2.4.2.9 bin.widget.BMTargetBlock </h1>
+                            <div class="subsection-wrapper">
+                                <p class="code">public class BMTargetBlock extends BMContainer {
+    public BMTargetBlock(int x, int y);
+
+    public boolean isFilled();
+}</p>
+                                <p class="text">地图中需要讲箱子推到的位置。isFilled函数在当前TargetBlock中包含一个BMBox的时候返回true</p>
+                            </div>
+                        </div>
+                        <h1 class="subsection"> 2.4.3 BMMap </h1>
+                        <p class="subsection-wrapper">
+                            <p class="code">public class BMMap implements Serializable {
+    public int getLevel();
+    public int getCurrentStep();                    
+    public void loadLevel() throws LevelNotFound;
+
+    public void saveGame();
+    public static String[] getSaveList();
+    public static BMMap readGame(String save_name);
+
+    public BMWidget getWidgetAt(int x, int y);
+
+    public int getWidth();
+    public int getHeight();
+
+    public void movePerson(int dir);
+
+    public boolean isFailed();
+    public boolean isWon();
+
+    public void moveBack(int step);
+}</p>
+                            <p class="text">BMMap表示了游戏运行到任意状态时所需要的任何信息。</p>
+                            <p class="text">getLevel返回当前进行的关卡序号。getCurrentStep返回游戏当前已经走的步数，悔棋算作一步。loadLevel加载特定的关卡地图并且重置所有信息。</p>
+                            <p class="text">saveGame保存当前游戏进度到/save下的文件中，文件名为 当前时间.save 相关支持在Env中定义。游戏进度的读去被定义成静态函数，这样读去进度不会在原地重写map，而是返回一个新的map。getSaveList返回可以选择的进度文件列表，而readGame读取指定的进度文件，并且返回读取产生的新map。</p>
+                            <p class="text">getWidgetAt函数返回地图中指定位置的BMWidget，如果越界返回null。下标从0开始</p>
+                            <p class="text">getWidth和getHeight返回地图的宽和高。</p>
+                            <p class="text">movePerson函数将bot移动到指定方向，如果指定位置上有箱子则会推动</p>
+                            <p class="text">isFailed函数判断当前游戏进度是否已经进入死局状态。A类死局直接在isFailed函数中实现，而B类死局由私有方法checkFailedB实现并且由isFailed调用判断。isWon函数判断当前游戏进度是否已经完成目标。</p>
+                            <p class="text">moveBack悔指定步数棋。由于在游戏中真正有意义的移动是推动了箱子的移动，在悔棋系统中将会退回到最近的一步推动箱子的操作，或者在没有推动的时候回到地图初始状态。悔棋算作一步操作，无论一次悔多少步。</p>
+                        </div>
                     </div>
                 </div>
                 <h1 class="chapter"> 3. TODOs &amp; Bugs </h1>
                 <div class="chapter-wrapper">
                     <p class="text"> 1. Help 命令还没有写 </p>
                     <p class="text"> 2. 下个版本中将加入GUI </p>
+                    <p class="text"> 3. 部分代码需要重构 </p>
                 </div>
             </div>
         </div>

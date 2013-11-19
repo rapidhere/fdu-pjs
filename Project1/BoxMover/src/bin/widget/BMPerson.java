@@ -17,7 +17,7 @@ public class BMPerson extends BMMovable {
     }
 
     public BMPerson(int x,int y, int face_dir) {
-        super(Env.BLOCK_TYPE_PERSON, x, y, Env.TOKEN_PERSON);
+        super(Env.BLOCK_TYPE_PERSON, x, y);
         setFace(face_dir);
     }
 
