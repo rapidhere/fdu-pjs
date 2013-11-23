@@ -10,99 +10,120 @@ import java.util.ArrayList;
 /**
  * Copyright : all rights reserved,rapidhere@gmail.com
  * Mail: rapidhere@gmail.com
- * Class :
- * Version :
- * Usage :
+ * Class :      BMMap
+ * Version :    ver 0.1
+ * Usage :      The map object that stores all game info
  */
 
 public class BMMap implements Serializable {
-    private int width, height;
-    private BMWidget map[][];
-    private BMPerson person;
-    private BMTargetBlock target_blocks[];
-    private BMBox boxes[];
-    private int push_stack_dir[] = new int[1000];
-    private int push_stack_cur_x[] = new int[1000];
-    private int push_stack_cur_y[] = new int[1000];
-    private int n_push_stack = 0;
+    private int width, height;      // width and height of map
+    private BMWidget map[][];       // map
+    private BMPerson person;        // bot
+    private BMTargetBlock target_blocks[];  // target blocks
+    private BMBox boxes[];                  // boxes
+
+    // back steps stacks
+    private int push_stack_dir[] = new int[1000];       // push direction
+    private int push_stack_cur_x[] = new int[1000];     // pos x
+    private int push_stack_cur_y[] = new int[1000];     // pos y
+    private int n_push_stack = 0;   // the stack size
 
 
+    // shared private queue
     static private int
         queue_x[] = new int[100],
         queue_y[] = new int[100];
-
     static private boolean vis[][] = new boolean[100][100];
 
-    private int cur_level;
-    private int cur_step;
+    private int cur_level; // current level
+    private int cur_step;  // current step
 
+    /**
+     * the Current level
+     * @return current level
+     */
     public int getLevel() {
         return cur_level;
     }
 
+    /**
+     * Load map specified by level
+     * @param level the level to load
+     * @throws LevelNotFound
+     */
     public void loadLevel(int level)
     throws LevelNotFound {
+        // reset variables
         cur_step = 0;
         n_push_stack = 0;
         cur_level = level;
 
+        // use IOHelper to read map
         IOHelper ioh = new IOHelper();
         ioh.readMap(level);
 
+
+        // get width and height
         width = ioh.getWidth();
         height = ioh.getHeight();
 
+        // create a new map
         map = new BMWidget[height][width];
 
+        // Temporary lists
         ArrayList target_block_arr = new ArrayList();
         ArrayList box_arr = new ArrayList();
 
+        // for each widgets in original map
         for(int i = 0;i < height;i ++) {
             for(int j = 0;j < width;j ++){
-                BMWidget cur = null;
-                BMBox box;
+                BMWidget cur = null;    // Current widget
+                BMBox box;      // sometimes we need a second widget
                 int cval = ioh.getMapAt(i, j);
                 switch (cval) {
                     case Env.PLAYER_FACE_EAST:
                     case Env.PLAYER_FACE_NORTH:
                     case Env.PLAYER_FACE_SOUTH:
-                    case Env.PLAYER_FACE_WEST:
+                    case Env.PLAYER_FACE_WEST:      // Create Player
+                        // The player is in a empty block
                         cur = new BMEmptyBlock(i, j);
                         person = new BMPerson(i, j, cval);
                         ((BMContainer)cur).putIn(person);
                         break;
-                    case Env.BLOCK_NUM_BOX:
+                    case Env.BLOCK_NUM_BOX:     // Create Box
+                        // The box is in a empty block
                         cur = new BMEmptyBlock(i, j);
                         box = new BMBox(i, j);
                         ((BMContainer)cur).putIn(box);
                         box_arr.add(box);
                         break;
-                    case Env.BLOCK_NUM_EMPTY:
+                    case Env.BLOCK_NUM_EMPTY:  // Create Empty Block
                         cur = new BMEmptyBlock(i, j);
                         break;
-                    case Env.BLOCK_NUM_TARGET:
+                    case Env.BLOCK_NUM_TARGET: // Create a null target
                         cur = new BMTargetBlock(i, j);
                         target_block_arr.add(cur);
                         break;
-                    case Env.BLOCK_NUM_FILLED_TARGET:
+                    case Env.BLOCK_NUM_FILLED_TARGET: // a filled target
                         cur = new BMTargetBlock(i, j);
                         target_block_arr.add(cur);
                         box = new BMBox(i, j);
                         ((BMContainer)cur).putIn(box);
                         box_arr.add(box);
                         break;
-                    case Env.BLOCK_NUM_WALL:
+                    case Env.BLOCK_NUM_WALL:    // a wall
                         cur = new BMWall(i, j);
                         break;
-                    case Env.BLOCK_NUM_NULL:
+                    case Env.BLOCK_NUM_NULL: // null widget outside the wall
                         cur = new BMNull(i, j);
                         break;
                 } // switch
 
-                map[i][j] = cur;
+                map[i][j] = cur;    // put widget into map
             } // for j
         } // for i
 
+        // put widget from list to array
         target_blocks = new BMTargetBlock[target_block_arr.size()];
         for(int i = 0;i < target_block_arr.size();i ++) {
             target_blocks[i] = (BMTargetBlock)target_block_arr.get(i);
@@ -114,6 +135,9 @@ public class BMMap implements Serializable {
         }
     }
 
+    /**
+     * save the game
+     */
     public void saveGame() {
         try {
             FileOutputStream fs = new FileOutputStream(Env.getSaveFileName());
@@ -125,8 +149,14 @@ public class BMMap implements Serializable {
         }
     }
 
+    /**
+     * get saved games list
+     * @return saved games list
+     */
     public static String[] getSaveList() {
-        File dir = new File(Env.SAVE_DIR);
+        File dir = new File(Env.SAVE_DIR); // save's dir
+
+        // list files
         File files[] = dir.listFiles();
         ArrayList t = new ArrayList();
         for(int i = 0;i < files.length;i ++) {
@@ -134,12 +164,19 @@ public class BMMap implements Serializable {
                 t.add(new String(files[i].getName()));
             }
         }
+
+        // put result from list to array
         String ret[] = new String[t.size()];
         for(int i = 0;i < t.size();i ++)
             ret[i] = (String)t.get(i);
         return ret;
     }
 
+    /**
+     * Load a new map from saved game
+     * @param save_name the name of saved game
+     * @return new map
+     */
     public static BMMap readGame(String save_name) {
         BMMap map = null;
         try {
@@ -153,22 +190,40 @@ public class BMMap implements Serializable {
         return map;
     }
 
+    /**
+     * get the Widget in the map
+     * @param i pos x
+     * @param j pos y
+     * @return the widget at [i,j]
+     */
     public BMWidget getWidgetAt(int i,int j) {
         return map[i][j];
     }
 
+    /**
+     * get the width of map
+     * @return
+     */
     public int getWidth() {
         return width;
     }
 
+    /**
+     * get the height of map
+     * @return
+     */
     public int getHeight() {
         return height;
     }
 
+    /**
+     * try to move the bot to specified direction
+     * @param dir direction to move, Env.DIRECTION_*
+     */
     public void movePerson(int dir) {
         int next_pos[] = person.move(dir);
-        int nx = next_pos[0],
-            ny = next_pos[1];
+        int nx = next_pos[0],   // next x
+            ny = next_pos[1];   // next y
 
         if(isOutOfBoundary(nx, ny)) {
             return;
@@ -178,20 +233,20 @@ public class BMMap implements Serializable {
             return;
         }
 
-        BMContainer next = (BMContainer)getWidgetAt(nx, ny),
-                cur = (BMContainer)getWidgetAt(person.getX(), person.getY());
+        BMContainer next = (BMContainer)getWidgetAt(nx, ny),    // next container
+                cur = (BMContainer)getWidgetAt(person.getX(), person.getY());   // current container
 
-        if(next.isPassable()) {
+        if(next.isPassable()) { // can pass, move directly
             next.putIn(person);
             cur.putOut();
             cur_step ++;
-        } else if(next.getInner().getTypeId() == Env.BLOCK_TYPE_BOX) {
+        } else if(next.getInner().getTypeId() == Env.BLOCK_TYPE_BOX) { // can't pass and is a box
             BMBox box = (BMBox)next.getInner();
             next_pos = box.move(dir);
             int box_nx = next_pos[0],
                 box_ny = next_pos[1];
 
-            if(!isOutOfBoundary(box_nx, box_ny) && getWidgetAt(box_nx, box_ny).isPassable()) {
+            if(!isOutOfBoundary(box_nx, box_ny) && getWidgetAt(box_nx, box_ny).isPassable()) { // the box is pushable
                 ((BMContainer)getWidgetAt(box_nx, box_ny)).putIn(box);
                 next.putIn(person);
                 cur.putOut();
@@ -205,10 +260,22 @@ public class BMMap implements Serializable {
         }
     }
 
+    /**
+     * is position [x, y] out of boundary?
+     * @param x pos x
+     * @param y pos y
+     * @return true or false
+     */
     private boolean isOutOfBoundary(int x, int y) {
         return  x < 0 || x >= height || y < 0 || y >= width;
     }
 
+    /**
+     * the box can push on the direction?
+     * @param box the box to push
+     * @param dir the direction push to
+     * @return
+     */
     private boolean canPushBoxToDirection(BMBox box,int dir) {
         int pos[] = box.move(dir);
 
@@ -219,6 +286,11 @@ public class BMMap implements Serializable {
         return false;
     }
 
+    /**
+     * is this box pushable?
+     * @param box box to push
+     * @return
+     */
     private boolean isBoxMovable(BMBox box) {
         if((
             canPushBoxToDirection(box, Env.DIRECTION_LEFT) &&
@@ -233,38 +305,47 @@ public class BMMap implements Serializable {
         return false;
     }
 
+    /**
+     * Dead stage B
+     * @return
+     */
     private boolean checkFailedB() {
+        // reset vis array
         for(int i = 0;i < height;i ++)
             for(int j = 0;j < width;j++)
                 vis[i][j] = false;
 
+        // reset queue
         int head = 0, tail = 0;
 
+        // push start position int queue
         queue_x[tail] = person.getX();
         queue_y[tail ++] = person.getY();
         vis[person.getX()][person.getY()] = true;
 
+        // bfs
         while(head < tail) {
             int x = queue_x[head],
                 y = queue_y[head];
-            head ++;
+            head ++;    // dequeue
 
+            // expand it
             for(int i = 0;i < Env.DIRECTIONS.length;i ++) {
                 int pos[] = BMMovable.moveToDirection(x, y, Env.DIRECTIONS[i]);
                 int cx = pos[0],
                     cy = pos[1];
 
                 if(!isOutOfBoundary(cx, cy) && !vis[cx][cy]) {
-                    if(getWidgetAt(cx, cy).isPassable()) {
+                    if(getWidgetAt(cx, cy).isPassable()) { // can directly move to
                         vis[cx][cy] = true;
                         queue_x[tail] = cx;
                         queue_y[tail ++] = cy;
                     } else if(getWidgetAt(cx, cy) instanceof BMContainer) {
                         BMContainer con = (BMContainer)getWidgetAt(cx, cy);
-                        if(con.getInner().getTypeId() == Env.BLOCK_TYPE_BOX) {
+                        if(con.getInner().getTypeId() == Env.BLOCK_TYPE_BOX) {  // or we found a box
                             BMBox box = (BMBox)con.getInner();
 
-                            if(isBoxMovable(box)) {
+                            if(isBoxMovable(box)) { // if this box is movable, then this is not DeaD stage B
                                 return false;
                             }
                         }
@@ -276,6 +357,10 @@ public class BMMap implements Serializable {
         return true;
     }
 
+    /**
+     * is Dead Stage A or Dead Stage B?
+     * @return
+     */
     public boolean isFailed() {
         /* Failed type A */
 
@@ -300,6 +385,10 @@ public class BMMap implements Serializable {
         return false;
     }
 
+    /**
+     * have we won?
+     * @return
+     */
     public boolean isWon() {
         for(int i = 0;i < target_blocks.length;i ++) {
             if(!target_blocks[i].isFilled()) {
@@ -309,10 +398,14 @@ public class BMMap implements Serializable {
         return true;
     }
 
+    /**
+     * back steps
+     * @param step step to back
+     */
     public void moveBack(int step) {
-        cur_step ++;
+        cur_step ++;    // back steps is equal to one operation
         if(step < 1) step = 1;
-        if(step > n_push_stack || n_push_stack == 0) {
+        if(step > n_push_stack || n_push_stack == 0) {  // this guy is trying to restart game
             try {
                 int t = cur_step;
                 loadLevel(cur_level);
@@ -323,6 +416,7 @@ public class BMMap implements Serializable {
             return;
         }
 
+        // step back one by one
         for(int i = 0;i < step;i ++,n_push_stack --) {
             int dir = push_stack_dir[n_push_stack - 1],
                 x = push_stack_cur_x[n_push_stack - 1],
@@ -350,6 +444,10 @@ public class BMMap implements Serializable {
         }
     }
 
+    /**
+     * get cur steps
+     * @return cur steps
+     */
     public int getCurrentStep() {
         return cur_step;
     }
