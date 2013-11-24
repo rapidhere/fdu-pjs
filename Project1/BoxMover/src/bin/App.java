@@ -144,6 +144,24 @@ public class App {
                 case Env.CMD_BACKMENU: // Back to main menu
                     return RUN_STATE_START_MENU;
                 case Env.CMD_HELP: // Help
+                    info_ui.setTitle("Brief Help Manual");
+                    info_ui.setContent(
+                        "Commands:\n" +
+                        "   w               move up\n" +
+                        "   s               move down\n" +
+                        "   a               move left\n" +
+                        "   d               move right\n" +
+                        "   e[xit]          exit application\n" +
+                        "   r[estart]       restart level\n" +
+                        "   b[ack] [steps]  back steps\n" +
+                        "   c[hose] <level> chose level\n" +
+                        "   g[save]         save stage\n" +
+                        "   m[ain]          back to main menu\n" +
+                        "   h[elp]          show the help info\n" +
+                        "For more information please read the User Manual"
+                    );
+
+                    info_ui.draw();
                     break;
                 case Env.CMD_UP: // move up
                     map.movePerson(Env.DIRECTION_UP);
