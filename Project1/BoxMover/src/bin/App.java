@@ -109,7 +109,6 @@ public class App {
 
             // Setup MAP_UI and draw it
             map_ui.setMap(map);
-            map_ui.setCurStep(map.getCurrentStep());
             map_ui.draw();
 
             // Get Command from map_ui

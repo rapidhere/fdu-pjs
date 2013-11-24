@@ -6,9 +6,9 @@ import bin.ui.generic.GenericInfoUI;
 /**
  * Copyright : all rights reserved,rapidhere@gmail.com
  * Mail: rapidhere@gmail.com
- * Class :
- * Version :
- * Usage :
+ * Class :      TextBaseInfoUI
+ * Version :    ver 0.1
+ * Usage :      text-based info ui
  */
 public class TextBaseInfoUI extends GenericInfoUI {
     public void draw() {

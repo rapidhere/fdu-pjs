@@ -6,9 +6,9 @@ import bin.ui.generic.GenericMenuUI;
 /**
  * Copyright : all rights reserved,rapidhere@gmail.com
  * Mail: rapidhere@gmail.com
- * Class :
- * Version :
- * Usage :
+ * Class :      TextBaseMenuUI
+ * Version :    ver 0.1
+ * Usage :      the text-based menu ui
  */
 public class TextBaseMenuUI extends GenericMenuUI {
     private int choice;

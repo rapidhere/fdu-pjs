@@ -12,7 +12,8 @@ import java.util.Scanner;
  * Mail: rapidhere@gmail.com
  * Class : IOHelper
  * Version : 0.1
- * Usage : Read the map file and give some utils to handle the map
+ * Usage :  Read the map file and give some utils to handle the map
+ *          If need help please refer to Developer Manual
  */
 
 public class IOHelper {

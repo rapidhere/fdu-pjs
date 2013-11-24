@@ -16,13 +16,14 @@ import bin.widget.BMWidget;
 /**
  * Copyright : all rights reserved,rapidhere@gmail.com
  * Mail: rapidhere@gmail.com
- * Class :
- * Version :
- * Usage :
+ * Class :      TextBaseMapUI
+ * Version :    ver 0.1
+ * Usage :      the text-based map ui
  */
 public class TextBaseMapUI extends GenericMapUI {
-    private Command cmd;
+    private Command cmd;    // last Command
 
+    // Tokens
     public static final char
         TOKEN_BOX = '□',
         TOKEN_EMPTY = ' ',
@@ -40,23 +41,32 @@ public class TextBaseMapUI extends GenericMapUI {
         return cmd;
     }
 
+    /**
+     * Map from specified widget to token
+     * @param w widget to draw
+     * @return the token of widget
+     */
     public char getToken(BMWidget w) {
-        if(w.getTypeId() == Env.BLOCK_TYPE_NULL) {
+        if(w.getTypeId() == Env.BLOCK_TYPE_NULL) {  // NULL BLOCK
             return TOKEN_NULL;
-        } else if(w.getTypeId() == Env.BLOCK_TYPE_TARGET) {
+        } else if(w.getTypeId() == Env.BLOCK_TYPE_TARGET) { // TARGET BLOCK
             BMTargetBlock t = (BMTargetBlock)w;
+
+            // filled or has nothing
+            // or draw inner
             if(t.isFilled()) {
                 return TOKEN_TARGET_BLOCK_FILLED;
             } else if(w.isPassable()) {
                 return TOKEN_TARGET_BLOCK_EMPTY;
             }
-        } else if(w.getTypeId() == Env.BLOCK_TYPE_WALL ) {
+        } else if(w.getTypeId() == Env.BLOCK_TYPE_WALL ) { // WALL BLOCK
             return TOKEN_WALL;
         }
 
+        // Containers
         if(w.isPassable()) {
             return TOKEN_EMPTY;
-        } else {
+        } else { // draw inner
             w = ((BMContainer)w).getInner();
             switch (w.getTypeId()) {
                 case Env.BLOCK_TYPE_PERSON: return TOKEN_PERSON;
@@ -67,17 +77,22 @@ public class TextBaseMapUI extends GenericMapUI {
     }
 
     public void draw() {
-        IOHelper.putStringLine("Steps: " + cur_step);
+        // Draw steps
+        IOHelper.putStringLine("Steps: " + map.getCurrentStep());
+
+        // Draw info
         if(info != null) {
             IOHelper.putStringLine(info);
         }
 
+        // Draw map
         for(int i = 0;i < map.getHeight();i ++) {
             for(int j = 0;j < map.getWidth();j ++)
                 IOHelper.putChar(getToken(map.getWidgetAt(i, j)));
             IOHelper.putEOL();
         }
 
+        // Parse Command
         CommandParser cp = CommandParser.getCommandParser();
         while (true) {
             try {
