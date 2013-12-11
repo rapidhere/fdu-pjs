@@ -5,41 +5,38 @@
       <artifact name="BoxMover" />
     </artifacts-to-build>
   </component>
-  <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/BoxMover/src/bin/widget/BMMovable.java" line="19" />
-  </component>
   <component name="ChangeListManager">
     <list default="true" id="9af470ad-2989-4eda-a51f-4cf1dc33732c" name="Default" comment="" />
     <ignored path="Project1.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/BoxMover.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1385173892741" ignored="false" />
-    <file path="/App.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1385273229468" ignored="false" />
-    <file path="/fragment.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1382602873830" ignored="false" />
+    <file path="/BoxMover.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1386723005242" ignored="false" />
+    <file path="/App.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1386759706359" ignored="false" />
+    <file path="/fragment.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1386745373995" ignored="false" />
     <file path="/Dummy.txt" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1382005910238" ignored="false" />
     <file path="/Wall.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1382006251935" ignored="false" />
     <file path="/BMWidget Class.txt.ft" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1382006486996" ignored="false" />
     <file path="/File Header.txt.ft" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1382007312733" ignored="false" />
     <file path="/Application.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1382007346064" ignored="false" />
-    <file path="/BMWall.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1385179245231" ignored="false" />
-    <file path="/BMPerson.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1385179175483" ignored="false" />
-    <file path="/BMBox.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1385179054047" ignored="false" />
+    <file path="/BMWall.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1386750059652" ignored="false" />
+    <file path="/BMPerson.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1386750020841" ignored="false" />
+    <file path="/BMBox.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1386749912972" ignored="false" />
     <file path="/BMNullWidget.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1382007494800" ignored="false" />
-    <file path="/BMEmptyBlock.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1385179276036" ignored="false" />
+    <file path="/BMEmptyBlock.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1386749898613" ignored="false" />
     <file path="/IOHelper.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1385272532966" ignored="false" />
     <file path="/TargetBlock.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1382007908120" ignored="false" />
-    <file path="/Env.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1385178005635" ignored="false" />
+    <file path="/Env.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1386757382380" ignored="false" />
     <file path="/BMException.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1382009134531" ignored="false" />
     <file path="/IOHelperException.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1382009333098" ignored="false" />
     <file path="/IOHelperFileNotFound.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1382012442263" ignored="false" />
     <file path="/IOHelperLevelNotFound.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1382009404894" ignored="false" />
-    <file path="/BMWidget.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1385178533875" ignored="false" />
-    <file path="/BMMap.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1385180372966" ignored="false" />
-    <file path="/LevelNotFound.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1382012442796" ignored="false" />
-    <file path="/BMTargetBlock.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1385179224681" ignored="false" />
-    <file path="/BMNull.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1385179080677" ignored="false" />
-    <file path="/BMContainer.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1385179021063" ignored="false" />
+    <file path="/BMWidget.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1386749584171" ignored="false" />
+    <file path="/BMMap.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1386758549021" ignored="false" />
+    <file path="/LevelNotFound.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1386750166618" ignored="false" />
+    <file path="/BMTargetBlock.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1386750042938" ignored="false" />
+    <file path="/BMNull.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1386749996454" ignored="false" />
+    <file path="/BMContainer.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1386749608766" ignored="false" />
     <file path="/BMMoveable.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1382057669664" ignored="false" />
-    <file path="/BMMovable.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1385178807846" ignored="false" />
+    <file path="/BMMovable.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1386749623546" ignored="false" />
     <file path="/GenericUI.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1385270776272" ignored="false" />
     <file path="/Command.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1385270668821" ignored="false" />
     <file path="/CommandParser.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1385271655012" ignored="false" />
@@ -62,6 +59,26 @@
     <file path="/TextBaseInfoUI.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1385272491183" ignored="false" />
     <file path="/empty" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1384775065139" ignored="false" />
     <file path="/Developer.html" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1385273367337" ignored="false" />
+    <file path="/java.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1386722687436" ignored="false" />
+    <file path="/Frame.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1386759947935" ignored="false" />
+    <file path="/MenuBar.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1386723387348" ignored="false" />
+    <file path="/StartPanel.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1386742998802" ignored="false" />
+    <file path="/BoxMoverException.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1386724401605" ignored="false" />
+    <file path="/GameCommandListener.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1386759493928" ignored="false" />
+    <file path="/GameCommandEvent.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1386759578238" ignored="false" />
+    <file path="/CommandId.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1386759725962" ignored="false" />
+    <file path="/GameCommandAdapter.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1386752687690" ignored="false" />
+    <file path="/GenericPanel.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1386742684901" ignored="false" />
+    <file path="/__empty__" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1386745430427" ignored="false" />
+    <file path="/StartPanelListener.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1386745597123" ignored="false" />
+    <file path="/GamePanel.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1386760121964" ignored="false" />
+    <file path="/User.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1386752149245" ignored="false" />
+    <file path="/ChoosePanel.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1386752344896" ignored="false" />
+    <file path="/RankPanel.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1386752381459" ignored="false" />
+    <file path="/AuthorPanel.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1386752395788" ignored="false" />
+    <file path="/HelpPanel.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1386752407108" ignored="false" />
+    <file path="/a.dummy" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1386752599548" ignored="false" />
+    <file path="/StartPanelAdapter.java" changelist="9af470ad-2989-4eda-a51f-4cf1dc33732c" time="1386752785285" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +93,6 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -114,6 +130,7 @@
       </breakpoint>
     </breakpoint_any>
     <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true" />
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -123,10 +140,39 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Developer.html" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/BoxMover/doc/Developer.html">
+      <file leaf-file-name="CommandId.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/ctrl/CommandId.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="47" column="59" selection-start="2242" selection-end="2242" vertical-scroll-proportion="0.5089286">
+            <state line="17" column="14" selection-start="269" selection-end="269" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Env.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/Env.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="40" column="44" selection-start="1268" selection-end="1268" vertical-scroll-proportion="0.87967914">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Frame.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/ui/Frame.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="40" column="32" selection-start="851" selection-end="851" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GameCommandListener.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/ctrl/GameCommandListener.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="19" column="47" selection-start="545" selection-end="545" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -142,22 +188,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/BoxMover/src/bin/widget/BMMap.java" />
-        <option value="$PROJECT_DIR$/BoxMover/src/bin/ui/generic/Command.java" />
-        <option value="$PROJECT_DIR$/BoxMover/src/bin/ui/generic/GenericUIFactory.java" />
-        <option value="$PROJECT_DIR$/BoxMover/src/bin/ui/generic/GenericUI.java" />
-        <option value="$PROJECT_DIR$/BoxMover/src/bin/ui/generic/GenericMenuUI.java" />
-        <option value="$PROJECT_DIR$/BoxMover/src/bin/ui/generic/GenericMapUI.java" />
-        <option value="$PROJECT_DIR$/BoxMover/src/bin/ui/generic/GenericInfoUI.java" />
-        <option value="$PROJECT_DIR$/BoxMover/src/bin/ui/textbaseui/cmd/CommandParser.java" />
-        <option value="$PROJECT_DIR$/BoxMover/src/bin/ui/textbaseui/cmd/CommandTrie.java" />
-        <option value="$PROJECT_DIR$/BoxMover/src/bin/ui/textbaseui/TextBaseUIFactory.java" />
-        <option value="$PROJECT_DIR$/BoxMover/src/bin/ui/textbaseui/TextBaseMenuUI.java" />
-        <option value="$PROJECT_DIR$/BoxMover/src/bin/ui/textbaseui/TextBaseMapUI.java" />
-        <option value="$PROJECT_DIR$/BoxMover/src/bin/ui/textbaseui/TextBaseInfoUI.java" />
-        <option value="$PROJECT_DIR$/BoxMover/src/bin/io/IOHelper.java" />
-        <option value="$PROJECT_DIR$/BoxMover/src/bin/App.java" />
-        <option value="$PROJECT_DIR$/BoxMover/doc/Developer.html" />
+        <option value="$PROJECT_DIR$/BoxMover/src/rapid/exp/LevelNotFound.java" />
+        <option value="$PROJECT_DIR$/BoxMover/src/rapid/ui/ChoosePanel.java" />
+        <option value="$PROJECT_DIR$/BoxMover/src/rapid/ui/RankPanel.java" />
+        <option value="$PROJECT_DIR$/BoxMover/src/rapid/ui/AuthorPanel.java" />
+        <option value="$PROJECT_DIR$/BoxMover/src/rapid/ui/HelpPanel.java" />
+        <option value="$PROJECT_DIR$/BoxMover/src/rapid/ctrl/adapters/StartPanelAdapter.java" />
+        <option value="$PROJECT_DIR$/BoxMover/src/rapid/ctrl/GameCommandAdapter.java" />
+        <option value="$PROJECT_DIR$/BoxMover/src/rapid/Env.java" />
+        <option value="$PROJECT_DIR$/BoxMover/src/rapid/widget/BMMap.java" />
+        <option value="$PROJECT_DIR$/BoxMover/src/rapid/ctrl/GameCommandListener.java" />
+        <option value="$PROJECT_DIR$/BoxMover/src/rapid/ctrl/GameCommandEvent.java" />
+        <option value="$PROJECT_DIR$/BoxMover/src/rapid/App.java" />
+        <option value="$PROJECT_DIR$/BoxMover/src/rapid/ctrl/CommandId.java" />
+        <option value="$PROJECT_DIR$/BoxMover/src/rapid/ui/Frame.java" />
+        <option value="$PROJECT_DIR$/BoxMover/src/rapid/ui/GamePanel.java" />
+        <option value="$PROJECT_DIR$/BoxMover/src/rapid/widget/User.java" />
       </list>
     </option>
   </component>
@@ -195,61 +241,50 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Project1" />
+              <option name="myItemId" value="Project2" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Project1" />
+              <option name="myItemId" value="Project2" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="BoxMover" />
+              <option name="myItemId" value="Project2" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Project1" />
+              <option name="myItemId" value="Project2" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="BoxMover" />
+              <option name="myItemId" value="Project2" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Project1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="BoxMover" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bin" />
+              <option name="myItemId" value="usr" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Project1" />
+              <option name="myItemId" value="Project2" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="BoxMover" />
@@ -259,8 +294,104 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="bin" />
+              <option name="myItemId" value="Project2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BoxMover" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rapid" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BoxMover" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rapid" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="widget" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BoxMover" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rapid" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="widget" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BMMap.java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BoxMover" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rapid" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -270,36 +401,89 @@
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Project1" />
+              <option name="myItemId" value="Project2" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="BoxMover" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="doc" />
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rapid" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="exp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BoxMover" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rapid" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ctrl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BoxMover" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="project.structure.last.edited" value="Modules" />
+    <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="OverrideImplement.combined" value="true" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="options.lastSelected" value="reference.settingsdialog.IDE.editor.colors.Console Font" />
     <property name="MemberChooser.sorted" value="false" />
+    <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
     <property name="recentsLimit" value="5" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/out/BoxMover" />
-    <property name="project.structure.side.proportion" value="0.08888889" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="restartRequiresConfirmation" value="true" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="options.searchVisible" value="true" />
@@ -318,7 +502,7 @@
       <option name="ENABLE_SWING_INSPECTOR" value="false" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="BoxMover" />
+      <module name="Project2" />
       <envs />
       <RunnerSettings RunnerId="Debug">
         <option name="DEBUG_PORT" value="" />
@@ -353,20 +537,17 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
-    <configuration default="true" type="XSLT" factoryName="XSLT">
-      <option name="myOutputFile" />
-      <option name="myOpenOutputFile" value="false" />
-      <option name="myOpenInBrowser" value="false" />
-      <option name="mySmartErrorHandling" value="true" />
-      <option name="myRunnerPort" value="34873" />
-      <option name="myVmArguments" />
-      <option name="myWorkingDirectory" />
-      <option name="myModule" />
-      <option name="myJdk" />
-      <parameters />
-      <OutputType value="CONSOLE" save-to-file="false" />
-      <FileType name="XML" />
-      <JdkChoice value="FROM_MODULE" />
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
@@ -397,17 +578,20 @@
       <listeners />
       <method />
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
+    <configuration default="true" type="XSLT" factoryName="XSLT">
+      <option name="myOutputFile" />
+      <option name="myOpenOutputFile" value="false" />
+      <option name="myOpenInBrowser" value="false" />
+      <option name="mySmartErrorHandling" value="true" />
+      <option name="myRunnerPort" value="34873" />
+      <option name="myVmArguments" />
+      <option name="myWorkingDirectory" />
+      <option name="myModule" />
+      <option name="myJdk" />
+      <parameters />
+      <OutputType value="CONSOLE" save-to-file="false" />
+      <FileType name="XML" />
+      <JdkChoice value="FROM_MODULE" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -460,6 +644,11 @@
     </configuration>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SliceManager">
+    <option name="analysisUIOptions">
+      <AnalysisUIOptions />
+    </option>
+  </component>
   <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false" SSL_PROTOCOLS="all">
     <option name="USER" value="" />
     <option name="PASSWORD" value="" />
@@ -507,11 +696,12 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1366" height="744" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3258427" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39967898" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -520,19 +710,18 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32744783" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32905295" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.6581059" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.67255217" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34189406" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.64526486" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35473517" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3264" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32744783" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -568,7 +757,7 @@
     <option name="INCLUDE_TEXT_INTO_PATCH" value="false" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
     <option name="SHOW_FILE_HISTORY_DETAILS" value="true" />
-    <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="false" />
+    <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="SHOW_DIRTY_RECURSIVELY" value="false" />
     <option name="LIMIT_HISTORY" value="true" />
     <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
@@ -601,89 +790,125 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/BoxMover/src/bin/ui/generic/Command.java">
+    <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/ui/ChoosePanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="16" selection-start="1239" selection-end="1239" vertical-scroll-proportion="0.8743719" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BoxMover/src/bin/ui/generic/GenericUIFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="21" selection-start="557" selection-end="557" vertical-scroll-proportion="0.6281407" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BoxMover/src/bin/ui/generic/GenericUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="40" selection-start="252" selection-end="252" vertical-scroll-proportion="0.2512563" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BoxMover/src/bin/ui/generic/GenericMenuUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="32" selection-start="657" selection-end="657" vertical-scroll-proportion="0.6281407" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BoxMover/src/bin/ui/generic/GenericMapUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="23" selection-start="433" selection-end="433" vertical-scroll-proportion="0.39698493" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BoxMover/src/bin/ui/generic/GenericInfoUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="41" selection-start="562" selection-end="562" vertical-scroll-proportion="0.5527638" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BoxMover/src/bin/ui/textbaseui/cmd/CommandTrie.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="183" column="5" selection-start="4965" selection-end="4965" vertical-scroll-proportion="0.77386934" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BoxMover/src/bin/ui/textbaseui/TextBaseUIFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="70" selection-start="641" selection-end="641" vertical-scroll-proportion="0.37688443" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BoxMover/src/bin/ui/textbaseui/TextBaseMenuUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="38" selection-start="1087" selection-end="1087" vertical-scroll-proportion="0.77386934" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BoxMover/src/bin/ui/textbaseui/TextBaseMapUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="94" column="24" selection-start="2681" selection-end="2681" vertical-scroll-proportion="0.5477387" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BoxMover/src/bin/ui/textbaseui/TextBaseInfoUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="34" selection-start="267" selection-end="267" vertical-scroll-proportion="0.22613065" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BoxMover/src/bin/io/IOHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="57" selection-start="400" selection-end="400" vertical-scroll-proportion="0.2512563" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BoxMover/src/bin/App.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="159" column="64" selection-start="6351" selection-end="6351" vertical-scroll-proportion="0.63414633">
+        <state line="9" column="45" selection-start="191" selection-end="191" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BoxMover/src/bin/ui/textbaseui/cmd/CommandParser.java">
+    <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/ui/RankPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="199" column="35" selection-start="5928" selection-end="5928" vertical-scroll-proportion="6.9293194" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BoxMover/src/bin/Env.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="68" column="34" selection-start="1803" selection-end="1803" vertical-scroll-proportion="0.096858636">
+        <state line="9" column="43" selection-start="189" selection-end="189" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BoxMover/doc/Developer.html">
+    <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/ui/AuthorPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="59" selection-start="2242" selection-end="2242" vertical-scroll-proportion="0.5089286">
+        <state line="9" column="45" selection-start="191" selection-end="191" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/ui/HelpPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="43" selection-start="189" selection-end="189" vertical-scroll-proportion="0.36096257">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/widget/BMContainer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="22" selection-start="261" selection-end="272" vertical-scroll-proportion="-0.7647059">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/ui/StartPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="80" column="0" selection-start="2303" selection-end="2303" vertical-scroll-proportion="0.43850267">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/widget/BMMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="306" column="19" selection-start="9765" selection-end="9765" vertical-scroll-proportion="0.3315508">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/App.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="96" column="69" selection-start="3090" selection-end="3090" vertical-scroll-proportion="0.9145299">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/widget/BMWidget.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="4" selection-start="575" selection-end="575" vertical-scroll-proportion="0.842246">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/ui/GamePanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="93" column="39" selection-start="2936" selection-end="2936" vertical-scroll-proportion="0.47860962">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/widget/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="54" column="31" selection-start="1152" selection-end="1152" vertical-scroll-proportion="1.9251337">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/ctrl/GameCommandEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="32" selection-start="451" selection-end="451" vertical-scroll-proportion="0.63903743">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/ctrl/CommandId.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="14" selection-start="269" selection-end="269" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/ctrl/GameCommandListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="47" selection-start="545" selection-end="545" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/ui/Frame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="32" selection-start="851" selection-end="851" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/Env.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="44" selection-start="1268" selection-end="1268" vertical-scroll-proportion="0.87967914">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -693,11 +918,12 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
-          <last-edited>BoxMover</last-edited>
+          <last-edited>BoxMover:jar</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>
@@ -740,11 +966,11 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>BoxMover</last-edited>
+          <last-edited>Project2</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.08888889" />
+                <option value="0.2" />
                 <option value="0.5" />
               </list>
             </option>

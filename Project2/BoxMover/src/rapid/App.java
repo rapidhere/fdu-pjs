@@ -1,0 +1,100 @@
+package rapid;
+
+import rapid.ctrl.GameCommandEvent;
+import rapid.ctrl.GameCommandListener;
+import rapid.ui.Frame;
+import rapid.ui.GamePanel;
+import rapid.ui.StartPanel;
+import rapid.widget.BMMovable;
+import rapid.widget.User;
+
+import javax.swing.*;
+import java.io.File;
+
+/**
+ * Copyright : all rights reserved,rapidhere@gmail.com
+ * Mail: rapidhere@gmail.com
+ * Class :
+ * Version :
+ * Usage :
+ */
+public class App {
+    private Frame win;
+    private GameCommandAdapter gl = new GameCommandAdapter();
+    public static final int
+        GAME_STATE_START_MENU = 0,
+        GAME_STATE_GAME = 1;
+
+    private User currentUser = null;
+
+    public App() {
+        win = new Frame();
+    }
+
+    public void run() {
+        setGameState(GAME_STATE_START_MENU);
+    }
+
+    private void setGameState(int st) {
+        switch (st) {
+            default:
+            case GAME_STATE_START_MENU:
+                currentUser = null;
+                win.setGameState(new StartPanel(), gl, null);
+                break;
+            case GAME_STATE_GAME:
+                win.setGameState(new GamePanel(currentUser), gl, null);
+                break;
+        }
+    }
+
+    public class GameCommandAdapter implements GameCommandListener {
+        public void onExit(GameCommandEvent e) {
+            System.exit(0);
+        }
+
+        public void onNewUser(GameCommandEvent e) {
+            String ret = JOptionPane.showInputDialog(win, Env.NEW_USER_TITLE);
+            if(ret != null) {
+                if(Env.NEW_USER_NAME_CHECKER.matcher(ret).matches()) {
+                    File f = new File(Env.USR_DIRECTORY + ret);
+                    if(f.exists()) {
+                        JOptionPane.showMessageDialog(win, Env.NEW_USER_USER_NAME_EXISTS, "Error", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+
+                    currentUser = User.newUser(ret);
+                    setGameState(GAME_STATE_GAME);
+                } else {
+                    JOptionPane.showMessageDialog(win, Env.NEW_USER_WRONG_NAME_MSG, "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        }
+
+        public void onOldUser(GameCommandEvent e) {
+            JFileChooser jfc = new JFileChooser(Env.USR_DIRECTORY);
+            jfc.setDialogTitle("Choose User");
+            jfc.setFileSelectionMode(JFileChooser.FILES_ONLY);
+            if(jfc.showOpenDialog(win) == JFileChooser.APPROVE_OPTION) {
+                currentUser = User.getUser(jfc.getSelectedFile().getName());
+                setGameState(GAME_STATE_GAME);
+            }
+        }
+
+        public void onKeyUp(GameCommandEvent e) {
+            currentUser.getMap().movePerson(BMMovable.DIRECTION_UP);
+        }
+
+        public void onKeyDown(GameCommandEvent e) {
+            currentUser.getMap().movePerson(BMMovable.DIRECTION_DOWN);
+        }
+
+        public void onKeyRight(GameCommandEvent e) {
+            currentUser.getMap().movePerson(BMMovable.DIRECTION_RIGHT);
+        }
+
+        public void onKeyLeft(GameCommandEvent e) {
+            currentUser.getMap().movePerson(BMMovable.DIRECTION_LEFT);
+        }
+    }
+}
