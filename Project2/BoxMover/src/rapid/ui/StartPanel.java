@@ -37,12 +37,21 @@ public class StartPanel extends GenericPanel {
 
         // load Background Image
         bgImg = new ImageIcon(Env.PIC_DIRECTORY + "Cover.png");
-        setSize(bgImg.getIconWidth(),bgImg.getIconHeight());
+        setSize(bgImg.getIconWidth(), bgImg.getIconHeight());
 
         // create Buttons
         for(int i = 0; i < buttons.length;i ++) {
             buttons[i] = createButton((String)BUTTON_CONFIG[i][0]);
             add(buttons[i]);
+        }
+    }
+
+    public void paintComponent(Graphics g) {
+        g.drawImage(bgImg.getImage(), 0, 0, this);
+
+        for(int i = 0;i < buttons.length;i ++) {
+            JButton bt = buttons[i];
+            bt.setLocation((getWidth() - bt.getWidth()) / 2, (Integer)BUTTON_CONFIG[i][1]);
         }
     }
 
@@ -53,17 +62,6 @@ public class StartPanel extends GenericPanel {
         bt.setContentAreaFilled(false);
 
         return bt;
-    }
-
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g);
-
-        g.drawImage(bgImg.getImage(), 0, 0, this);
-
-        for(int i = 0;i < buttons.length;i ++) {
-            JButton bt = buttons[i];
-            bt.setLocation((getWidth() - bt.getWidth()) / 2, (Integer)BUTTON_CONFIG[i][1]);
-        }
     }
 
     public void setGameListener(GameCommandListener g) {

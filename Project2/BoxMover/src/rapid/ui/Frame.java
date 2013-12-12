@@ -1,9 +1,13 @@
 package rapid.ui;
 
 import rapid.Env;
+import rapid.ctrl.CommandId;
+import rapid.ctrl.GameCommandEvent;
 import rapid.ctrl.GameCommandListener;
 
 import javax.swing.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 /**
  * Copyright : all rights reserved,rapidhere@gmail.com
@@ -14,10 +18,9 @@ import javax.swing.*;
  */
 public class Frame extends JFrame {
     private GenericPanel curPanel;
-    private GameCommandListener gListener;
+    private GameCommandListener gl;
 
-
-    public Frame() {
+    public Frame(GameCommandListener _gl) {
         super();
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -25,6 +28,14 @@ public class Frame extends JFrame {
         setResizable(false);
 
         setVisible(true);
+
+        this.gl = _gl;
+
+        addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                gl.onExit(new GameCommandEvent(CommandId.EXIT, null, this));
+            }
+        });
     }
 
     public void setGameState(GenericPanel p, GameCommandListener g, JMenuBar jmb) {
@@ -34,9 +45,7 @@ public class Frame extends JFrame {
         setContentPane(curPanel);
         setSize(curPanel.getSize());
 
-        if(jmb != null) {
-            setJMenuBar(jmb);
-        }
+        setJMenuBar(jmb);
 
         curPanel.requestFocus();
     }

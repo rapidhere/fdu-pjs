@@ -16,4 +16,5 @@ public enum CommandId {
     MOVE_RIGHT,
     MOVE_UP,
     MOVE_DOWN,
+    MOVE_BACK,
 }

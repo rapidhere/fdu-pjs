@@ -27,6 +27,7 @@ public class BMMap implements Serializable {
     private int push_stack_dir[] = new int[1000];       // push direction
     private int push_stack_cur_x[] = new int[1000];     // pos x
     private int push_stack_cur_y[] = new int[1000];     // pos y
+    private int push_stack_cur_step[] = new int[1000];  // cur move step
     private int n_push_stack = 0;   // the stack size
 
 
@@ -38,6 +39,8 @@ public class BMMap implements Serializable {
 
     private int cur_level; // current level
     private int cur_step;  // current step
+    private int cur_time;  // current game time
+    private int back_step;
 
     /**
      * the Current level
@@ -47,6 +50,10 @@ public class BMMap implements Serializable {
         return cur_level;
     }
 
+    public int getTime() {return cur_time;}
+    public void incTime() {cur_time ++ ;}
+
+    public int getBackStep() {return back_step;}
     /**
      * Load map specified by level
      * @param level the level to load
@@ -58,6 +65,8 @@ public class BMMap implements Serializable {
         cur_step = 0;
         n_push_stack = 0;
         cur_level = level;
+        cur_time = 0;
+        back_step = 0;
 
         // use IOHelper to read map
         IOHelper ioh = new IOHelper();
@@ -201,7 +210,8 @@ public class BMMap implements Serializable {
                 /* This is a push operation*/
                 push_stack_dir[n_push_stack] = dir;
                 push_stack_cur_x[n_push_stack] = box.getX();
-                push_stack_cur_y[n_push_stack ++] = box.getY();
+                push_stack_cur_y[n_push_stack ] = box.getY();
+                push_stack_cur_step[n_push_stack ++] = cur_step;
             }
         }
     }
@@ -346,13 +356,15 @@ public class BMMap implements Serializable {
      * @param step step to back
      */
     public void moveBack(int step) {
-        cur_step ++;    // back steps is equal to one operation
         if(step < 1) step = 1;
         if(step > n_push_stack || n_push_stack == 0) {  // this guy is trying to restart game
             try {
-                int t = cur_step;
+                int tb = back_step;
+                int tt = cur_time;
                 loadLevel(cur_level);
-                cur_step = t;
+                back_step = tb + 1;
+                cur_time = tt;
+
             } catch (LevelNotFound e) {
 
             }
@@ -364,6 +376,8 @@ public class BMMap implements Serializable {
             int dir = push_stack_dir[n_push_stack - 1],
                 x = push_stack_cur_x[n_push_stack - 1],
                 y = push_stack_cur_y[n_push_stack - 1];
+
+            cur_step = push_stack_cur_step[n_push_stack - 1];
 
             int pos[];
             BMContainer con1;

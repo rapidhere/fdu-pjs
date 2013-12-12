@@ -18,4 +18,14 @@ public interface GameCommandListener {
     public void onKeyDown(GameCommandEvent e);
     public void onKeyLeft(GameCommandEvent e);
     public void onKeyRight(GameCommandEvent e);
+    public void onBackStep(GameCommandEvent e);
+
+    public void onLevelVictory(GameCommandEvent e);
+    public void onLevelFailed(GameCommandEvent e);
+    public void onGameVictory(GameCommandEvent e);
+
+    public void onShowAbout(GameCommandEvent e);
+    public void onShowHelp(GameCommandEvent e);
+
+    public void onChooseLevel(GameCommandEvent e);
 }

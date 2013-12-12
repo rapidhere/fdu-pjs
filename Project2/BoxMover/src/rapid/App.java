@@ -1,9 +1,11 @@
 package rapid;
 
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 import rapid.ctrl.GameCommandEvent;
 import rapid.ctrl.GameCommandListener;
 import rapid.ui.Frame;
 import rapid.ui.GamePanel;
+import rapid.ui.MenuBar;
 import rapid.ui.StartPanel;
 import rapid.widget.BMMovable;
 import rapid.widget.User;
@@ -28,7 +30,7 @@ public class App {
     private User currentUser = null;
 
     public App() {
-        win = new Frame();
+        win = new Frame(gl);
     }
 
     public void run() {
@@ -43,13 +45,17 @@ public class App {
                 win.setGameState(new StartPanel(), gl, null);
                 break;
             case GAME_STATE_GAME:
-                win.setGameState(new GamePanel(currentUser), gl, null);
+                win.setGameState(new GamePanel(currentUser), gl, new MenuBar());
                 break;
         }
     }
 
     public class GameCommandAdapter implements GameCommandListener {
         public void onExit(GameCommandEvent e) {
+            if(currentUser != null) {
+                currentUser.save();
+            }
+
             System.exit(0);
         }
 
@@ -81,20 +87,62 @@ public class App {
             }
         }
 
+        private void check(GameCommandEvent e) {
+            if(currentUser.getMap().isWon()) {
+                onLevelVictory(e);
+            }
+
+            if(currentUser.getMap().isFailed()) {
+                onLevelFailed(e);
+            }
+        }
+
         public void onKeyUp(GameCommandEvent e) {
+            check(e);
             currentUser.getMap().movePerson(BMMovable.DIRECTION_UP);
         }
 
         public void onKeyDown(GameCommandEvent e) {
+            check(e);
             currentUser.getMap().movePerson(BMMovable.DIRECTION_DOWN);
         }
 
         public void onKeyRight(GameCommandEvent e) {
+            check(e);
             currentUser.getMap().movePerson(BMMovable.DIRECTION_RIGHT);
         }
 
         public void onKeyLeft(GameCommandEvent e) {
+            check(e);
             currentUser.getMap().movePerson(BMMovable.DIRECTION_LEFT);
+        }
+
+        public void onBackStep(GameCommandEvent e) {
+            currentUser.getMap().moveBack((Integer)e.cmdArgs[0]);
+        }
+
+        public void onLevelVictory(GameCommandEvent e) {
+
+        }
+
+        public void onLevelFailed(GameCommandEvent e) {
+
+        }
+
+        public void onGameVictory(GameCommandEvent e) {
+
+        }
+
+        public void onShowAbout(GameCommandEvent e) {
+
+        }
+
+        public void onShowHelp(GameCommandEvent e) {
+
+        }
+
+        public void onChooseLevel(GameCommandEvent e) {
+
         }
     }
 }
