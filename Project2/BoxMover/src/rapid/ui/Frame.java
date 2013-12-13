@@ -6,6 +6,7 @@ import rapid.ctrl.GameCommandEvent;
 import rapid.ctrl.GameCommandListener;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -39,13 +40,17 @@ public class Frame extends JFrame {
     }
 
     public void setGameState(GenericPanel p, GameCommandListener g, JMenuBar jmb) {
+        if(curPanel != null) {
+            curPanel.destroy();
+            remove(curPanel);
+        }
+
         curPanel = p;
         curPanel.setGameListener(g);
-
         setContentPane(curPanel);
+        setJMenuBar(jmb);
         setSize(curPanel.getSize());
 
-        setJMenuBar(jmb);
 
         curPanel.requestFocus();
     }

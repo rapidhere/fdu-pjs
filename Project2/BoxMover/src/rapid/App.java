@@ -3,11 +3,9 @@ package rapid;
 import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 import rapid.ctrl.GameCommandEvent;
 import rapid.ctrl.GameCommandListener;
-import rapid.ui.Frame;
-import rapid.ui.GamePanel;
-import rapid.ui.MenuBar;
-import rapid.ui.StartPanel;
+import rapid.ui.*;
 import rapid.widget.BMMovable;
+import rapid.widget.RankList;
 import rapid.widget.User;
 
 import javax.swing.*;
@@ -25,7 +23,11 @@ public class App {
     private GameCommandAdapter gl = new GameCommandAdapter();
     public static final int
         GAME_STATE_START_MENU = 0,
-        GAME_STATE_GAME = 1;
+        GAME_STATE_GAME = 1,
+        GAME_STATE_AUTHOR = 2,
+        GAME_STATE_HELP = 3,
+        GAME_STATE_RANK = 4,
+        GAME_STATE_LEVEL_VICTORY = 5;
 
     private User currentUser = null;
 
@@ -45,8 +47,19 @@ public class App {
                 win.setGameState(new StartPanel(), gl, null);
                 break;
             case GAME_STATE_GAME:
-                win.setGameState(new GamePanel(currentUser), gl, new MenuBar());
+                win.setGameState(new GamePanel(currentUser), gl, new MenuBar(gl));
                 break;
+            case GAME_STATE_AUTHOR:
+                win.setGameState(new AuthorPanel(), gl, null);
+                break;
+            case GAME_STATE_HELP:
+                win.setGameState(new HelpPanel(), gl, null);
+                break;
+            case GAME_STATE_RANK:
+                win.setGameState(new RankPanel(), gl, null);
+                break;
+            case GAME_STATE_LEVEL_VICTORY:
+                win.setGameState(new LevelVictoryPanel(currentUser), gl, null);
         }
     }
 
@@ -55,6 +68,8 @@ public class App {
             if(currentUser != null) {
                 currentUser.save();
             }
+
+            RankList.get().save();
 
             System.exit(0);
         }
@@ -98,23 +113,23 @@ public class App {
         }
 
         public void onKeyUp(GameCommandEvent e) {
-            check(e);
             currentUser.getMap().movePerson(BMMovable.DIRECTION_UP);
+            check(e);
         }
 
         public void onKeyDown(GameCommandEvent e) {
-            check(e);
             currentUser.getMap().movePerson(BMMovable.DIRECTION_DOWN);
+            check(e);
         }
 
         public void onKeyRight(GameCommandEvent e) {
-            check(e);
             currentUser.getMap().movePerson(BMMovable.DIRECTION_RIGHT);
+            check(e);
         }
 
         public void onKeyLeft(GameCommandEvent e) {
-            check(e);
             currentUser.getMap().movePerson(BMMovable.DIRECTION_LEFT);
+            check(e);
         }
 
         public void onBackStep(GameCommandEvent e) {
@@ -122,7 +137,7 @@ public class App {
         }
 
         public void onLevelVictory(GameCommandEvent e) {
-
+            setGameState(GAME_STATE_LEVEL_VICTORY);
         }
 
         public void onLevelFailed(GameCommandEvent e) {
@@ -134,15 +149,31 @@ public class App {
         }
 
         public void onShowAbout(GameCommandEvent e) {
-
+            setGameState(GAME_STATE_AUTHOR);
         }
 
         public void onShowHelp(GameCommandEvent e) {
-
+            setGameState(GAME_STATE_HELP);
         }
 
         public void onChooseLevel(GameCommandEvent e) {
 
+        }
+
+        public void onRestartLevel(GameCommandEvent e) {
+
+        }
+
+        public void onSaveLevel(GameCommandEvent e) {
+
+        }
+
+        public void onShowRank(GameCommandEvent e) {
+            setGameState(GAME_STATE_RANK);
+        }
+
+        public void onBackToLevel(GameCommandEvent e) {
+            setGameState(GAME_STATE_GAME);
         }
     }
 }

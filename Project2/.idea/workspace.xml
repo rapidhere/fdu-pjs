@@ -72,23 +72,8 @@
       <file leaf-file-name="CommandId.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/ctrl/CommandId.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="14" selection-start="284" selection-end="284" vertical-scroll-proportion="0.0" vertical-offset="43" max-vertical-offset="468">
+            <state line="23" column="18" selection-start="357" selection-end="357" vertical-scroll-proportion="0.0" vertical-offset="7" max-vertical-offset="630">
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GamePanel.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/ui/GamePanel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="47" selection-start="625" selection-end="625" vertical-scroll-proportion="0.0" vertical-offset="324" max-vertical-offset="2520">
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#817#978#0" expanded="true" />
-                <element signature="e#967#968#0" expanded="true" />
-                <element signature="e#1161#2574#0" expanded="true" />
-                <element signature="e#2563#2564#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -96,57 +81,30 @@
       <file leaf-file-name="App.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/App.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="47" column="78" selection-start="1198" selection-end="1198" vertical-scroll-proportion="0.0" vertical-offset="571" max-vertical-offset="2772">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StartPanel.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/ui/StartPanel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="68" column="61" selection-start="1906" selection-end="1906" vertical-scroll-proportion="0.0" vertical-offset="1051" max-vertical-offset="1458">
+            <state line="142" column="26" selection-start="4492" selection-end="4492" vertical-scroll-proportion="0.0" vertical-offset="2216" max-vertical-offset="3168">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BMMap.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/widget/BMMap.java">
+      <file leaf-file-name="LevelVictoryPanel.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/ui/LevelVictoryPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="360" column="46" selection-start="11115" selection-end="11115" vertical-scroll-proportion="0.0" vertical-offset="6338" max-vertical-offset="8082">
+            <state line="65" column="37" selection-start="2019" selection-end="2019" vertical-scroll-proportion="0.0" vertical-offset="817" max-vertical-offset="1332">
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#getTime#0;class#BMMap#0" expanded="true" />
-                <element signature="method#getBackStep#0;class#BMMap#0" expanded="true" />
+                <element signature="e#687#1292#0" expanded="true" />
+                <element signature="e#1281#1282#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Frame.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Frame.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/ui/Frame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="42" column="40" selection-start="1061" selection-end="1061" vertical-scroll-proportion="0.0" vertical-offset="432" max-vertical-offset="918">
-              <folding>
-                <element signature="e#732#909#0" expanded="true" />
-                <element signature="e#898#899#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MenuBar.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/ui/MenuBar.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="50" column="46" selection-start="1112" selection-end="1112" vertical-scroll-proportion="2.2113023" vertical-offset="0" max-vertical-offset="1206">
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1238#1239#0" expanded="true" />
-                <element signature="e#1266#1267#0" expanded="true" />
-              </folding>
+            <state line="19" column="34" selection-start="410" selection-end="417" vertical-scroll-proportion="-0.32678133" vertical-offset="331" max-vertical-offset="954">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -163,24 +121,27 @@
       <list>
         <option value="$PROJECT_DIR$/BoxMover/src/rapid/exp/LevelNotFound.java" />
         <option value="$PROJECT_DIR$/BoxMover/src/rapid/ui/ChoosePanel.java" />
-        <option value="$PROJECT_DIR$/BoxMover/src/rapid/ui/RankPanel.java" />
-        <option value="$PROJECT_DIR$/BoxMover/src/rapid/ui/AuthorPanel.java" />
-        <option value="$PROJECT_DIR$/BoxMover/src/rapid/ui/HelpPanel.java" />
         <option value="$PROJECT_DIR$/BoxMover/src/rapid/ctrl/adapters/StartPanelAdapter.java" />
         <option value="$PROJECT_DIR$/BoxMover/src/rapid/ctrl/GameCommandAdapter.java" />
         <option value="$PROJECT_DIR$/BoxMover/src/rapid/Env.java" />
         <option value="$PROJECT_DIR$/BoxMover/src/rapid/ctrl/GameCommandEvent.java" />
-        <option value="$PROJECT_DIR$/BoxMover/src/rapid/widget/User.java" />
+        <option value="$PROJECT_DIR$/BoxMover/src/rapid/widget/BMMap.java" />
+        <option value="$PROJECT_DIR$/BoxMover/src/rapid/ui/MenuBar.java" />
+        <option value="$PROJECT_DIR$/BoxMover/src/rapid/utils.java" />
+        <option value="$PROJECT_DIR$/BoxMover/src/rapid/ui/StartPanel.java" />
         <option value="$PROJECT_DIR$/BoxMover/src/rapid/ctrl/GameCommandListener.java" />
         <option value="$PROJECT_DIR$/BoxMover/src/rapid/ctrl/CommandId.java" />
-        <option value="$PROJECT_DIR$/BoxMover/src/rapid/ui/LevelVictoryPanel.java" />
         <option value="$PROJECT_DIR$/BoxMover/src/rapid/ui/GenericPanel.java" />
-        <option value="$PROJECT_DIR$/BoxMover/src/rapid/ui/StartPanel.java" />
-        <option value="$PROJECT_DIR$/BoxMover/src/rapid/ui/Frame.java" />
         <option value="$PROJECT_DIR$/BoxMover/src/rapid/ui/GamePanel.java" />
-        <option value="$PROJECT_DIR$/BoxMover/src/rapid/widget/BMMap.java" />
+        <option value="$PROJECT_DIR$/BoxMover/src/rapid/widget/User.java" />
+        <option value="$PROJECT_DIR$/BoxMover/src/rapid/widget/RankList.java" />
+        <option value="$PROJECT_DIR$/BoxMover/src/rapid/ui/InfoPanel.java" />
+        <option value="$PROJECT_DIR$/BoxMover/src/rapid/ui/AuthorPanel.java" />
+        <option value="$PROJECT_DIR$/BoxMover/src/rapid/ui/HelpPanel.java" />
+        <option value="$PROJECT_DIR$/BoxMover/src/rapid/ui/RankPanel.java" />
         <option value="$PROJECT_DIR$/BoxMover/src/rapid/App.java" />
-        <option value="$PROJECT_DIR$/BoxMover/src/rapid/ui/MenuBar.java" />
+        <option value="$PROJECT_DIR$/BoxMover/src/rapid/ui/LevelVictoryPanel.java" />
+        <option value="$PROJECT_DIR$/BoxMover/src/rapid/ui/Frame.java" />
       </list>
     </option>
   </component>
@@ -218,7 +179,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -445,6 +405,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -468,6 +429,7 @@
     <property name="dynamic.classpath" value="false" />
     <property name="OverrideImplement.overriding.sorted" value="false" />
     <property name="FullScreen" value="false" />
+    <property name="SearchEverywhereHistory" value="" />
   </component>
   <component name="RunManager" selected="Application.BoxMover">
     <configuration default="false" name="BoxMover" type="Application" factoryName="Application" temporary="true">
@@ -748,6 +710,9 @@
       <AnalysisUIOptions />
     </option>
   </component>
+  <component name="SliceToolwindowSettings">
+    <option name="autoScroll" value="true" />
+  </component>
   <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false" SSL_PROTOCOLS="all">
     <option name="USER" value="" />
     <option name="PASSWORD" value="" />
@@ -771,11 +736,16 @@
       <created>1382004791075</created>
       <updated>1382004791075</updated>
       <workItem from="1386837531814" duration="8301000" />
+      <workItem from="1386892918768" duration="1278000" />
+      <workItem from="1386894217638" duration="4404000" />
+      <workItem from="1386926131650" duration="1908000" />
+      <workItem from="1386928072553" duration="1565000" />
+      <workItem from="1386929677173" duration="3595000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8301000" />
+    <option name="totallyTimeSpent" value="21051000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -801,11 +771,11 @@
     <frame x="0" y="24" width="1366" height="744" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39910978" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -822,14 +792,48 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24963397" sideWeight="0.64526486" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35459942" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Analyze Dataflow from" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32937685" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3258427" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3249258" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Analyze Dataflow to" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32937685" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
+    <layout-to-restore>
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Analyze Dataflow from" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32937685" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32905295" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32905295" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24963397" sideWeight="0.64526486" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.35459942" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3249258" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Analyze Dataflow to" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32937685" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39910978" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3264095" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.6581059" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USERS">
@@ -852,6 +856,147 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/widget/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="79" column="56" selection-start="1675" selection-end="1675" vertical-scroll-proportion="0.0" vertical-offset="1422" max-vertical-offset="1674">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/ctrl/CommandId.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="18" selection-start="357" selection-end="357" vertical-scroll-proportion="0.0" vertical-offset="223" max-vertical-offset="630">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/ui/RankPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="5" selection-start="285" selection-end="285" vertical-scroll-proportion="0.0" vertical-offset="252" max-vertical-offset="396">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/App.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="57" column="22" selection-start="1588" selection-end="1588" vertical-scroll-proportion="0.0" vertical-offset="1026" max-vertical-offset="3222">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/widget/RankList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="64" column="15" selection-start="1544" selection-end="1544" vertical-scroll-proportion="0.0" vertical-offset="792" max-vertical-offset="1314">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/ui/LevelVictoryPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="23" selection-start="169" selection-end="169" vertical-scroll-proportion="0.0" vertical-offset="162" max-vertical-offset="324">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/ctrl/CommandId.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="14" selection-start="386" selection-end="386" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="612">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/ui/GamePanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="47" selection-start="625" selection-end="625" vertical-scroll-proportion="0.0" vertical-offset="468" max-vertical-offset="2520">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/ui/StartPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="68" column="61" selection-start="1906" selection-end="1906" vertical-scroll-proportion="0.0" vertical-offset="1224" max-vertical-offset="1710">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/widget/BMMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="360" column="46" selection-start="11115" selection-end="11115" vertical-scroll-proportion="0.0" vertical-offset="6480" max-vertical-offset="8298">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/ui/Frame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="42" column="40" selection-start="1061" selection-end="1061" vertical-scroll-proportion="0.0" vertical-offset="756" max-vertical-offset="1044">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/ui/MenuBar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="60" selection-start="1308" selection-end="1308" vertical-scroll-proportion="0.0" vertical-offset="424" max-vertical-offset="1836">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/ctrl/CommandId.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="14" selection-start="284" selection-end="284" vertical-scroll-proportion="0.0" vertical-offset="43" max-vertical-offset="468">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/ui/GamePanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="47" selection-start="625" selection-end="625" vertical-scroll-proportion="0.0" vertical-offset="468" max-vertical-offset="2520">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/App.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="47" column="78" selection-start="1198" selection-end="1198" vertical-scroll-proportion="0.0" vertical-offset="846" max-vertical-offset="2772">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/ui/StartPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="68" column="61" selection-start="1906" selection-end="1906" vertical-scroll-proportion="0.0" vertical-offset="1224" max-vertical-offset="1710">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/widget/BMMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="360" column="46" selection-start="11115" selection-end="11115" vertical-scroll-proportion="0.0" vertical-offset="6480" max-vertical-offset="8298">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/ui/Frame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="42" column="40" selection-start="1061" selection-end="1061" vertical-scroll-proportion="0.0" vertical-offset="756" max-vertical-offset="1044">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/ui/MenuBar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="50" column="46" selection-start="1112" selection-end="1112" vertical-scroll-proportion="0.0" vertical-offset="900" max-vertical-offset="1206">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/ctrl/CommandId.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="14" selection-start="269" selection-end="269" vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="450">
@@ -871,10 +1016,7 @@
     <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/ui/Frame.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="40" column="32" selection-start="851" selection-end="851" vertical-scroll-proportion="0.0" vertical-offset="720" max-vertical-offset="882">
-          <folding>
-            <element signature="e#732#909#0" expanded="true" />
-            <element signature="e#898#899#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -892,27 +1034,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/ui/RankPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="43" selection-start="189" selection-end="189" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/ui/AuthorPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="45" selection-start="191" selection-end="191" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/ui/HelpPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="43" selection-start="189" selection-end="189" vertical-scroll-proportion="0.36096257" vertical-offset="0" max-vertical-offset="0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/widget/BMContainer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="9" column="22" selection-start="261" selection-end="272" vertical-scroll-proportion="-0.7647059" vertical-offset="0" max-vertical-offset="0">
@@ -923,36 +1044,6 @@
     <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/widget/BMWidget.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="21" column="4" selection-start="575" selection-end="575" vertical-scroll-proportion="0.842246" vertical-offset="0" max-vertical-offset="0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/widget/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="31" selection-start="1152" selection-end="1152" vertical-scroll-proportion="1.9251337" vertical-offset="0" max-vertical-offset="0">
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///usr/lib/jvm/java-7-sun/src.zip!/javax/swing/JFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="126" column="28" selection-start="4414" selection-end="4414" vertical-scroll-proportion="0.606599" vertical-offset="1489" max-vertical-offset="16308">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/ctrl/GameCommandListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="31" selection-start="729" selection-end="729" vertical-scroll-proportion="0.46928746" vertical-offset="241" max-vertical-offset="666">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/ui/LevelVictoryPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="4" selection-start="200" selection-end="200" vertical-scroll-proportion="0.46875" vertical-offset="0" max-vertical-offset="384">
           <folding />
         </state>
       </provider>
@@ -973,78 +1064,174 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/ctrl/CommandId.java">
+    <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/ui/MenuBar.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="14" selection-start="284" selection-end="284" vertical-scroll-proportion="0.0" vertical-offset="43" max-vertical-offset="468">
+        <state line="48" column="26" selection-start="1604" selection-end="1604" vertical-scroll-proportion="1.7248157" vertical-offset="0" max-vertical-offset="1512">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/utils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="5" selection-start="484" selection-end="484" vertical-scroll-proportion="0.75184274" vertical-offset="54" max-vertical-offset="504">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/ctrl/GameCommandListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="50" selection-start="799" selection-end="799" vertical-scroll-proportion="0.4375" vertical-offset="282" max-vertical-offset="738">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/ui/StartPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="68" column="61" selection-start="1906" selection-end="1906" vertical-scroll-proportion="0.0" vertical-offset="1051" max-vertical-offset="1458">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/ui/GenericPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="52" selection-start="296" selection-end="296" vertical-scroll-proportion="0.48697916" vertical-offset="11" max-vertical-offset="450">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/ui/GamePanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="47" selection-start="625" selection-end="625" vertical-scroll-proportion="0.0" vertical-offset="324" max-vertical-offset="2520">
+        <state line="72" column="83" selection-start="2131" selection-end="2131" vertical-scroll-proportion="0.4864865" vertical-offset="1026" max-vertical-offset="1458">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#817#978#0" expanded="true" />
-            <element signature="e#967#968#0" expanded="true" />
-            <element signature="e#1161#2574#0" expanded="true" />
-            <element signature="e#2563#2564#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/widget/BMMap.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="360" column="46" selection-start="11115" selection-end="11115" vertical-scroll-proportion="0.0" vertical-offset="6338" max-vertical-offset="8082">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#getTime#0;class#BMMap#0" expanded="true" />
-            <element signature="method#getBackStep#0;class#BMMap#0" expanded="true" />
-          </folding>
+        <state line="360" column="46" selection-start="11115" selection-end="11115" vertical-scroll-proportion="1.7817259" vertical-offset="5562" max-vertical-offset="7974">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/ui/Frame.java">
+    <entry file="jar:///usr/lib/jvm/java-7-sun/src.zip!/javax/swing/JRootPane.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="40" selection-start="1061" selection-end="1061" vertical-scroll-proportion="0.0" vertical-offset="432" max-vertical-offset="918">
+        <state line="610" column="91" selection-start="22397" selection-end="22397" vertical-scroll-proportion="0.012690355" vertical-offset="10183" max-vertical-offset="18936" />
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-7-sun/src.zip!/java/awt/Container.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1251" column="16" selection-start="49356" selection-end="49356" vertical-scroll-proportion="0.33153638" vertical-offset="21207" max-vertical-offset="86832">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/ui/GenericPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="0" selection-start="487" selection-end="487" vertical-scroll-proportion="0.64619166" vertical-offset="115" max-vertical-offset="522">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-7-sun/src.zip!/javax/swing/JFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="580" column="16" selection-start="21054" selection-end="21054" vertical-scroll-proportion="0.33248731" vertical-offset="9625" max-vertical-offset="16308" />
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-7-sun/src.zip!/java/lang/Integer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="762" column="19" selection-start="27351" selection-end="27357" vertical-scroll-proportion="0.41640866" vertical-offset="13033" max-vertical-offset="22086">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/ui/GamePanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="56" selection-start="896" selection-end="896" vertical-scroll-proportion="0.6852792" vertical-offset="90" max-vertical-offset="2268">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BoxMover/src/BoxMover.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="13" selection-start="159" selection-end="159" vertical-scroll-proportion="0.42705572" vertical-offset="1" max-vertical-offset="378">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-7-sun/src.zip!/java/util/HashMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="126" column="41" selection-start="5352" selection-end="5352" vertical-scroll-proportion="0.46437347" vertical-offset="1665" max-vertical-offset="20556">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/widget/RankList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="17" selection-start="982" selection-end="982" vertical-scroll-proportion="1.5921376" vertical-offset="0" max-vertical-offset="1656">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/widget/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="18" selection-start="367" selection-end="367" vertical-scroll-proportion="-0.30958232" vertical-offset="432" max-vertical-offset="1584">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/ui/AuthorPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="84" selection-start="321" selection-end="321" vertical-scroll-proportion="0.5749386" vertical-offset="0" max-vertical-offset="407">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/ui/HelpPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="82" selection-start="315" selection-end="315" vertical-scroll-proportion="0.5749386" vertical-offset="0" max-vertical-offset="407">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/ui/RankPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="82" selection-start="365" selection-end="365" vertical-scroll-proportion="0.24815725" vertical-offset="133" max-vertical-offset="648">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/ctrl/CommandId.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="18" selection-start="357" selection-end="357" vertical-scroll-proportion="0.0" vertical-offset="151" max-vertical-offset="630">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/ui/InfoPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="20" selection-start="1007" selection-end="1007" vertical-scroll-proportion="0.73464376" vertical-offset="349" max-vertical-offset="954">
           <folding>
-            <element signature="e#732#909#0" expanded="true" />
-            <element signature="e#898#899#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#793#1005#0" expanded="true" />
+            <element signature="e#990#991#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/App.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="78" selection-start="1198" selection-end="1198" vertical-scroll-proportion="0.0" vertical-offset="571" max-vertical-offset="2772">
+        <state line="142" column="26" selection-start="4492" selection-end="4492" vertical-scroll-proportion="0.0" vertical-offset="2216" max-vertical-offset="3168">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/ui/LevelVictoryPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="65" column="37" selection-start="2019" selection-end="2019" vertical-scroll-proportion="0.0" vertical-offset="817" max-vertical-offset="1332">
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#687#1292#0" expanded="true" />
+            <element signature="e#1281#1282#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/ui/MenuBar.java">
+    <entry file="file://$PROJECT_DIR$/BoxMover/src/rapid/ui/Frame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="46" selection-start="1112" selection-end="1112" vertical-scroll-proportion="2.2113023" vertical-offset="0" max-vertical-offset="1206">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1238#1239#0" expanded="true" />
-            <element signature="e#1266#1267#0" expanded="true" />
-          </folding>
+        <state line="19" column="34" selection-start="410" selection-end="417" vertical-scroll-proportion="-0.32678133" vertical-offset="331" max-vertical-offset="954">
+          <folding />
         </state>
       </provider>
     </entry>

@@ -17,4 +17,13 @@ public enum CommandId {
     MOVE_UP,
     MOVE_DOWN,
     MOVE_BACK,
+
+    RESTART_LEVEL,
+    CHOOSE_LEVEL,
+    SAVE_LEVEL,
+    BACK_TO_LEVEL,
+
+    SHOW_HELP,
+    SHOW_AUTHOR,
+    SHOW_RANK,
 }

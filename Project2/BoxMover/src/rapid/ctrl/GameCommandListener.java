@@ -23,9 +23,13 @@ public interface GameCommandListener {
     public void onLevelVictory(GameCommandEvent e);
     public void onLevelFailed(GameCommandEvent e);
     public void onGameVictory(GameCommandEvent e);
+    public void onBackToLevel(GameCommandEvent e);
 
     public void onShowAbout(GameCommandEvent e);
     public void onShowHelp(GameCommandEvent e);
+    public void onShowRank(GameCommandEvent e);
 
     public void onChooseLevel(GameCommandEvent e);
+    public void onRestartLevel(GameCommandEvent e);
+    public void onSaveLevel(GameCommandEvent e);
 }

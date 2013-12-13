@@ -51,6 +51,10 @@ public class User {
 
         ret.map = new BMMap();
         ret.name = name;
+
+        RankList rl = RankList.get();
+        rl.update(ret.name, 0);
+
         try {
             ret.map.loadLevel(1);
         } catch (Exception ex) {
@@ -70,7 +74,16 @@ public class User {
         return ret;
     }
 
-    private User() {
+    public int getScore() {
+        RankList rl = RankList.get();
+        return rl.getScore(this.name);
+    }
 
+    public void incScore(int delta) {
+        RankList rl = RankList.get();
+        rl.update(this.name, rl.getScore(name) + delta);
+    }
+
+    private User() {
     }
 }

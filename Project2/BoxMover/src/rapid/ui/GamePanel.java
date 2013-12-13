@@ -90,11 +90,11 @@ public class GamePanel extends GenericPanel {
             }
         }
 
-        g.setFont(new Font(null, Font.PLAIN, 30));
+        g.setFont(new Font("Consolas", Font.PLAIN, 30));
         g.setColor(Color.red);
 
-        g.drawString(String.format("%02d:%02d", map.getTime() / 60, map.getTime() % 60), (getWidth() - 100) / 2, 50);
-        g.drawString(String.format("Steps: %04d", map.getCurrentStep()), (getWidth() - 100) / 2, 100);
+        g.drawString(String.format("Time:%02d:%02d", map.getTime() / 60, map.getTime() % 60), (getWidth() - 160) / 2, 30);
+        g.drawString(String.format("Steps:% 4d", map.getCurrentStep()), (getWidth() - 160) / 2, 70);
     }
 
     private ImageIcon createBlock(int i, int j) {
@@ -130,6 +130,9 @@ public class GamePanel extends GenericPanel {
         }
 
         return new ImageIcon(Env.PIC_DIRECTORY + icoFile);
+    }
 
+    public void destroy() {
+        timer.stop();
     }
 }

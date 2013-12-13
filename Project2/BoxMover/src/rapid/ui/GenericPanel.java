@@ -21,4 +21,8 @@ abstract public class GenericPanel extends JPanel {
     public void setGameListener(GameCommandListener gl) {
         this.gl = gl;
     }
+
+    public void destroy() {
+
+    }
 }

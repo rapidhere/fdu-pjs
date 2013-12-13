@@ -9,6 +9,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import rapid.utils;
 
 /**
  * Copyright : all rights reserved,rapidhere@gmail.com
@@ -41,7 +42,7 @@ public class StartPanel extends GenericPanel {
 
         // create Buttons
         for(int i = 0; i < buttons.length;i ++) {
-            buttons[i] = createButton((String)BUTTON_CONFIG[i][0]);
+            buttons[i] = utils.createButton((String)BUTTON_CONFIG[i][0]);
             add(buttons[i]);
         }
     }
@@ -53,15 +54,6 @@ public class StartPanel extends GenericPanel {
             JButton bt = buttons[i];
             bt.setLocation((getWidth() - bt.getWidth()) / 2, (Integer)BUTTON_CONFIG[i][1]);
         }
-    }
-
-    private JButton createButton(String path) {
-        JButton bt = new JButton(new ImageIcon(path));
-        bt.setMargin(new Insets(0, 0, 0, 0));
-        bt.setBorder(BorderFactory.createEtchedBorder());
-        bt.setContentAreaFilled(false);
-
-        return bt;
     }
 
     public void setGameListener(GameCommandListener g) {
