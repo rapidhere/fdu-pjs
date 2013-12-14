@@ -12,9 +12,10 @@ import java.io.*;
  * Version :
  * Usage :
  */
-public class User {
+public class User implements Serializable {
     private BMMap map;
     private String name;
+    private int highLv = 1;
 
     public BMMap getMap() {
         return map;
@@ -29,18 +30,7 @@ public class User {
 
         try {
             out = new ObjectOutputStream(new FileOutputStream(Env.USR_DIRECTORY + name));
-            out.writeObject(map);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    public void read() {
-        ObjectInputStream oin;
-
-        try {
-            oin = new ObjectInputStream(new FileInputStream(Env.USR_DIRECTORY + name));
-            map = (BMMap)oin.readObject();
+            out.writeObject(this);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -66,22 +56,29 @@ public class User {
     }
 
     public static User getUser(String name) {
-        User ret = new User();
+        ObjectInputStream oin;
 
-        ret.name = name;
-        ret.read();
+        try {
+            oin = new ObjectInputStream(new FileInputStream(Env.USR_DIRECTORY + name));
+            return (User)oin.readObject();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
 
-        return ret;
-    }
-
-    public int getScore() {
-        RankList rl = RankList.get();
-        return rl.getScore(this.name);
+        return null;
     }
 
     public void incScore(int delta) {
         RankList rl = RankList.get();
         rl.update(this.name, rl.getScore(name) + delta);
+    }
+
+    public int getHighLv() {
+        return highLv;
+    }
+
+    public void incHighLv() {
+        highLv = Math.max(highLv, getMap().getLevel() + 1);
     }
 
     private User() {

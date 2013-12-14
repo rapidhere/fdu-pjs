@@ -42,6 +42,6 @@ abstract public class InfoPanel extends GenericPanel {
         super.paintComponent(g);
 
         g.drawImage(bg.getImage(), 0, 0, this);
-        bt.setLocation((getWidth() - bt.getWidth()) / 2, 300);
+        bt.setLocation((getWidth() - bt.getWidth()) / 2, 320);
     }
 }

@@ -27,7 +27,8 @@ public class App {
         GAME_STATE_AUTHOR = 2,
         GAME_STATE_HELP = 3,
         GAME_STATE_RANK = 4,
-        GAME_STATE_LEVEL_VICTORY = 5;
+        GAME_STATE_LEVEL_VICTORY = 5,
+        GAME_STATE_CHOOSE = 6;
 
     private User currentUser = null;
 
@@ -60,6 +61,10 @@ public class App {
                 break;
             case GAME_STATE_LEVEL_VICTORY:
                 win.setGameState(new LevelVictoryPanel(currentUser), gl, null);
+                break;
+            case GAME_STATE_CHOOSE:
+                win.setGameState(new ChoosePanel(currentUser), gl, null);
+                break;
         }
     }
 
@@ -137,15 +142,17 @@ public class App {
         }
 
         public void onLevelVictory(GameCommandEvent e) {
+            currentUser.incScore(currentUser.getMap().getScore());
+            currentUser.incHighLv();
             setGameState(GAME_STATE_LEVEL_VICTORY);
         }
 
         public void onLevelFailed(GameCommandEvent e) {
-
+            // Do nothing
         }
 
         public void onGameVictory(GameCommandEvent e) {
-
+            // Do nothing
         }
 
         public void onShowAbout(GameCommandEvent e) {
@@ -157,15 +164,19 @@ public class App {
         }
 
         public void onChooseLevel(GameCommandEvent e) {
-
+            setGameState(GAME_STATE_CHOOSE);
         }
 
         public void onRestartLevel(GameCommandEvent e) {
-
+            try {
+                currentUser.getMap().loadLevel(currentUser.getMap().getLevel());
+            } catch (Exception ee) {
+                ee.printStackTrace();
+            }
         }
 
         public void onSaveLevel(GameCommandEvent e) {
-
+            currentUser.save();
         }
 
         public void onShowRank(GameCommandEvent e) {

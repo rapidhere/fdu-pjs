@@ -371,6 +371,7 @@ public class BMMap implements Serializable {
             return;
         }
 
+        back_step ++;
         // step back one by one
         for(int i = 0;i < step;i ++,n_push_stack --) {
             int dir = push_stack_dir[n_push_stack - 1],
@@ -407,6 +408,10 @@ public class BMMap implements Serializable {
      */
     public int getCurrentStep() {
         return cur_step;
+    }
+
+    public int getScore() {
+        return 1000 * getLevel() - 10 * getCurrentStep() - 50 * getBackStep() - getTime();
     }
 }
 
