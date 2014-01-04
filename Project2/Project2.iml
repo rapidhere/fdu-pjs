@@ -9,6 +9,7 @@
       <sourceFolder url="file://$MODULE_DIR$/BoxMover/maps" isTestSource="false" packagePrefix="maps" />
       <sourceFolder url="file://$MODULE_DIR$/BoxMover/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/BoxMover/usr" isTestSource="false" packagePrefix="usr" />
+      <sourceFolder url="file://$MODULE_DIR$/BoxMover/doc" isTestSource="false" packagePrefix="doc" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
