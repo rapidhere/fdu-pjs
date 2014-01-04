@@ -5,9 +5,9 @@ import rapid.Env;
 /**
  * Copyright : all rights reserved,rapidhere@gmail.com
  * Mail: rapidhere@gmail.com
- * Class :
- * Version :
- * Usage :
+ * Class : AuthorPanel
+ * Version : 0.1
+ * Usage : The Author Panel
  */
 public class AuthorPanel extends InfoPanel {
     public AuthorPanel() {

@@ -8,9 +8,9 @@ import java.awt.*;
 /**
  * Copyright : all rights reserved,rapidhere@gmail.com
  * Mail: rapidhere@gmail.com
- * Class :
- * Version :
- * Usage :
+ * Class : RankPanel
+ * Version : 0.1
+ * Usage : The RankPanel
  */
 public class RankPanel extends InfoPanel {
     public RankPanel() {
@@ -20,6 +20,7 @@ public class RankPanel extends InfoPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
+        // draw rank
         RankList.RankItem rl[] = RankList.get().getTopThree();
 
         g.setFont(new Font(null, Font.PLAIN, 16));

@@ -1,7 +1,6 @@
 package rapid.ui;
 
 import rapid.Env;
-import rapid.ctrl.CommandId;
 import rapid.ctrl.GameCommandEvent;
 import rapid.widget.BMContainer;
 import rapid.widget.BMMap;
@@ -18,19 +17,20 @@ import java.awt.event.KeyEvent;
 /**
  * Copyright : all rights reserved,rapidhere@gmail.com
  * Mail: rapidhere@gmail.com
- * Class :
- * Version :
- * Usage :
+ * Class : GamePanel
+ * Version : 0.1
+ * Usage : The playing panel
  */
 public class GamePanel extends GenericPanel {
-    private User currentUser;
-    private BMMap map;
-    private Timer timer;
+    private User currentUser; // current User
+    private BMMap map; // the map
+    private Timer timer;  // the timer
 
     public GamePanel(User currentUser) {
         this.currentUser = currentUser;
         this.map = this.currentUser.getMap();
 
+        // set up timer
         this.timer = new Timer(1000, new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 map.incTime();
@@ -43,36 +43,37 @@ public class GamePanel extends GenericPanel {
 
         final GamePanel self = this;
 
+        // listen to keyboard
         this.addKeyListener(new KeyAdapter() {
             public void keyPressed(KeyEvent e) {
                 switch (e.getKeyCode()) {
                     case KeyEvent.VK_UP:
                     case KeyEvent.VK_W:
-                        gl.onKeyUp(new GameCommandEvent(CommandId.MOVE_UP, null, self));
+                        gl.onKeyUp(new GameCommandEvent(null, self));
                         repaint();
                         break;
 
                     case KeyEvent.VK_DOWN:
                     case KeyEvent.VK_S:
-                        gl.onKeyDown(new GameCommandEvent(CommandId.MOVE_DOWN, null, self));
+                        gl.onKeyDown(new GameCommandEvent(null, self));
                         repaint();
                         break;
 
                     case KeyEvent.VK_LEFT:
                     case KeyEvent.VK_A:
-                        gl.onKeyLeft(new GameCommandEvent(CommandId.MOVE_LEFT, null, self));
+                        gl.onKeyLeft(new GameCommandEvent(null, self));
                         repaint();
                         break;
 
                     case KeyEvent.VK_RIGHT:
                     case KeyEvent.VK_D:
-                        gl.onKeyRight(new GameCommandEvent(CommandId.MOVE_RIGHT, null, self));
+                        gl.onKeyRight(new GameCommandEvent(null, self));
                         repaint();
                         break;
                     case KeyEvent.VK_BACK_SPACE:
                     case KeyEvent.VK_B:
                         Object args[] = {1};
-                        gl.onBackStep(new GameCommandEvent(CommandId.MOVE_BACK, args, self));
+                        gl.onBackStep(new GameCommandEvent(args, self));
                         repaint();
                         break;
                 }
@@ -83,6 +84,7 @@ public class GamePanel extends GenericPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
+        // draw the blocks
         for(int i = 0;i < map.getHeight();i ++) {
             for(int j = 0;j < map.getWidth();j ++) {
                 ImageIcon cur = createBlock(i, j);
@@ -90,6 +92,7 @@ public class GamePanel extends GenericPanel {
             }
         }
 
+        // draw the time
         g.setFont(new Font("Consolas", Font.PLAIN, 30));
         g.setColor(Color.red);
 
@@ -97,6 +100,7 @@ public class GamePanel extends GenericPanel {
         g.drawString(String.format("Steps:% 4d", map.getCurrentStep()), (getWidth() - 160) / 2, 70);
     }
 
+    // how to create a block
     private ImageIcon createBlock(int i, int j) {
         BMWidget w = map.getWidgetAt(i, j);
         String icoFile;
@@ -115,11 +119,11 @@ public class GamePanel extends GenericPanel {
                 }
                 break;
             case BMWidget.BLOCK_TYPE_TARGET:
-                if(w.isPassable()) {
+                if(w.isPassable()) { // empty
                     icoFile = "4.png";
                 } else {
                     if(((BMContainer)w).getInner().getTypeId() == BMWidget.BLOCK_TYPE_BOX) {
-                        icoFile = "6.png";
+                        icoFile = "6.png"; // filled with box
                     } else {
                         icoFile = ((BMContainer)w).getInner().getTypeId() + ".png";
                     }
@@ -132,6 +136,7 @@ public class GamePanel extends GenericPanel {
         return new ImageIcon(Env.PIC_DIRECTORY + icoFile);
     }
 
+    // stop timer
     public void destroy() {
         timer.stop();
     }

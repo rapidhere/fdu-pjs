@@ -1,13 +1,11 @@
 package rapid.exp;
 
-import rapid.exp.BoxMoverException;
-
 /**
  * Copyright : all rights reserved,rapidhere@gmail.com
  * Mail: rapidhere@gmail.com
- * Class :
- * Version :
- * Usage :
+ * Class : LevelNotFound
+ * Version : 0.1
+ * Usage : Cannot found the specified level file
  */
 public class LevelNotFound extends BoxMoverException {
     private int level;

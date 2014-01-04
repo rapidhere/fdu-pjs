@@ -1,26 +1,25 @@
 package rapid.ui;
 
 import rapid.Env;
-import rapid.ctrl.CommandId;
 import rapid.ctrl.GameCommandEvent;
 import rapid.ctrl.GameCommandListener;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 /**
  * Copyright : all rights reserved,rapidhere@gmail.com
  * Mail: rapidhere@gmail.com
- * Class :
- * Version :
- * Usage :
+ * Class : Frame
+ * Version : 0.1
+ * Usage : The Frame of the game
  */
 public class Frame extends JFrame {
-    private GenericPanel curPanel;
-    private GameCommandListener gl;
+    private GenericPanel curPanel;  // curPanel of Frame
+    private GameCommandListener gl; // Game listener
 
+    // constructor
     public Frame(GameCommandListener _gl) {
         super();
 
@@ -32,13 +31,15 @@ public class Frame extends JFrame {
 
         this.gl = _gl;
 
+        // Handle exit event
         addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
-                gl.onExit(new GameCommandEvent(CommandId.EXIT, null, this));
+                gl.onExit(new GameCommandEvent(null, this));
             }
         });
     }
 
+    // set the current state of game
     public void setGameState(GenericPanel p, GameCommandListener g, JMenuBar jmb) {
         if(curPanel != null) {
             curPanel.destroy();

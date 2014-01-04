@@ -1,7 +1,6 @@
 package rapid.ui;
 
 import rapid.Env;
-import rapid.ctrl.CommandId;
 import rapid.ctrl.GameCommandEvent;
 import rapid.ctrl.GameCommandListener;
 
@@ -14,12 +13,12 @@ import rapid.utils;
 /**
  * Copyright : all rights reserved,rapidhere@gmail.com
  * Mail: rapidhere@gmail.com
- * Class :
- * Version :
- * Usage :
+ * Class : StartPanel
+ * Version : 0.1
+ * Usage : The start menu of game
  */
 public class StartPanel extends GenericPanel {
-    private ImageIcon bgImg;
+    private ImageIcon bgImg;    // background image
 
     private JButton buttons[] = new JButton[3];
     private static final int
@@ -48,8 +47,10 @@ public class StartPanel extends GenericPanel {
     }
 
     public void paintComponent(Graphics g) {
+        // draw background
         g.drawImage(bgImg.getImage(), 0, 0, this);
 
+        // draw buttons
         for(int i = 0;i < buttons.length;i ++) {
             JButton bt = buttons[i];
             bt.setLocation((getWidth() - bt.getWidth()) / 2, (Integer)BUTTON_CONFIG[i][1]);
@@ -62,19 +63,19 @@ public class StartPanel extends GenericPanel {
 
         buttons[BUTTON_EXIT].addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                gl.onExit(new GameCommandEvent(CommandId.EXIT, null, self));
+                gl.onExit(new GameCommandEvent(null, self));
             }
         });
 
         buttons[BUTTON_CONTINUE].addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                gl.onOldUser(new GameCommandEvent(CommandId.OLD_USER, null, self));
+                gl.onOldUser(new GameCommandEvent(null, self));
             }
         });
 
         buttons[BUTTON_START].addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                gl.onNewUser(new GameCommandEvent(CommandId.NEW_USER, null, self));
+                gl.onNewUser(new GameCommandEvent(null, self));
             }
         });
     }

@@ -1,13 +1,11 @@
 package rapid.ctrl;
 
-import java.util.EventListener;
-
 /**
  * Copyright : all rights reserved,rapidhere@gmail.com
  * Mail: rapidhere@gmail.com
- * Class :
- * Version :
- * Usage :
+ * Class : GameCommandListener
+ * Version : 0.1
+ * Usage : The listener of game events
  */
 public interface GameCommandListener {
     public void onExit(GameCommandEvent e);
@@ -22,7 +20,6 @@ public interface GameCommandListener {
 
     public void onLevelVictory(GameCommandEvent e);
     public void onLevelFailed(GameCommandEvent e);
-    public void onGameVictory(GameCommandEvent e);
     public void onBackToLevel(GameCommandEvent e);
 
     public void onShowAbout(GameCommandEvent e);

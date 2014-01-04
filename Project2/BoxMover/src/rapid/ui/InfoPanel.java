@@ -1,7 +1,5 @@
 package rapid.ui;
 
-import rapid.Env;
-import rapid.ctrl.CommandId;
 import rapid.ctrl.GameCommandEvent;
 import rapid.utils;
 
@@ -13,13 +11,13 @@ import java.awt.event.ActionListener;
 /**
  * Copyright : all rights reserved,rapidhere@gmail.com
  * Mail: rapidhere@gmail.com
- * Class :
- * Version :
- * Usage :
+ * Class : InfoPanel
+ * Version : 0.1
+ * Usage : A Abstract Panel to show information
  */
 abstract public class InfoPanel extends GenericPanel {
-    private ImageIcon bg;
-    protected JButton bt;
+    private ImageIcon bg;   // bg of info panel
+    protected JButton bt;   // the back button
 
     public InfoPanel(String bgPath, String btPath, boolean flagExit) {
         bg = new ImageIcon(bgPath);
@@ -27,12 +25,12 @@ abstract public class InfoPanel extends GenericPanel {
         setSize(bg.getIconWidth(), bg.getIconHeight());
         add(bt);
 
-        if(flagExit) {
+        if(flagExit) {  // use default exit button
             final InfoPanel self = this;
 
             bt.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    gl.onBackToLevel(new GameCommandEvent(CommandId.BACK_TO_LEVEL, null, self));
+                    gl.onBackToLevel(new GameCommandEvent(null, self));
                 }
             });
         }
@@ -41,7 +39,10 @@ abstract public class InfoPanel extends GenericPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
+        // draw bg
         g.drawImage(bg.getImage(), 0, 0, this);
+
+        // draw button
         bt.setLocation((getWidth() - bt.getWidth()) / 2, 320);
     }
 }

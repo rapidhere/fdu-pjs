@@ -1,7 +1,6 @@
 package rapid.ui;
 
 import rapid.Env;
-import rapid.ctrl.CommandId;
 import rapid.ctrl.GameCommandEvent;
 import rapid.widget.User;
 
@@ -12,12 +11,13 @@ import java.awt.event.ActionListener;
 /**
  * Copyright : all rights reserved,rapidhere@gmail.com
  * Mail: rapidhere@gmail.com
- * Class :
- * Version :
- * Usage :
+ * Class : LevelVictoryPanel
+ * Version : 0.1
+ * Usage : show after win a level
  */
 public class LevelVictoryPanel extends InfoPanel {
     private User currentUser;
+    // level, steps, back steps, time, score
     private int lv, mv, bm, ti, sc;
 
     public LevelVictoryPanel(User _currentUser) {
@@ -27,12 +27,14 @@ public class LevelVictoryPanel extends InfoPanel {
 
         int cLevel = currentUser.getMap().getLevel();
 
+        // get data
         lv = currentUser.getMap().getLevel();
         mv = currentUser.getMap().getCurrentStep();
         bm = currentUser.getMap().getBackStep();
         ti = currentUser.getMap().getTime();
         sc = currentUser.getMap().getScore();
 
+        // set next level
         if(cLevel == 9) {
             cLevel = 1;
         } else {
@@ -45,10 +47,12 @@ public class LevelVictoryPanel extends InfoPanel {
         }
 
         final LevelVictoryPanel self = this;
+
+        // back to level on click
         bt.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-            gl.onBackToLevel(new GameCommandEvent(CommandId.BACK_TO_LEVEL, null, self));
+            gl.onBackToLevel(new GameCommandEvent(null, self));
             }
         });
     }
@@ -59,6 +63,7 @@ public class LevelVictoryPanel extends InfoPanel {
         g.setFont(new Font(null, Font.PLAIN, 16));
         g.setColor(Color.red);
 
+        // draw info
         g.drawString(currentUser.getName(), 200, 95);
         g.drawString("" + lv, 200, 140);
         g.drawString("" + mv, 200, 180);

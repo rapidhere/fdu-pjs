@@ -8,9 +8,9 @@ import java.io.*;
 /**
  * Copyright : all rights reserved,rapidhere@gmail.com
  * Mail: rapidhere@gmail.com
- * Class :
- * Version :
- * Usage :
+ * Class : User
+ * Version : 0.1
+ * Usage : The user
  */
 public class User implements Serializable {
     private BMMap map;

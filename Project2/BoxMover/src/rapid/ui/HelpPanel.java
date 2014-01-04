@@ -5,9 +5,9 @@ import rapid.Env;
 /**
  * Copyright : all rights reserved,rapidhere@gmail.com
  * Mail: rapidhere@gmail.com
- * Class :
- * Version :
- * Usage :
+ * Class : HelpPanel
+ * Version : 0.1
+ * Usage : The Instruction Panel
  */
 public class HelpPanel extends InfoPanel {
     public HelpPanel() {
