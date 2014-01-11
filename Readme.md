@@ -1,4 +1,4 @@
-FDU Software Engeering Projects
+FDU Software Engineering Projects
 =================
 *	Project 1 : Deadline 11.25, Box Mover
 
