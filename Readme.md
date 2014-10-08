@@ -1,4 +1,4 @@
-FDU Software Engeering Projects
+FDU Software Engineering Projects
 =================
 
 ### Java Language
