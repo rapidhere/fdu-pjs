@@ -9,10 +9,10 @@ package core.dc;
  */
 
 abstract public class Compressor {
-    protected DCAlgorithm dcAlg;
+    protected DCCompressAlgorithm dcAlg;
 
     protected Compressor() {}
-    protected Compressor(DCAlgorithm dc) {
+    protected Compressor(DCCompressAlgorithm dc) {
         dcAlg = dc;
     }
 

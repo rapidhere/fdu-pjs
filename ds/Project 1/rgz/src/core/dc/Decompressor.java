@@ -8,10 +8,10 @@ package core.dc;
  * Usage :
  */
 abstract public class Decompressor {
-    protected DCAlgorithm dcAlg;
+    protected DCDecompressAlgorithm dcAlg;
 
     protected Decompressor() {}
-    protected Decompressor(DCAlgorithm dc) {
+    protected Decompressor(DCDecompressAlgorithm dc) {
         dcAlg = dc;
     }
 
