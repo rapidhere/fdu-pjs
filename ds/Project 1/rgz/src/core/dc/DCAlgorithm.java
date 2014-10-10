@@ -7,7 +7,7 @@ package core.dc;
  * Version :
  * Usage :
  */
-abstract public class DCAlgorithm {
-    abstract public DCCompressAlgorithm getCompressAlgorithm();
-    abstract public DCDecompressAlgorithm getDecompressAlgorithm();
+abstract public interface DCAlgorithm {
+    abstract public byte[] compress(Token[] tokens);
+    abstract public byte[] decompress(byte[] bytes);
 }
