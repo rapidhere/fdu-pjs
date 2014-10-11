@@ -60,11 +60,11 @@ public class BitArray {
         return ret;
     }
 
-    public void load(byte[] b) {
+    public void load(byte[] b, int offset) {
         // calculate length
         int length = 0;
         for(int i = 0;i < 4;i ++) {
-            length |= ((int)b[i]) << i * 8;
+            length |= ((int)b[i + offset]) << i * 8;
         }
 
         // calculate bytes length an remain length
@@ -74,14 +74,29 @@ public class BitArray {
         // add bytes
         bytes.clear();
         for(int i = 0;i < byteLength;i ++)
-            bytes.add(b[i + 4]);
+            bytes.add(b[i + 4 + offset]);
 
         // set remain
         currentByteLength = 0;
         currentByte = 0;
         if(remainLength != 0) {
             currentByteLength = (byte)remainLength;
-            currentByte = b[b.length - 1];
+            currentByte = b[offset + 4 + byteLength];
         }
+    }
+
+    public byte get(int index) {
+        if(index >= size())
+            throw new IndexOutOfBoundsException();
+
+        byte b;
+        if(index < bytes.size() * 8) {
+            b = bytes.get(index / 8);
+        } else {
+            b = currentByte;
+        }
+        index %= 8;
+
+        return (byte)(((int)b >> index) & 1);
     }
 }

@@ -12,9 +12,8 @@ import javafx.util.Pair;
 abstract public class Token implements Comparable {
     private Object token;
 
-    public abstract byte[] dumpTokens (Token[] tokens);
-    public abstract Pair<Token[], Integer> loadTokens(byte[] bytes, int offset);
     public abstract int hashCode();
+    public abstract byte[] dump();
 
     public Object getToken() {
         return token;
