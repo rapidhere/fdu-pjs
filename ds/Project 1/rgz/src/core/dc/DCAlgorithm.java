@@ -8,6 +8,6 @@ package core.dc;
  * Usage :
  */
 abstract public interface DCAlgorithm {
-    abstract public byte[] compress(Token[] tokens, CatchAlgorithm ca);
-    abstract public Token[] decompress(byte[] bytes, CatchAlgorithm ca);
+    abstract public byte[] compress(CatchAlgorithm.Token[] tokens, CatchAlgorithm ca);
+    abstract public CatchAlgorithm.Token[] decompress(byte[] bytes, int offset, int length, CatchAlgorithm ca);
 }

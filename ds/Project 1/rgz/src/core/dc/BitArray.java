@@ -19,18 +19,18 @@ public class BitArray {
     }
 
     public void addBit(byte bit) {
+        currentByte = (byte)(((int)currentByte) | ((int)bit << currentByteLength));
+        currentByteLength ++;
+
         if(currentByteLength == 8) {
             bytes.add(currentByte);
-            currentByteLength = 1;
-            currentByte = bit;
-        } else {
-            currentByteLength ++;
-            currentByte = (byte)(((int)currentByte << 1) & (bit));
+            currentByteLength = 0;
+            currentByte = 0;
         }
     }
 
     public int size() {
-        return bytes.size() + currentByteLength;
+        return bytes.size() * 8 + currentByteLength;
     }
 
     public void clear() {
@@ -51,11 +51,11 @@ public class BitArray {
             length >>= 8;
         }
 
-        for(int i = 4;i < bytes.size();i ++)
-            ret[i] = bytes.get(i - 4);
+        for(int i = 0;i < bytes.size();i ++)
+            ret[i + 4] = bytes.get(i);
 
         if(currentByteLength != 0)
-            ret[bytes.size() - 1] = currentByte;
+            ret[ret.length - 1] = currentByte;
 
         return ret;
     }
@@ -64,7 +64,7 @@ public class BitArray {
         // calculate length
         int length = 0;
         for(int i = 0;i < 4;i ++) {
-            length |= ((int)b[i + offset]) << i * 8;
+            length |= (b[i + offset] & 0xff) << (i * 8);
         }
 
         // calculate bytes length an remain length

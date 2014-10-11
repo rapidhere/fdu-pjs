@@ -4,6 +4,7 @@ import javafx.util.Pair;
 
 import java.util.*;
 import java.util.concurrent.LinkedBlockingQueue;
+import core.dc.CatchAlgorithm.Token;
 
 /**
  * Copyright : all rights reserved,rapidhere@gmail.com
@@ -30,7 +31,12 @@ public class DCHuffmanAlgorithm implements DCAlgorithm {
 
         // create heap
         Queue<Pair<Integer, AbstractHuffmanTreeNode>> heap =
-            new PriorityQueue<Pair<Integer, AbstractHuffmanTreeNode>>();
+            new PriorityQueue<Pair<Integer, AbstractHuffmanTreeNode>>(7, new Comparator<Pair<Integer, AbstractHuffmanTreeNode>>() {
+                @Override
+                public int compare(Pair<Integer, AbstractHuffmanTreeNode> o1, Pair<Integer, AbstractHuffmanTreeNode> o2) {
+                    return o1.getKey() - o2.getKey();
+                }
+            });
 
         // put tokens into heap
         for(Pair<Integer, Token> t: tokens) {
@@ -68,7 +74,7 @@ public class DCHuffmanAlgorithm implements DCAlgorithm {
 
         Pair<Integer, Token>[] t = new Pair[frequency.length];
         for(int i = 0;i < frequency.length;i ++) {
-            t[i] = new Pair<Integer, Token>(-frequency[i], tokens[i]);
+            t[i] = new Pair<Integer, Token>(frequency[i], tokens[i]);
         }
 
         return buildHuffmanTree(t, new TokenArgMerger() {
@@ -137,8 +143,9 @@ public class DCHuffmanAlgorithm implements DCAlgorithm {
 
         // count tokens
         for(Token t: tokenSequence) {
-            if(tokenMap.containsKey(t)) {
-                tokenMap.put(t, tokenMap.get(t) + 1);
+            Integer cnt = tokenMap.get(t);
+            if(cnt != null) {
+                tokenMap.put(t, cnt.intValue() + 1);
             } else {
                 tokenMap.put(t, 1);
             }
@@ -203,8 +210,7 @@ public class DCHuffmanAlgorithm implements DCAlgorithm {
         // dump huffman tree depth, < 2 ^ 16
         byte[] huffmanTreeDepthBytes = new byte[tokens.length * 2];
         for(int i = 0;i < tokens.length;i ++) {
-            assert
-                depth[i] < (1 << 16) && depth[i] >= 0;
+            assert depth[i] < (1 << 16) && depth[i] >= 0;
             huffmanTreeDepthBytes[i * 2] = (byte)(depth[i] & 0xff);
             huffmanTreeDepthBytes[i * 2 + 1] = (byte)((depth[i] >> 8) & 0xff);
         }
@@ -226,19 +232,19 @@ public class DCHuffmanAlgorithm implements DCAlgorithm {
     }
 
     @Override
-    public Token[] decompress(byte[] bytes, CatchAlgorithm ca) {
+    public Token[] decompress(byte[] bytes, int startOffset, int length, CatchAlgorithm ca) {
         // load tokens
         Token[] tokens;
         int offset;
 
-        Pair<Token[], Integer> p = ca.load(bytes, 0, bytes.length - 1);
+        Pair<Token[], Integer> p = ca.load(bytes, startOffset, length);
         tokens = p.getKey();
         offset = p.getValue();
 
         // load depth info
         int[] depth = new int[tokens.length];
         for(int i = 0;i < tokens.length;i ++) {
-            depth[i] = ((int)bytes[i * 2]) | (((int)bytes[i * 2 + 1] << 8));
+            depth[i] = (bytes[offset] & 0xff) | (((bytes[offset + 1] & 0xff)<< 8));
             offset += 2;
         }
 

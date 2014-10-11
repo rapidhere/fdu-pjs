@@ -2,6 +2,7 @@ package core.dc;
 
 import excs.DCException;
 import javafx.util.Pair;
+import core.dc.CatchAlgorithm.Token;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -81,8 +82,6 @@ public class BlockDC extends DC {
             // load dc ca info
             loadDCCA(in);
 
-            byte[] buffer = new byte[blockSize];
-
             while(true) {
                 // read in buffer length
                 int bufferLength = 0;
@@ -100,20 +99,22 @@ public class BlockDC extends DC {
                         }
                     }
 
-                    bufferLength |= (cb << (8 * i));
+                    bufferLength |= ((cb & 0xff) << (8 * i));
                 }
 
                 if(eofFlag)
                     break;
 
                 // read in buffer
+                byte[] buffer = new byte[bufferLength];
                 int readLength = in.read(buffer, 0, bufferLength);
 
                 if(readLength != bufferLength)
                     throw new DCException("Wrong file syntax: buffer length illegal");
 
                 // decompress
-                Token[] tokens = dcAlg.decompress(buffer, catchAlg);
+                Token[] tokens = dcAlg.decompress(buffer, 0, bufferLength, catchAlg);
+
 
                 // format tokens into bytes
                 for(Token t: tokens)
