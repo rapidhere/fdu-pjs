@@ -2,7 +2,6 @@ package core.dc;
 
 import excs.DCException;
 import javafx.util.Pair;
-import core.dc.CatchAlgorithm.Token;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -43,10 +42,18 @@ public class BlockDC extends DC {
             while(true) {
                 // read in bytes
                 int readLength = in.read(buffer, bufferLength, blockSize - bufferLength);
-                if(readLength == -1 && bufferLength == 0)
+                if(readLength == -1) {
+                    // write remain buffer
+                    int minusBufferLength = - bufferLength;
+                    for(int i = 0;i < 4;i ++) {
+                        out.write((byte)(minusBufferLength & 0xff));
+                        minusBufferLength >>= 8;
+                    }
+                    out.write(buffer, 0, bufferLength);
                     break;
-                if(readLength != -1)
-                    bufferLength += readLength;
+                }
+
+                bufferLength += readLength;
 
                 // use catch algorithm to generate token sequence
                 Pair<Token[], Integer> p = catchAlg.parse(buffer, 0, bufferLength);
@@ -85,25 +92,25 @@ public class BlockDC extends DC {
             while(true) {
                 // read in buffer length
                 int bufferLength = 0;
-                boolean eofFlag = false;
                 for(int i = 0;i < 4;i ++) {
                     int cb = in.read();
                     if(cb == -1) {
-                        if(i == 0) {
-                            // first byte cannot read, break
-                            eofFlag = true;
-                            break;
-                        } else {
-                            throw new DCException(
-                                "Wrong file syntax: cannot load buffer length of current block");
-                        }
+                        throw new DCException(
+                            "Wrong file syntax: cannot load buffer length of current block");
                     }
 
                     bufferLength |= ((cb & 0xff) << (8 * i));
                 }
 
-                if(eofFlag)
+                if(bufferLength <= 0) {
+                    byte[] bytes = new byte[-bufferLength];
+                    int readBytes = in.read(bytes, 0, -bufferLength);
+                    if(readBytes != -bufferLength || in.read() != -1)
+                        throw new DCException(
+                            "Wrong file syntax: cannot load last uncompressed buffer of this rgz");
+                    out.write(bytes, 0, -bufferLength);
                     break;
+                }
 
                 // read in buffer
                 byte[] buffer = new byte[bufferLength];
@@ -115,10 +122,8 @@ public class BlockDC extends DC {
                 // decompress
                 Token[] tokens = dcAlg.decompress(buffer, 0, bufferLength, catchAlg);
 
-
                 // format tokens into bytes
-                for(Token t: tokens)
-                    out.write(t.dump());
+                out.write(catchAlg.merge(tokens));
             }
         } catch (IOException ioe) {
             throw new DCException(ioe);

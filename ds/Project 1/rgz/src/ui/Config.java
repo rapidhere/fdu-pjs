@@ -1,13 +1,11 @@
 package ui;
 
-import core.dc.CatchASCIIAlgorithm;
-import core.dc.CatchAlgorithm;
-import core.dc.DCAlgorithm;
-import core.dc.DCHuffmanAlgorithm;
+import core.dc.*;
 import excs.UnknownCatchAlgorithm;
 import excs.UnknownCatchAlgorithmId;
 import excs.UnknownDCAlgorithm;
 import excs.UnknownDCAlgorithmId;
+
 
 /**
  * Copyright : all rights reserved,rapidhere@gmail.com
@@ -74,6 +72,8 @@ public class Config {
     // Catch Algorithm
     // ascii catch algorithm
     public static final byte CTH_ASCII = 0;
+    public static final byte CTH_FIXED_BIT = 1;
+    public static final byte CTH_FIXED_BYTE = 2;
 
     private byte cthId;
 
@@ -87,6 +87,10 @@ public class Config {
     throws UnknownCatchAlgorithm {
         if(ca instanceof CatchASCIIAlgorithm) {
             return CTH_ASCII;
+        } else if(ca instanceof CatchFixedBitsAlgorithm) {
+            return CTH_FIXED_BIT;
+        } else if(ca instanceof CatchFixedBytesAlgorithm) {
+            return CTH_FIXED_BYTE;
         }
         throw new UnknownCatchAlgorithm(ca);
     }
@@ -119,6 +123,8 @@ public class Config {
     throws UnknownCatchAlgorithmId {
         switch (cthId) {
             case CTH_ASCII: return new CatchASCIIAlgorithm();
+            case CTH_FIXED_BIT: return new CatchFixedBitsAlgorithm();
+            case CTH_FIXED_BYTE: return new CatchFixedBytesAlgorithm();
             default: throw new UnknownCatchAlgorithmId(cthId);
         }
     }

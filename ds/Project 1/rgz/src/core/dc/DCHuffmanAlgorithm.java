@@ -1,10 +1,11 @@
 package core.dc;
 
+import excs.BitArrayException;
+import excs.DCException;
 import javafx.util.Pair;
 
 import java.util.*;
 import java.util.concurrent.LinkedBlockingQueue;
-import core.dc.CatchAlgorithm.Token;
 
 /**
  * Copyright : all rights reserved,rapidhere@gmail.com
@@ -138,14 +139,15 @@ public class DCHuffmanAlgorithm implements DCAlgorithm {
     }
 
     @Override
-    public byte[] compress(Token[] tokenSequence, CatchAlgorithm ca) {
+    public byte[] compress(Token[] tokenSequence, CatchAlgorithm ca)
+    throws DCException {
         Map<Token, Integer> tokenMap = new HashMap<Token, Integer>();
 
         // count tokens
         for(Token t: tokenSequence) {
             Integer cnt = tokenMap.get(t);
             if(cnt != null) {
-                tokenMap.put(t, cnt.intValue() + 1);
+                tokenMap.put(t, cnt + 1);
             } else {
                 tokenMap.put(t, 1);
             }
@@ -153,7 +155,9 @@ public class DCHuffmanAlgorithm implements DCAlgorithm {
 
         // build frequency array and tokens array
         Token[] tokens = tokenMap.keySet().toArray(new Token[tokenMap.keySet().size()]);
-        int[] freq = new int[tokens.length];
+
+        // get freq
+        int freq[] = new int[tokens.length];
         for(int i = 0;i < tokens.length;i ++)
             freq[i] = tokenMap.get(tokens[i]);
 
@@ -197,7 +201,7 @@ public class DCHuffmanAlgorithm implements DCAlgorithm {
 
             // put into bit array
             for(int i = 0;i < encode.length();i ++)
-                compressedData.addBit((byte)(encode.charAt(i) - '0'));
+               compressedData.addBit((byte)(encode.charAt(i) - '0'));
         }
         byte[] compressedBytes = compressedData.dump();
 
@@ -232,7 +236,8 @@ public class DCHuffmanAlgorithm implements DCAlgorithm {
     }
 
     @Override
-    public Token[] decompress(byte[] bytes, int startOffset, int length, CatchAlgorithm ca) {
+    public Token[] decompress(byte[] bytes, int startOffset, int length, CatchAlgorithm ca)
+    throws DCException {
         // load tokens
         Token[] tokens;
         int offset;
@@ -247,10 +252,13 @@ public class DCHuffmanAlgorithm implements DCAlgorithm {
             depth[i] = (bytes[offset] & 0xff) | (((bytes[offset + 1] & 0xff)<< 8));
             offset += 2;
         }
-
         // load compressed bits
         BitArray compressedData = new BitArray();
-        compressedData.load(bytes, offset);
+        try {
+            compressedData.load(bytes, offset, bytes.length);
+        } catch (BitArrayException e) {
+            throw new DCException(e.getMessage());
+        }
 
         // rebuild huffman tree
         HuffmanTreeNode root = buildHuffmanTreeWithDepth(depth, tokens);

@@ -1,9 +1,6 @@
 package ui.cli;
 
-import core.dc.BlockDC;
-import core.dc.CatchASCIIAlgorithm;
-import core.dc.DC;
-import core.dc.DCHuffmanAlgorithm;
+import core.dc.*;
 import ui.CmdLineParser;
 import ui.CmdLineParser.Option;
 
@@ -31,12 +28,14 @@ public class CommandLineInterface {
 
     public void run(String args[]) {
         // create dc
-        DC dc = new BlockDC(new DCHuffmanAlgorithm(), new CatchASCIIAlgorithm(), 256 * 1024);
+        CatchFixedBytesAlgorithm ca = new CatchFixedBytesAlgorithm();
+        ca.setByteLength((byte) 1);
+        DC dc = new BlockDC(new DCHuffmanAlgorithm(), ca, 256 * 1024);
 
         try {
             dc.decompress(
-                new FileInputStream("/home/rapid/work/a.rgz"),
-                new FileOutputStream("/home/rapid/work/a.txt"));
+                new FileInputStream("/home/rapid/work/a-2byte.rgz"),
+                new FileOutputStream("/home/rapid/work/b.txt"));
         } catch (Exception e) {
             e.printStackTrace();
         }

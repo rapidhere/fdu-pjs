@@ -1,5 +1,8 @@
 package core.dc;
 
+import excs.BitArrayException;
+
+import java.util.ArrayList;
 import java.util.Vector;
 
 /**
@@ -13,12 +16,20 @@ public class BitArray {
     private Vector<Byte> bytes = new Vector<Byte>();
     private byte currentByte;
     private byte currentByteLength;
+    private BitArray nextBitArray;
 
     public BitArray() {
         clear();
     }
 
+    /**
+     * add a bit to the very end of bit array
+     * @param bit bit to add
+     */
     public void addBit(byte bit) {
+        if(nextBitArray != null)
+            nextBitArray.addBit(bit);
+
         currentByte = (byte)(((int)currentByte) | ((int)bit << currentByteLength));
         currentByteLength ++;
 
@@ -29,39 +40,87 @@ public class BitArray {
         }
     }
 
+    /**
+     * return the size of bit array
+     * @return the size of bit array
+     */
     public int size() {
-        return bytes.size() * 8 + currentByteLength;
+        int curSize = bytes.size() * 8 + currentByteLength;
+        if(nextBitArray != null)
+            return curSize + nextBitArray.size();
+        return curSize;
     }
 
+    /**
+     * set the bit array to empty
+     */
     public void clear() {
         currentByte = 0;
         currentByteLength = 0;
+        nextBitArray = null;
     }
 
+    /**
+     * dump bytes, can load with load function
+     * @return dumped bytes
+     */
     public byte[] dump() {
-        byte[] ret;
-        if(currentByteLength == 0)
-            ret = new byte[bytes.size() + 4];
-        else
-            ret = new byte[bytes.size() + 5];
+        int totSize = size();
+        ArrayList<Byte> ret = new ArrayList<Byte>();
 
-        int length = size();
+        // write length
         for(int i = 0;i < 4;i ++) {
-            ret[i] = (byte)(length & 0xff);
-            length >>= 8;
+            ret.add((byte)(totSize & 0xff));
+            totSize >>= 8;
         }
 
-        for(int i = 0;i < bytes.size();i ++)
-            ret[i + 4] = bytes.get(i);
+        // dump bytes
+        byte remainByte = 0, remainLength = 0;
 
-        if(currentByteLength != 0)
-            ret[ret.length - 1] = currentByte;
+        BitArray ba = this;
+        while(ba != null) {
+            for(int i = 0;i < ba.bytes.size();i ++) {
+                byte cb = ba.bytes.get(i);
+                ret.add((byte) (remainByte | (cb << remainLength)));
+                remainByte = (byte)((cb & 0xff) >> (8 - remainLength));
+            }
 
-        return ret;
+            if(remainLength + ba.currentByteLength < 8) {
+                remainByte = (byte)((ba.currentByte << remainLength) | remainByte);
+                remainLength += ba.currentByteLength;
+            } else {
+                byte cb = ba.currentByte;
+                ret.add((byte)(remainByte | (cb << remainLength)));
+                remainByte = (byte)((cb & 0xff) >> (8 - remainLength));
+                remainLength = (byte)(remainLength + ba.currentByteLength - 8);
+            }
+
+            ba = ba.nextBitArray;
+        } 
+        if(remainLength != 0)
+            ret.add(remainByte);
+
+        byte[] r = new byte[ret.size()];
+        for(int i = 0;i < ret.size();i ++)
+            r[i] = ret.get(i);
+
+        return r;
     }
 
-    public void load(byte[] b, int offset) {
+    /**
+     * load bytes into bit array
+     * @param b bytes
+     * @param offset start position
+     * @param bLength the length of input bytes
+     * @return remain offset
+     */
+    public int load(byte[] b, int offset, int bLength)
+    throws BitArrayException {
+        clear();
         // calculate length
+        if(bLength < 4) {
+            throw new BitArrayException("load failed: cannot load length info");
+        }
         int length = 0;
         for(int i = 0;i < 4;i ++) {
             length |= (b[i + offset] & 0xff) << (i * 8);
@@ -70,6 +129,9 @@ public class BitArray {
         // calculate bytes length an remain length
         int byteLength = length / 8,
             remainLength = length % 8;
+        if(length < 0 || byteLength + (remainLength > 0 ? 1 : 0) + 4 > bLength) {
+            throw new BitArrayException("load failed: wrong byte length");
+        }
 
         // add bytes
         bytes.clear();
@@ -83,11 +145,25 @@ public class BitArray {
             currentByteLength = (byte)remainLength;
             currentByte = b[offset + 4 + byteLength];
         }
+
+        // next ba is none
+        nextBitArray = null;
+
+        return offset + 4 + byteLength + (remainLength > 0 ? 1 : 0);
     }
 
+    /**
+     * get the bit at index
+     * @param index the bit index
+     * @return the bit
+     */
     public byte get(int index) {
-        if(index >= size())
-            throw new IndexOutOfBoundsException();
+        if(index >= bytes.size() * 8 + currentByteLength) {
+            if(nextBitArray != null)
+                return nextBitArray.get(index - bytes.size() * 8 - currentByteLength);
+            else
+                throw new IndexOutOfBoundsException();
+        }
 
         byte b;
         if(index < bytes.size() * 8) {
@@ -99,4 +175,58 @@ public class BitArray {
 
         return (byte)(((int)b >> index) & 1);
     }
+
+    /**
+     * append a bit array into this bit array
+     * @param ba the bit array to append
+     */
+    public void appendBitArray(BitArray ba) {
+        BitArray p = this;
+        while(true) {
+            if(p.nextBitArray == null) {
+                p.nextBitArray = ba;
+                break;
+            }
+
+            p = p.nextBitArray;
+        }
+    }
+
+    /*
+    public static void main(String args[]) {
+        BitArray ba1 = new BitArray(),
+            ba2 = new BitArray();
+
+        ba1.addBit((byte)0); // 0
+        ba1.addBit((byte)1); // 1
+        ba1.addBit((byte)1); // 2
+        ba1.addBit((byte)0); // 3
+        ba1.addBit((byte)1); // 4
+        ba1.addBit((byte)1); // 5
+        ba1.addBit((byte)0); // 6
+        ba1.addBit((byte)1); // 7
+        ba1.addBit((byte)1); // 8
+
+        ba2.addBit((byte)0); // 0   9
+        ba2.addBit((byte)1); // 1   10
+        ba2.addBit((byte)0); // 2   11
+        ba2.addBit((byte)0); // 3   12
+        ba2.addBit((byte)1); // 4   13
+        ba2.addBit((byte)0); // 5   14
+        ba2.addBit((byte)0); // 6   15
+        ba2.addBit((byte)1); // 7   16
+        ba2.addBit((byte)0); // 8   17
+        ba2.addBit((byte)0); // 9   18
+        ba2.addBit((byte)1); // 10  19
+        ba2.addBit((byte)0); // 11  20
+
+        ba1.appendBitArray(ba2);
+        byte[] bs = ba1.dump();
+        try {
+            ba1.load(bs, 0, bs.length);
+        } catch (BitArrayException e) {
+            e.printStackTrace();
+        }
+        return;
+    }*/
 }

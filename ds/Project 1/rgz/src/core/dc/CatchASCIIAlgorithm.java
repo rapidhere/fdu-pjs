@@ -1,5 +1,7 @@
 package core.dc;
 
+import com.sun.javafx.beans.annotations.NonNull;
+import excs.DCException;
 import javafx.util.Pair;
 
 /**
@@ -9,37 +11,32 @@ import javafx.util.Pair;
  * Version :
  * Usage :
  */
-public class CatchASCIIAlgorithm implements CatchAlgorithm {
-    public class ASCIIToken extends Token {
-        @Override
-        public int hashCode() {
-            return ((Byte)getToken()).intValue();
-        }
 
-        @Override
-        public byte[] dump() {
-            byte[] ret = new byte[1];
-            ret[0] = (Byte)getToken();
-            return ret;
-        }
-
-        @Override
-        public int compareTo(Object o) {
-            if(o.hashCode() < hashCode())
-                return -1;
-            else if(o.hashCode() > hashCode())
-                return 1;
-            return 0;
-        }
-
-        @Override
-        public String toString() {
-            return "" + (char)((Byte)getToken()).byteValue();
-        }
+class ASCIIToken extends Token {
+    @Override
+    public int hashCode() {
+        return ((Byte)getToken()).intValue();
     }
 
     @Override
-    public byte[] dump(Token[] tokens) {
+    public int compareTo(@NonNull Object o) {
+        if(o.hashCode() < hashCode())
+            return -1;
+        else if(o.hashCode() > hashCode())
+            return 1;
+        return 0;
+    }
+
+    @Override
+    public String toString() {
+        return "" + (char)((Byte) getToken()).shortValue();
+    }
+}
+
+public class CatchASCIIAlgorithm implements CatchAlgorithm <ASCIIToken> {
+    @Override
+    public byte[] dump(Token[] tokens)
+    throws DCException {
         // create buffer
         byte[] buffer = new byte[tokens.length + 4];
 
@@ -52,13 +49,14 @@ public class CatchASCIIAlgorithm implements CatchAlgorithm {
 
         // dump tokens
         for(int i = 0;i < tokens.length;i ++)
-            buffer[i + 4] = tokens[i].dump()[0];
+            buffer[i + 4] = (Byte)tokens[i].getToken();
 
         return buffer;
     }
 
     @Override
-    public Pair<Token[], Integer> load(byte[] bytes, int offset, int length) {
+    public Pair<ASCIIToken[], Integer> load(byte[] bytes, int offset, int length)
+    throws DCException {
         // load length
         int tokenLength = 0;
         for(int i = 0;i < 4;i ++) {
@@ -72,16 +70,26 @@ public class CatchASCIIAlgorithm implements CatchAlgorithm {
             tokens[i].setToken(bytes[i + offset + 4]);
         }
 
-        return new Pair<Token[], Integer>(tokens, offset + tokenLength + 4);
+        return new Pair<ASCIIToken[], Integer>(tokens, offset + tokenLength + 4);
     }
 
     @Override
-    public Pair<Token[], Integer> parse(byte[] bytes, int offset, int length) {
+    public Pair<ASCIIToken[], Integer> parse(byte[] bytes, int offset, int length)
+    throws DCException {
         ASCIIToken[] tokens = new ASCIIToken[length];
         for(int i = 0;i < length;i ++) {
             tokens[i] = new ASCIIToken();
             tokens[i].setToken(bytes[offset + i]);
         }
-        return new Pair<Token[], Integer>(tokens, offset + length);
+        return new Pair<ASCIIToken[], Integer>(tokens, offset + length);
+    }
+
+    @Override
+    public byte[] merge(Token[] tokens) throws DCException {
+        byte[] bytes = new byte[tokens.length];
+        for(int i = 0;i < tokens.length;i ++)
+            bytes[i] = (Byte)tokens[i].getToken();
+
+        return bytes;
     }
 }

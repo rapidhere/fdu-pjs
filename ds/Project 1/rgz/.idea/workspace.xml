@@ -12,7 +12,10 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/rgz$RapidGZ.coverage" NAME="RapidGZ Coverage Results" MODIFIED="1413042130816" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/rgz$RapidGZ.coverage" NAME="RapidGZ Coverage Results" MODIFIED="1413087300317" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="true" />
+  </component>
+  <component name="CoverageViewManager">
+    <option name="myFlattenPackages" value="true" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -58,6 +61,98 @@
       </breakpoint>
     </breakpoint_any>
     <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
+    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
+      <breakpoint url="file://$PROJECT_DIR$/src/core/dc/BlockDC.java" line="63" class="core.dc.BlockDC" package="core.dc">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/core/dc/BlockDC.java" line="93" class="core.dc.BlockDC" package="core.dc">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/core/dc/DCHuffmanAlgorithm.java" line="164" class="core.dc.DCHuffmanAlgorithm" package="core.dc">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/core/dc/DCHuffmanAlgorithm.java" line="185" class="core.dc.DCHuffmanAlgorithm" package="core.dc">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/core/dc/DCHuffmanAlgorithm.java" line="190" class="core.dc.DCHuffmanAlgorithm" package="core.dc">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/core/dc/BlockDC.java" line="122" class="core.dc.BlockDC" package="core.dc">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+    </line_breakpoints>
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -70,19 +165,8 @@
       <file leaf-file-name="CommandLineInterface.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ui/cli/CommandLineInterface.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="38" column="60" selection-start="1002" selection-end="1002" vertical-scroll-proportion="0.5794392" vertical-offset="202" max-vertical-offset="630">
+            <state line="36" column="57" selection-start="923" selection-end="923" vertical-scroll-proportion="0.68457943" vertical-offset="172" max-vertical-offset="660">
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BlockDC.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/core/dc/BlockDC.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="69" column="59" selection-start="2020" selection-end="2020" vertical-scroll-proportion="0.0" vertical-offset="600" max-vertical-offset="1935">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -97,9 +181,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/core/dc/PreDC.java" />
-        <option value="$PROJECT_DIR$/src/core/dc/PreCompresser.java" />
-        <option value="$PROJECT_DIR$/src/core/dc/PreCompressor.java" />
         <option value="$PROJECT_DIR$/src/core/dc/DCer.java" />
         <option value="$PROJECT_DIR$/src/core/dc/BlockCompressor.java" />
         <option value="$PROJECT_DIR$/src/core/dc/BlockDecompressor.java" />
@@ -137,17 +218,20 @@
         <option value="$PROJECT_DIR$/src/excs/CompressException.java" />
         <option value="$PROJECT_DIR$/src/excs/DecompressException.java" />
         <option value="$PROJECT_DIR$/src/excs/DCException.java" />
-        <option value="$PROJECT_DIR$/src/core/dc/DC.java" />
-        <option value="$PROJECT_DIR$/src/ui/Config.java" />
         <option value="$PROJECT_DIR$/src/core/dc/ASCIIToken.java" />
         <option value="$PROJECT_DIR$/src/core/dc/Token.java" />
-        <option value="$PROJECT_DIR$/src/core/dc/CatchAlgorithm.java" />
         <option value="$PROJECT_DIR$/src/core/dc/DCAlgorithm.java" />
-        <option value="$PROJECT_DIR$/src/core/dc/BitArray.java" />
+        <option value="$PROJECT_DIR$/src/core/dc/CatchAlgorithm.java" />
+        <option value="$PROJECT_DIR$/src/excs/BitArrayException.java" />
         <option value="$PROJECT_DIR$/src/core/dc/CatchASCIIAlgorithm.java" />
+        <option value="$PROJECT_DIR$/src/core/dc/BitArray.java" />
+        <option value="$PROJECT_DIR$/src/core/dc/CatchFixedBitsAlgorithm.java" />
         <option value="$PROJECT_DIR$/src/core/dc/DCHuffmanAlgorithm.java" />
-        <option value="$PROJECT_DIR$/src/core/dc/BlockDC.java" />
+        <option value="$PROJECT_DIR$/src/ui/Config.java" />
+        <option value="$PROJECT_DIR$/src/core/dc/CatchFixedBytesAlgorithm.java" />
+        <option value="$PROJECT_DIR$/src/core/dc/DC.java" />
         <option value="$PROJECT_DIR$/src/ui/cli/CommandLineInterface.java" />
+        <option value="$PROJECT_DIR$/src/core/dc/BlockDC.java" />
       </list>
     </option>
   </component>
@@ -155,6 +239,25 @@
     <option name="y" value="24" />
     <option name="width" value="1366" />
     <option name="height" value="744" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>Probable bugs</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>NullableProblems</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -184,7 +287,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -314,12 +416,39 @@
               <option name="myItemId" value="dc" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DCHuffmanAlgorithm.java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rgz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rgz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
       <pane id="PackagesPane">
         <subPane />
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -338,6 +467,7 @@
     <property name="FullScreen" value="false" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="OverrideImplement.overriding.sorted" value="false" />
+    <property name="restartRequiresConfirmation" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -347,13 +477,13 @@
   </component>
   <component name="RunManager" selected="Application.RapidGZ">
     <configuration default="false" name="RapidGZ" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <extension name="coverage" enabled="false" merge="false" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="RapidGZ" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
       <option name="ENABLE_SWING_INSPECTOR" value="false" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
@@ -628,15 +758,17 @@
       <workItem from="1413002115957" duration="2835000" />
       <workItem from="1413022254458" duration="6709000" />
       <workItem from="1413032654489" duration="8965000" />
+      <workItem from="1413079383312" duration="2261000" />
+      <workItem from="1413082990466" duration="22440000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="64833000" />
+    <option name="totallyTimeSpent" value="89534000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1366" height="744" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -652,14 +784,14 @@
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33026114" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32930514" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32930514" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24773414" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29953918" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29953918" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -688,38 +820,22 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/core/dc/CatchAlgorithm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="48" selection-start="948" selection-end="948" vertical-scroll-proportion="0.0" vertical-offset="540" max-vertical-offset="960">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ui/cli/CommandLineInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="60" selection-start="1001" selection-end="1001" vertical-scroll-proportion="0.0" vertical-offset="82" max-vertical-offset="750">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///usr/lib/jvm/java-7-sun/src.zip!/java/util/HashMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="467" column="13" selection-start="17224" selection-end="17224" vertical-scroll-proportion="0.0" vertical-offset="7005" max-vertical-offset="17535">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/core/dc/BitArray.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="66" column="0" selection-start="1505" selection-end="1505" vertical-scroll-proportion="0.0" vertical-offset="855" max-vertical-offset="1620">
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1571#1577#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/dc/CatchASCIIAlgorithm.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="65" column="41" selection-start="1675" selection-end="1675" vertical-scroll-proportion="0.0" vertical-offset="788" max-vertical-offset="1320">
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -744,13 +860,13 @@
         <state line="304" column="1" selection-start="9683" selection-end="9683" vertical-scroll-proportion="0.0" vertical-offset="4560" max-vertical-offset="4650">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#914#954#0" expanded="true" />
-            <element signature="e#3705#3720#0" expanded="true" />
-            <element signature="e#3820#3859#0" expanded="true" />
-            <element signature="e#4713#4729#0" expanded="true" />
-            <element signature="e#5505#5545#0" expanded="true" />
-            <element signature="e#7017#7023#0" expanded="true" />
-            <element signature="e#8771#8778#0" expanded="true" />
+            <element signature="e#933#973#0" expanded="true" />
+            <element signature="e#3724#3739#0" expanded="true" />
+            <element signature="e#3839#3878#0" expanded="true" />
+            <element signature="e#4755#4771#0" expanded="true" />
+            <element signature="e#5557#5597#0" expanded="true" />
+            <element signature="e#7068#7074#0" expanded="true" />
+            <element signature="e#8977#8984#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -773,10 +889,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="45" column="15" selection-start="1029" selection-end="1029" vertical-scroll-proportion="0.0" vertical-offset="675" max-vertical-offset="750">
           <folding>
-            <element signature="e#689#690#0" expanded="true" />
-            <element signature="e#716#717#0" expanded="true" />
-            <element signature="e#2429#2430#0" expanded="true" />
-            <element signature="e#2456#2457#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -784,7 +897,9 @@
     <entry file="file://$PROJECT_DIR$/src/core/dc/CatchAlgorithm.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="58" selection-start="296" selection-end="296" vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="315">
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -793,13 +908,13 @@
         <state line="247" column="30" selection-start="8562" selection-end="8562" vertical-scroll-proportion="0.0" vertical-offset="3705" max-vertical-offset="4170">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#914#954#0" expanded="true" />
-            <element signature="e#3705#3720#0" expanded="true" />
-            <element signature="e#3820#3859#0" expanded="true" />
-            <element signature="e#4713#4729#0" expanded="true" />
-            <element signature="e#5505#5545#0" expanded="true" />
-            <element signature="e#7017#7023#0" expanded="true" />
-            <element signature="e#8771#8778#0" expanded="true" />
+            <element signature="e#933#973#0" expanded="true" />
+            <element signature="e#3724#3739#0" expanded="true" />
+            <element signature="e#3839#3878#0" expanded="true" />
+            <element signature="e#4755#4771#0" expanded="true" />
+            <element signature="e#5557#5597#0" expanded="true" />
+            <element signature="e#7068#7074#0" expanded="true" />
+            <element signature="e#8977#8984#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -814,7 +929,10 @@
     <entry file="file://$PROJECT_DIR$/src/core/dc/BitArray.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="1" column="0" selection-start="17" selection-end="17" vertical-scroll-proportion="0.0" vertical-offset="720" max-vertical-offset="1395">
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1571#1577#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -823,13 +941,13 @@
         <state line="182" column="1" selection-start="6125" selection-end="6125" vertical-scroll-proportion="0.0" vertical-offset="2190" max-vertical-offset="4050">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#914#954#0" expanded="true" />
-            <element signature="e#3705#3720#0" expanded="true" />
-            <element signature="e#3820#3859#0" expanded="true" />
-            <element signature="e#4713#4729#0" expanded="true" />
-            <element signature="e#5505#5545#0" expanded="true" />
-            <element signature="e#7017#7023#0" expanded="true" />
-            <element signature="e#8771#8778#0" expanded="true" />
+            <element signature="e#933#973#0" expanded="true" />
+            <element signature="e#3724#3739#0" expanded="true" />
+            <element signature="e#3839#3878#0" expanded="true" />
+            <element signature="e#4755#4771#0" expanded="true" />
+            <element signature="e#5557#5597#0" expanded="true" />
+            <element signature="e#7068#7074#0" expanded="true" />
+            <element signature="e#8977#8984#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -846,13 +964,13 @@
         <state line="412" column="52" selection-start="11348" selection-end="11348" vertical-scroll-proportion="0.0" vertical-offset="5750" max-vertical-offset="6465">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#914#954#0" expanded="true" />
-            <element signature="e#3705#3720#0" expanded="true" />
-            <element signature="e#3820#3859#0" expanded="true" />
-            <element signature="e#4713#4729#0" expanded="true" />
-            <element signature="e#5505#5545#0" expanded="true" />
-            <element signature="e#7017#7023#0" expanded="true" />
-            <element signature="e#8771#8778#0" expanded="true" />
+            <element signature="e#933#973#0" expanded="true" />
+            <element signature="e#3724#3739#0" expanded="true" />
+            <element signature="e#3839#3878#0" expanded="true" />
+            <element signature="e#4755#4771#0" expanded="true" />
+            <element signature="e#5557#5597#0" expanded="true" />
+            <element signature="e#7068#7074#0" expanded="true" />
+            <element signature="e#8977#8984#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -869,13 +987,13 @@
         <state line="2" column="30" selection-start="48" selection-end="48" vertical-scroll-proportion="0.0" vertical-offset="30" max-vertical-offset="3675">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#914#954#0" expanded="true" />
-            <element signature="e#3705#3720#0" expanded="true" />
-            <element signature="e#3820#3859#0" expanded="true" />
-            <element signature="e#4713#4729#0" expanded="true" />
-            <element signature="e#5505#5545#0" expanded="true" />
-            <element signature="e#7017#7023#0" expanded="true" />
-            <element signature="e#8771#8778#0" expanded="true" />
+            <element signature="e#933#973#0" expanded="true" />
+            <element signature="e#3724#3739#0" expanded="true" />
+            <element signature="e#3839#3878#0" expanded="true" />
+            <element signature="e#4755#4771#0" expanded="true" />
+            <element signature="e#5557#5597#0" expanded="true" />
+            <element signature="e#7068#7074#0" expanded="true" />
+            <element signature="e#8977#8984#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -884,10 +1002,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="15" column="45" selection-start="303" selection-end="303" vertical-scroll-proportion="0.0" vertical-offset="225" max-vertical-offset="540">
           <folding>
-            <element signature="e#689#690#0" expanded="true" />
-            <element signature="e#716#717#0" expanded="true" />
-            <element signature="e#2429#2430#0" expanded="true" />
-            <element signature="e#2456#2457#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -943,18 +1058,6 @@
         <state line="18" column="25" selection-start="335" selection-end="335" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="390" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/io/MemoryMappingInputStream.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="17" selection-start="336" selection-end="336" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="360" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RapidGZ.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="24" selection-start="84" selection-end="84" vertical-scroll-proportion="0.08840864" vertical-offset="0" max-vertical-offset="509">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/excs/RGZException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="11" column="47" selection-start="265" selection-end="265" vertical-scroll-proportion="0.275" vertical-offset="0" max-vertical-offset="600">
@@ -997,93 +1100,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ui/Config.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1860">
-          <folding>
-            <element signature="e#689#690#0" expanded="true" />
-            <element signature="e#716#717#0" expanded="true" />
-            <element signature="e#2429#2430#0" expanded="true" />
-            <element signature="e#2456#2457#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///usr/lib/jvm/java-7-sun/src.zip!/java/util/HashMap.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="467" column="13" selection-start="17224" selection-end="17224" vertical-scroll-proportion="0.0" vertical-offset="6518" max-vertical-offset="17130">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///usr/lib/jvm/java-7-sun/src.zip!/java/lang/Object.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="100" column="22" selection-start="3513" selection-end="3513" vertical-scroll-proportion="0.33333334" vertical-offset="1020" max-vertical-offset="8055">
-          <folding />
-        </state>
+        <state line="467" column="13" selection-start="17224" selection-end="17224" vertical-scroll-proportion="0.0" vertical-offset="6518" max-vertical-offset="17130" />
       </provider>
     </entry>
     <entry file="jar:///usr/lib/jvm/java-7-sun/src.zip!/java/util/Map.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="152" column="12" selection-start="6601" selection-end="6601" vertical-scroll-proportion="0.0" vertical-offset="1777" max-vertical-offset="6915">
-          <folding />
-        </state>
+        <state line="152" column="12" selection-start="6601" selection-end="6601" vertical-scroll-proportion="0.0" vertical-offset="1777" max-vertical-offset="6915" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/dc/CatchAlgorithm.java">
+    <entry file="jar:///usr/lib/jvm/java-7-sun/src.zip!/java/lang/Object.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="51" selection-start="464" selection-end="464" vertical-scroll-proportion="-0.8595041" vertical-offset="582" max-vertical-offset="945">
+        <state line="36" column="0" selection-start="500" selection-end="500" vertical-scroll-proportion="0.33333334" vertical-offset="74" max-vertical-offset="8055">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/dc/BitArray.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="90" column="35" selection-start="2173" selection-end="2173" vertical-scroll-proportion="1.2479339" vertical-offset="897" max-vertical-offset="1620">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/dc/CatchASCIIAlgorithm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="52" selection-start="1609" selection-end="1609" vertical-scroll-proportion="0.26997244" vertical-offset="862" max-vertical-offset="1395">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/dc/DC.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="24" selection-start="1532" selection-end="1532" vertical-scroll-proportion="0.06887052" vertical-offset="740" max-vertical-offset="1140">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/dc/DCAlgorithm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="92" selection-start="364" selection-end="364" vertical-scroll-proportion="0.45454547" vertical-offset="0" max-vertical-offset="363">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/dc/DCHuffmanAlgorithm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="22" selection-start="788" selection-end="788" vertical-scroll-proportion="0.38292012" vertical-offset="296" max-vertical-offset="4545">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#914#954#0" expanded="true" />
-            <element signature="e#3705#3720#0" expanded="true" />
-            <element signature="e#3820#3859#0" expanded="true" />
-            <element signature="e#4713#4729#0" expanded="true" />
-            <element signature="e#5505#5545#0" expanded="true" />
-            <element signature="e#7017#7023#0" expanded="true" />
-            <element signature="e#8771#8778#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ui/CmdLineParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="40" selection-start="2816" selection-end="2816" vertical-scroll-proportion="0.5371901" vertical-offset="810" max-vertical-offset="9045">
+        <state line="276" column="64" selection-start="9313" selection-end="9313" vertical-scroll-proportion="1.7777778" vertical-offset="3240" max-vertical-offset="9045">
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
@@ -1094,18 +1130,128 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/dc/BlockDC.java">
+    <entry file="file://$PROJECT_DIR$/src/core/dc/DCAlgorithm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="59" selection-start="2020" selection-end="2020" vertical-scroll-proportion="0.0" vertical-offset="600" max-vertical-offset="1935">
+        <state line="15" column="38" selection-start="420" selection-end="420" vertical-scroll-proportion="0.36885247" vertical-offset="0" max-vertical-offset="610">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/io/MemoryMappingInputStream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="17" selection-start="336" selection-end="336" vertical-scroll-proportion="0.4906542" vertical-offset="0" max-vertical-offset="428">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/excs/BitArrayException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="19" selection-start="258" selection-end="258" vertical-scroll-proportion="0.4074074" vertical-offset="0" max-vertical-offset="405">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/dc/CatchAlgorithm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="58" column="0" selection-start="1894" selection-end="1894" vertical-scroll-proportion="0.0" vertical-offset="682" max-vertical-offset="1110">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/dc/CatchASCIIAlgorithm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="58" selection-start="688" selection-end="688" vertical-scroll-proportion="0.317757" vertical-offset="329" max-vertical-offset="1515">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/dc/BitArray.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="190" column="12" selection-start="5143" selection-end="5143" vertical-scroll-proportion="0.70327103" vertical-offset="2549" max-vertical-offset="3570">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1571#1577#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RapidGZ.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="0" selection-start="191" selection-end="191" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="195">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/dc/CatchFixedBitsAlgorithm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="159" column="60" selection-start="4297" selection-end="4297" vertical-scroll-proportion="6.4049587" vertical-offset="0" max-vertical-offset="2685">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/Config.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="126" column="71" selection-start="3406" selection-end="3406" vertical-scroll-proportion="2.4271605" vertical-offset="847" max-vertical-offset="1995">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/dc/DCHuffmanAlgorithm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="156" column="88" selection-start="5173" selection-end="5173" vertical-scroll-proportion="-3.093458" vertical-offset="3499" max-vertical-offset="4665">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#933#973#0" expanded="true" />
+            <element signature="e#3724#3739#0" expanded="true" />
+            <element signature="e#3839#3878#0" expanded="true" />
+            <element signature="e#4755#4771#0" expanded="true" />
+            <element signature="e#5557#5597#0" expanded="true" />
+            <element signature="e#7068#7074#0" expanded="true" />
+            <element signature="e#8977#8984#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/dc/BlockDC.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="122" column="85" selection-start="4016" selection-end="4016" vertical-scroll-proportion="3.067757" vertical-offset="457" max-vertical-offset="2010">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/dc/CatchFixedBytesAlgorithm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="124" column="34" selection-start="3752" selection-end="3752" vertical-scroll-proportion="0.77102804" vertical-offset="1530" max-vertical-offset="2025">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1193#1194#0" expanded="true" />
+            <element signature="e#1237#1238#0" expanded="true" />
+            <element signature="e#1272#1273#0" expanded="true" />
+            <element signature="e#1310#1311#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/dc/DC.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="71" column="56" selection-start="2343" selection-end="2343" vertical-scroll-proportion="2.3855422" vertical-offset="0" max-vertical-offset="1470">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/ui/cli/CommandLineInterface.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="60" selection-start="1002" selection-end="1002" vertical-scroll-proportion="0.5794392" vertical-offset="202" max-vertical-offset="630">
+        <state line="36" column="57" selection-start="923" selection-end="923" vertical-scroll-proportion="0.68457943" vertical-offset="172" max-vertical-offset="660">
           <folding />
         </state>
       </provider>
@@ -1150,7 +1296,7 @@
       </state>
       <state key="JdkListConfigurable.UI">
         <settings>
-          <last-edited>1.7</last-edited>
+          <last-edited>1.7 (1)</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

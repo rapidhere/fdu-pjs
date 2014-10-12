@@ -1,5 +1,7 @@
 package core.dc;
 
+import excs.DCException;
+
 /**
  * Copyright : all rights reserved,rapidhere@gmail.com
  * Mail: rapidhere@gmail.com
@@ -8,6 +10,6 @@ package core.dc;
  * Usage :
  */
 abstract public interface DCAlgorithm {
-    abstract public byte[] compress(CatchAlgorithm.Token[] tokens, CatchAlgorithm ca);
-    abstract public CatchAlgorithm.Token[] decompress(byte[] bytes, int offset, int length, CatchAlgorithm ca);
+    abstract public byte[] compress(Token[] tokens, CatchAlgorithm ca) throws DCException;
+    abstract public Token[] decompress(byte[] bytes, int offset, int length, CatchAlgorithm ca) throws DCException;
 }

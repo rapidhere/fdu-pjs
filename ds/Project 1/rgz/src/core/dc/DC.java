@@ -37,6 +37,12 @@ abstract public class DC {
                 throw new DCException(e.getMessage());
             }
 
+            // if is fixed bytes cather, write byte info
+            if(catchAlg instanceof CatchFixedBitsAlgorithm)
+                out.write(((CatchFixedBitsAlgorithm) catchAlg).getBitLength());
+            else if(catchAlg instanceof CatchFixedBytesAlgorithm)
+                out.write(((CatchFixedBytesAlgorithm) catchAlg).getByteLength());
+
             // write dc algorithm id
             try {
                 out.write(Config.getDCAlgorithmId(dcAlg));
@@ -51,23 +57,39 @@ abstract public class DC {
     protected void loadDCCA(InputStream in)
     throws DCException {
         try {
-            byte b[] = new byte[2];
-            if(in.read(b) != 2)
-                throw new DCException("Wrong file syntax: cannot load dc ca info!");
+            int b;
+            // read catch algorithm
+            try {
+                b = in.read();
+                if(b == -1)
+                    throw new DCException("Wrong file syntax: cannot load dc ca info!");
+
+                catchAlg = Config.getCatchAlgorithmById((byte)b);
+                if(catchAlg instanceof CatchFixedBitsAlgorithm || catchAlg instanceof CatchFixedBytesAlgorithm) {
+                    b = in.read();
+                    if(b == -1)
+                        throw new DCException("Wrong file syntax: cannot load dc ca info!");
+                    if(catchAlg instanceof CatchFixedBitsAlgorithm)
+                        ((CatchFixedBitsAlgorithm) catchAlg).setBitLength((byte) b);
+                    else
+                        ((CatchFixedBytesAlgorithm) catchAlg).setByteLength((byte) b);
+                }
+            } catch (UnknownCatchAlgorithmId e) {
+                throw new DCException(e.getMessage());
+            }
 
             // read dc algorithm
             try {
-                dcAlg = Config.getDCAlgorithmById(b[1]);
+                b = in.read();
+                if(b == -1)
+                    throw new DCException("Wrong file syntax: cannot load dc ca info!");
+
+                dcAlg = Config.getDCAlgorithmById((byte)b);
             } catch (UnknownDCAlgorithmId e) {
                 throw new DCException(e.getMessage());
             }
 
-            // read catch algorithm
-            try {
-                catchAlg = Config.getCatchAlgorithmById(b[0]);
-            } catch (UnknownCatchAlgorithmId e) {
-                throw new DCException(e.getMessage());
-            }
+
         } catch (IOException ioe) {
             throw new DCException(ioe);
         }
