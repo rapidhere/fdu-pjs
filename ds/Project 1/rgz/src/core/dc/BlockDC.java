@@ -30,6 +30,10 @@ public class BlockDC extends DC {
         setBlockSize(blockSize);
     }
 
+    public BlockDC() {
+        super(null, null);
+    }
+
     @Override
     public void compress(InputStream in, OutputStream out)
     throws DCException {

@@ -62,22 +62,7 @@
     </breakpoint_any>
     <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
-      <breakpoint url="file://$PROJECT_DIR$/src/core/dc/BlockDC.java" line="63" class="core.dc.BlockDC" package="core.dc">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/core/dc/BlockDC.java" line="93" class="core.dc.BlockDC" package="core.dc">
+      <breakpoint url="file://$PROJECT_DIR$/src/core/dc/BlockDC.java" line="97" class="core.dc.BlockDC" package="core.dc">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -137,7 +122,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/core/dc/BlockDC.java" line="122" class="core.dc.BlockDC" package="core.dc">
+      <breakpoint url="file://$PROJECT_DIR$/src/core/dc/BlockDC.java" line="126" class="core.dc.BlockDC" package="core.dc">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -162,11 +147,45 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="CommandLineInterface.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/ui/cli/CommandLineInterface.java">
+      <file leaf-file-name="Root.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/core/tar/Root.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="57" selection-start="923" selection-end="923" vertical-scroll-proportion="0.68457943" vertical-offset="172" max-vertical-offset="660">
-              <folding />
+            <state line="146" column="51" selection-start="4123" selection-end="4123" vertical-scroll-proportion="0.0" vertical-offset="1357" max-vertical-offset="2325">
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#407#420#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Menu.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/core/tar/Menu.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="40" column="41" selection-start="979" selection-end="979" vertical-scroll-proportion="0.68457943" vertical-offset="307" max-vertical-offset="735">
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#356#374#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RegularFile.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/core/tar/RegularFile.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="22" column="27" selection-start="436" selection-end="436" vertical-scroll-proportion="0.0" vertical-offset="97" max-vertical-offset="720">
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#280#281#0" expanded="true" />
+                <element signature="e#313#314#0" expanded="true" />
+                <element signature="e#362#363#0" expanded="true" />
+                <element signature="e#406#407#0" expanded="true" />
+                <element signature="e#466#467#0" expanded="true" />
+                <element signature="e#493#494#0" expanded="true" />
+                <element signature="e#533#534#0" expanded="true" />
+                <element signature="e#565#566#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -181,13 +200,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/core/dc/DCer.java" />
-        <option value="$PROJECT_DIR$/src/core/dc/BlockCompressor.java" />
-        <option value="$PROJECT_DIR$/src/core/dc/BlockDecompressor.java" />
-        <option value="$PROJECT_DIR$/src/core/comp/FileNode.java" />
-        <option value="$PROJECT_DIR$/src/core/comp/Menu.java" />
-        <option value="$PROJECT_DIR$/src/core/comp/NormalFile.java" />
-        <option value="$PROJECT_DIR$/src/core/comp/RegularFile.java" />
         <option value="$PROJECT_DIR$/src/core/comp/BinaryFile.java" />
         <option value="$PROJECT_DIR$/src/core/comp/TextFile.java" />
         <option value="$PROJECT_DIR$/src/core/comp/Root.java" />
@@ -229,9 +241,16 @@
         <option value="$PROJECT_DIR$/src/core/dc/DCHuffmanAlgorithm.java" />
         <option value="$PROJECT_DIR$/src/ui/Config.java" />
         <option value="$PROJECT_DIR$/src/core/dc/CatchFixedBytesAlgorithm.java" />
-        <option value="$PROJECT_DIR$/src/core/dc/DC.java" />
         <option value="$PROJECT_DIR$/src/ui/cli/CommandLineInterface.java" />
+        <option value="$PROJECT_DIR$/src/core/tar/TextFile.java" />
+        <option value="$PROJECT_DIR$/src/excs/TarException.java" />
+        <option value="$PROJECT_DIR$/src/core/tar/Menu.java" />
+        <option value="$PROJECT_DIR$/src/core/tar/FileNode.java" />
+        <option value="$PROJECT_DIR$/src/core/dc/DC.java" />
         <option value="$PROJECT_DIR$/src/core/dc/BlockDC.java" />
+        <option value="$PROJECT_DIR$/src/core/tar/CountableBufferedOutputStream.java" />
+        <option value="$PROJECT_DIR$/src/core/tar/RegularFile.java" />
+        <option value="$PROJECT_DIR$/src/core/tar/Root.java" />
       </list>
     </option>
   </component>
@@ -333,46 +352,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rgz" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rgz" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cli" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rgz" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rgz" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="excs" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -394,31 +373,9 @@
               <option name="myItemId" value="core" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="rgz" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rgz" />
+              <option name="myItemId" value="tar" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DCHuffmanAlgorithm.java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -436,10 +393,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dc" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -759,16 +712,16 @@
       <workItem from="1413022254458" duration="6709000" />
       <workItem from="1413032654489" duration="8965000" />
       <workItem from="1413079383312" duration="2261000" />
-      <workItem from="1413082990466" duration="22440000" />
+      <workItem from="1413082990466" duration="31680000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="89534000" />
+    <option name="totallyTimeSpent" value="98774000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1366" height="744" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -791,7 +744,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24773414" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29953918" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29953918" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -820,16 +773,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/core/dc/BitArray.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="66" column="0" selection-start="1505" selection-end="1505" vertical-scroll-proportion="0.0" vertical-offset="855" max-vertical-offset="1620">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1571#1577#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/core/dc/CatchASCIIAlgorithm.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="65" column="41" selection-start="1675" selection-end="1675" vertical-scroll-proportion="0.0" vertical-offset="788" max-vertical-offset="1320">
@@ -1028,36 +971,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/comp/FileNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="43" selection-start="252" selection-end="252" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="300" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/comp/Menu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="34" selection-start="181" selection-end="181" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/comp/RegularFile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="9" selection-start="157" selection-end="157" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/comp/BinaryFile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="43" selection-start="190" selection-end="190" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/comp/TextFile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="41" selection-start="188" selection-end="188" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/comp/Root.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="25" selection-start="335" selection-end="335" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="390" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/excs/RGZException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="11" column="47" selection-start="265" selection-end="265" vertical-scroll-proportion="0.275" vertical-offset="0" max-vertical-offset="600">
@@ -1220,15 +1133,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/dc/BlockDC.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="122" column="85" selection-start="4016" selection-end="4016" vertical-scroll-proportion="3.067757" vertical-offset="457" max-vertical-offset="2010">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/core/dc/CatchFixedBytesAlgorithm.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="124" column="34" selection-start="3752" selection-end="3752" vertical-scroll-proportion="0.77102804" vertical-offset="1530" max-vertical-offset="2025">
@@ -1242,17 +1146,93 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/dc/DC.java">
+    <entry file="file://$PROJECT_DIR$/src/ui/cli/CommandLineInterface.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="71" column="56" selection-start="2343" selection-end="2343" vertical-scroll-proportion="2.3855422" vertical-offset="0" max-vertical-offset="1470">
+        <state line="32" column="34" selection-start="787" selection-end="787" vertical-scroll-proportion="0.0" vertical-offset="232" max-vertical-offset="660">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ui/cli/CommandLineInterface.java">
+    <entry file="file://$PROJECT_DIR$/src/excs/TarException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="57" selection-start="923" selection-end="923" vertical-scroll-proportion="0.68457943" vertical-offset="172" max-vertical-offset="660">
+        <state line="11" column="13" selection-start="242" selection-end="242" vertical-scroll-proportion="0.38551402" vertical-offset="0" max-vertical-offset="428">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/tar/FileNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="5" selection-start="512" selection-end="512" vertical-scroll-proportion="0.0" vertical-offset="37" max-vertical-offset="465">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#getName#0;class#FileNode#0" expanded="true" />
+            <element signature="e#479#480#0" expanded="true" />
+            <element signature="e#511#512#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/dc/DC.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="24" selection-start="494" selection-end="494" vertical-scroll-proportion="0.0" vertical-offset="65" max-vertical-offset="1470">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/tar/CountableBufferedOutputStream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="36" selection-start="920" selection-end="920" vertical-scroll-proportion="1.1111112" vertical-offset="150" max-vertical-offset="735">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#479#480#0" expanded="true" />
+            <element signature="e#512#513#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/dc/BlockDC.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="37" column="15" selection-start="718" selection-end="718" vertical-scroll-proportion="0.1588785" vertical-offset="427" max-vertical-offset="2070">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/tar/RegularFile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="27" selection-start="436" selection-end="436" vertical-scroll-proportion="0.0" vertical-offset="97" max-vertical-offset="720">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#280#281#0" expanded="true" />
+            <element signature="e#313#314#0" expanded="true" />
+            <element signature="e#362#363#0" expanded="true" />
+            <element signature="e#406#407#0" expanded="true" />
+            <element signature="e#466#467#0" expanded="true" />
+            <element signature="e#493#494#0" expanded="true" />
+            <element signature="e#533#534#0" expanded="true" />
+            <element signature="e#565#566#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/tar/Root.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="146" column="51" selection-start="4123" selection-end="4123" vertical-scroll-proportion="0.0" vertical-offset="1357" max-vertical-offset="2325">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#407#420#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/tar/Menu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="41" selection-start="979" selection-end="979" vertical-scroll-proportion="0.68457943" vertical-offset="307" max-vertical-offset="735">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#356#374#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
