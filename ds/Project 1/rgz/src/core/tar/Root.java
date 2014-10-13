@@ -1,13 +1,17 @@
 package core.tar;
 
 import core.dc.DC;
+import core.io.CountableBufferedOutputStream;
 import excs.DCException;
 import excs.TarException;
 
 import java.io.*;
+import java.nio.ByteBuffer;
+import java.nio.channels.FileChannel;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Copyright : all rights reserved,rapidhere@gmail.com
@@ -17,29 +21,91 @@ import java.util.ArrayList;
  * Usage :
  */
 public class Root extends Menu {
-    ArrayList<RegularFile> regularFiles = new ArrayList<RegularFile>();
+    Map<RegularFile, String> regularFilePathsMap = new HashMap<RegularFile, String>();
+
+    public Root() {setName(".");}
+
+    public void reset() {
+        regularFilePathsMap.clear();
+        children.clear();
+    }
 
     @Override
-    public void dumpIndex(OutputStream out) {
+    public void dumpIndex(OutputStream out)
+    throws IOException {
+        assert out instanceof CountableBufferedOutputStream;
+        ((CountableBufferedOutputStream) out).clearCounter();
+
         super.dumpIndex(out);
 
-        // TODO: dump compressed data index
+        // write index length at the end of file
+        int indexLength = ((CountableBufferedOutputStream) out).getWroteBytes();
+        for(int i = 0;i < 4;i ++)
+            out.write(((indexLength >> (i * 8)) & 0xff));
     }
 
     @Override
-    public void loadIndex(InputStream in) {
+    public void loadIndex(InputStream in)
+    throws IOException, TarException {
+        byte b = (byte)in.read();
+        if(b != 0) { // root must be a menu!
+            throw new TarException("cannot load index: wrong index format - root must be a menu");
+        }
         super.loadIndex(in);
 
-        // TODO: load compressed data index
+        if(in.available() != 0)
+            throw new TarException("cannot load index: wrong index format - redundant bytes");
     }
 
-    public InputStream getIndexInputStream(String srcFile){
-        return null;
+    public void loadIndexFromFile(String srcFile)
+    throws TarException{
+        // create file channel
+        FileChannel fc;
+        try {
+            fc = new FileInputStream(srcFile).getChannel();
+        } catch (FileNotFoundException e) {
+            throw new TarException("cannot load index: " + e.getMessage());
+        }
+
+        try {
+            // read last four bytes
+            long totSize = fc.size();
+            fc.position(totSize - 4);
+
+            ByteBuffer b = ByteBuffer.allocate(4);
+            fc.read(b);
+
+            // get index size
+            int indexSize = 0;
+            for(int i = 0;i < 4;i ++)
+                indexSize |= (b.get(i) & 0xff) << (i * 8);
+
+            // read in index
+            b = ByteBuffer.allocate(indexSize);
+            fc.position(totSize - 4 - indexSize);
+            fc.read(b);
+
+            // load index
+            loadIndex(new ByteArrayInputStream(b.array()));
+        } catch (IOException e) {
+            throw new TarException("cannot load index: " + e.getMessage());
+        }
+
+        // close fc
+        try {
+            fc.close();
+        } catch (IOException e) {
+            reset();
+            throw new TarException("cannot load index: " + e.getMessage());
+        }
     }
 
-    private void addNewFileNode(String srcFileName)
+    private void addSource(String srcFileName)
     throws TarException {
         Path srcPath = Paths.get(srcFileName);
+        if(! srcPath.toFile().exists())
+            throw new TarException("cannot found source file or directory " + srcFileName);
+
         FileNode cur = this;
 
         // normalize path
@@ -67,30 +133,26 @@ public class Root extends Menu {
                 } else {
                     next = new Menu();
                 }
+                next.setName(cName);
+                ((Menu)cur).addFileNode(next);
             }
 
-            next.setName(cName);
-            ((Menu)cur).addFileNode(next);
             cur = next;
         }
 
         if(cur instanceof RegularFile) { // this is a regular file
-            regularFiles.add((RegularFile)cur);
-            ((RegularFile) cur).setPath(srcFileName);
+            regularFilePathsMap.put((RegularFile) cur, srcFileName);
         } else { // this is a directory
             discoverDirectory((Menu)cur);
         }
     }
 
     public void discoverDirectory(Menu m) {
-
+        // TODO
     }
 
-    public void compress(String[] sourceFiles, String outputFile, DC dc)
-        throws TarException, DCException {
-        // clear up
-        regularFiles.clear();
-
+    public void compress(String outputFile, String srcFile, DC dc)
+    throws TarException, DCException {
         // create Output stream
         OutputStream out;
         try {
@@ -99,24 +161,12 @@ public class Root extends Menu {
             throw new TarException(e.getMessage());
         }
 
-        // add sourceFiles
-        for(String srcFileName: sourceFiles) {
-            File srcFile = new File(srcFileName);
-            // no such file
-            if(!srcFile.exists()) {
-                throw new TarException("cannot found source file or directory " + srcFileName);
-            }
-
-            // add new file node
-            addNewFileNode(srcFileName);
-        }
-
         // index has build up
         // then compress files
-        for(RegularFile f: regularFiles) {
+        for(RegularFile f: regularFilePathsMap.keySet()) {
             InputStream in = null;
             try {
-                in = new BufferedInputStream(new FileInputStream(f.getPath()));
+                in = new BufferedInputStream(new FileInputStream(regularFilePathsMap.get(f)));
             } catch (FileNotFoundException e) {
                 // never reach here
                 assert(false);
@@ -126,24 +176,18 @@ public class Root extends Menu {
             f.setDataOffset(((CountableBufferedOutputStream)out).getWroteBytes());
         }
 
-        // dump index to the very end of the file
-        dumpIndex(out);
-
         // close output stream
         try {
+            // dump index to the very end of the file
+            dumpIndex(out);
             out.close();
         } catch (IOException e) {
             throw new TarException(e.getMessage());
         }
     }
 
-    public void decompress(String sourceFile, String[] targetFiles, DC dc) {
-        // load index info
-        loadIndex(getIndexInputStream(sourceFile));
-    }
-
-    public void list(String sourceFile, String[] paths) {
-        // load index info
-        loadIndex(getIndexInputStream(sourceFile));
+    public void decompress(FileNode[] fileNodes, String srcFile, DC dc)
+    throws TarException, DCException {
+        // TODO
     }
 }

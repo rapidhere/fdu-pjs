@@ -2,6 +2,7 @@ package core.tar;
 
 import excs.TarException;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.HashMap;
@@ -17,11 +18,57 @@ public class Menu extends FileNode {
     protected HashMap<String, FileNode> children = new HashMap<String, FileNode>();
 
     @Override
-    public void dumpIndex(OutputStream out) {
+    public void dumpIndex(OutputStream out)
+    throws IOException {
+        // this is a menu, write 0
+        out.write(0);
+
+        // write name
+        for(int i = 0;i < 4;i ++)
+            out.write((byte)((getName().length() >> (i * 8)) & 0xff));
+        out.write(getName().getBytes());
+
+        // dump children
+        for(FileNode ch: children.values()) {
+            ch.dumpIndex(out);
+        }
     }
 
     @Override
-    public void loadIndex(InputStream in) {
+    public void loadIndex(InputStream in) throws IOException, TarException {
+        // read in name length
+        int nameLength = 0;
+        for(int i = 0;i < 4;i ++) {
+            int c = in.read();
+            if(c == -1)
+                throw new TarException("load index failed: wrong index format - cannot get name length");
+            nameLength |= (c & 0xff) << (i * 8);
+        }
+
+        // read name
+        char[] name = new char[nameLength];
+        for(int i = 0;i < nameLength;i ++) {
+            int c = in.read();
+            if(c == -1)
+                throw new TarException("load index failed: wrong index format - cannot get name");
+            name[i] = (char)c;
+        }
+        setName(String.valueOf(name));
+
+        // load children
+        children.clear();
+        while(true) {
+            int c = in.read();
+            if(c == -1) break;
+
+            FileNode ch;
+            if(c == 0)
+                ch = new Menu();
+            else
+                ch = new RegularFile();
+            ch.loadIndex(in);
+            children.put(ch.getName(), ch);
+        }
     }
 
     public void addFileNode(FileNode fn) throws TarException {
@@ -34,7 +81,7 @@ public class Menu extends FileNode {
     }
 
     public FileNode findFileNode(String name) {
-        return null;
+        return children.get(name);
     }
 
     public boolean hasChild(String name) {

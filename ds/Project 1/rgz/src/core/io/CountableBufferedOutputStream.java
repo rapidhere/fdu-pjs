@@ -1,4 +1,4 @@
-package core.tar;
+package core.io;
 
 import java.io.BufferedOutputStream;
 import java.io.IOException;
@@ -22,6 +22,7 @@ public class CountableBufferedOutputStream extends BufferedOutputStream {
     public int getWroteBytes() {
         return wroteBytes;
     }
+    public void clearCounter() {wroteBytes = 0;}
 
     @Override
     public void write(int b) throws IOException {

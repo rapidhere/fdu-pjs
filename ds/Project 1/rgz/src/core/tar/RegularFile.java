@@ -1,5 +1,8 @@
 package core.tar;
 
+import excs.TarException;
+
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
@@ -22,21 +25,51 @@ public class RegularFile extends FileNode {
 
     private int dataOffset;
 
-    public String getPath() {
-        return path;
-    }
+    @Override
+    public void dumpIndex(OutputStream out)
+    throws IOException {
+        // this is a regular file write 1
+        out.write(1);
 
-    public void setPath(String path) {
-        this.path = path;
-    }
+        // write name
+        for(int i = 0;i < 4;i ++)
+            out.write((byte)((getName().length() >> (i * 8)) & 0xff));
+        for(int i = 0;i < getName().length();i ++)
+            out.write((byte)(getName().charAt(i)));
 
-    private String path;
+        // write data offset
+        for(int i = 0;i < 4;i ++)
+            out.write((byte)((dataOffset >> (i * 8)) & 0xff));
+    }
 
     @Override
-    public void dumpIndex(OutputStream out) {
-    }
+    public void loadIndex(InputStream in) throws TarException, IOException {
+        // read in name length
+        int nameLength = 0;
+        for(int i = 0;i < 4;i ++) {
+            int c = in.read();
+            if(c == -1)
+                throw new TarException("load index failed: wrong index format - cannot get name length");
+            nameLength |= (c & 0xff) << (i * 8);
+        }
 
-    @Override
-    public void loadIndex(InputStream in) {
+        // read name
+        char[] name = new char[nameLength];
+        for(int i = 0;i < nameLength;i ++) {
+            int c = in.read();
+            if(c == -1)
+                throw new TarException("load index failed: wrong index format - cannot get name");
+            name[i] = (char)c;
+        }
+        setName(String.valueOf(name));
+
+        // read data offset
+        dataOffset = 0;
+        for(int i = 0;i < 4;i ++) {
+            int c = in.read();
+            if(c == -1)
+                throw new TarException("load index failed: wrong index format - cannot load data offset");
+            dataOffset |= (c & 0xff) << (i * 8);
+        }
     }
 }
