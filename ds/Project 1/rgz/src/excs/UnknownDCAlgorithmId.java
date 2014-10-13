@@ -9,6 +9,6 @@ package excs;
  */
 public class UnknownDCAlgorithmId extends RGZException {
     public UnknownDCAlgorithmId(int aid) {
-        super("Unknown DC Algorithm id : " + aid + " , no such algorithm");
+        super("Unknown DCM Algorithm id : " + aid + " , no such algorithm");
     }
 }

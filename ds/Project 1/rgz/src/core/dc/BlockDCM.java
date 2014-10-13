@@ -14,7 +14,7 @@ import java.io.OutputStream;
  * Version :
  * Usage :
  */
-public class BlockDC extends DC {
+public class BlockDCM extends DCM {
     public int getBlockSize() {
         return blockSize;
     }
@@ -25,12 +25,12 @@ public class BlockDC extends DC {
 
     private int blockSize;
 
-    public BlockDC(DCAlgorithm dc, CatchAlgorithm ca, int blockSize) {
+    public BlockDCM(DCAlgorithm dc, CatchAlgorithm ca, int blockSize) {
         super(dc, ca);
         setBlockSize(blockSize);
     }
 
-    public BlockDC() {
+    public BlockDCM() {
         super(null, null);
     }
 

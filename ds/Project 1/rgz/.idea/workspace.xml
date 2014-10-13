@@ -71,13 +71,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Root.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Root.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/tar/Root.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="15" selection-start="327" selection-end="327" vertical-scroll-proportion="0.096" vertical-offset="0" max-vertical-offset="2820">
-              <folding>
-                <element signature="e#546#567#0" expanded="true" />
-              </folding>
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4050">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CommandLineInterface.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ui/cli/CommandLineInterface.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="37" column="0" selection-start="998" selection-end="998" vertical-scroll-proportion="0.736" vertical-offset="20" max-vertical-offset="795">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -92,9 +99,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/core/comp/BinaryFile.java" />
-        <option value="$PROJECT_DIR$/src/core/comp/TextFile.java" />
-        <option value="$PROJECT_DIR$/src/core/comp/Root.java" />
         <option value="$PROJECT_DIR$/src/core/io/MemoryMappingInputStream.java" />
         <option value="$PROJECT_DIR$/src/excs/UnkownAlgorithmId.java" />
         <option value="$PROJECT_DIR$/src/excs/UnknowAlgorithmid.java" />
@@ -118,7 +122,6 @@
         <option value="$PROJECT_DIR$/src/excs/UnknownDCAlgorithmId.java" />
         <option value="$PROJECT_DIR$/src/excs/UnkownCatchAlgorithm.java" />
         <option value="$PROJECT_DIR$/src/excs/UnknownCatchAlgorithm.java" />
-        <option value="$PROJECT_DIR$/src/excs/UnknownDCAlgorithm.java" />
         <option value="$PROJECT_DIR$/src/excs/CompressException.java" />
         <option value="$PROJECT_DIR$/src/excs/DecompressException.java" />
         <option value="$PROJECT_DIR$/src/excs/DCException.java" />
@@ -131,18 +134,22 @@
         <option value="$PROJECT_DIR$/src/core/dc/BitArray.java" />
         <option value="$PROJECT_DIR$/src/core/dc/CatchFixedBitsAlgorithm.java" />
         <option value="$PROJECT_DIR$/src/core/dc/DCHuffmanAlgorithm.java" />
-        <option value="$PROJECT_DIR$/src/ui/Config.java" />
         <option value="$PROJECT_DIR$/src/core/dc/CatchFixedBytesAlgorithm.java" />
-        <option value="$PROJECT_DIR$/src/ui/cli/CommandLineInterface.java" />
         <option value="$PROJECT_DIR$/src/core/tar/TextFile.java" />
         <option value="$PROJECT_DIR$/src/excs/TarException.java" />
         <option value="$PROJECT_DIR$/src/core/dc/DC.java" />
         <option value="$PROJECT_DIR$/src/core/dc/BlockDC.java" />
         <option value="$PROJECT_DIR$/src/core/tar/CountableBufferedOutputStream.java" />
-        <option value="$PROJECT_DIR$/src/core/tar/FileNode.java" />
         <option value="$PROJECT_DIR$/src/core/tar/RegularFile.java" />
         <option value="$PROJECT_DIR$/src/core/tar/Menu.java" />
+        <option value="$PROJECT_DIR$/src/core/tar/FileNode.java" />
+        <option value="$PROJECT_DIR$/src/core/io/MemoryMappedFileInputStream.java" />
         <option value="$PROJECT_DIR$/src/core/tar/Root.java" />
+        <option value="$PROJECT_DIR$/src/excs/UnknownDCM.java" />
+        <option value="$PROJECT_DIR$/src/excs/UnknownDCAlgorithm.java" />
+        <option value="$PROJECT_DIR$/src/excs/UnknownDCMId.java" />
+        <option value="$PROJECT_DIR$/src/ui/Config.java" />
+        <option value="$PROJECT_DIR$/src/ui/cli/CommandLineInterface.java" />
       </list>
     </option>
   </component>
@@ -198,6 +205,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -227,6 +235,64 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rgz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rgz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rgz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rgz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cli" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rgz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rgz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="excs" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -298,7 +364,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane">
         <subPane />
       </pane>
@@ -615,11 +680,12 @@
       <workItem from="1413079383312" duration="2261000" />
       <workItem from="1413082990466" duration="31680000" />
       <workItem from="1413166643626" duration="4828000" />
+      <workItem from="1413178763283" duration="5112000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="103602000" />
+    <option name="totallyTimeSpent" value="108714000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1366" height="744" extended-state="6" />
@@ -641,6 +707,7 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24773414" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32771823" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39938557" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -651,7 +718,6 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33026114" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32930514" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32771823" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -675,12 +741,7 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/core/dc/CatchASCIIAlgorithm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="65" column="41" selection-start="1675" selection-end="1675" vertical-scroll-proportion="0.0" vertical-offset="788" max-vertical-offset="1320" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/dc/BlockDC.java">
+    <entry file="file://$PROJECT_DIR$/src/core/dc/BlockDCM.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="37" column="39" selection-start="795" selection-end="795" vertical-scroll-proportion="0.0" vertical-offset="555" max-vertical-offset="735">
           <folding>
@@ -689,7 +750,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/dc/DC.java">
+    <entry file="file://$PROJECT_DIR$/src/core/dc/DCM.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="67" column="54" selection-start="1886" selection-end="1886" vertical-scroll-proportion="0.0" vertical-offset="1005" max-vertical-offset="1200">
           <folding />
@@ -719,7 +780,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/dc/DC.java">
+    <entry file="file://$PROJECT_DIR$/src/core/dc/DCM.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="21" column="0" selection-start="407" selection-end="407" vertical-scroll-proportion="0.0" vertical-offset="315" max-vertical-offset="465">
           <folding />
@@ -882,13 +943,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/excs/UnknownDCAlgorithm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="25" selection-start="299" selection-end="299" vertical-scroll-proportion="0.3130016" vertical-offset="0" max-vertical-offset="623">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/excs/UnknownCatchAlgorithm.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="24" selection-start="39" selection-end="39" vertical-scroll-proportion="0.048154093" vertical-offset="0" max-vertical-offset="623">
@@ -968,11 +1022,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ui/Config.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="126" column="71" selection-start="3406" selection-end="3406" vertical-scroll-proportion="2.4271605" vertical-offset="847" max-vertical-offset="1995" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/core/dc/CatchFixedBytesAlgorithm.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="124" column="34" selection-start="3752" selection-end="3752" vertical-scroll-proportion="0.77102804" vertical-offset="1530" max-vertical-offset="2025">
@@ -983,13 +1032,6 @@
             <element signature="e#1272#1273#0" expanded="true" />
             <element signature="e#1310#1311#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ui/cli/CommandLineInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="34" selection-start="787" selection-end="787" vertical-scroll-proportion="0.0" vertical-offset="232" max-vertical-offset="660">
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1009,38 +1051,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/tar/RegularFile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="0" selection-start="663" selection-end="663" vertical-scroll-proportion="0.624" vertical-offset="0" max-vertical-offset="1095">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/tar/Menu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="34" selection-start="1612" selection-end="1612" vertical-scroll-proportion="0.064" vertical-offset="815" max-vertical-offset="1440">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#384#402#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/tar/FileNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="83" selection-start="519" selection-end="519" vertical-scroll-proportion="0.48" vertical-offset="0" max-vertical-offset="625">
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="method#getName#0;class#FileNode#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.idea/copyright/profiles_settings.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="625">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="625" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/dc/DCHuffmanAlgorithm.java">
@@ -1066,7 +1079,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/dc/DC.java">
+    <entry file="file://$PROJECT_DIR$/src/core/dc/DCM.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1470">
           <folding />
@@ -1083,7 +1096,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/dc/BlockDC.java">
+    <entry file="file://$PROJECT_DIR$/src/core/dc/BlockDCM.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="48" column="50" selection-start="1100" selection-end="1100" vertical-scroll-proportion="0.528" vertical-offset="330" max-vertical-offset="2070">
           <folding>
@@ -1092,12 +1105,77 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/tar/FileNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="0" selection-start="293" selection-end="293" vertical-scroll-proportion="0.232" vertical-offset="80" max-vertical-offset="765">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#751#759#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/tar/Menu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="34" selection-start="319" selection-end="319" vertical-scroll-proportion="0.072" vertical-offset="195" max-vertical-offset="1440">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#384#402#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/tar/RegularFile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="75" column="0" selection-start="2074" selection-end="2074" vertical-scroll-proportion="0.952" vertical-offset="410" max-vertical-offset="1095">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/io/MemoryMappedFileInputStream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="62" selection-start="353" selection-end="353" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="420">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/core/tar/Root.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="15" selection-start="327" selection-end="327" vertical-scroll-proportion="0.096" vertical-offset="0" max-vertical-offset="2820">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4050">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/excs/UnknownDCAlgorithm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="25" selection-start="299" selection-end="299" vertical-scroll-proportion="0.312" vertical-offset="0" max-vertical-offset="625">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/excs/UnknownDCMId.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="42" selection-start="270" selection-end="270" vertical-scroll-proportion="0.264" vertical-offset="0" max-vertical-offset="625">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/Config.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2265">
           <folding>
-            <element signature="e#546#567#0" expanded="true" />
+            <element signature="e#3486#3487#0" expanded="true" />
+            <element signature="e#3520#3521#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/cli/CommandLineInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="37" column="0" selection-start="998" selection-end="998" vertical-scroll-proportion="0.736" vertical-offset="20" max-vertical-offset="795">
+          <folding />
         </state>
       </provider>
     </entry>

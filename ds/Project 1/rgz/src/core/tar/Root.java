@@ -1,7 +1,8 @@
 package core.tar;
 
-import core.dc.DC;
+import core.dc.DCM;
 import core.io.CountableBufferedOutputStream;
+import core.io.MemoryMappedFileInputStream;
 import excs.DCException;
 import excs.TarException;
 
@@ -23,7 +24,10 @@ import java.util.Map;
 public class Root extends Menu {
     Map<RegularFile, String> regularFilePathsMap = new HashMap<RegularFile, String>();
 
-    public Root() {setName(".");}
+    public Root() {
+        setName(".");
+        parent = null;
+    }
 
     public void reset() {
         regularFilePathsMap.clear();
@@ -134,6 +138,7 @@ public class Root extends Menu {
                     next = new Menu();
                 }
                 next.setName(cName);
+                next.parent = cur;
                 ((Menu)cur).addFileNode(next);
             }
 
@@ -143,15 +148,31 @@ public class Root extends Menu {
         if(cur instanceof RegularFile) { // this is a regular file
             regularFilePathsMap.put((RegularFile) cur, srcFileName);
         } else { // this is a directory
-            discoverDirectory((Menu)cur);
+            discoverDirectory((Menu)cur, srcPath);
         }
     }
 
-    public void discoverDirectory(Menu m) {
-        // TODO
+    public void discoverDirectory(Menu m, Path p) {
+        File dir = p.toFile();
+
+        for(String f: dir.list()) {
+            File cf = new File(dir, f);
+
+            if(cf.isFile()) { // regular File
+                RegularFile t = new RegularFile();
+                t.setName(f);
+                t.parent = m;
+                regularFilePathsMap.put(t, cf.getPath());
+            } else {
+                Menu t = new Menu();
+                t.setName(f);
+                t.parent = m;
+                discoverDirectory(t, Paths.get(cf.getPath()));
+            }
+        }
     }
 
-    public void compress(String outputFile, String srcFile, DC dc)
+    public void compress(String outputFile, String srcFile, DCM DCM)
     throws TarException, DCException {
         // create Output stream
         OutputStream out;
@@ -172,7 +193,7 @@ public class Root extends Menu {
                 assert(false);
             }
 
-            dc.compress(in, out);
+            DCM.compress(in, out);
             f.setDataOffset(((CountableBufferedOutputStream)out).getWroteBytes());
         }
 
@@ -186,8 +207,70 @@ public class Root extends Menu {
         }
     }
 
-    public void decompress(FileNode[] fileNodes, String srcFile, DC dc)
+    public void decompress(String rootDirString, FileNode[] fileNodes, String srcFile, DCM DCM)
     throws TarException, DCException {
-        // TODO
+        File rootDir = new File(rootDirString);
+
+        File src = new File(srcFile);
+        if(! src.exists())
+            throw new TarException("decompress failed: cannot found src file " + srcFile);
+
+        for(FileNode fn: fileNodes) {
+            Path iPath = Paths.get(fn.getPath());
+            File cur = rootDir;
+
+            for(int i = 0;i < iPath.getNameCount();i ++) {
+                Path p = iPath.getName(i);
+
+                cur = new File(rootDir, p.toString());
+                if(i == iPath.getNameCount() - 1) {
+                    break;
+                } else {
+                    if(! cur.exists()) {
+                       if(! cur.mkdir())
+                           throw new TarException(
+                               "decompress failed: cannot create dir " + fn.getPath());
+                    }
+                }
+            }
+            try {
+                doDecompress(cur, fn, DCM, src);
+            } catch (IOException e) {
+                throw new TarException("decompress failed: " + e.getMessage());
+            }
+        }
+    }
+
+    static void doDecompress(File m, FileNode fn, DCM DCM, File src)
+    throws IOException, DCException, TarException {
+        File f = new File(m, fn.getName());
+
+        if(fn instanceof RegularFile) {
+            if(! f.createNewFile()) {
+                throw new TarException("decompress failed: " + f.getPath() + " already exists");
+            }
+
+            // create streams
+            InputStream in = new MemoryMappedFileInputStream(src, ((RegularFile) fn).getDataOffset());
+            OutputStream out = new BufferedOutputStream(new FileOutputStream(f));
+
+            // do compress
+            DCM.decompress(in, out);
+
+            // close stream
+            in.close();
+            out.close();
+        } else {
+            if(! f.exists()) {
+                if(! f.mkdir()) {
+                    throw new TarException(
+                        "decompress failed: cannot create dir " + fn.getPath());
+                }
+            }
+
+            for(FileNode ch: ((Menu)fn).getChildren()) {
+                doDecompress(f, ch, DCM, src);
+            }
+        }
     }
 }

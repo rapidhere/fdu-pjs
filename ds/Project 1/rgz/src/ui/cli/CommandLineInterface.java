@@ -18,26 +18,35 @@ public class CommandLineInterface {
     private CmdLineParser parser = new CmdLineParser();
 
     // options
-    private Option optionOutputFile;
+    private Option optionVersion;
+    private Option optionHelp;
+
+    private Option optionListUp;
+    private Option optionCompress;
+    private Option optionDecompress;
+    private Option optionNumThreads;
+    private Option optionDCAlgorithm;
+    private Option optionCAAlgorithm;
+    private Option optionDCM;
+    private Option optionBlockDCSize;
+    private Option optionFixedBytesCASize;
 
     public CommandLineInterface() {
         // add arguments
-        // output file
-        optionOutputFile = parser.addStringOption('o', "output");
+        optionVersion           = parser.addBooleanOption('v', "version");
+        optionHelp              = parser.addBooleanOption('h', "help");
+
+        optionListUp            = parser.addBooleanOption('l', "list");
+        optionCompress          = parser.addBooleanOption('c', "compress");
+        optionDecompress        = parser.addBooleanOption('d', "decompress");
+        optionNumThreads        = parser.addIntegerOption('j', "threads");
+        optionDCAlgorithm       = parser.addStringOption("dc-algorithm");
+        optionCAAlgorithm       = parser.addStringOption("ca-algorithm");
+        optionDCM               = parser.addStringOption("dcm");
+        optionBlockDCSize       = parser.addIntegerOption("dcm-block-size");
+        optionFixedBytesCASize  = parser.addIntegerOption("ca-fixed-bytes-size");
     }
 
     public void run(String args[]) {
-        // create dc
-        CatchFixedBytesAlgorithm ca = new CatchFixedBytesAlgorithm();
-        ca.setByteLength((byte) 1);
-        DC dc = new BlockDC(new DCHuffmanAlgorithm(), ca, 256 * 1024);
-
-        try {
-            dc.decompress(
-                new FileInputStream("/home/rapid/work/a-2byte.rgz"),
-                new FileOutputStream("/home/rapid/work/b.txt"));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 }

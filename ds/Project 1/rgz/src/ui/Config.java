@@ -1,10 +1,7 @@
 package ui;
 
 import core.dc.*;
-import excs.UnknownCatchAlgorithm;
-import excs.UnknownCatchAlgorithmId;
-import excs.UnknownDCAlgorithm;
-import excs.UnknownDCAlgorithmId;
+import excs.*;
 
 
 /**
@@ -15,7 +12,7 @@ import excs.UnknownDCAlgorithmId;
  * Usage :
  */
 public class Config {
-    // DC Algorithm
+    // DCM Algorithm
     // Huffman tree algorithm
     public static final byte DC_HUFFMAN = 0;
 
@@ -126,6 +123,28 @@ public class Config {
             case CTH_FIXED_BIT: return new CatchFixedBitsAlgorithm();
             case CTH_FIXED_BYTE: return new CatchFixedBytesAlgorithm();
             default: throw new UnknownCatchAlgorithmId(cthId);
+        }
+    }
+
+    // DC_MAN
+    public static final byte DCM_BLOCK = 0;
+
+    private byte dcmId;
+
+    public void setDCMId(byte dcmId) {
+        this.dcmId = dcmId;
+    }
+
+    public DCM getDCM()
+    throws UnknownDCMId {
+        return getDCMbyId(dcmId);
+    }
+
+    public static DCM getDCMbyId(byte dcmId)
+    throws UnknownDCMId {
+        switch(dcmId) {
+            case DCM_BLOCK: return new BlockDCM();
+            default: throw new UnknownDCMId(dcmId);
         }
     }
 }

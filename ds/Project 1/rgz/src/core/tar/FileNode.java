@@ -2,9 +2,11 @@ package core.tar;
 
 import excs.TarException;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
 
 /**
  * Copyright : all rights reserved,rapidhere@gmail.com
@@ -15,6 +17,7 @@ import java.io.OutputStream;
  */
 abstract public class FileNode {
     protected String name;
+    protected FileNode parent;
 
     public String getName() {return name;}
     abstract public void dumpIndex(OutputStream out) throws IOException;
@@ -22,5 +25,23 @@ abstract public class FileNode {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getPath() {
+        ArrayList<String> names = new ArrayList<String>();
+        FileNode cur = this;
+        while(cur != null) {
+            names.add(cur.getName());
+            cur = cur.parent;
+        }
+
+        StringBuffer ret = new StringBuffer();
+        for(int i = names.size() - 1;i >= 0;i --) {
+            ret.append(names.get(i));
+            if(i != 0)
+                ret.append(File.pathSeparator);
+        }
+
+        return ret.toString();
     }
 }

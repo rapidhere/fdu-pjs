@@ -15,11 +15,11 @@ import java.io.OutputStream;
  * Usage :
  */
 
-abstract public class DC {
+abstract public class DCM {
     protected DCAlgorithm dcAlg;
     protected CatchAlgorithm catchAlg;
 
-    protected DC(DCAlgorithm dc, CatchAlgorithm ca) {
+    protected DCM(DCAlgorithm dc, CatchAlgorithm ca) {
         dcAlg = dc;
         catchAlg = ca;
     }
