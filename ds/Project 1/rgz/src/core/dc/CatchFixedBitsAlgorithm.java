@@ -53,6 +53,11 @@ class FixedBitsToken extends Token{
 }
 
 public class CatchFixedBitsAlgorithm implements CatchAlgorithm <FixedBitsToken> {
+    public CatchFixedBitsAlgorithm() {}
+    public CatchFixedBitsAlgorithm(byte bitLength) {
+        setBitLength(bitLength);
+    }
+
     private byte bitLength;
 
     public void setBitLength(byte bitLength) {

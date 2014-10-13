@@ -49,6 +49,11 @@ class FixedBytesToken extends Token{
 }
 
 public class CatchFixedBytesAlgorithm implements CatchAlgorithm <FixedBytesToken> {
+    public CatchFixedBytesAlgorithm() {}
+    public CatchFixedBytesAlgorithm(byte byteLength) {
+        setByteLength(byteLength);
+    }
+
     private byte byteLength;
     public void setByteLength(byte byteLength) {
         this.byteLength = byteLength;

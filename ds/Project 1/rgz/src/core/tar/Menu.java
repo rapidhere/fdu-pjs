@@ -5,6 +5,8 @@ import excs.TarException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashMap;
 
 /**
@@ -71,6 +73,21 @@ public class Menu extends FileNode {
         }
     }
 
+    public FileNode findFileNode(String pathString) {
+        Path path = Paths.get(pathString).normalize();
+
+        FileNode cur = this;
+        for(Path p: path) {
+            if(cur instanceof RegularFile)
+                return null;
+            cur = ((Menu)cur).findChild(p.toString());
+            if(cur == null)
+                return null;
+        }
+
+        return cur;
+    }
+
     public void addFileNode(FileNode fn) throws TarException {
         if(children.containsKey(fn.getName()))
             throw new TarException(fn.getName() + "is already existed");
@@ -80,7 +97,7 @@ public class Menu extends FileNode {
         return children.values().toArray(new FileNode[children.size()]);
     }
 
-    public FileNode findFileNode(String name) {
+    public FileNode findChild(String name) {
         return children.get(name);
     }
 

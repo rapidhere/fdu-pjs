@@ -8,6 +8,6 @@ package excs;
  * Usage :
  */
 public class RGZException extends Exception {
-    RGZException() {super();}
-    RGZException(String message) {super(message);}
+    public RGZException() {super();}
+    public RGZException(String message) {super(message);}
 }

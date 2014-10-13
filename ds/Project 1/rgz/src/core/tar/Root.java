@@ -5,6 +5,9 @@ import core.io.CountableBufferedOutputStream;
 import core.io.MemoryMappedFileInputStream;
 import excs.DCException;
 import excs.TarException;
+import excs.UnknownDCM;
+import excs.UnknownDCMId;
+import ui.Config;
 
 import java.io.*;
 import java.nio.ByteBuffer;
@@ -104,7 +107,7 @@ public class Root extends Menu {
         }
     }
 
-    private void addSource(String srcFileName)
+    public void addSource(String srcFileName)
     throws TarException {
         Path srcPath = Paths.get(srcFileName);
         if(! srcPath.toFile().exists())
@@ -126,7 +129,7 @@ public class Root extends Menu {
 
             FileNode next;
             if(((Menu)cur).hasChild(cName)) {
-                next = ((Menu)cur).findFileNode(cName);
+                next = ((Menu)cur).findChild(cName);
             } else {
                 if(i == srcPath.getNameCount() - 1) {
                     if(srcPath.toFile().isFile()) {
@@ -172,7 +175,7 @@ public class Root extends Menu {
         }
     }
 
-    public void compress(String outputFile, String srcFile, DCM DCM)
+    public void compress(String outputFile, DCM dcm)
     throws TarException, DCException {
         // create Output stream
         OutputStream out;
@@ -180,6 +183,15 @@ public class Root extends Menu {
             out = new CountableBufferedOutputStream(new FileOutputStream(outputFile));
         } catch (FileNotFoundException e) {
             throw new TarException(e.getMessage());
+        }
+
+        // dump dcm info
+        try {
+            out.write(Config.getDCMId(dcm));
+        } catch (UnknownDCM e) {
+            throw new TarException("compress failed: " + e.getMessage());
+        } catch (IOException e) {
+            throw new TarException("compress failed: " + e.getMessage());
         }
 
         // index has build up
@@ -193,7 +205,7 @@ public class Root extends Menu {
                 assert(false);
             }
 
-            DCM.compress(in, out);
+            dcm.compress(in, out);
             f.setDataOffset(((CountableBufferedOutputStream)out).getWroteBytes());
         }
 
@@ -207,14 +219,30 @@ public class Root extends Menu {
         }
     }
 
-    public void decompress(String rootDirString, FileNode[] fileNodes, String srcFile, DCM DCM)
+    public void decompress(String rootDirString, FileNode[] fileNodes, String srcFile)
     throws TarException, DCException {
+        // load dcm
+        DCM dcm;
+        try {
+            byte dcmId = (byte)(new FileInputStream(srcFile).read());
+            if(dcmId == -1)
+               throw new TarException("decompress failed: cannot read out dcm id");
+
+            dcm = Config.getDCMbyId(dcmId);
+        } catch (IOException e) {
+            throw new TarException("decompress failed: " + e.getMessage());
+        } catch (UnknownDCMId e) {
+            throw new TarException("decompress failed: " + e.getMessage());
+        }
+
+        // load root dir
         File rootDir = new File(rootDirString);
 
         File src = new File(srcFile);
         if(! src.exists())
             throw new TarException("decompress failed: cannot found src file " + srcFile);
 
+        // decompress each file
         for(FileNode fn: fileNodes) {
             Path iPath = Paths.get(fn.getPath());
             File cur = rootDir;
@@ -234,7 +262,7 @@ public class Root extends Menu {
                 }
             }
             try {
-                doDecompress(cur, fn, DCM, src);
+                doDecompress(cur, fn, dcm, src);
             } catch (IOException e) {
                 throw new TarException("decompress failed: " + e.getMessage());
             }

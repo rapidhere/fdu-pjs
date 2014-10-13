@@ -11,30 +11,10 @@ import excs.*;
  * Version :
  * Usage :
  */
-public class Config {
+final public class Config {
     // DCM Algorithm
     // Huffman tree algorithm
     public static final byte DC_HUFFMAN = 0;
-
-    private byte algId;
-
-    /**
-     * Set the dc algorithm id of current config
-     * @param aid algorithm id
-     */
-    public void setDCAlgorithm(byte aid) {
-        algId = aid;
-    }
-
-    /**
-     * get the dc algorithm of current config
-     * @return current config dc algorithm
-     * @throws UnknownDCAlgorithmId
-     */
-    public DCAlgorithm getDCAlgorithm()
-    throws UnknownDCAlgorithmId {
-        return getDCAlgorithmById(algId);
-    }
 
     /**
      * get algorithm id of dc
@@ -72,8 +52,6 @@ public class Config {
     public static final byte CTH_FIXED_BIT = 1;
     public static final byte CTH_FIXED_BYTE = 2;
 
-    private byte cthId;
-
     /**
      * get ca id by ca
      * @param ca the catch algorithm
@@ -90,24 +68,6 @@ public class Config {
             return CTH_FIXED_BYTE;
         }
         throw new UnknownCatchAlgorithm(ca);
-    }
-
-    /**
-     * set the catch algorithm id of current config
-     * @param cid the id of catch algorithm
-     */
-    public void setCatchAlgorithm(byte cid) {
-        cthId = cid;
-    }
-
-    /**
-     * get the catch algorithm of current config
-     * @return the catch algorithm
-     * @throws UnknownCatchAlgorithmId
-     */
-    public CatchAlgorithm getCatchAlgorithm()
-    throws UnknownCatchAlgorithmId {
-        return getCatchAlgorithmById(cthId);
     }
 
     /**
@@ -129,17 +89,27 @@ public class Config {
     // DC_MAN
     public static final byte DCM_BLOCK = 0;
 
-    private byte dcmId;
+    /**
+     * get dcm id
+     * @param dcm the dcm
+     * @return dcm id
+     * @throws UnknownDCM
+     */
+    public static byte getDCMId(DCM dcm)
+    throws UnknownDCM {
+        if(dcm instanceof BlockDCM) {
+            return DCM_BLOCK;
+        }
 
-    public void setDCMId(byte dcmId) {
-        this.dcmId = dcmId;
+        throw new UnknownDCM(dcm);
     }
 
-    public DCM getDCM()
-    throws UnknownDCMId {
-        return getDCMbyId(dcmId);
-    }
-
+    /**
+     * get dcm by id
+     * @param dcmId dcm id
+     * @return new DCM
+     * @throws UnknownDCMId
+     */
     public static DCM getDCMbyId(byte dcmId)
     throws UnknownDCMId {
         switch(dcmId) {
