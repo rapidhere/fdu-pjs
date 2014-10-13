@@ -29,7 +29,6 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-
 package ui;
 
 import java.text.NumberFormat;
@@ -169,7 +168,6 @@ public class CmdLineParser {
 
     /**
      * Representation of a command-line option
-     *
      *
      * @param <T> Type of data configured by this option
      */

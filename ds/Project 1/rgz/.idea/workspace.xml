@@ -74,7 +74,7 @@
       <file leaf-file-name="Root.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/tar/Root.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4050">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4230">
               <folding />
             </state>
           </provider>
@@ -83,7 +83,7 @@
       <file leaf-file-name="CommandLineInterface.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ui/cli/CommandLineInterface.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="0" selection-start="998" selection-end="998" vertical-scroll-proportion="0.736" vertical-offset="20" max-vertical-offset="795">
+            <state line="75" column="55" selection-start="2659" selection-end="2659" vertical-scroll-proportion="0.91735536" vertical-offset="717" max-vertical-offset="1230">
               <folding />
             </state>
           </provider>
@@ -106,7 +106,6 @@
         <option value="$PROJECT_DIR$/src/excs/UnknownAlgorithmId.java" />
         <option value="$PROJECT_DIR$/src/excs/RGZException.java" />
         <option value="$PROJECT_DIR$/src/RapidGZ.java" />
-        <option value="$PROJECT_DIR$/src/ui/CmdLineParser.java" />
         <option value="$PROJECT_DIR$/src/excs/DCUpdateException.java" />
         <option value="$PROJECT_DIR$/src/excs/FirstChuckSizeTooSmall.java" />
         <option value="$PROJECT_DIR$/src/core/dc/Utils.java" />
@@ -149,6 +148,7 @@
         <option value="$PROJECT_DIR$/src/excs/UnknownDCAlgorithm.java" />
         <option value="$PROJECT_DIR$/src/excs/UnknownDCMId.java" />
         <option value="$PROJECT_DIR$/src/ui/Config.java" />
+        <option value="$PROJECT_DIR$/src/ui/CmdLineParser.java" />
         <option value="$PROJECT_DIR$/src/ui/cli/CommandLineInterface.java" />
       </list>
     </option>
@@ -206,6 +206,9 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="PackagesPane">
+        <subPane />
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -363,9 +366,6 @@
             </PATH_ELEMENT>
           </PATH>
         </subPane>
-      </pane>
-      <pane id="PackagesPane">
-        <subPane />
       </pane>
     </panes>
   </component>
@@ -681,11 +681,13 @@
       <workItem from="1413082990466" duration="31680000" />
       <workItem from="1413166643626" duration="4828000" />
       <workItem from="1413178763283" duration="5112000" />
+      <workItem from="1413187356985" duration="826000" />
+      <workItem from="1413188204928" duration="1659000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="108714000" />
+    <option name="totallyTimeSpent" value="111199000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1366" height="744" extended-state="6" />
@@ -694,6 +696,7 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33026114" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -707,7 +710,6 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24773414" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32771823" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39938557" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -715,9 +717,9 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33026114" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32930514" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32771823" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -972,19 +974,6 @@
         <state line="36" column="0" selection-start="500" selection-end="500" vertical-scroll-proportion="0.33333334" vertical-offset="74" max-vertical-offset="8055" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ui/CmdLineParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="276" column="64" selection-start="9313" selection-end="9313" vertical-scroll-proportion="1.7777778" vertical-offset="3240" max-vertical-offset="9045">
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#16938#16946#0" expanded="false" />
-            <element signature="e#19999#20018#0" expanded="false" />
-            <element signature="e#20077#20094#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/excs/BitArrayException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="11" column="19" selection-start="258" selection-end="258" vertical-scroll-proportion="0.4074074" vertical-offset="0" max-vertical-offset="405">
@@ -1172,9 +1161,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/CmdLineParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="447" column="23" selection-start="14873" selection-end="14873" vertical-scroll-proportion="0.33333334" vertical-offset="6404" max-vertical-offset="9000">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#16930#16938#0" expanded="true" />
+            <element signature="e#19991#20010#0" expanded="true" />
+            <element signature="e#20069#20086#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/ui/cli/CommandLineInterface.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="0" selection-start="998" selection-end="998" vertical-scroll-proportion="0.736" vertical-offset="20" max-vertical-offset="795">
+        <state line="75" column="55" selection-start="2659" selection-end="2659" vertical-scroll-proportion="0.91735536" vertical-offset="717" max-vertical-offset="1230">
           <folding />
         </state>
       </provider>

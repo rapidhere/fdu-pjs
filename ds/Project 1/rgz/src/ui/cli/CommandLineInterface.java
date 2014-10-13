@@ -18,18 +18,18 @@ public class CommandLineInterface {
     private CmdLineParser parser = new CmdLineParser();
 
     // options
-    private Option optionVersion;
-    private Option optionHelp;
+    private Option<Boolean> optionVersion;
+    private Option<Boolean> optionHelp;
 
-    private Option optionListUp;
-    private Option optionCompress;
-    private Option optionDecompress;
-    private Option optionNumThreads;
-    private Option optionDCAlgorithm;
-    private Option optionCAAlgorithm;
-    private Option optionDCM;
-    private Option optionBlockDCSize;
-    private Option optionFixedBytesCASize;
+    private Option<Boolean> optionListUp;
+    private Option<Boolean> optionCompress;
+    private Option<Boolean> optionDecompress;
+    private Option<Integer> optionNumThreads;
+    private Option<String>  optionDCAlgorithm;
+    private Option<String>  optionCAAlgorithm;
+    private Option<String>  optionDCM;
+    private Option<Integer> optionBlockDCSize;
+    private Option<Integer> optionFixedBytesCASize;
 
     public CommandLineInterface() {
         // add arguments
@@ -47,6 +47,35 @@ public class CommandLineInterface {
         optionFixedBytesCASize  = parser.addIntegerOption("ca-fixed-bytes-size");
     }
 
+    public void printHelp() {
+        System.out.println("Hello World! this is help info!");
+        System.out.println();
+    }
+
+    public void printVersion() {
+        System.out.println("Copyright: (C)RapiD is a JOKER rapidhere@gmail.com");
+        System.out.println("RGZ - RapiD's GZ Demo, ver 0.1");
+        System.out.println("For any issues or bugs, please contact me rapidhere@gmail.com");
+        System.out.println();
+    }
+
     public void run(String args[]) {
+        try {
+            parser.parse(args);
+
+            if(parser.getOptionValue(optionVersion, false)) { // show version
+                printVersion();
+                System.exit(0);
+            }
+
+            if(parser.getOptionValue(optionHelp, false)) { // show help
+                printHelp();
+                System.exit(0);
+            }
+
+            String[] files = parser.getRemainingArgs();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
