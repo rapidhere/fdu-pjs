@@ -23,14 +23,19 @@ public class Menu extends FileNode {
     public void dumpIndex(OutputStream out)
     throws IOException {
         // this is a menu, write 0
-        out.write(0);
+        out.write(127);
 
         // write name
-        for(int i = 0;i < 4;i ++)
-            out.write((byte)((getName().length() >> (i * 8)) & 0xff));
+        for(int i = 0;i < 4;i ++) {
+            out.write((byte) ((getName().length() >> (i * 8)) & 0xff));
+        } 
         out.write(getName().getBytes());
 
         // dump children
+        int childrenCount = children.size();
+        for(int i = 0;i < 4;i ++) {
+            out.write((byte) ((childrenCount >> (i * 8)) & 0xff));
+        }
         for(FileNode ch: children.values()) {
             ch.dumpIndex(out);
         }
@@ -42,8 +47,9 @@ public class Menu extends FileNode {
         int nameLength = 0;
         for(int i = 0;i < 4;i ++) {
             int c = in.read();
-            if(c == -1)
+            if(c == -1) {
                 throw new TarException("load index failed: wrong index format - cannot get name length");
+            }
             nameLength |= (c & 0xff) << (i * 8);
         }
 
@@ -58,16 +64,31 @@ public class Menu extends FileNode {
         setName(String.valueOf(name));
 
         // load children
-        children.clear();
-        while(true) {
+        // get children count
+        int childrenCount = 0;
+        for(int i = 0;i < 4;i ++) {
             int c = in.read();
-            if(c == -1) break;
+            if(c == -1) {
+                throw new TarException(
+                    "load index failed: wrong index format - cannot get children count");
+            }
+            childrenCount |= (c & 0xff) << (i * 8);
+        }
+
+        children.clear();
+        for(int i = 0;i < childrenCount;i ++){
+            int c = in.read();
+            if(c == -1) {
+                throw new TarException(
+                    "load index failed: wrong index format - cannot load children!");
+            }
 
             FileNode ch;
-            if(c == 0)
+            if(c == 127)
                 ch = new Menu();
             else
                 ch = new RegularFile();
+            ch.parent = this;
             ch.loadIndex(in);
             children.put(ch.getName(), ch);
         }
@@ -91,6 +112,7 @@ public class Menu extends FileNode {
     public void addFileNode(FileNode fn) throws TarException {
         if(children.containsKey(fn.getName()))
             throw new TarException(fn.getName() + "is already existed");
+        children.put(fn.getName(), fn);
     }
 
     public FileNode[] getChildren() {
@@ -98,6 +120,9 @@ public class Menu extends FileNode {
     }
 
     public FileNode findChild(String name) {
+        if(name.equals(".") || name.equals(""))
+            return this;
+
         return children.get(name);
     }
 

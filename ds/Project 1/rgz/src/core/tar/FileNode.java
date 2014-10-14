@@ -35,11 +35,11 @@ abstract public class FileNode {
             cur = cur.parent;
         }
 
-        StringBuffer ret = new StringBuffer();
+        StringBuilder ret = new StringBuilder();
         for(int i = names.size() - 1;i >= 0;i --) {
             ret.append(names.get(i));
             if(i != 0)
-                ret.append(File.pathSeparator);
+                ret.append(File.separatorChar);
         }
 
         return ret.toString();

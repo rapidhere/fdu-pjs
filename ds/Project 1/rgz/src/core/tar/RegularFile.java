@@ -34,8 +34,7 @@ public class RegularFile extends FileNode {
         // write name
         for(int i = 0;i < 4;i ++)
             out.write((byte)((getName().length() >> (i * 8)) & 0xff));
-        for(int i = 0;i < getName().length();i ++)
-            out.write((byte)(getName().charAt(i)));
+        out.write(getName().getBytes());
 
         // write data offset
         for(int i = 0;i < 4;i ++)

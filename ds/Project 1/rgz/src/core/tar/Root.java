@@ -55,7 +55,7 @@ public class Root extends Menu {
     public void loadIndex(InputStream in)
     throws IOException, TarException {
         byte b = (byte)in.read();
-        if(b != 0) { // root must be a menu!
+        if(b != 127) { // root must be a menu!
             throw new TarException("cannot load index: wrong index format - root must be a menu");
         }
         super.loadIndex(in);
@@ -155,23 +155,29 @@ public class Root extends Menu {
         }
     }
 
-    public void discoverDirectory(Menu m, Path p) {
+    public void discoverDirectory(Menu m, Path p)
+    throws TarException {
         File dir = p.toFile();
 
         for(String f: dir.list()) {
+            if(m.hasChild(f))
+                continue;
+
             File cf = new File(dir, f);
 
+            FileNode t;
             if(cf.isFile()) { // regular File
-                RegularFile t = new RegularFile();
+                t = new RegularFile();
                 t.setName(f);
                 t.parent = m;
-                regularFilePathsMap.put(t, cf.getPath());
+                regularFilePathsMap.put((RegularFile)t, cf.getPath());
             } else {
-                Menu t = new Menu();
+                t = new Menu();
                 t.setName(f);
                 t.parent = m;
-                discoverDirectory(t, Paths.get(cf.getPath()));
+                discoverDirectory((Menu)t, Paths.get(cf.getPath()));
             }
+            m.addFileNode(t);
         }
     }
 
@@ -205,8 +211,8 @@ public class Root extends Menu {
                 assert(false);
             }
 
-            dcm.compress(in, out);
             f.setDataOffset(((CountableBufferedOutputStream)out).getWroteBytes());
+            dcm.compress(in, out);
         }
 
         // close output stream
@@ -238,6 +244,12 @@ public class Root extends Menu {
         // load root dir
         File rootDir = new File(rootDirString);
 
+        if(! rootDir.exists()) {
+            if(! rootDir.mkdir()) {
+                throw new TarException("decompressed failed: cannot create output dir");
+            }
+        }
+
         File src = new File(srcFile);
         if(! src.exists())
             throw new TarException("decompress failed: cannot found src file " + srcFile);
@@ -247,29 +259,27 @@ public class Root extends Menu {
             Path iPath = Paths.get(fn.getPath());
             File cur = rootDir;
 
-            for(int i = 0;i < iPath.getNameCount();i ++) {
+            for(int i = 0;i < iPath.getNameCount() - 1;i ++) {
                 Path p = iPath.getName(i);
 
                 cur = new File(rootDir, p.toString());
-                if(i == iPath.getNameCount() - 1) {
-                    break;
-                } else {
-                    if(! cur.exists()) {
-                       if(! cur.mkdir())
-                           throw new TarException(
-                               "decompress failed: cannot create dir " + fn.getPath());
-                    }
+                if(! cur.exists()) {
+                    if(! cur.mkdir())
+                        throw new TarException(
+                           "decompress failed: cannot create dir " + fn.getPath());
                 }
+                rootDir = cur;
             }
             try {
                 doDecompress(cur, fn, dcm, src);
             } catch (IOException e) {
+                e.printStackTrace();
                 throw new TarException("decompress failed: " + e.getMessage());
             }
         }
     }
 
-    static void doDecompress(File m, FileNode fn, DCM DCM, File src)
+    static void doDecompress(File m, FileNode fn, DCM dcm, File src)
     throws IOException, DCException, TarException {
         File f = new File(m, fn.getName());
 
@@ -283,7 +293,7 @@ public class Root extends Menu {
             OutputStream out = new BufferedOutputStream(new FileOutputStream(f));
 
             // do compress
-            DCM.decompress(in, out);
+            dcm.decompress(in, out);
 
             // close stream
             in.close();
@@ -297,7 +307,7 @@ public class Root extends Menu {
             }
 
             for(FileNode ch: ((Menu)fn).getChildren()) {
-                doDecompress(f, ch, DCM, src);
+                doDecompress(f, ch, dcm, src);
             }
         }
     }

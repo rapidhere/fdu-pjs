@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/src/core/tar/Menu.java" line="107" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="4e2a90a4-0a53-4ab9-bb71-636f87726de8" name="Default" comment="" />
     <ignored path="rgz.iws" />
@@ -39,8 +42,8 @@
         <option name="CONDITION_ENABLED" value="true" />
         <option name="CLASS_FILTERS_ENABLED" value="false" />
         <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
+        <option name="CONDITION" value="&#13;&#13;JAVA" />
+        <option name="LOG_MESSAGE" value="&#13;&#13;JAVA" />
       </breakpoint>
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -56,8 +59,8 @@
         <option name="CONDITION_ENABLED" value="true" />
         <option name="CLASS_FILTERS_ENABLED" value="false" />
         <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
+        <option name="CONDITION" value="&#13;&#13;JAVA" />
+        <option name="LOG_MESSAGE" value="&#13;&#13;JAVA" />
       </breakpoint>
     </breakpoint_any>
     <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
@@ -70,49 +73,7 @@
     <favorites_list name="rgz" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="Root.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/core/tar/Root.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="155" column="5" selection-start="4588" selection-end="4588" vertical-scroll-proportion="0.0" vertical-offset="1875" max-vertical-offset="4425">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Menu.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/core/tar/Menu.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="84" column="28" selection-start="2358" selection-end="2358" vertical-scroll-proportion="0.0" vertical-offset="937" max-vertical-offset="1695">
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#439#457#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CommandLineInterface.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/ui/cli/CommandLineInterface.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="61" column="36" selection-start="2232" selection-end="2232" vertical-scroll-proportion="0.9149278" vertical-offset="195" max-vertical-offset="3495">
-              <folding>
-                <element signature="e#7964#7974#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RGZException.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/excs/RGZException.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="11" selection-start="236" selection-end="236" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="285">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -122,8 +83,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/core/io/MemoryMappingInputStream.java" />
-        <option value="$PROJECT_DIR$/src/excs/UnkownAlgorithmId.java" />
         <option value="$PROJECT_DIR$/src/excs/UnknowAlgorithmid.java" />
         <option value="$PROJECT_DIR$/src/excs/UnknowAlgorithmId.java" />
         <option value="$PROJECT_DIR$/src/excs/UnknownAlgorithmId.java" />
@@ -149,7 +108,6 @@
         <option value="$PROJECT_DIR$/src/core/dc/ASCIIToken.java" />
         <option value="$PROJECT_DIR$/src/core/dc/Token.java" />
         <option value="$PROJECT_DIR$/src/core/dc/DCAlgorithm.java" />
-        <option value="$PROJECT_DIR$/src/core/dc/CatchAlgorithm.java" />
         <option value="$PROJECT_DIR$/src/excs/BitArrayException.java" />
         <option value="$PROJECT_DIR$/src/core/dc/CatchASCIIAlgorithm.java" />
         <option value="$PROJECT_DIR$/src/core/dc/BitArray.java" />
@@ -159,20 +117,23 @@
         <option value="$PROJECT_DIR$/src/core/dc/DC.java" />
         <option value="$PROJECT_DIR$/src/core/dc/BlockDC.java" />
         <option value="$PROJECT_DIR$/src/core/tar/CountableBufferedOutputStream.java" />
-        <option value="$PROJECT_DIR$/src/core/tar/RegularFile.java" />
-        <option value="$PROJECT_DIR$/src/core/tar/FileNode.java" />
-        <option value="$PROJECT_DIR$/src/core/io/MemoryMappedFileInputStream.java" />
         <option value="$PROJECT_DIR$/src/excs/UnknownDCAlgorithm.java" />
         <option value="$PROJECT_DIR$/src/excs/UnknownDCMId.java" />
         <option value="$PROJECT_DIR$/src/ui/CmdLineParser.java" />
         <option value="$PROJECT_DIR$/src/excs/UnknownDCM.java" />
         <option value="$PROJECT_DIR$/src/ui/Config.java" />
-        <option value="$PROJECT_DIR$/src/core/tar/Root.java" />
-        <option value="$PROJECT_DIR$/src/core/tar/Menu.java" />
-        <option value="$PROJECT_DIR$/src/core/dc/CatchFixedBytesAlgorithm.java" />
         <option value="$PROJECT_DIR$/src/core/dc/CatchFixedBitsAlgorithm.java" />
         <option value="$PROJECT_DIR$/src/excs/RGZException.java" />
+        <option value="$PROJECT_DIR$/src/core/io/MemoryMappedFileInputStream.java" />
+        <option value="$PROJECT_DIR$/src/core/io/CountableBufferedOutputStream.java" />
+        <option value="$PROJECT_DIR$/src/core/tar/RegularFile.java" />
+        <option value="$PROJECT_DIR$/src/core/tar/Menu.java" />
+        <option value="$PROJECT_DIR$/src/core/tar/Root.java" />
         <option value="$PROJECT_DIR$/src/ui/cli/CommandLineInterface.java" />
+        <option value="$PROJECT_DIR$/src/core/tar/FileNode.java" />
+        <option value="$PROJECT_DIR$/src/core/dc/BlockDCM.java" />
+        <option value="$PROJECT_DIR$/src/core/dc/CatchAlgorithm.java" />
+        <option value="$PROJECT_DIR$/src/core/dc/CatchFixedBytesAlgorithm.java" />
       </list>
     </option>
   </component>
@@ -194,7 +155,7 @@
         </expanded-state>
         <selected-state>
           <State>
-            <id>NullableProblems</id>
+            <id>EqualsWhichDoesntCheckParameterClass</id>
           </State>
         </selected-state>
       </profile-state>
@@ -228,7 +189,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -315,104 +275,13 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="excs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rgz" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rgz" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="core" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rgz" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rgz" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="io" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rgz" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rgz" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rgz" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rgz" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CatchFixedBitsAlgorithm.java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane">
         <subPane />
       </pane>
@@ -443,12 +312,12 @@
       <recent name="core.dc.alg" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.RapidGZ">
-    <configuration default="false" name="RapidGZ" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.RapidGZ list">
+    <configuration default="false" name="RapidGZ compress" type="Application" factoryName="Application" temporary="true">
       <extension name="coverage" enabled="false" merge="false" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="RapidGZ" />
       <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="-c $USER_HOME$/work/blog.rgz $USER_HOME$/work/myBlog --debug" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" value="" />
@@ -680,12 +549,60 @@
       <envs />
       <method />
     </configuration>
-    <list size="1">
-      <item index="0" class="java.lang.String" itemvalue="Application.RapidGZ" />
+    <configuration default="false" name="RapidGZ list" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" runner="idea" />
+      <option name="MAIN_CLASS_NAME" value="RapidGZ" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="-l $USER_HOME$/work/blog.rgz --debug" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="rgz" />
+      <envs />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="RapidGZ decompress" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" runner="idea" />
+      <option name="MAIN_CLASS_NAME" value="RapidGZ" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="-d $USER_HOME$/work/blog.rgz . -o $USER_HOME$/work/cout --debug" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="rgz" />
+      <envs />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <list size="3">
+      <item index="0" class="java.lang.String" itemvalue="Application.RapidGZ list" />
+      <item index="1" class="java.lang.String" itemvalue="Application.RapidGZ decompress" />
+      <item index="2" class="java.lang.String" itemvalue="Application.RapidGZ compress" />
     </list>
     <recent_temporary>
       <list size="1">
-        <item index="0" class="java.lang.String" itemvalue="Application.RapidGZ" />
+        <item index="0" class="java.lang.String" itemvalue="Application.RapidGZ compress" />
       </list>
     </recent_temporary>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
@@ -733,11 +650,15 @@
       <workItem from="1413187356985" duration="826000" />
       <workItem from="1413188204928" duration="1659000" />
       <workItem from="1413195272343" duration="7162000" />
+      <workItem from="1413263920447" duration="335000" />
+      <workItem from="1413265454544" duration="4714000" />
+      <workItem from="1413270240680" duration="4776000" />
+      <workItem from="1413282868443" duration="4728000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="118361000" />
+    <option name="totallyTimeSpent" value="132914000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1366" height="744" extended-state="6" />
@@ -745,32 +666,61 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33026114" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29953918" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29953918" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24773414" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24773414" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39938557" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32930514" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32930514" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32771823" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39938557" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33026114" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29953918" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32930514" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24773414" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32771823" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USERS">
@@ -786,7 +736,11 @@
     </option>
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
+    </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -795,9 +749,7 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/core/dc/DCM.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="54" selection-start="1886" selection-end="1886" vertical-scroll-proportion="0.0" vertical-offset="1005" max-vertical-offset="1200">
-          <folding />
-        </state>
+        <state line="67" column="54" selection-start="1886" selection-end="1886" vertical-scroll-proportion="0.0" vertical-offset="1005" max-vertical-offset="1200" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/dc/DCHuffmanAlgorithm.java">
@@ -818,16 +770,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/dc/DCAlgorithm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="72" selection-start="329" selection-end="329" vertical-scroll-proportion="0.0" vertical-offset="165" max-vertical-offset="285">
-          <folding />
-        </state>
+        <state line="11" column="72" selection-start="329" selection-end="329" vertical-scroll-proportion="0.0" vertical-offset="165" max-vertical-offset="285" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/dc/DCM.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="0" selection-start="407" selection-end="407" vertical-scroll-proportion="0.0" vertical-offset="315" max-vertical-offset="465">
-          <folding />
-        </state>
+        <state line="21" column="0" selection-start="407" selection-end="407" vertical-scroll-proportion="0.0" vertical-offset="315" max-vertical-offset="465" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ui/Config.java">
@@ -837,11 +785,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/dc/CatchAlgorithm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="58" selection-start="296" selection-end="296" vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="315">
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
+        <state line="13" column="58" selection-start="296" selection-end="296" vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="315" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/dc/DCHuffmanAlgorithm.java">
@@ -862,19 +806,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/dc/DCAlgorithm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="50" selection-start="288" selection-end="288" vertical-scroll-proportion="0.0" vertical-offset="165" max-vertical-offset="285">
-          <folding />
-        </state>
+        <state line="11" column="50" selection-start="288" selection-end="288" vertical-scroll-proportion="0.0" vertical-offset="165" max-vertical-offset="285" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/dc/BitArray.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="17" selection-end="17" vertical-scroll-proportion="0.0" vertical-offset="720" max-vertical-offset="1395">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1571#1577#0" expanded="true" />
-          </folding>
-        </state>
+        <state line="1" column="0" selection-start="17" selection-end="17" vertical-scroll-proportion="0.0" vertical-offset="720" max-vertical-offset="1395" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/dc/DCHuffmanAlgorithm.java">
@@ -895,9 +832,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/dc/DCAlgorithm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="52" selection-start="290" selection-end="290" vertical-scroll-proportion="0.0" vertical-offset="165" max-vertical-offset="285">
-          <folding />
-        </state>
+        <state line="11" column="52" selection-start="290" selection-end="290" vertical-scroll-proportion="0.0" vertical-offset="165" max-vertical-offset="285" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/dc/DCHuffmanAlgorithm.java">
@@ -918,9 +853,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/dc/DCAlgorithm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="52" selection-start="290" selection-end="290" vertical-scroll-proportion="0.0" vertical-offset="165" max-vertical-offset="285">
-          <folding />
-        </state>
+        <state line="11" column="52" selection-start="290" selection-end="290" vertical-scroll-proportion="0.0" vertical-offset="165" max-vertical-offset="285" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/dc/DCHuffmanAlgorithm.java">
@@ -946,9 +879,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/dc/DCAlgorithm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="13" selection-start="258" selection-end="258" vertical-scroll-proportion="0.0" vertical-offset="165" max-vertical-offset="285">
-          <folding />
-        </state>
+        <state line="11" column="13" selection-start="258" selection-end="258" vertical-scroll-proportion="0.0" vertical-offset="165" max-vertical-offset="285" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/RapidGZ.java">
@@ -1003,35 +934,9 @@
         <state line="152" column="12" selection-start="6601" selection-end="6601" vertical-scroll-proportion="0.0" vertical-offset="1777" max-vertical-offset="6915" />
       </provider>
     </entry>
-    <entry file="jar:///usr/lib/jvm/java-7-sun/src.zip!/java/lang/Object.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="0" selection-start="500" selection-end="500" vertical-scroll-proportion="0.33333334" vertical-offset="74" max-vertical-offset="8055" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/excs/BitArrayException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="11" column="19" selection-start="258" selection-end="258" vertical-scroll-proportion="0.4074074" vertical-offset="0" max-vertical-offset="405">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/dc/CatchAlgorithm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="0" selection-start="1894" selection-end="1894" vertical-scroll-proportion="0.0" vertical-offset="682" max-vertical-offset="1110">
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/dc/CatchASCIIAlgorithm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="58" selection-start="688" selection-end="688" vertical-scroll-proportion="0.317757" vertical-offset="329" max-vertical-offset="1515" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RapidGZ.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="0" selection-start="191" selection-end="191" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="195">
           <folding />
         </state>
       </provider>
@@ -1043,84 +948,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/io/CountableBufferedOutputStream.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="47" selection-start="561" selection-end="561" vertical-scroll-proportion="0.4" vertical-offset="80" max-vertical-offset="720">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.idea/copyright/profiles_settings.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="625" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/dc/DCHuffmanAlgorithm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="316" column="30" selection-start="10208" selection-end="10208" vertical-scroll-proportion="0.952" vertical-offset="3980" max-vertical-offset="4665">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#933#973#0" expanded="true" />
-            <element signature="e#3724#3739#0" expanded="true" />
-            <element signature="e#3839#3878#0" expanded="true" />
-            <element signature="e#4755#4771#0" expanded="true" />
-            <element signature="e#5557#5597#0" expanded="true" />
-            <element signature="e#7068#7074#0" expanded="true" />
-            <element signature="e#8977#8984#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/dc/DCAlgorithm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="26" selection-start="197" selection-end="197" vertical-scroll-proportion="0.26960784" vertical-offset="0" max-vertical-offset="612">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/dc/DCM.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1470">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/dc/BitArray.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="190" column="12" selection-start="5143" selection-end="5143" vertical-scroll-proportion="0.704" vertical-offset="2410" max-vertical-offset="3570">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1571#1577#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/tar/FileNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="0" selection-start="293" selection-end="293" vertical-scroll-proportion="0.232" vertical-offset="80" max-vertical-offset="765">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#751#759#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/tar/RegularFile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="75" column="0" selection-start="2074" selection-end="2074" vertical-scroll-proportion="0.952" vertical-offset="410" max-vertical-offset="1095">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/io/MemoryMappedFileInputStream.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="62" selection-start="353" selection-end="353" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="420">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/excs/UnknownDCMId.java">
@@ -1143,15 +973,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/dc/BlockDCM.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2070">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/excs/UnknownDCAlgorithm.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="77" selection-start="282" selection-end="340" vertical-scroll-proportion="0.3130016" vertical-offset="0" max-vertical-offset="623">
@@ -1166,61 +987,165 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ui/Config.java">
+    <entry file="file://$PROJECT_DIR$/src/excs/RGZException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="83" column="0" selection-start="2278" selection-end="2278" vertical-scroll-proportion="0.024077047" vertical-offset="1215" max-vertical-offset="1875">
+        <state line="11" column="11" selection-start="236" selection-end="236" vertical-scroll-proportion="0.264" vertical-offset="0" max-vertical-offset="625">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/tar/Root.java">
+    <entry file="file://$PROJECT_DIR$/src/RapidGZ.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="155" column="5" selection-start="4588" selection-end="4588" vertical-scroll-proportion="0.0" vertical-offset="1875" max-vertical-offset="4425">
+        <state line="6" column="0" selection-start="191" selection-end="191" vertical-scroll-proportion="0.21028037" vertical-offset="0" max-vertical-offset="428">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/tar/Menu.java">
+    <entry file="file://$PROJECT_DIR$/src/core/dc/BitArray.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="84" column="28" selection-start="2358" selection-end="2358" vertical-scroll-proportion="0.0" vertical-offset="937" max-vertical-offset="1695">
+        <state line="190" column="12" selection-start="5143" selection-end="5143" vertical-scroll-proportion="-0.36682242" vertical-offset="2962" max-vertical-offset="3525">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/dc/BlockDCM.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="58" column="48" selection-start="1592" selection-end="1592" vertical-scroll-proportion="0.3317757" vertical-offset="698" max-vertical-offset="2040">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#439#457#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-7-sun/src.zip!/java/lang/Object.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="148" column="19" selection-start="5841" selection-end="5841" vertical-scroll-proportion="0.3317757" vertical-offset="1733" max-vertical-offset="8055">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/dc/CatchAlgorithm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="69" column="61" selection-start="2098" selection-end="2098" vertical-scroll-proportion="0.7546729" vertical-offset="667" max-vertical-offset="1125">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/dc/CatchASCIIAlgorithm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="41" selection-start="429" selection-end="429" vertical-scroll-proportion="0.3317757" vertical-offset="143" max-vertical-offset="1485">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/dc/CatchFixedBitsAlgorithm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="41" selection-start="718" selection-end="718" vertical-scroll-proportion="0.3317757" vertical-offset="383" max-vertical-offset="2760">
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/dc/CatchFixedBytesAlgorithm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="4" selection-start="1254" selection-end="1254" vertical-scroll-proportion="0.0" vertical-offset="720" max-vertical-offset="2040">
+        <state line="129" column="29" selection-start="3852" selection-end="3852" vertical-scroll-proportion="0.5794392" vertical-offset="1627" max-vertical-offset="2055">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/dc/CatchFixedBitsAlgorithm.java">
+    <entry file="file://$PROJECT_DIR$/src/core/dc/DCAlgorithm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="59" column="4" selection-start="1363" selection-end="1363" vertical-scroll-proportion="0.6260032" vertical-offset="495" max-vertical-offset="2760">
+        <state line="11" column="26" selection-start="197" selection-end="197" vertical-scroll-proportion="0.39759037" vertical-offset="0" max-vertical-offset="415">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/dc/DCHuffmanAlgorithm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="243" column="0" selection-start="8171" selection-end="8171" vertical-scroll-proportion="0.60046726" vertical-offset="3223" max-vertical-offset="4665">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#933#973#0" expanded="true" />
+            <element signature="e#3724#3739#0" expanded="true" />
+            <element signature="e#3839#3878#0" expanded="true" />
+            <element signature="e#4755#4771#0" expanded="true" />
+            <element signature="e#5557#5597#0" expanded="true" />
+            <element signature="e#7068#7074#0" expanded="true" />
+            <element signature="e#8977#8984#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/dc/DCM.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="22" selection-start="288" selection-end="288" vertical-scroll-proportion="0.0" vertical-offset="180" max-vertical-offset="1470">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/io/CountableBufferedOutputStream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="22" selection-start="815" selection-end="815" vertical-scroll-proportion="0.614486" vertical-offset="277" max-vertical-offset="705">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/excs/RGZException.java">
+    <entry file="file://$PROJECT_DIR$/src/core/io/MemoryMappedFileInputStream.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="11" selection-start="236" selection-end="236" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="285">
+        <state line="13" column="13" selection-start="249" selection-end="249" vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="1035">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/tar/FileNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="37" column="23" selection-start="923" selection-end="923" vertical-scroll-proportion="1.0163552" vertical-offset="0" max-vertical-offset="675">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/tar/Menu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="26" selection-start="1078" selection-end="1078" vertical-scroll-proportion="-1.5934579" vertical-offset="1222" max-vertical-offset="1965">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/tar/RegularFile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="72" column="0" selection-start="2004" selection-end="2004" vertical-scroll-proportion="0.7196262" vertical-offset="652" max-vertical-offset="1080">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/tar/Root.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="210" column="22" selection-start="6359" selection-end="6359" vertical-scroll-proportion="0.3317757" vertical-offset="2783" max-vertical-offset="4575">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ui/cli/CommandLineInterface.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="61" column="36" selection-start="2232" selection-end="2232" vertical-scroll-proportion="0.9149278" vertical-offset="195" max-vertical-offset="3495">
+        <state line="51" column="28" selection-start="1805" selection-end="1805" vertical-scroll-proportion="0.3317757" vertical-offset="623" max-vertical-offset="4455">
           <folding>
-            <element signature="e#7964#7974#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#9466#9476#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/Config.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="83" column="0" selection-start="2278" selection-end="2278" vertical-scroll-proportion="2.8714952" vertical-offset="1" max-vertical-offset="1875">
+          <folding />
         </state>
       </provider>
     </entry>

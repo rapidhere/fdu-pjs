@@ -2,14 +2,14 @@ package ui.cli;
 
 import core.dc.*;
 import core.tar.FileNode;
+import core.tar.Menu;
+import core.tar.RegularFile;
 import core.tar.Root;
 import excs.RGZException;
 import excs.TarException;
 import ui.CmdLineParser;
 import ui.CmdLineParser.Option;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.util.ArrayList;
 
 /**
@@ -135,7 +135,54 @@ public class CommandLineInterface {
         System.out.println();
     }
 
-    public void listUp(Root root, String path) {
+    private void printIndent(int depth, boolean noTailFlag) {
+        if(depth == 0)
+            return;
+
+        for(int i = 0;i < depth - 1;i ++) {
+            System.out.print(" |  ");
+        }
+
+        if(! noTailFlag)
+            System.out.print(" |--");
+        else
+            System.out.print(" |  ");
+    }
+
+    public void listUp(FileNode fn, int depth) {
+        if(fn instanceof RegularFile) {
+            printIndent(depth, false);
+            System.out.println(fn.getName());
+        } else {
+            Menu mfn = (Menu)fn;
+            printIndent(depth, false);
+            System.out.println(fn.getName() + "/");
+            // print menu first
+            boolean firstMenu = true;
+            for(FileNode ch: mfn.getChildren()) {
+                if(ch instanceof Menu) {
+                    if(! firstMenu) {
+                        printIndent(depth + 1, true);
+                        System.out.println();
+                    }
+                    firstMenu = false;
+
+                    listUp(ch, depth + 1);
+                }
+            }
+            // then print regular file
+            boolean firstRegularFile = true;
+            for(FileNode ch: mfn.getChildren()) {
+                if(ch instanceof RegularFile) {
+                    if(firstRegularFile && ! firstMenu) {
+                        printIndent(depth + 1, true);
+                        System.out.println();
+                    }
+                    firstRegularFile = false;
+                    listUp(ch, depth + 1);
+                }
+            }
+        }
 
     }
 
@@ -204,6 +251,7 @@ public class CommandLineInterface {
                 root.compress(srcFile, dcm);
             } else if(parser.getOptionValue(optionDecompress, false)) {
                 root.loadIndexFromFile(srcFile);
+
                 // do decompress
                 String outputRoot = parser.getOptionValue(optionDecompressRoot, ".");
 
@@ -222,8 +270,14 @@ public class CommandLineInterface {
             } else if(parser.getOptionValue(optionListUp, false)) {
                 root.loadIndexFromFile(srcFile);
                 // list up
-                for(String t: targetFiles)
-                    listUp(root, t);
+                for(String t: targetFiles) {
+                    FileNode fn = root.findFileNode(t);
+                    if(fn == null)
+                        throw new TarException("cannot list: " + t +" , not in the index");
+                    System.out.println("List up =>" + fn.getPath());
+                    listUp(fn, 0);
+                    System.out.println();
+                }
             } else {
                 System.err.println("Nothing to do!");
                 System.exit(1);

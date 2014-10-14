@@ -1,5 +1,6 @@
 package core.dc;
 
+import com.sun.istack.internal.NotNull;
 import excs.DCException;
 import javafx.util.Pair;
 
@@ -21,9 +22,9 @@ class FixedBytesToken extends Token{
     public int hashCode() {
         byte[] b = (byte[])getToken();
         long ret = 0;
-        for(int i = 0;i < b.length;i ++) {
+        for (byte aB : b) {
             ret *= 10007;
-            ret += b[i];
+            ret += aB;
             ret %= 1000000000 + 7;
         }
 
@@ -31,7 +32,7 @@ class FixedBytesToken extends Token{
     }
 
     @Override
-    public int compareTo(Object o) {
+    public int compareTo(@NotNull Object o) {
         byte[] b1 = (byte[])getToken(),
             b2 = (byte[])getToken();
 

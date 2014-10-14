@@ -32,7 +32,6 @@ public class CountableBufferedOutputStream extends BufferedOutputStream {
 
     @Override
     public void write(byte[] b) throws IOException {
-        wroteBytes += b.length;
         super.write(b);
     }
 

@@ -15,10 +15,6 @@ import java.io.OutputStream;
  * Usage :
  */
 public class BlockDCM extends DCM {
-    public int getBlockSize() {
-        return blockSize;
-    }
-
     public void setBlockSize(int blockSize) {
         this.blockSize = blockSize;
     }
@@ -109,7 +105,7 @@ public class BlockDCM extends DCM {
                 if(bufferLength <= 0) {
                     byte[] bytes = new byte[-bufferLength];
                     int readBytes = in.read(bytes, 0, -bufferLength);
-                    if(readBytes != -bufferLength || in.read() != -1)
+                    if(readBytes != -bufferLength)
                         throw new DCException(
                             "Wrong file syntax: cannot load last uncompressed buffer of this rgz");
                     out.write(bytes, 0, -bufferLength);

@@ -58,6 +58,8 @@ abstract class Token implements Comparable {
     private Object token;
 
     public abstract int hashCode();
+
+    @Override
     public boolean equals(Object o) {
         return this.hashCode() == o.hashCode();
     }
