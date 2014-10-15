@@ -28,7 +28,7 @@ public class Root extends Menu {
     Map<RegularFile, String> regularFilePathsMap = new HashMap<RegularFile, String>();
 
     public Root() {
-        setName(".");
+        setName("");
         parent = null;
     }
 
@@ -204,15 +204,24 @@ public class Root extends Menu {
         // then compress files
         for(RegularFile f: regularFilePathsMap.keySet()) {
             InputStream in = null;
+            int cFileSize = 0;
             try {
-                in = new BufferedInputStream(new FileInputStream(regularFilePathsMap.get(f)));
+                FileInputStream fin = new FileInputStream(regularFilePathsMap.get(f));
+                in = new BufferedInputStream(fin);
+                cFileSize = fin.available();
             } catch (FileNotFoundException e) {
                 // never reach here
                 assert(false);
+            } catch (IOException e) {
+                throw new TarException("compress failed: " + e.getMessage());
             }
 
             f.setDataOffset(((CountableBufferedOutputStream)out).getWroteBytes());
+            int startOffset = ((CountableBufferedOutputStream) out).getWroteBytes();
             dcm.compress(in, out);
+            int endOffset = ((CountableBufferedOutputStream) out).getWroteBytes();
+            f.compressedSize = endOffset - startOffset;
+            f.size = cFileSize;
         }
 
         // close output stream
@@ -262,13 +271,12 @@ public class Root extends Menu {
             for(int i = 0;i < iPath.getNameCount() - 1;i ++) {
                 Path p = iPath.getName(i);
 
-                cur = new File(rootDir, p.toString());
+                cur = new File(cur, p.toString());
                 if(! cur.exists()) {
                     if(! cur.mkdir())
                         throw new TarException(
                            "decompress failed: cannot create dir " + fn.getPath());
                 }
-                rootDir = cur;
             }
             try {
                 doDecompress(cur, fn, dcm, src);

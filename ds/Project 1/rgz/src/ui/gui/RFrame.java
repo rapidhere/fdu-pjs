@@ -1,6 +1,8 @@
 package ui.gui;
 
+import core.tar.FileNode;
 import core.tar.Root;
+import excs.DCException;
 import excs.TarException;
 import ui.Config;
 
@@ -26,6 +28,7 @@ public class RFrame extends JFrame {
     private RMenuTableViewer tableViewer;
     private RMenuTreeViewer treeViewer;
     private RInfoViewer infoViewer;
+    private FileNode currentFn;
 
     public static RFrame getFrame() {
         if(theFrame == null) {
@@ -102,11 +105,27 @@ public class RFrame extends JFrame {
     }
 
     private boolean checkRootUpdated() {
-        return true;
+        if(! rootUpdated)
+            return true;
+
+        int ret = JOptionPane.showConfirmDialog(
+            this, "Current rgz file haven't saved, are you sure to drop it?", "Warning", JOptionPane.YES_NO_OPTION);
+
+        return ret == 0;
     }
 
     void putErrorInfo(String msg) {
-        System.err.println(msg);
+        infoViewer.append("#Error: " + msg + "\n");
+    }
+
+    void putNormalInfo(String msg) {
+        infoViewer.append(msg + "\n");
+    }
+
+    void setCurrentFileNode(FileNode fn) {
+        currentFn = fn;
+        putNormalInfo("Selected file/menu: " + fn.getPath());
+        tableViewer.refreshWithFileNode(currentFn);
     }
 
     void openNewFile() {
@@ -129,6 +148,69 @@ public class RFrame extends JFrame {
 
             // update to viewer
             treeViewer.buildFromRoot(root);
+        }
+        rootUpdated = false;
+    }
+
+    void createNewFile() {
+        if(! checkRootUpdated()) {
+            return ;
+        }
+
+        root = new Root();
+        treeViewer.buildFromRoot(root);
+        setCurrentFileNode(root);
+
+        rootUpdated = true;
+    }
+
+    void addSourceToRoot() {
+        JFileChooser fc = new JFileChooser();
+        fc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+        fc.setAcceptAllFileFilterUsed(false);
+
+        int retVal = fc.showOpenDialog(this);
+
+        if(retVal == JFileChooser.APPROVE_OPTION) {
+            File f = fc.getSelectedFile();
+            try {
+                root.addSource(f.getPath());
+            } catch (TarException e) {
+                putErrorInfo(e.getMessage());
+                root = null;
+            }
+        }
+
+        // update
+        treeViewer.buildFromRoot(root);
+        setCurrentFileNode(root);
+    }
+
+    void compress() {
+
+    }
+
+    void decompress(FileNode[] fns) {
+        JFileChooser fc = new JFileChooser();
+        fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        fc.setAcceptAllFileFilterUsed(false);
+
+        int retVal = fc.showOpenDialog(this);
+
+        if(retVal == JFileChooser.APPROVE_OPTION) {
+            File outputDir = fc.getSelectedFile();
+            System.err.println(outputDir.getAbsolutePath());
+
+            try {
+                root.decompress(outputDir.getAbsolutePath(), fns, srcFile.getPath());
+            } catch (TarException e) {
+                putErrorInfo(e.getMessage());
+                root = null;
+            } catch (DCException e) {
+                putErrorInfo(e.getMessage());
+                root = null;
+            }
+
         }
     }
 }

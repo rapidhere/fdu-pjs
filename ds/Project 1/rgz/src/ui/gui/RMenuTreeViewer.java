@@ -9,6 +9,10 @@ import javax.swing.*;
 import javax.swing.event.TreeModelListener;
 import javax.swing.tree.*;
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.lang.reflect.Array;
 import java.util.Arrays;
 
@@ -23,11 +27,28 @@ public class RMenuTreeViewer extends JTree {
     public RMenuTreeViewer() {
         super((TreeNode)null);
 
-        // cannot see root
-        setRootVisible(false);
+        // can see root
+        setRootVisible(true);
 
         // set render
         setCellRenderer(new RFileNodeRenderer());
+
+        // not editable
+        setEditable(false);
+
+        // add mouse listener
+        addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                TreePath selPath = getPathForLocation(e.getX(), e.getY());
+                if (selPath == null)
+                    return;
+                if (e.getClickCount() == 1) {
+                    FileNode fn = (FileNode) selPath.getLastPathComponent();
+                    RFrame.getFrame().setCurrentFileNode(fn);
+                }
+            }
+        });
     }
 
     public void buildFromRoot(Root root) {
@@ -66,7 +87,7 @@ class RRootAdaptor implements TreeModel {
 
     @Override
     public void valueForPathChanged(TreePath path, Object newValue) {
-
+        // do nothing
     }
 
     @Override
@@ -81,12 +102,12 @@ class RRootAdaptor implements TreeModel {
 
     @Override
     public void addTreeModelListener(TreeModelListener l) {
-
+        // do nothing
     }
 
     @Override
     public void removeTreeModelListener(TreeModelListener l) {
-
+        // do nothing
     }
 }
 

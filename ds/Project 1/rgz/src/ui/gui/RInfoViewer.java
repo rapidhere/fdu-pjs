@@ -12,5 +12,6 @@ import javax.swing.*;
 public class RInfoViewer extends JTextArea {
     public RInfoViewer() {
         super("RapiD's GZ Demo ver 0.1\nAll rights reserved(C): RapiD is a JOKER, rapidehere@gmail.com\n");
+        setEditable(false);
     }
 }

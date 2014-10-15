@@ -1,6 +1,7 @@
 package ui.gui;
 
 import javax.swing.*;
+import javax.swing.plaf.metal.MetalIconFactory;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -14,7 +15,7 @@ import java.security.Key;
  * Usage :
  */
 public class RMenuBar extends JMenuBar {
-     public RMenuBar() {
+    public RMenuBar() {
         loadMenuBarConfig();
     }
 
@@ -27,11 +28,17 @@ public class RMenuBar extends JMenuBar {
         add(menu);
 
         // File -> new
-        menuItem = new JMenuItem("new");
+        menuItem = new JMenuItem("new", new MetalIconFactory.TreeLeafIcon());
+        menuItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                RFrame.getFrame().createNewFile();
+            }
+        });
         menu.add(menuItem);
 
         // File -> open
-        menuItem = new JMenuItem("open");
+        menuItem = new JMenuItem("open", new MetalIconFactory.TreeFolderIcon());
         menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, KeyEvent.CTRL_DOWN_MASK));
         menuItem.addActionListener(new ActionListener() {
             @Override
@@ -48,12 +55,15 @@ public class RMenuBar extends JMenuBar {
         menuItem = new JMenuItem("compress");
         menu.add(menuItem);
 
-        // File -> decompress to
-        menuItem = new JMenuItem("decompress");
-        menu.add(menuItem);
-
         // File -> add source
         menuItem = new JMenuItem("add source");
+        menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, KeyEvent.CTRL_DOWN_MASK));
+        menuItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                RFrame.getFrame().addSourceToRoot();
+            }
+        });
         menu.add(menuItem);
 
         // sep

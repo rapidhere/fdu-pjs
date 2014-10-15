@@ -54,4 +54,7 @@ abstract public class FileNode implements Comparable<FileNode> {
 
         return this.getName().compareTo(fn.getName());
     }
+
+    abstract public int getSize() ;
+    abstract public int getCompressedSize();
 }

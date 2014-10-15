@@ -94,6 +94,27 @@ public class Menu extends FileNode {
         }
     }
 
+    int size = -1, compressedSize = -1;
+    @Override
+    public int getSize() {
+        if(size == -1) {
+            size = 0;
+            for(FileNode fn: getChildren())
+                size += fn.getSize();
+        }
+        return size;
+    }
+
+    @Override
+    public int getCompressedSize() {
+        if(compressedSize == -1) {
+            compressedSize = 0;
+            for(FileNode fn: getChildren())
+                compressedSize += fn.getCompressedSize();
+        }
+        return compressedSize;
+    }
+
     public FileNode findFileNode(String pathString) {
         Path path = Paths.get(pathString).normalize();
 
@@ -113,6 +134,7 @@ public class Menu extends FileNode {
         if(children.containsKey(fn.getName()))
             throw new TarException(fn.getName() + "is already existed");
         children.put(fn.getName(), fn);
+        size = compressedSize = -1;
     }
 
     public FileNode[] getChildren() {
