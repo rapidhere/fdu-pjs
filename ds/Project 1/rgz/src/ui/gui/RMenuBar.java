@@ -32,6 +32,13 @@ public class RMenuBar extends JMenuBar {
 
         // File -> open
         menuItem = new JMenuItem("open");
+        menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, KeyEvent.CTRL_DOWN_MASK));
+        menuItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                RFrame.getFrame().openNewFile();
+            }
+        });
         menu.add(menuItem);
 
         // sep

@@ -1,9 +1,16 @@
 package ui.gui;
 
+import core.tar.FileNode;
+import core.tar.Menu;
+import core.tar.RegularFile;
 import core.tar.Root;
 
 import javax.swing.*;
-import javax.swing.tree.TreeNode;
+import javax.swing.event.TreeModelListener;
+import javax.swing.tree.*;
+import java.awt.*;
+import java.lang.reflect.Array;
+import java.util.Arrays;
 
 /**
  * Copyright : all rights reserved,rapidhere@gmail.com
@@ -15,9 +22,79 @@ import javax.swing.tree.TreeNode;
 public class RMenuTreeViewer extends JTree {
     public RMenuTreeViewer() {
         super((TreeNode)null);
+
+        // cannot see root
+        setRootVisible(false);
+
+        // set render
+        setCellRenderer(new RFileNodeRenderer());
     }
 
     public void buildFromRoot(Root root) {
-        TreeNode treeRoot = null;
+        TreeModel newRoot = new RRootAdaptor(root);
+        setModel(newRoot);
+    }
+}
+
+class RRootAdaptor implements TreeModel {
+    private Root root;
+    public RRootAdaptor(Root root) {
+        this.root = root;
+    }
+
+    @Override
+    public Object getRoot() {
+        return root;
+    }
+
+    @Override
+    public Object getChild(Object parent, int index) {
+        FileNode[] fns = ((Menu)parent).getChildren();
+        Arrays.sort(fns);
+        return fns[index];
+    }
+
+    @Override
+    public int getChildCount(Object parent) {
+        return ((Menu)parent).getChildren().length;
+    }
+
+    @Override
+    public boolean isLeaf(Object node) {
+        return node instanceof RegularFile;
+    }
+
+    @Override
+    public void valueForPathChanged(TreePath path, Object newValue) {
+
+    }
+
+    @Override
+    public int getIndexOfChild(Object parent, Object child) {
+        FileNode[] fns = ((Menu)parent).getChildren();
+        for(int i = 0;i < fns.length;i ++) {
+            if(child.equals(fns[i]))
+                return i;
+        }
+        return -1;
+    }
+
+    @Override
+    public void addTreeModelListener(TreeModelListener l) {
+
+    }
+
+    @Override
+    public void removeTreeModelListener(TreeModelListener l) {
+
+    }
+}
+
+class RFileNodeRenderer extends DefaultTreeCellRenderer {
+    @Override
+    public Component getTreeCellRendererComponent(
+        JTree tree, Object value, boolean selected, boolean expanded, boolean leaf, int row, boolean hasFocus) {
+        super.getTreeCellRendererComponent(tree, ((FileNode)value).getName(), selected, expanded, leaf, row, hasFocus);
+        return this;
     }
 }

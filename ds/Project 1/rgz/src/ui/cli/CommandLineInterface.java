@@ -12,6 +12,7 @@ import ui.CmdLineParser.Option;
 import ui.Config;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Copyright : all rights reserved,rapidhere@gmail.com
@@ -160,7 +161,10 @@ public class CommandLineInterface {
             System.out.println(fn.getName() + "/");
             // print menu first
             boolean firstMenu = true;
-            for(FileNode ch: mfn.getChildren()) {
+            FileNode[] fns = mfn.getChildren();
+            Arrays.sort(fns);
+
+            for(FileNode ch: fns) {
                 if(ch instanceof Menu) {
                     if(! firstMenu) {
                         printIndent(depth + 1, true);
@@ -173,7 +177,7 @@ public class CommandLineInterface {
             }
             // then print regular file
             boolean firstRegularFile = true;
-            for(FileNode ch: mfn.getChildren()) {
+            for(FileNode ch: fns) {
                 if(ch instanceof RegularFile) {
                     if(firstRegularFile && ! firstMenu) {
                         printIndent(depth + 1, true);

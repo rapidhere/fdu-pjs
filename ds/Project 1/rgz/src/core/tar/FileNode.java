@@ -15,7 +15,7 @@ import java.util.ArrayList;
  * Version :
  * Usage :
  */
-abstract public class FileNode {
+abstract public class FileNode implements Comparable<FileNode> {
     protected String name;
     protected FileNode parent;
 
@@ -43,5 +43,15 @@ abstract public class FileNode {
         }
 
         return ret.toString();
+    }
+
+    @Override
+    public int compareTo(FileNode fn) {
+        if(fn instanceof Menu && this instanceof RegularFile)
+            return 1;
+        if(fn instanceof RegularFile && this instanceof Menu)
+            return -1;
+
+        return this.getName().compareTo(fn.getName());
     }
 }
