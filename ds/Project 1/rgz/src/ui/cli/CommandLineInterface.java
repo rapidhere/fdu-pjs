@@ -9,6 +9,7 @@ import excs.RGZException;
 import excs.TarException;
 import ui.CmdLineParser;
 import ui.CmdLineParser.Option;
+import ui.Config;
 
 import java.util.ArrayList;
 
@@ -130,7 +131,7 @@ public class CommandLineInterface {
 
     public void printVersion() {
         System.out.println("Copyright: (C)RapiD is a JOKER rapidhere@gmail.com");
-        System.out.println("RGZ - RapiD's GZ Demo, ver 0.1");
+        System.out.println("RGZ - RapiD's GZ Demo, " + Config.version);
         System.out.println("For any issues or bugs, please contact me rapidhere@gmail.com");
         System.out.println();
     }
@@ -288,5 +289,10 @@ public class CommandLineInterface {
             else
                 e.printStackTrace();
         }
+    }
+
+    public static void main(String args[]) {
+        CommandLineInterface cli = new CommandLineInterface();
+        cli.run(args);
     }
 }

@@ -12,6 +12,8 @@ import excs.*;
  * Usage :
  */
 final public class Config {
+    public static String version = "ver 0.1";
+
     // DCM Algorithm
     // Huffman tree algorithm
     public static final byte DC_HUFFMAN = 0;
