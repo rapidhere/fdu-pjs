@@ -32,7 +32,7 @@ public class RFrame extends JFrame {
 
     private RFrame() {
         // set Title
-        super("RapiD GZ Demo " + Config.version);
+        super("RapiD's GZ Demo " + Config.version);
 
         // quit auto
         setDefaultCloseOperation(EXIT_ON_CLOSE);
