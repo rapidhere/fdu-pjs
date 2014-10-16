@@ -113,40 +113,17 @@ public class Root extends Menu {
         if(! srcPath.toFile().exists())
             throw new TarException("cannot found source file or directory " + srcFileName);
 
-        FileNode cur = this;
+        FileNode cur;
 
-        // normalize path
-        srcPath = srcPath.normalize();
-
-        // found the target node in the index tree
-        for(int i = 0;i < srcPath.getNameCount();i ++) {
-            String cName = srcPath.getName(i).toString();
-
-            // check name
-            if(cName.equals("..")) {
-                throw new TarException("Don't use '..' in the path name!");
-            }
-
-            FileNode next;
-            if(((Menu)cur).hasChild(cName)) {
-                next = ((Menu)cur).findChild(cName);
-            } else {
-                if(i == srcPath.getNameCount() - 1) {
-                    if(srcPath.toFile().isFile()) {
-                        next = new RegularFile();
-                    } else {
-                        next = new Menu();
-                    }
-                } else {
-                    next = new Menu();
-                }
-                next.setName(cName);
-                next.parent = cur;
-                ((Menu)cur).addFileNode(next);
-            }
-
-            cur = next;
+        if(srcPath.toFile().isFile()) {
+            cur = new RegularFile();
+        } else {
+            cur = new Menu();
         }
+
+        cur.setName(srcPath.getFileName().toString());
+        cur.parent = this;
+        this.addFileNode(cur);
 
         if(cur instanceof RegularFile) { // this is a regular file
             regularFilePathsMap.put((RegularFile) cur, srcFileName);
@@ -265,21 +242,8 @@ public class Root extends Menu {
 
         // decompress each file
         for(FileNode fn: fileNodes) {
-            Path iPath = Paths.get(fn.getPath());
-            File cur = rootDir;
-
-            for(int i = 0;i < iPath.getNameCount() - 1;i ++) {
-                Path p = iPath.getName(i);
-
-                cur = new File(cur, p.toString());
-                if(! cur.exists()) {
-                    if(! cur.mkdir())
-                        throw new TarException(
-                           "decompress failed: cannot create dir " + fn.getPath());
-                }
-            }
             try {
-                doDecompress(cur, fn, dcm, src);
+                doDecompress(rootDir, fn, dcm, src);
             } catch (IOException e) {
                 e.printStackTrace();
                 throw new TarException("decompress failed: " + e.getMessage());

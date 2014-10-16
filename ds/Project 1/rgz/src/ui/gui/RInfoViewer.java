@@ -14,4 +14,12 @@ public class RInfoViewer extends JTextArea {
         super("RapiD's GZ Demo ver 0.1\nAll rights reserved(C): RapiD is a JOKER, rapidehere@gmail.com\n");
         setEditable(false);
     }
+
+    @Override
+    public void append(String msg) {
+        super.append(msg);
+
+        // make auto scroll
+        setCaretPosition(getDocument().getLength());
+    }
 }

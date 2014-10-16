@@ -151,4 +151,15 @@ public class Menu extends FileNode {
     public boolean hasChild(String name) {
         return children.containsKey(name);
     }
+
+    @Override
+    public void remarkSize(){
+        compressedSize = size = -1;
+        for(FileNode ch: getChildren())
+            ch.remarkSize();
+    }
+
+    public void removeChild(FileNode fn) {
+        children.remove(fn.getName());
+    }
 }

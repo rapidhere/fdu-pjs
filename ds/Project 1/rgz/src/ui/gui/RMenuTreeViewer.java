@@ -9,10 +9,7 @@ import javax.swing.*;
 import javax.swing.event.TreeModelListener;
 import javax.swing.tree.*;
 import java.awt.*;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 import java.lang.reflect.Array;
 import java.util.Arrays;
 

@@ -28,6 +28,7 @@ public class RMenuTableViewer extends JTable {
     private String[] cNames = {" ", "File Name", "Size", "C-Size"};
     DefaultTableModel tm;
     private FileNode[] currentFns;
+    JMenuItem decompresMenuItem;
 
     public RMenuTableViewer() {
         // set model
@@ -92,6 +93,7 @@ public class RMenuTableViewer extends JTable {
                 RFrame.getFrame().decompress(fns);
             }
         });
+        decompresMenuItem = menuItem;
         popupMenu.add(menuItem);
     }
 

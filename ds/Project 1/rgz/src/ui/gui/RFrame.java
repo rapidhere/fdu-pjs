@@ -1,5 +1,6 @@
 package ui.gui;
 
+import core.dc.*;
 import core.tar.FileNode;
 import core.tar.Root;
 import excs.DCException;
@@ -28,7 +29,9 @@ public class RFrame extends JFrame {
     private RMenuTableViewer tableViewer;
     private RMenuTreeViewer treeViewer;
     private RInfoViewer infoViewer;
-    private FileNode currentFn;
+    private DCAlgorithm dc = new DCHuffmanAlgorithm();
+    private CatchAlgorithm ca = new CatchASCIIAlgorithm();
+    private DCM dcm = new BlockDCM(dc, ca, 64 * 1024);
 
     public static RFrame getFrame() {
         if(theFrame == null) {
@@ -94,6 +97,9 @@ public class RFrame extends JFrame {
         c.gridwidth = 2;
         add(new JScrollPane(infoViewer), c);
 
+        // sync menu
+        updateMenuState();
+
         // set visible
         treeViewer.setVisible(true);
         tableViewer.setVisible(true);
@@ -123,8 +129,9 @@ public class RFrame extends JFrame {
     }
 
     void setCurrentFileNode(FileNode fn) {
-        currentFn = fn;
-        putNormalInfo("Selected file/menu: " + fn.getPath());
+        FileNode currentFn = fn;
+        if(! (fn instanceof  Root))
+            putNormalInfo("Selected file/menu: " + fn.getPath());
         tableViewer.refreshWithFileNode(currentFn);
     }
 
@@ -149,7 +156,9 @@ public class RFrame extends JFrame {
             // update to viewer
             treeViewer.buildFromRoot(root);
         }
+
         rootUpdated = false;
+        updateMenuState();
     }
 
     void createNewFile() {
@@ -162,6 +171,7 @@ public class RFrame extends JFrame {
         setCurrentFileNode(root);
 
         rootUpdated = true;
+        updateMenuState();
     }
 
     void addSourceToRoot() {
@@ -187,7 +197,61 @@ public class RFrame extends JFrame {
     }
 
     void compress() {
+        JFileChooser fc = new JFileChooser();
+        fc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+        fc.setAcceptAllFileFilterUsed(false);
 
+        int retVal = fc.showOpenDialog(this);
+
+        if(retVal == JFileChooser.APPROVE_OPTION) {
+            putNormalInfo("Starting compress ...");
+            File f = fc.getSelectedFile();
+            if(f.exists()) {
+                int choice = JOptionPane.showConfirmDialog(
+                    this,
+                    "File " + f.getPath() + "exists, are you sure to replace it?",
+                    "Warning",
+                    JOptionPane.YES_NO_OPTION);
+
+                if(choice != 0) { // canceled
+                    return ;
+                }
+            }
+
+            try {
+                dcm.setCA(ca);
+                dcm.setDC(dc);
+                root.compress(f.getAbsolutePath(), dcm);
+            } catch (TarException e) {
+                putErrorInfo(e.getMessage());
+                return;
+            } catch (DCException e) {
+                putErrorInfo(e.getMessage());
+                return;
+            }
+
+            putNormalInfo("Compress done, updating info ...");
+
+            rootUpdated = false;
+            updateMenuState();
+            root.remarkSize();
+            treeViewer.buildFromRoot(root);
+            putNormalInfo("info updated.");
+        }
+    }
+
+    void updateMenuState() {
+        if(rootUpdated) {
+            menuBar.addSourceMenuItem.setEnabled(true);
+            menuBar.compressMenuItem.setEnabled(true);
+            menuBar.configMenu.setEnabled(true);
+            tableViewer.decompresMenuItem.setEnabled(false);
+        } else {
+            menuBar.addSourceMenuItem.setEnabled(false);
+            menuBar.compressMenuItem.setEnabled(false);
+            menuBar.configMenu.setEnabled(false);
+            tableViewer.decompresMenuItem.setEnabled(true);
+        }
     }
 
     void decompress(FileNode[] fns) {
@@ -198,8 +262,8 @@ public class RFrame extends JFrame {
         int retVal = fc.showOpenDialog(this);
 
         if(retVal == JFileChooser.APPROVE_OPTION) {
+            putNormalInfo("Starting decompress ...");
             File outputDir = fc.getSelectedFile();
-            System.err.println(outputDir.getAbsolutePath());
 
             try {
                 root.decompress(outputDir.getAbsolutePath(), fns, srcFile.getPath());
@@ -210,7 +274,19 @@ public class RFrame extends JFrame {
                 putErrorInfo(e.getMessage());
                 root = null;
             }
-
+            putNormalInfo("Decompress done.");
         }
+    }
+
+    void setDcm(DCM dcm) {
+        this.dcm = dcm;
+    }
+
+    void setDc(DCAlgorithm dc) {
+        this.dc = dc;
+    }
+
+    void setCa(CatchAlgorithm ca) {
+        this.ca = ca;
     }
 }

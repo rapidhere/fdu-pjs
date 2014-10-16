@@ -57,4 +57,9 @@ abstract public class FileNode implements Comparable<FileNode> {
 
     abstract public int getSize() ;
     abstract public int getCompressedSize();
+
+    public void remarkSize() {}
+    public FileNode getParent() {
+        return parent;
+    }
 }

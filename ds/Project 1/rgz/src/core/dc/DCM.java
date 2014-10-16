@@ -94,4 +94,7 @@ abstract public class DCM {
             throw new DCException(ioe);
         }
     }
+
+    public void setDC(DCAlgorithm dc) {this.dcAlg = dc;}
+    public void setCA(CatchAlgorithm ca) {this.catchAlg = ca;}
 }
