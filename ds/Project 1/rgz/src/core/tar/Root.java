@@ -108,7 +108,7 @@ public class Root extends Menu {
     }
 
     public void addSource(String srcFileName)
-    throws TarException {
+    throws TarException{
         Path srcPath = Paths.get(srcFileName);
         if(! srcPath.toFile().exists())
             throw new TarException("cannot found source file or directory " + srcFileName);
@@ -128,12 +128,16 @@ public class Root extends Menu {
         if(cur instanceof RegularFile) { // this is a regular file
             regularFilePathsMap.put((RegularFile) cur, srcFileName);
         } else { // this is a directory
-            discoverDirectory((Menu)cur, srcPath);
+            try {
+                discoverDirectory((Menu)cur, srcPath);
+            } catch (IOException e) {
+                throw new TarException("cannot discover directory: " + e.getMessage());
+            }
         }
     }
 
     public void discoverDirectory(Menu m, Path p)
-    throws TarException {
+    throws TarException, IOException {
         File dir = p.toFile();
 
         for(String f: dir.list()) {
@@ -143,19 +147,39 @@ public class Root extends Menu {
             File cf = new File(dir, f);
 
             FileNode t;
+
+            if(isSymlink(cf)) {
+                continue;
+            }
+
             if(cf.isFile()) { // regular File
                 t = new RegularFile();
                 t.setName(f);
                 t.parent = m;
                 regularFilePathsMap.put((RegularFile)t, cf.getPath());
-            } else {
+            } else if (cf.isDirectory()){
                 t = new Menu();
                 t.setName(f);
                 t.parent = m;
                 discoverDirectory((Menu)t, Paths.get(cf.getPath()));
+            } else {// otherwise, ignored
+                continue;
             }
             m.addFileNode(t);
         }
+    }
+
+    static boolean isSymlink(File file) throws IOException {
+        if (file == null)
+            throw new NullPointerException("File must not be null");
+        File canon;
+        if (file.getParent() == null) {
+            canon = file;
+        } else {
+            File canonDir = file.getParentFile().getCanonicalFile();
+            canon = new File(canonDir, file.getName());
+        }
+        return !canon.getCanonicalFile().equals(canon.getAbsoluteFile());
     }
 
     public void compress(String outputFile, DCM dcm)

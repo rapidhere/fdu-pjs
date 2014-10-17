@@ -9,6 +9,7 @@ import ui.Config;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowEvent;
 import java.io.File;
 
 /**
@@ -288,5 +289,12 @@ public class RFrame extends JFrame {
 
     void setCa(CatchAlgorithm ca) {
         this.ca = ca;
+    }
+
+    void exit() {
+        if(! checkRootUpdated()) {
+            return ;
+        }
+        dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
     }
 }

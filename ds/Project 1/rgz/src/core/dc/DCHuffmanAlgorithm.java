@@ -28,7 +28,10 @@ public class DCHuffmanAlgorithm implements DCAlgorithm {
      */
     static HuffmanTreeNode buildHuffmanTree(Pair<Integer, Token>[] tokens, TokenArgMerger tm) {
         // debug error: we assume that there always should be more than one token
-        assert tokens.length > 1;
+        if(tokens.length == 1) {
+            HuffmanTreeNode root = new HuffmanTreeNode(new HuffmanTreeLeaf(tokens[0].getValue()), null);
+            return root;
+        }
 
         // create heap
         Queue<Pair<Integer, AbstractHuffmanTreeNode>> heap =
@@ -125,6 +128,9 @@ public class DCHuffmanAlgorithm implements DCAlgorithm {
             AbstractHuffmanTreeNode curNode = queue.peek().getKey();
             String curEncode = queue.poll().getValue();
 
+            if(curNode == null)
+                continue;
+
             if(curNode.isLeaf()) {
                 encodings.put(((HuffmanTreeLeaf)curNode).token, curEncode);
             } else {
@@ -172,6 +178,8 @@ public class DCHuffmanAlgorithm implements DCAlgorithm {
         while(! queue.isEmpty()) {
             AbstractHuffmanTreeNode curNode = queue.peek().getKey();
             int curDepth = queue.poll().getValue();
+
+            if(curNode == null) continue;
 
             if(curNode.isLeaf()) {
                 tokenMap.put(((HuffmanTreeLeaf)curNode).token, curDepth);

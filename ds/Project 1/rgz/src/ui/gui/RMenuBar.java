@@ -33,6 +33,7 @@ public class RMenuBar extends JMenuBar {
 
         // File -> new
         menuItem = new JMenuItem("new", new MetalIconFactory.TreeLeafIcon());
+        menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, KeyEvent.CTRL_DOWN_MASK));
         menuItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -68,7 +69,7 @@ public class RMenuBar extends JMenuBar {
 
         // File -> add source
         menuItem = new JMenuItem("add source");
-        menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, KeyEvent.CTRL_DOWN_MASK));
+        menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, KeyEvent.CTRL_DOWN_MASK));
         menuItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -83,6 +84,12 @@ public class RMenuBar extends JMenuBar {
 
         // File -> quit
         menuItem = new JMenuItem("quit");
+        menuItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                RFrame.getFrame().exit();
+            }
+        });
         menu.add(menuItem);
 
         // Config
@@ -184,7 +191,10 @@ public class RMenuBar extends JMenuBar {
         menuItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // TODO
+                JOptionPane.showMessageDialog(RFrame.getFrame(),
+                    "Ah.... this demo is very easy and got no help message :p",
+                    "Help",
+                    JOptionPane.INFORMATION_MESSAGE);
             }
         });
         menu.add(menuItem);
@@ -198,7 +208,10 @@ public class RMenuBar extends JMenuBar {
         menuItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // TODO
+                JOptionPane.showMessageDialog(RFrame.getFrame(),
+                    "RapiD's GZ Demo ver 0.1, for DataStructure pj.\n\n(C) RapiD is a JOKER, rapidhere@gmail.com",
+                    "About",
+                    JOptionPane.INFORMATION_MESSAGE);
             }
         });
         menu.add(menuItem);
