@@ -1,5 +1,7 @@
 package core.dc;
 
+import core.notify.MSGBlockDCMStartNew;
+import core.notify.Notifier;
 import excs.DCException;
 import javafx.util.Pair;
 
@@ -39,10 +41,18 @@ public class BlockDCM extends DCM {
             int bufferLength = 0;
             byte[] buffer = new byte[blockSize];
 
+            // calc block amount
+            int totalBlock = (int) Math.ceil((double)in.available() / (double)blockSize) + 1;
+            int blockIndex = 0;
+
             while(true) {
+                // append message
+                blockIndex ++;
+
                 // read in bytes
                 int readLength = in.read(buffer, bufferLength, blockSize - bufferLength);
                 if(readLength == -1) {
+                    Notifier.getNotifier().addNotifyMessage(new MSGBlockDCMStartNew(blockIndex, totalBlock));
                     // write remain buffer
                     int minusBufferLength = - bufferLength;
                     for(int i = 0;i < 4;i ++) {
@@ -52,6 +62,8 @@ public class BlockDCM extends DCM {
                     out.write(buffer, 0, bufferLength);
                     break;
                 }
+
+                Notifier.getNotifier().addNotifyMessage(new MSGBlockDCMStartNew(blockIndex, totalBlock));
 
                 bufferLength += readLength;
 

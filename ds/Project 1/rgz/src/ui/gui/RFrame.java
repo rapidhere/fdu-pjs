@@ -107,10 +107,6 @@ public class RFrame extends JFrame {
         infoViewer.setVisible(true);
     }
 
-    public static void main(String args[]) {
-        RFrame.getFrame().setVisible(true);
-    }
-
     private boolean checkRootUpdated() {
         if(! rootUpdated)
             return true;

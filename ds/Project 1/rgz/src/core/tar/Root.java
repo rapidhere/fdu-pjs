@@ -3,6 +3,7 @@ package core.tar;
 import core.dc.DCM;
 import core.io.CountableBufferedOutputStream;
 import core.io.MemoryMappedFileInputStream;
+import core.notify.*;
 import excs.DCException;
 import excs.TarException;
 import excs.UnknownDCM;
@@ -108,7 +109,7 @@ public class Root extends Menu {
     }
 
     public void addSource(String srcFileName)
-    throws TarException{
+    throws TarException {
         Path srcPath = Paths.get(srcFileName);
         if(! srcPath.toFile().exists())
             throw new TarException("cannot found source file or directory " + srcFileName);
@@ -126,6 +127,7 @@ public class Root extends Menu {
         this.addFileNode(cur);
 
         if(cur instanceof RegularFile) { // this is a regular file
+            Notifier.getNotifier().addNotifyMessage(new MSGTarBuildingIndex(cur.getPath()));
             regularFilePathsMap.put((RegularFile) cur, srcFileName);
         } else { // this is a directory
             try {
@@ -156,6 +158,7 @@ public class Root extends Menu {
                 t = new RegularFile();
                 t.setName(f);
                 t.parent = m;
+                Notifier.getNotifier().addNotifyMessage(new MSGTarBuildingIndex(cf.getPath()));
                 regularFilePathsMap.put((RegularFile)t, cf.getPath());
             } else if (cf.isDirectory()){
                 t = new Menu();
@@ -203,7 +206,12 @@ public class Root extends Menu {
 
         // index has build up
         // then compress files
+        int tot = regularFilePathsMap.keySet().size(),
+            findex = 0;
         for(RegularFile f: regularFilePathsMap.keySet()) {
+            findex ++;
+            Notifier.getNotifier().addNotifyMessage(new MSGDCMCompressNew(f.getPath(), findex, tot));
+
             InputStream in = null;
             int cFileSize = 0;
             try {
@@ -228,6 +236,7 @@ public class Root extends Menu {
         // close output stream
         try {
             // dump index to the very end of the file
+            Notifier.getNotifier().addNotifyMessage(new MSGDumpingIndex());
             dumpIndex(out);
             out.close();
         } catch (IOException e) {
@@ -265,7 +274,12 @@ public class Root extends Menu {
             throw new TarException("decompress failed: cannot found src file " + srcFile);
 
         // decompress each file
+        int tot = fileNodes.length,
+            findex = 0;
         for(FileNode fn: fileNodes) {
+            findex ++;
+            Notifier.getNotifier().addNotifyMessage(new MSGDCMDecompressNew(fn.getPath(), findex, tot));
+
             try {
                 doDecompress(rootDir, fn, dcm, src);
             } catch (IOException e) {
@@ -280,6 +294,7 @@ public class Root extends Menu {
         File f = new File(m, fn.getName());
 
         if(fn instanceof RegularFile) {
+            Notifier.getNotifier().addNotifyMessage(new MSGDCMDecompressNewFile(fn.getPath()));
             if(! f.createNewFile()) {
                 throw new TarException("decompress failed: " + f.getPath() + " already exists");
             }

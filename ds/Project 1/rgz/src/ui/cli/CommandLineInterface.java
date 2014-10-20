@@ -1,6 +1,7 @@
 package ui.cli;
 
 import core.dc.*;
+import core.notify.*;
 import core.tar.FileNode;
 import core.tar.Menu;
 import core.tar.RegularFile;
@@ -84,6 +85,69 @@ public class CommandLineInterface {
         }
 
         return null;
+    }
+
+    public static void loadNotifiers() {
+        Notifier notifier = Notifier.getNotifier();
+
+        notifier.register(NotifyMessage.NMSG_BLOCK_DCM_START_NEW, new NotifyListener<MSGBlockDCMStartNew>() {
+            @Override
+            public void notify(MSGBlockDCMStartNew msg) {
+                System.out.println(
+                    "    Processing block: " + msg.getNumberBlock() + "/" + msg.getTotalBlock());
+            }
+        });
+
+        notifier.register(NotifyMessage.NMSG_TAR_BUILDING_INDEX, new NotifyListener <MSGTarBuildingIndex>() {
+            @Override
+            public void notify(MSGTarBuildingIndex msg) {
+                System.out.println(
+                    "Found source file: " + msg.getPath());
+            }
+        });
+
+        notifier.register(NotifyMessage.NMSG_DCM_COMPRESS_NEW, new NotifyListener <MSGDCMCompressNew>() {
+            @Override
+            public void notify(MSGDCMCompressNew msg) {
+                double ratio = Math.floor((double)msg.getNFile() / (double)msg.getTotFile() * 100000.0) / 1000.0;
+                System.out.println(
+                    String.format("Compressing %.3f%% %d/%d\n  => %s",
+                        ratio, msg.getNFile(), msg.getTotFile(), msg.getPath()));
+            }
+        });
+
+        notifier.register(NotifyMessage.NMSG_TAR_DUMPING_INDEX, new NotifyListener <MSGDumpingIndex>() {
+            @Override
+            public void notify(MSGDumpingIndex msg) {
+                System.out.println(
+                    "Dumping index ...");
+            }
+        });
+
+        notifier.register(NotifyMessage.NMSG_TAR_LOADING_INDEX, new NotifyListener <MSGLoadingIndex>() {
+            @Override
+            public void notify(MSGLoadingIndex msg) {
+                System.out.println(
+                    "Loading index ...");
+            }
+        });
+
+        notifier.register(NotifyMessage.NMSG_DCM_DECOMPRESS_NEW, new NotifyListener <MSGDCMDecompressNew>() {
+            @Override
+            public void notify(MSGDCMDecompressNew msg) {
+                double ratio = Math.floor((double)msg.getNFile() / (double)msg.getTotFile() * 100000.0) / 1000.0;
+                System.out.println(
+                    String.format("Decompressing %.3f%% %d/%d\n => %s",
+                    ratio, msg.getNFile(), msg.getTotFile(), msg.getPath()));
+            }
+        });
+
+        notifier.register(NotifyMessage.NMSG_DCM_DECOMPRESS_NEW_FILE, new NotifyListener <MSGDCMDecompressNewFile>() {
+            @Override
+            public void notify(MSGDCMDecompressNewFile msg) {
+                System.out.println("   +> " + msg.getPath());
+            }
+        });
     }
 
     public static CatchAlgorithm loadCA(String caString) {
@@ -207,6 +271,8 @@ public class CommandLineInterface {
                 System.exit(0);
             }
 
+            loadNotifiers();
+
             debugFlag = parser.getOptionValue(optionDebug, false);
             if(debugFlag) {
                 System.err.println("Debugging mode on ...");
@@ -254,6 +320,8 @@ public class CommandLineInterface {
 
                 // compress
                 root.compress(srcFile, dcm);
+
+                System.exit(0);
             } else if(parser.getOptionValue(optionDecompress, false)) {
                 root.loadIndexFromFile(srcFile);
 
@@ -272,6 +340,8 @@ public class CommandLineInterface {
 
                 // decompress
                 root.decompress(outputRoot, fn.toArray(new FileNode[fn.size()]), srcFile);
+
+                System.exit(0);
             } else if(parser.getOptionValue(optionListUp, false)) {
                 root.loadIndexFromFile(srcFile);
                 // list up
@@ -292,11 +362,7 @@ public class CommandLineInterface {
                 System.err.println(e.getMessage());
             else
                 e.printStackTrace();
+            System.exit(-1);
         }
-    }
-
-    public static void main(String args[]) {
-        CommandLineInterface cli = new CommandLineInterface();
-        cli.run(args);
     }
 }
