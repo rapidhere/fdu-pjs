@@ -1,6 +1,5 @@
 package core.dc;
 
-import com.sun.istack.internal.NotNull;
 import excs.DCException;
 import javafx.util.Pair;
 
@@ -32,7 +31,7 @@ class FixedBytesToken extends Token{
     }
 
     @Override
-    public int compareTo(@NotNull Object o) {
+    public int compareTo(Object o) {
         byte[] b1 = (byte[])getToken(),
             b2 = (byte[])getToken();
 
@@ -104,7 +103,7 @@ public class CatchFixedBytesAlgorithm implements CatchAlgorithm <FixedBytesToken
             tokens[i].setToken(cb);
         }
 
-        return new Pair<FixedBytesToken[], Integer>(tokens, offset + 4 + tokens.length * byteLength);
+        return new Pair<>(tokens, offset + 4 + tokens.length * byteLength);
     }
 
     @Override
@@ -119,7 +118,7 @@ public class CatchFixedBytesAlgorithm implements CatchAlgorithm <FixedBytesToken
             tokens[i].setToken(cb);
         }
 
-        return new Pair<FixedBytesToken[], Integer>(tokens, offset + tokenLength * byteLength);
+        return new Pair<>(tokens, offset + tokenLength * byteLength);
     }
 
     @Override

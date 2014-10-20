@@ -11,5 +11,5 @@ import excs.DCException;
  */
 abstract public interface DCAlgorithm {
     abstract public byte[] compress(Token[] tokens, CatchAlgorithm ca) throws DCException;
-    abstract public Token[] decompress(byte[] bytes, int offset, int length, CatchAlgorithm ca) throws DCException;
+    abstract public Token[] decompress(byte[] bytes, int offset, int length, CatchAlgorithm<Token> ca) throws DCException;
 }

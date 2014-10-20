@@ -16,6 +16,7 @@ public class MemoryMappedFileInputStream extends InputStream {
 
     protected MappedByteBuffer mBuffer;
     protected int length, offset;
+    protected long fileSize;
     protected FileChannel fc;
     protected long filePosition;
 
@@ -23,11 +24,12 @@ public class MemoryMappedFileInputStream extends InputStream {
     throws IOException {
         fc = new FileInputStream(file).getChannel();
         filePosition = position;
+        fileSize = fc.size();
     }
 
     public void fill()
     throws IOException {
-        length = (int)Math.min(memoryMappedBufferSize, fc.size() - filePosition);
+        length = (int)Math.min(memoryMappedBufferSize, fileSize - filePosition);
 
         if(length == 0) {
             offset = 0;
@@ -59,5 +61,10 @@ public class MemoryMappedFileInputStream extends InputStream {
     public void close()
     throws IOException {
         fc.close();
+    }
+
+    @Override
+    public int available() {
+        return (int)(fileSize - filePosition + length - offset);
     }
 }

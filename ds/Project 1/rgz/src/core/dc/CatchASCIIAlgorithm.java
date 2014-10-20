@@ -1,6 +1,5 @@
 package core.dc;
 
-import com.sun.javafx.beans.annotations.NonNull;
 import excs.DCException;
 import javafx.util.Pair;
 
@@ -19,7 +18,7 @@ class ASCIIToken extends Token {
     }
 
     @Override
-    public int compareTo(@NonNull Object o) {
+    public int compareTo(Object o) {
         if(o.hashCode() < hashCode())
             return -1;
         else if(o.hashCode() > hashCode())
@@ -70,7 +69,7 @@ public class CatchASCIIAlgorithm implements CatchAlgorithm <ASCIIToken> {
             tokens[i].setToken(bytes[i + offset + 4]);
         }
 
-        return new Pair<ASCIIToken[], Integer>(tokens, offset + tokenLength + 4);
+        return new Pair<>(tokens, offset + tokenLength + 4);
     }
 
     @Override
@@ -81,7 +80,7 @@ public class CatchASCIIAlgorithm implements CatchAlgorithm <ASCIIToken> {
             tokens[i] = new ASCIIToken();
             tokens[i].setToken(bytes[offset + i]);
         }
-        return new Pair<ASCIIToken[], Integer>(tokens, offset + length);
+        return new Pair<>(tokens, offset + length);
     }
 
     @Override

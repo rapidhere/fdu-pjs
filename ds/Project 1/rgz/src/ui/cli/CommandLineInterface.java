@@ -329,7 +329,7 @@ public class CommandLineInterface {
                 String outputRoot = parser.getOptionValue(optionDecompressRoot, ".");
 
                 // add file node
-                ArrayList<FileNode> fn = new ArrayList<FileNode>();
+                ArrayList<FileNode> fn = new ArrayList<>();
                 for(String t: targetFiles) {
                     FileNode f = root.findFileNode(t);
                     if(f == null) {

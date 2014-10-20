@@ -29,22 +29,16 @@ public class DCHuffmanAlgorithm implements DCAlgorithm {
     static HuffmanTreeNode buildHuffmanTree(Pair<Integer, Token>[] tokens, TokenArgMerger tm) {
         // debug error: we assume that there always should be more than one token
         if(tokens.length == 1) {
-            HuffmanTreeNode root = new HuffmanTreeNode(new HuffmanTreeLeaf(tokens[0].getValue()), null);
-            return root;
+            return new HuffmanTreeNode(new HuffmanTreeLeaf(tokens[0].getValue()), null);
         }
 
         // create heap
         Queue<Pair<Integer, AbstractHuffmanTreeNode>> heap =
-            new PriorityQueue<Pair<Integer, AbstractHuffmanTreeNode>>(7, new Comparator<Pair<Integer, AbstractHuffmanTreeNode>>() {
-                @Override
-                public int compare(Pair<Integer, AbstractHuffmanTreeNode> o1, Pair<Integer, AbstractHuffmanTreeNode> o2) {
-                    return o1.getKey() - o2.getKey();
-                }
-            });
+            new PriorityQueue<>(7, (o1, o2) -> o1.getKey() - o2.getKey());
 
         // put tokens into heap
         for(Pair<Integer, Token> t: tokens) {
-            heap.add(new Pair<Integer, AbstractHuffmanTreeNode>(
+            heap.add(new Pair<>(
                 t.getKey(),
                 new HuffmanTreeLeaf(t.getValue())));
         }
@@ -58,7 +52,7 @@ public class DCHuffmanAlgorithm implements DCAlgorithm {
             HuffmanTreeNode t = new HuffmanTreeNode(p1.getValue(), p2.getValue());
 
             // put into heap
-            heap.add(new Pair<Integer, AbstractHuffmanTreeNode>(
+            heap.add(new Pair<>(
                 tm.merge(p1.getKey(), p2.getKey()),
                 t));
         }
@@ -78,15 +72,10 @@ public class DCHuffmanAlgorithm implements DCAlgorithm {
 
         Pair<Integer, Token>[] t = new Pair[frequency.length];
         for(int i = 0;i < frequency.length;i ++) {
-            t[i] = new Pair<Integer, Token>(frequency[i], tokens[i]);
+            t[i] = new Pair<>(frequency[i], tokens[i]);
         }
 
-        return buildHuffmanTree(t, new TokenArgMerger() {
-            @Override
-            public int merge(int key1, int key2) {
-                return key1 + key2;
-            }
-        });
+        return buildHuffmanTree(t, (key1, key2) -> key1 + key2);
     }
 
     /**
@@ -101,15 +90,12 @@ public class DCHuffmanAlgorithm implements DCAlgorithm {
         Pair<Integer, Token>[] t = new Pair[depth.length];
 
         for(int i = 0;i < depth.length;i ++) {
-            t[i] = new Pair<Integer, Token>(-depth[i], tokens[i]);
+            t[i] = new Pair<>(-depth[i], tokens[i]);
         }
 
-        return buildHuffmanTree(t, new TokenArgMerger() {
-            @Override
-            public int merge(int key1, int key2) {
-                assert key1 == key2;
-                return key1 + 1;
-            }
+        return buildHuffmanTree(t, (key1, key2) -> {
+            assert key1 == key2;
+            return key1 + 1;
         });
     }
 
@@ -119,11 +105,11 @@ public class DCHuffmanAlgorithm implements DCAlgorithm {
      * @return encoding map
      */
     static Map<Token, String> getEncodingMap(HuffmanTreeNode root) {
-        Map<Token, String> encodings = new HashMap<Token, String>();
+        Map<Token, String> encodings = new HashMap<>();
         Queue<Pair<AbstractHuffmanTreeNode, String>> queue =
-            new LinkedBlockingQueue<Pair<AbstractHuffmanTreeNode, String>>();
+            new LinkedBlockingQueue<>();
 
-        queue.add(new Pair<AbstractHuffmanTreeNode, String>(root, ""));
+        queue.add(new Pair<>(root, ""));
         while(! queue.isEmpty()) {
             AbstractHuffmanTreeNode curNode = queue.peek().getKey();
             String curEncode = queue.poll().getValue();
@@ -134,9 +120,9 @@ public class DCHuffmanAlgorithm implements DCAlgorithm {
             if(curNode.isLeaf()) {
                 encodings.put(((HuffmanTreeLeaf)curNode).token, curEncode);
             } else {
-                queue.add(new Pair<AbstractHuffmanTreeNode, String>(
+                queue.add(new Pair<>(
                     ((HuffmanTreeNode)curNode).leftTree, curEncode + "0"));
-                queue.add(new Pair<AbstractHuffmanTreeNode, String>(
+                queue.add(new Pair<>(
                     ((HuffmanTreeNode)curNode).rightTree, curEncode + "1"));
             }
         }
@@ -147,7 +133,7 @@ public class DCHuffmanAlgorithm implements DCAlgorithm {
     @Override
     public byte[] compress(Token[] tokenSequence, CatchAlgorithm ca)
     throws DCException {
-        Map<Token, Integer> tokenMap = new HashMap<Token, Integer>();
+        Map<Token, Integer> tokenMap = new HashMap<>();
 
         // count tokens
         for(Token t: tokenSequence) {
@@ -172,8 +158,8 @@ public class DCHuffmanAlgorithm implements DCAlgorithm {
 
         // get depth array
         Queue<Pair<AbstractHuffmanTreeNode, Integer>> queue =
-            new LinkedBlockingQueue<Pair<AbstractHuffmanTreeNode, Integer>>();
-        queue.add(new Pair<AbstractHuffmanTreeNode, Integer>(root, 0));
+            new LinkedBlockingQueue<>();
+        queue.add(new Pair<>(root, 0));
 
         while(! queue.isEmpty()) {
             AbstractHuffmanTreeNode curNode = queue.peek().getKey();
@@ -184,9 +170,9 @@ public class DCHuffmanAlgorithm implements DCAlgorithm {
             if(curNode.isLeaf()) {
                 tokenMap.put(((HuffmanTreeLeaf)curNode).token, curDepth);
             } else {
-                queue.add(new Pair<AbstractHuffmanTreeNode, Integer>(
+                queue.add(new Pair<>(
                     ((HuffmanTreeNode)curNode).leftTree, curDepth +1));
-                queue.add(new Pair<AbstractHuffmanTreeNode, Integer>(
+                queue.add(new Pair<>(
                     ((HuffmanTreeNode)curNode).rightTree, curDepth +1));
             }
         }
@@ -214,7 +200,7 @@ public class DCHuffmanAlgorithm implements DCAlgorithm {
         byte[] compressedBytes = compressedData.dump();
 
         // Create ret vector
-        Vector<Byte> ret = new Vector<Byte>();
+        Vector<Byte> ret = new Vector<>();
 
         // dump huffman tree
         byte[] huffmanTreeBytes = ca.dump(tokens);
@@ -272,7 +258,7 @@ public class DCHuffmanAlgorithm implements DCAlgorithm {
         HuffmanTreeNode root = buildHuffmanTreeWithDepth(depth, tokens);
 
         // decompress
-        ArrayList<Token> ret = new ArrayList<Token>();
+        ArrayList<Token> ret = new ArrayList<>();
         AbstractHuffmanTreeNode cur = root;
 
         for(int i = 0;i < compressedData.size();i ++) {

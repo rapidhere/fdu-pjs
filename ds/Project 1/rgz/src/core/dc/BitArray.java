@@ -191,42 +191,4 @@ public class BitArray {
             p = p.nextBitArray;
         }
     }
-
-    /*
-    public static void main(String args[]) {
-        BitArray ba1 = new BitArray(),
-            ba2 = new BitArray();
-
-        ba1.addBit((byte)0); // 0
-        ba1.addBit((byte)1); // 1
-        ba1.addBit((byte)1); // 2
-        ba1.addBit((byte)0); // 3
-        ba1.addBit((byte)1); // 4
-        ba1.addBit((byte)1); // 5
-        ba1.addBit((byte)0); // 6
-        ba1.addBit((byte)1); // 7
-        ba1.addBit((byte)1); // 8
-
-        ba2.addBit((byte)0); // 0   9
-        ba2.addBit((byte)1); // 1   10
-        ba2.addBit((byte)0); // 2   11
-        ba2.addBit((byte)0); // 3   12
-        ba2.addBit((byte)1); // 4   13
-        ba2.addBit((byte)0); // 5   14
-        ba2.addBit((byte)0); // 6   15
-        ba2.addBit((byte)1); // 7   16
-        ba2.addBit((byte)0); // 8   17
-        ba2.addBit((byte)0); // 9   18
-        ba2.addBit((byte)1); // 10  19
-        ba2.addBit((byte)0); // 11  20
-
-        ba1.appendBitArray(ba2);
-        byte[] bs = ba1.dump();
-        try {
-            ba1.load(bs, 0, bs.length);
-        } catch (BitArrayException e) {
-            e.printStackTrace();
-        }
-        return;
-    }*/
 }

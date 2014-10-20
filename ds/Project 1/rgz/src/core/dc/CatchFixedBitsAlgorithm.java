@@ -1,6 +1,5 @@
 package core.dc;
 
-import com.sun.istack.internal.NotNull;
 import excs.BitArrayException;
 import excs.DCException;
 import javafx.util.Pair;
@@ -33,7 +32,7 @@ class FixedBitsToken extends Token{
     }
 
     @Override
-    public int compareTo(@NotNull Object o) {
+    public int compareTo(Object o) {
         BitArray b1 = (BitArray)getToken(),
             b2 = (BitArray)((Token)o).getToken();
         assert b1.size() == b2.size();
@@ -101,7 +100,7 @@ public class CatchFixedBitsAlgorithm implements CatchAlgorithm <FixedBitsToken> 
                 tokens[i].setToken(cba);
             }
 
-            return new Pair<FixedBitsToken[], Integer>(tokens, remainOffset);
+            return new Pair<>(tokens, remainOffset);
         } catch (BitArrayException e) {
             throw new DCException(e.getMessage());
         }
@@ -158,7 +157,7 @@ public class CatchFixedBitsAlgorithm implements CatchAlgorithm <FixedBitsToken> 
         }
 
         // trick: offset - 1
-        return new Pair<FixedBitsToken[], Integer>(tokens, offset);
+        return new Pair<>(tokens, offset);
     }
 
     @Override

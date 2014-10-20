@@ -17,7 +17,7 @@ public class Notifier {
     private Notifier() {}
     private static Notifier theNotifier = null;
     private Map<Integer, ArrayList<NotifyListener>> notifyListeners =
-        new HashMap<Integer, ArrayList<NotifyListener>>();
+        new HashMap<>();
 
     private BlockingQueue<NotifyMessage> messageQueue = new LinkedBlockingQueue<NotifyMessage>();
 
@@ -47,7 +47,7 @@ public class Notifier {
 
     synchronized public void register(int msgId, NotifyListener listener) {
         if(notifyListeners.get(msgId) == null) {
-            notifyListeners.put(msgId, new ArrayList<NotifyListener>());
+            notifyListeners.put(msgId, new ArrayList<>());
         }
 
         ArrayList<NotifyListener> listeners = notifyListeners.get(msgId);

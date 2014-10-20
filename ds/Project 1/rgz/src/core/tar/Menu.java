@@ -17,7 +17,7 @@ import java.util.HashMap;
  * Usage :
  */
 public class Menu extends FileNode {
-    protected HashMap<String, FileNode> children = new HashMap<String, FileNode>();
+    protected HashMap<String, FileNode> children = new HashMap<>();
 
     @Override
     public void dumpIndex(OutputStream out)
