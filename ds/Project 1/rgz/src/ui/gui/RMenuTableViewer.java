@@ -5,16 +5,8 @@ import core.tar.Menu;
 import core.tar.RegularFile;
 
 import javax.swing.*;
-import javax.swing.event.TableModelListener;
 import javax.swing.plaf.metal.MetalIconFactory;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellRenderer;
-import javax.swing.table.TableModel;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -81,17 +73,14 @@ public class RMenuTableViewer extends JTable {
 
         // decompress
         menuItem = new JMenuItem("decompress");
-        menuItem.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                int[] selectedIndex = getSelectedRows();
-                FileNode[] fns = new FileNode[selectedIndex.length];
+        menuItem.addActionListener(e -> {
+            int[] selectedIndex = getSelectedRows();
+            FileNode[] fns = new FileNode[selectedIndex.length];
 
-                for(int i = 0;i <selectedIndex.length;i ++) {
-                    fns[i] = currentFns[selectedIndex[i]];
-                }
-                RFrame.getFrame().decompress(fns);
+            for(int i = 0;i <selectedIndex.length;i ++) {
+                fns[i] = currentFns[selectedIndex[i]];
             }
+            RFrame.getFrame().decompress(fns);
         });
         decompresMenuItem = menuItem;
         popupMenu.add(menuItem);

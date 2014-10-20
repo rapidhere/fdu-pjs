@@ -12,7 +12,6 @@ public class MSGDCMDecompressNew extends NotifyMessage {
     int nFile, totFile;
 
     public MSGDCMDecompressNew(String path, int nFile, int totFile) {
-        super(NotifyMessage.NMSG_DCM_DECOMPRESS_NEW);
         this.path = path;
         this.nFile = nFile;
         this.totFile = totFile;

@@ -39,52 +39,51 @@ final public class Config {
      * @return new dc
      * @throws UnknownDCAlgorithmId
      */
-    public static DCAlgorithm getDCAlgorithmById(byte algId)
+    public static Class<? extends DCAlgorithm> getDCAlgorithmById(byte algId)
     throws UnknownDCAlgorithmId {
         switch (algId) {
-            case DC_HUFFMAN: return new DCHuffmanAlgorithm();
+            case DC_HUFFMAN: return DCHuffmanAlgorithm.class;
             default: throw new UnknownDCAlgorithmId(algId);
         }
     }
 
 
-    // Catch Algorithm
-    // ascii catch algorithm
-    public static final byte CTH_ASCII = 0;
-    public static final byte CTH_FIXED_BIT = 1;
-    public static final byte CTH_FIXED_BYTE = 2;
+    // Token IDs
+    public static final byte TOKEN_ASCII = 0;
+    public static final byte TOKEN_FIXED_BIT = 1;
+    public static final byte TOKEN_FIXED_BYTE = 2;
 
     /**
      * get ca id by ca
-     * @param ca the catch algorithm
+     * @param tkClass the catch algorithm
      * @return the id of the ca
-     * @throws UnknownCatchAlgorithm
+     * @throws excs.UnknownToken
      */
-    public static byte getCatchAlgorithmId(CatchAlgorithm ca)
-    throws UnknownCatchAlgorithm {
-        if(ca instanceof CatchASCIIAlgorithm) {
-            return CTH_ASCII;
-        } else if(ca instanceof CatchFixedBitsAlgorithm) {
-            return CTH_FIXED_BIT;
-        } else if(ca instanceof CatchFixedBytesAlgorithm) {
-            return CTH_FIXED_BYTE;
+    public static byte getTokenId(Class<? extends Token> tkClass)
+    throws UnknownToken {
+        if(tkClass.equals(ASCIIToken.class)) {
+            return TOKEN_ASCII;
+        } else if(tkClass.equals(FixedBitsToken.class)) {
+            return TOKEN_FIXED_BIT;
+        } else if(tkClass.equals(FixedBytesToken.class)) {
+            return TOKEN_FIXED_BYTE;
         }
-        throw new UnknownCatchAlgorithm(ca);
+        throw new UnknownToken(tkClass);
     }
 
     /**
      * get the catch algorithm by id
-     * @param cthId the catch algorithm
+     * @param tkId the catch algorithm
      * @return the catch algorithm
-     * @throws UnknownCatchAlgorithmId
+     * @throws excs.UnknownTokenId
      */
-    public static CatchAlgorithm getCatchAlgorithmById(byte cthId)
-    throws UnknownCatchAlgorithmId {
-        switch (cthId) {
-            case CTH_ASCII: return new CatchASCIIAlgorithm();
-            case CTH_FIXED_BIT: return new CatchFixedBitsAlgorithm();
-            case CTH_FIXED_BYTE: return new CatchFixedBytesAlgorithm();
-            default: throw new UnknownCatchAlgorithmId(cthId);
+    public static Class<? extends Token> getTokenById(byte tkId)
+    throws UnknownTokenId {
+        switch (tkId) {
+            case TOKEN_ASCII: return ASCIIToken.class;
+            case TOKEN_FIXED_BIT: return FixedBitsToken.class;
+            case TOKEN_FIXED_BYTE: return FixedBytesToken.class;
+            default: throw new UnknownTokenId(tkId);
         }
     }
 

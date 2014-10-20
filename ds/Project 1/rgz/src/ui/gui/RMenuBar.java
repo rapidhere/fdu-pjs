@@ -5,7 +5,6 @@ import core.dc.*;
 import javax.swing.*;
 import javax.swing.plaf.metal.MetalIconFactory;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
 /**
@@ -34,23 +33,13 @@ public class RMenuBar extends JMenuBar {
         // File -> new
         menuItem = new JMenuItem("new", new MetalIconFactory.TreeLeafIcon());
         menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, KeyEvent.CTRL_DOWN_MASK));
-        menuItem.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                RFrame.getFrame().createNewFile();
-            }
-        });
+        menuItem.addActionListener(e9 -> RFrame.getFrame().createNewFile());
         menu.add(menuItem);
 
         // File -> open
         menuItem = new JMenuItem("open", new MetalIconFactory.TreeFolderIcon());
         menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, KeyEvent.CTRL_DOWN_MASK));
-        menuItem.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                RFrame.getFrame().openNewFile();
-            }
-        });
+        menuItem.addActionListener(e8 -> RFrame.getFrame().openNewFile());
         menu.add(menuItem);
 
         // sep
@@ -59,23 +48,13 @@ public class RMenuBar extends JMenuBar {
         // File -> compress to
         menuItem = new JMenuItem("compress");
         compressMenuItem = menuItem;
-        menuItem.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                RFrame.getFrame().compress();
-            }
-        });
+        menuItem.addActionListener(e7 -> RFrame.getFrame().compress());
         menu.add(menuItem);
 
         // File -> add source
         menuItem = new JMenuItem("add source");
         menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, KeyEvent.CTRL_DOWN_MASK));
-        menuItem.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                RFrame.getFrame().addSourceToRoot();
-            }
-        });
+        menuItem.addActionListener(e6 -> RFrame.getFrame().addSourceToRoot());
         addSourceMenuItem = menuItem;
         menu.add(menuItem);
 
@@ -84,12 +63,7 @@ public class RMenuBar extends JMenuBar {
 
         // File -> quit
         menuItem = new JMenuItem("quit");
-        menuItem.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                RFrame.getFrame().exit();
-            }
-        });
+        menuItem.addActionListener(e5 -> RFrame.getFrame().exit());
         menu.add(menuItem);
 
         // Config
@@ -113,19 +87,16 @@ public class RMenuBar extends JMenuBar {
             "4m block dcm",
             "16m block dcm",
         };
-        createMenuButtonGroup(dcmMenu, dcmLabels, new menuButtonGroupCB() {
-            @Override
-            public void action(ActionEvent e, int index) {
-                RFrame fr = RFrame.getFrame();
-                switch (index) {
-                    case 0: fr.setDcm(new BlockDCM(null, null, 64 * 1024)); break;
-                    case 1: fr.setDcm(new BlockDCM(null, null, 128 * 1024)); break;
-                    case 2: fr.setDcm(new BlockDCM(null, null, 256 * 1024)); break;
-                    case 3: fr.setDcm(new BlockDCM(null, null, 512 * 1024)); break;
-                    case 4: fr.setDcm(new BlockDCM(null, null, 1024 * 1024)); break;
-                    case 5: fr.setDcm(new BlockDCM(null, null, 4 * 1024 * 1024)); break;
-                    case 6: fr.setDcm(new BlockDCM(null, null, 16 * 1024 * 1024)); break;
-                }
+        createMenuButtonGroup(dcmMenu, dcmLabels, (e4, index) -> {
+            RFrame fr = RFrame.getFrame();
+            switch (index) {
+                case 0: fr.setDcm(new BlockDCM(null, null, 64 * 1024)); break;
+                case 1: fr.setDcm(new BlockDCM(null, null, 128 * 1024)); break;
+                case 2: fr.setDcm(new BlockDCM(null, null, 256 * 1024)); break;
+                case 3: fr.setDcm(new BlockDCM(null, null, 512 * 1024)); break;
+                case 4: fr.setDcm(new BlockDCM(null, null, 1024 * 1024)); break;
+                case 5: fr.setDcm(new BlockDCM(null, null, 4 * 1024 * 1024)); break;
+                case 6: fr.setDcm(new BlockDCM(null, null, 16 * 1024 * 1024)); break;
             }
         });
 
@@ -138,12 +109,9 @@ public class RMenuBar extends JMenuBar {
         String[] dcLabels = {
             "huffman tree",
         };
-        createMenuButtonGroup(dcMenu, dcLabels, new menuButtonGroupCB() {
-            @Override
-            public void action(ActionEvent e, int index) {
-                switch (index) {
-                    case 0: RFrame.getFrame().setDc(new DCHuffmanAlgorithm());
-                }
+        createMenuButtonGroup(dcMenu, dcLabels, (e3, index) -> {
+            switch (index) {
+                case 0: RFrame.getFrame().setDc(new DCHuffmanAlgorithm());
             }
         });
 
@@ -163,20 +131,17 @@ public class RMenuBar extends JMenuBar {
             "3-byte",
             "4-byte"
         };
-        createMenuButtonGroup(caMenu, caLabels, new menuButtonGroupCB() {
-            @Override
-            public void action(ActionEvent e, int index) {
-                RFrame fr = RFrame.getFrame();
-                switch (index) {
-                    case 0: fr.setCa(new CatchASCIIAlgorithm()); break;
-                    case 1: fr.setCa(new CatchFixedBitsAlgorithm((byte)1)); break;
-                    case 2: fr.setCa(new CatchFixedBitsAlgorithm((byte)2)); break;
-                    case 3: fr.setCa(new CatchFixedBitsAlgorithm((byte)4)); break;
-                    case 4: fr.setCa(new CatchFixedBytesAlgorithm((byte)1)); break;
-                    case 5: fr.setCa(new CatchFixedBytesAlgorithm((byte)2)); break;
-                    case 6: fr.setCa(new CatchFixedBytesAlgorithm((byte)3)); break;
-                    case 7: fr.setCa(new CatchFixedBytesAlgorithm((byte)4)); break;
-                }
+        createMenuButtonGroup(caMenu, caLabels, (e2, index) -> {
+            RFrame fr = RFrame.getFrame();
+            switch (index) {
+                case 0: fr.setCa(new CatchASCIIAlgorithm()); break;
+                case 1: fr.setCa(new CatchFixedBitsAlgorithm((byte)1)); break;
+                case 2: fr.setCa(new CatchFixedBitsAlgorithm((byte)2)); break;
+                case 3: fr.setCa(new CatchFixedBitsAlgorithm((byte)4)); break;
+                case 4: fr.setCa(new CatchFixedBytesAlgorithm((byte)1)); break;
+                case 5: fr.setCa(new CatchFixedBytesAlgorithm((byte)2)); break;
+                case 6: fr.setCa(new CatchFixedBytesAlgorithm((byte)3)); break;
+                case 7: fr.setCa(new CatchFixedBytesAlgorithm((byte)4)); break;
             }
         });
 
@@ -188,15 +153,10 @@ public class RMenuBar extends JMenuBar {
         // Help->Help
         menuItem = new JMenuItem("help");
         menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F1, 0));
-        menuItem.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(RFrame.getFrame(),
-                    "Ah.... this demo is very easy and got no help message :p",
-                    "Help",
-                    JOptionPane.INFORMATION_MESSAGE);
-            }
-        });
+        menuItem.addActionListener(e1 -> JOptionPane.showMessageDialog(RFrame.getFrame(),
+            "Ah.... this demo is very easy and got no help message :p",
+            "Help",
+            JOptionPane.INFORMATION_MESSAGE));
         menu.add(menuItem);
 
         // Separator
@@ -205,15 +165,10 @@ public class RMenuBar extends JMenuBar {
         // Help->About
         menuItem = new JMenuItem("about");
         menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F1, KeyEvent.CTRL_DOWN_MASK));
-        menuItem.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(RFrame.getFrame(),
-                    "RapiD's GZ Demo ver 0.1, for DataStructure pj.\n\n(C) RapiD is a JOKER, rapidhere@gmail.com",
-                    "About",
-                    JOptionPane.INFORMATION_MESSAGE);
-            }
-        });
+        menuItem.addActionListener(e -> JOptionPane.showMessageDialog(RFrame.getFrame(),
+            "RapiD's GZ Demo ver 0.1, for DataStructure pj.\n\n(C) RapiD is a JOKER, rapidhere@gmail.com",
+            "About",
+            JOptionPane.INFORMATION_MESSAGE));
         menu.add(menuItem);
     }
 
@@ -229,12 +184,7 @@ public class RMenuBar extends JMenuBar {
                 rb.setSelected(false);
 
             final int ii = i;
-            rb.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    cb.action(e, ii);
-                }
-            });
+            rb.addActionListener(e -> cb.action(e, ii));
 
             m.add(rb);
             bg.add(rb);

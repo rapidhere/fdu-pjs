@@ -23,8 +23,8 @@ public class BlockDCM extends DCM {
 
     private int blockSize;
 
-    public BlockDCM(DCAlgorithm dc, CatchAlgorithm ca, int blockSize) {
-        super(dc, ca);
+    public BlockDCM(Class<? extends Token> tokenClass, DCAlgorithm dc, int blockSize) {
+        super(tokenClass, dc);
         setBlockSize(blockSize);
     }
 

@@ -12,7 +12,6 @@ public class MSGTarBuildingIndex extends NotifyMessage {
 
 
     public MSGTarBuildingIndex(String path) {
-        super(NotifyMessage.NMSG_TAR_BUILDING_INDEX);
         this.path = path;
     }
 

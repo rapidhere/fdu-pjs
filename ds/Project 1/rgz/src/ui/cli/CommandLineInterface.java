@@ -59,21 +59,22 @@ public class CommandLineInterface {
 
     private Option<Boolean> optionDebug;
 
-    public static DCM loadDCM(String dcmString, DCAlgorithm dc, CatchAlgorithm ca) {
-        if(dcmString.equals(DCM_BLOCK_64K)) {
-            return new BlockDCM(dc, ca, 64 * 1024);
-        } else if(dcmString.equals(DCM_BLOCK_128K)) {
-            return new BlockDCM(dc, ca, 128 * 1024);
-        } else if(dcmString.equals(DCM_BLOCK_256K)) {
-            return new BlockDCM(dc, ca, 256 * 1024);
-        } else if(dcmString.equals(DCM_BLOCK_512K)) {
-            return new BlockDCM(dc, ca, 512 * 1024);
-        } else if(dcmString.equals(DCM_BLOCK_1M)) {
-            return new BlockDCM(dc, ca, 1024 * 1024);
-        } else if(dcmString.equals(DCM_BLOCK_4M)) {
-            return new BlockDCM(dc, ca, 4 * 1024 * 1024);
-        } else if(dcmString.equals(DCM_BLOCK_16M)) {
-            return new BlockDCM(dc, ca, 16 * 1024 * 1024);
+    public static DCM loadDCM(String dcmString, DCAlgorithm dc, CatchAlgorithm<? extends Token> ca) {
+        switch (dcmString) {
+            case DCM_BLOCK_64K:
+                return new BlockDCM(dc, ca, 64 * 1024);
+            case DCM_BLOCK_128K:
+                return new BlockDCM(dc, ca, 128 * 1024);
+            case DCM_BLOCK_256K:
+                return new BlockDCM(dc, ca, 256 * 1024);
+            case DCM_BLOCK_512K:
+                return new BlockDCM(dc, ca, 512 * 1024);
+            case DCM_BLOCK_1M:
+                return new BlockDCM(dc, ca, 1024 * 1024);
+            case DCM_BLOCK_4M:
+                return new BlockDCM(dc, ca, 4 * 1024 * 1024);
+            case DCM_BLOCK_16M:
+                return new BlockDCM(dc, ca, 16 * 1024 * 1024);
         }
 
         return null;
@@ -90,83 +91,53 @@ public class CommandLineInterface {
     public static void loadNotifiers() {
         Notifier notifier = Notifier.getNotifier();
 
-        notifier.register(NotifyMessage.NMSG_BLOCK_DCM_START_NEW, new NotifyListener<MSGBlockDCMStartNew>() {
-            @Override
-            public void notify(MSGBlockDCMStartNew msg) {
-                System.out.println(
-                    "    Processing block: " + msg.getNumberBlock() + "/" + msg.getTotalBlock());
-            }
-        });
+        notifier.register(MSGBlockDCMStartNew.class, msg -> System.out.println(
+            "    Processing block: " + msg.getNumberBlock() + "/" + msg.getTotalBlock()));
 
-        notifier.register(NotifyMessage.NMSG_TAR_BUILDING_INDEX, new NotifyListener <MSGTarBuildingIndex>() {
-            @Override
-            public void notify(MSGTarBuildingIndex msg) {
-                System.out.println(
-                    "Found source file: " + msg.getPath());
-            }
-        });
+        notifier.register(MSGTarBuildingIndex.class, msg -> System.out.println(
+            "Found source file: " + msg.getPath()));
 
-        notifier.register(NotifyMessage.NMSG_DCM_COMPRESS_NEW, new NotifyListener <MSGDCMCompressNew>() {
-            @Override
-            public void notify(MSGDCMCompressNew msg) {
-                double ratio = Math.floor((double)msg.getNFile() / (double)msg.getTotFile() * 100000.0) / 1000.0;
-                System.out.println(
-                    String.format("Compressing %.3f%% %d/%d\n  => %s",
-                        ratio, msg.getNFile(), msg.getTotFile(), msg.getPath()));
-            }
-        });
-
-        notifier.register(NotifyMessage.NMSG_TAR_DUMPING_INDEX, new NotifyListener <MSGDumpingIndex>() {
-            @Override
-            public void notify(MSGDumpingIndex msg) {
-                System.out.println(
-                    "Dumping index ...");
-            }
-        });
-
-        notifier.register(NotifyMessage.NMSG_TAR_LOADING_INDEX, new NotifyListener <MSGLoadingIndex>() {
-            @Override
-            public void notify(MSGLoadingIndex msg) {
-                System.out.println(
-                    "Loading index ...");
-            }
-        });
-
-        notifier.register(NotifyMessage.NMSG_DCM_DECOMPRESS_NEW, new NotifyListener <MSGDCMDecompressNew>() {
-            @Override
-            public void notify(MSGDCMDecompressNew msg) {
-                double ratio = Math.floor((double)msg.getNFile() / (double)msg.getTotFile() * 100000.0) / 1000.0;
-                System.out.println(
-                    String.format("Decompressing %.3f%% %d/%d\n => %s",
+        notifier.register(MSGDCMCompressNew.class, msg -> {
+            double ratio = Math.floor((double)msg.getNFile() / (double)msg.getTotFile() * 100000.0) / 1000.0;
+            System.out.println(
+                String.format("Compressing %.3f%% %d/%d\n  => %s",
                     ratio, msg.getNFile(), msg.getTotFile(), msg.getPath()));
-            }
         });
 
-        notifier.register(NotifyMessage.NMSG_DCM_DECOMPRESS_NEW_FILE, new NotifyListener <MSGDCMDecompressNewFile>() {
-            @Override
-            public void notify(MSGDCMDecompressNewFile msg) {
-                System.out.println("   +> " + msg.getPath());
-            }
+        notifier.register(MSGDumpingIndex.class, msg -> System.out.println(
+            "Dumping index ..."));
+
+        notifier.register(MSGLoadingIndex.class, msg -> System.out.println(
+            "Loading index ..."));
+
+        notifier.register(MSGDCMDecompressNew.class, msg -> {
+            double ratio = Math.floor((double)msg.getNFile() / (double)msg.getTotFile() * 100000.0) / 1000.0;
+            System.out.println(
+                String.format("Decompressing %.3f%% %d/%d\n => %s",
+                ratio, msg.getNFile(), msg.getTotFile(), msg.getPath()));
         });
+
+        notifier.register(MSGDCMDecompressNewFile.class, msg -> System.out.println("   +> " + msg.getPath()));
     }
 
-    public static CatchAlgorithm loadCA(String caString) {
-        if(caString.equals(CA_ASCII)) {
-            return new CatchASCIIAlgorithm();
-        } else if(caString.equals(CA_FIXED_BYTES_1)) {
-            return new CatchFixedBytesAlgorithm((byte) 1);
-        } else if(caString.equals(CA_FIXED_BYTES_2)) {
-            return new CatchFixedBytesAlgorithm((byte) 2);
-        } else if(caString.equals(CA_FIXED_BYTES_3)) {
-            return new CatchFixedBytesAlgorithm((byte) 3);
-        } else if(caString.equals(CA_FIXED_BYTES_4)) {
-            return new CatchFixedBytesAlgorithm((byte) 4);
-        } else if(caString.equals(CA_FIXED_BITS_1)) {
-            return new CatchFixedBitsAlgorithm((byte) 1);
-        } else if(caString.equals(CA_FIXED_BITS_2)) {
-            return new CatchFixedBitsAlgorithm((byte) 2);
-        } else if(caString.equals(CA_FIXED_BITS_4)) {
-            return new CatchFixedBitsAlgorithm((byte) 4);
+    public static CatchAlgorithm<? extends Token> loadCA(String caString) {
+        switch (caString) {
+            case CA_ASCII:
+                return new CatchASCIIAlgorithm();
+            case CA_FIXED_BYTES_1:
+                return new CatchFixedBytesAlgorithm((byte) 1);
+            case CA_FIXED_BYTES_2:
+                return new CatchFixedBytesAlgorithm((byte) 2);
+            case CA_FIXED_BYTES_3:
+                return new CatchFixedBytesAlgorithm((byte) 3);
+            case CA_FIXED_BYTES_4:
+                return new CatchFixedBytesAlgorithm((byte) 4);
+            case CA_FIXED_BITS_1:
+                return new CatchFixedBitsAlgorithm((byte) 1);
+            case CA_FIXED_BITS_2:
+                return new CatchFixedBitsAlgorithm((byte) 2);
+            case CA_FIXED_BITS_4:
+                return new CatchFixedBitsAlgorithm((byte) 4);
         }
 
         return null;
@@ -300,7 +271,7 @@ public class CommandLineInterface {
                 // load up dc ca dcm
                 DCM dcm;
                 DCAlgorithm dc;
-                CatchAlgorithm ca;
+                CatchAlgorithm<? extends Token> ca;
 
                 // load strings
                 String dcString = parser.getOptionValue(optionDCAlgorithm, DC_HUFFMAN);

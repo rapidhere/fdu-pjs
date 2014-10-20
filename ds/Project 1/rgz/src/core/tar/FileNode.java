@@ -28,7 +28,7 @@ abstract public class FileNode implements Comparable<FileNode> {
     }
 
     public String getPath() {
-        ArrayList<String> names = new ArrayList<String>();
+        ArrayList<String> names = new ArrayList<>();
         FileNode cur = this;
         while(cur != null) {
             names.add(cur.getName());
@@ -46,7 +46,7 @@ abstract public class FileNode implements Comparable<FileNode> {
     }
 
     @Override
-    public int compareTo(FileNode fn) {
+    public int compareTo(@SuppressWarnings("NullableProblems") FileNode fn) {
         if(fn instanceof Menu && this instanceof RegularFile)
             return 1;
         if(fn instanceof RegularFile && this instanceof Menu)

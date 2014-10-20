@@ -9,7 +9,6 @@ package core.notify;
  */
 public class MSGBlockDCMStartNew extends NotifyMessage {
     public MSGBlockDCMStartNew(int numberBlock, int totalBlock) {
-        super(NotifyMessage.NMSG_BLOCK_DCM_START_NEW);
         set(numberBlock, totalBlock);
     }
 

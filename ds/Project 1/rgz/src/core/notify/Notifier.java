@@ -13,13 +13,14 @@ import java.util.concurrent.LinkedBlockingQueue;
  * Version :
  * Usage :
  */
+
 public class Notifier {
     private Notifier() {}
     private static Notifier theNotifier = null;
-    private Map<Integer, ArrayList<NotifyListener>> notifyListeners =
+    private Map<Class<? extends NotifyMessage>, ArrayList<? extends NotifyListener>> notifyListeners =
         new HashMap<>();
 
-    private BlockingQueue<NotifyMessage> messageQueue = new LinkedBlockingQueue<NotifyMessage>();
+    private BlockingQueue<NotifyMessage> messageQueue = new LinkedBlockingQueue<>();
 
     synchronized public static Notifier getNotifier() {
         if(theNotifier == null) {
@@ -36,21 +37,27 @@ public class Notifier {
         return messageQueue.take();
     }
 
-    synchronized public void notify(NotifyMessage msg) {
-        ArrayList<NotifyListener> listeners = notifyListeners.get(msg.getMessageId());
+    private <T extends NotifyMessage> ArrayList<NotifyListener<T>>
+    getListeners(Class<T> msgClass) {
+        return (ArrayList<NotifyListener<T>>) notifyListeners.get(msgClass);
+    }
+
+    synchronized public <T extends NotifyMessage> void notify(T msg) {
+        ArrayList<? extends NotifyListener> listeners = notifyListeners.get(msg.getClass());
         if(listeners == null)
             return;
 
-        for(NotifyListener listener: listeners)
+        for(NotifyListener<T> listener: listeners)
             listener.notify(msg);
     }
 
-    synchronized public void register(int msgId, NotifyListener listener) {
-        if(notifyListeners.get(msgId) == null) {
-            notifyListeners.put(msgId, new ArrayList<>());
+    synchronized public <T extends NotifyMessage> void
+    register(Class<T> msgClass, NotifyListener<T> listener) {
+        if(notifyListeners.get(msgClass) == null) {
+            notifyListeners.put(msgClass, new ArrayList<>());
         }
 
-        ArrayList<NotifyListener> listeners = notifyListeners.get(msgId);
+        ArrayList<NotifyListener<T>> listeners = getListeners(msgClass);
         listeners.add(listener);
     }
 }

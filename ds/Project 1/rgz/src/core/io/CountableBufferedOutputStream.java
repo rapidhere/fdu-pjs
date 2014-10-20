@@ -31,12 +31,12 @@ public class CountableBufferedOutputStream extends BufferedOutputStream {
     }
 
     @Override
-    public void write(byte[] b) throws IOException {
+    public void write(@SuppressWarnings("NullableProblems") byte[] b) throws IOException {
         super.write(b);
     }
 
     @Override
-    public void write(byte[] b, int offset, int length) throws IOException {
+    public void write(@SuppressWarnings("NullableProblems") byte[] b, int offset, int length) throws IOException {
         wroteBytes += length;
         super.write(b, offset, length);
     }

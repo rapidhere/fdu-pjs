@@ -3,50 +3,10 @@ package core.dc;
 import excs.DCException;
 import javafx.util.Pair;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 
-/**
- * Copyright : all rights reserved,rapidhere@gmail.com
- * Mail: rapidhere@gmail.com
- * Class :
- * Version :
- * Usage :
- */
-class FixedBytesToken extends Token{
-    private byte byteLength;
-    public FixedBytesToken(byte byteLength) {
-        this.byteLength = byteLength;
-    }
-
-    @Override
-    public int hashCode() {
-        byte[] b = (byte[])getToken();
-        long ret = 0;
-        for (byte aB : b) {
-            ret *= 10007;
-            ret += aB;
-            ret %= 1000000000 + 7;
-        }
-
-        return (int)ret;
-    }
-
-    @Override
-    public int compareTo(Object o) {
-        byte[] b1 = (byte[])getToken(),
-            b2 = (byte[])getToken();
-
-        assert b1.length == b2.length;
-        assert b1.length == byteLength;
-
-        for(int i = 0;i < byteLength;i ++) {
-            if(b1[i] < b2[i])
-                return -1;
-            if(b1[i] > b2[i])
-                return 1;
-        }
-        return 0;
-    }
-}
 
 public class CatchFixedBytesAlgorithm implements CatchAlgorithm <FixedBytesToken> {
     public CatchFixedBytesAlgorithm() {}
@@ -64,7 +24,7 @@ public class CatchFixedBytesAlgorithm implements CatchAlgorithm <FixedBytesToken
     }
 
     @Override
-    public byte[] dump(Token[] tokens) throws DCException {
+    public byte[] dump(FixedBytesToken[] tokens) throws DCException {
         byte[] bytes = new byte[tokens.length * byteLength + 4];
         // write length
         int tokenLength = tokens.length;
@@ -122,7 +82,7 @@ public class CatchFixedBytesAlgorithm implements CatchAlgorithm <FixedBytesToken
     }
 
     @Override
-    public byte[] merge(Token[] tokens) throws DCException {
+    public byte[] merge(FixedBytesToken[] tokens) throws DCException {
         byte[] bytes = new byte[tokens.length * byteLength];
 
         for(int i = 0;i < tokens.length;i ++) {
@@ -130,5 +90,28 @@ public class CatchFixedBytesAlgorithm implements CatchAlgorithm <FixedBytesToken
         }
 
         return bytes;
+    }
+
+    @Override
+    public void dumpHeader(OutputStream out)
+    throws DCException {
+        try {
+            out.write(getByteLength());
+        } catch (IOException e) {
+            throw new DCException("dump header failed: " + e.getMessage());
+        }
+    }
+
+    @Override
+    public void loadHeader(InputStream in)
+    throws DCException {
+        try {
+            int b = in.read();
+            if(b == -1)
+                throw new DCException("Wrong file syntax: cannot load dc ca info!");
+            setByteLength((byte) b);
+        } catch (IOException e) {
+            throw new DCException("load header failed: " + e.getMessage());
+        }
     }
 }

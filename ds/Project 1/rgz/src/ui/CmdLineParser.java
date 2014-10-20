@@ -325,7 +325,7 @@ public class CmdLineParser {
                 try {
                     NumberFormat format = NumberFormat.getNumberInstance(locale);
                     Number num = (Number)format.parse(arg);
-                    return new Double(num.doubleValue());
+                    return num.doubleValue();
                 } catch (ParseException e) {
                     throw new IllegalOptionValueException(this, arg);
                 }
@@ -478,7 +478,7 @@ public class CmdLineParser {
      * the given Option, or an empty Collection if the option was not set.
      */
     public final <T> Collection<T> getOptionValues(Option<T> option) {
-        Collection<T> result = new ArrayList<T>();
+        Collection<T> result = new ArrayList<>();
 
         while (true) {
             T o = getOptionValue(option, null);
@@ -516,9 +516,9 @@ public class CmdLineParser {
     public final void parse( String[] argv, Locale locale )
         throws OptionException {
 
-        ArrayList<Object> otherArgs = new ArrayList<Object>();
+        ArrayList<Object> otherArgs = new ArrayList<>();
         int position = 0;
-        this.values = new HashMap<String, List<?>>(10);
+        this.values = new HashMap<>(10);
         while ( position < argv.length ) {
             String curArg = argv[position];
             if ( curArg.startsWith("-") ) {
@@ -595,7 +595,7 @@ public class CmdLineParser {
         List<T> v = (List<T>) values.get(lf);
 
         if (v == null) {
-            v = new ArrayList<T>();
+            v = new ArrayList<>();
             values.put(lf, v);
         }
 
@@ -604,6 +604,6 @@ public class CmdLineParser {
 
 
     private String[] remainingArgs = null;
-    private Map<String, Option<?>> options = new HashMap<String, Option<?>>(10);
-    private Map<String, List<?>> values = new HashMap<String, List<?>>(10);
+    private Map<String, Option<?>> options = new HashMap<>(10);
+    private Map<String, List<?>> values = new HashMap<>(10);
 }

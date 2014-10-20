@@ -4,52 +4,9 @@ import excs.BitArrayException;
 import excs.DCException;
 import javafx.util.Pair;
 
-/**
- * Copyright : all rights reserved,rapidhere@gmail.com
- * Mail: rapidhere@gmail.com
- * Class :
- * Version :
- * Usage :
- */
-
-class FixedBitsToken extends Token{
-    private final int bitLength;
-
-    public FixedBitsToken(int bitLength) {
-        this.bitLength = bitLength;
-    }
-
-    @Override
-    public int hashCode() {
-        int ret = 0;
-        BitArray b = (BitArray)getToken();
-        for(int i = 0;i < b.size();i ++) {
-            ret <<= 1;
-            ret |= b.get(i);
-        }
-
-        return ret;
-    }
-
-    @Override
-    public int compareTo(Object o) {
-        BitArray b1 = (BitArray)getToken(),
-            b2 = (BitArray)((Token)o).getToken();
-        assert b1.size() == b2.size();
-        assert b2.size() == bitLength;
-
-        for(int i = 0;i < b1.size();i ++) {
-            int cb1 = b1.get(i),
-                cb2 = b2.get(i);
-            if(cb1 < cb2)
-                return -1;
-            if(cb1 > cb2)
-                return 1;
-        }
-
-        return 0;
-    }
-}
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 public class CatchFixedBitsAlgorithm implements CatchAlgorithm <FixedBitsToken> {
     public CatchFixedBitsAlgorithm() {}
@@ -68,7 +25,7 @@ public class CatchFixedBitsAlgorithm implements CatchAlgorithm <FixedBitsToken> 
     }
 
     @Override
-    public byte[] dump(Token[] tokens)
+    public byte[] dump(FixedBitsToken[] tokens)
     throws DCException {
         BitArray ret = new BitArray();
 
@@ -161,7 +118,7 @@ public class CatchFixedBitsAlgorithm implements CatchAlgorithm <FixedBitsToken> 
     }
 
     @Override
-    public byte[] merge(Token[] tokens) throws DCException {
+    public byte[] merge(FixedBitsToken[] tokens) throws DCException {
         BitArray ba = new BitArray();
         for(Token t: tokens) {
             BitArray newBa = new BitArray(),
@@ -177,5 +134,28 @@ public class CatchFixedBitsAlgorithm implements CatchAlgorithm <FixedBitsToken> 
         byte[] ret = new byte[ba.size() / 8];
         System.arraycopy(ba.dump(), 4, ret, 0, ret.length);
         return ret;
+    }
+
+    @Override
+    public void dumpHeader(OutputStream out)
+    throws DCException {
+        try {
+            out.write(getBitLength());
+        } catch (IOException e) {
+            throw new DCException("dump header failed: " + e.getMessage());
+        }
+    }
+
+    @Override
+    public void loadHeader(InputStream in)
+        throws DCException {
+        try {
+            int b = in.read();
+            if(b == -1)
+                throw new DCException("Wrong file syntax: cannot load dc ca info!");
+            setBitLength((byte) b);
+        } catch (IOException e) {
+            throw new DCException("load header failed: " + e.getMessage());
+        }
     }
 }

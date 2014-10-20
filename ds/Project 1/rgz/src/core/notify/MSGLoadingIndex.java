@@ -9,6 +9,5 @@ package core.notify;
  */
 public class MSGLoadingIndex extends NotifyMessage{
     public MSGLoadingIndex() {
-        super(NotifyMessage.NMSG_TAR_LOADING_INDEX);
     }
 }

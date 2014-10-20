@@ -26,7 +26,7 @@ import java.util.Map;
  * Usage :
  */
 public class Root extends Menu {
-    Map<RegularFile, String> regularFilePathsMap = new HashMap<RegularFile, String>();
+    Map<RegularFile, String> regularFilePathsMap = new HashMap<>();
 
     public Root() {
         setName("");
@@ -198,9 +198,7 @@ public class Root extends Menu {
         // dump dcm info
         try {
             out.write(Config.getDCMId(dcm));
-        } catch (UnknownDCM e) {
-            throw new TarException("compress failed: " + e.getMessage());
-        } catch (IOException e) {
+        } catch (UnknownDCM | IOException e) {
             throw new TarException("compress failed: " + e.getMessage());
         }
 
@@ -220,7 +218,7 @@ public class Root extends Menu {
                 cFileSize = fin.available();
             } catch (FileNotFoundException e) {
                 // never reach here
-                assert(false);
+                e.printStackTrace();
             } catch (IOException e) {
                 throw new TarException("compress failed: " + e.getMessage());
             }
@@ -254,9 +252,7 @@ public class Root extends Menu {
                throw new TarException("decompress failed: cannot read out dcm id");
 
             dcm = Config.getDCMbyId(dcmId);
-        } catch (IOException e) {
-            throw new TarException("decompress failed: " + e.getMessage());
-        } catch (UnknownDCMId e) {
+        } catch (IOException | UnknownDCMId e) {
             throw new TarException("decompress failed: " + e.getMessage());
         }
 

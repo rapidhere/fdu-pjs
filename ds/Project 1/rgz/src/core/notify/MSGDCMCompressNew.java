@@ -12,7 +12,6 @@ public class MSGDCMCompressNew extends NotifyMessage {
     private int nFile, totFile;
 
     public MSGDCMCompressNew(String path, int nFile, int totFile) {
-        super(NotifyMessage.NMSG_DCM_COMPRESS_NEW);
         this.nFile = nFile;
         this.totFile = totFile;
         this.path = path;

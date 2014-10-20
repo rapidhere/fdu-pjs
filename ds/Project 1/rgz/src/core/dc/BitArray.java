@@ -13,7 +13,7 @@ import java.util.Vector;
  * Usage :
  */
 public class BitArray {
-    private Vector<Byte> bytes = new Vector<Byte>();
+    private Vector<Byte> bytes = new Vector<>();
     private byte currentByte;
     private byte currentByteLength;
     private BitArray nextBitArray;
@@ -66,7 +66,7 @@ public class BitArray {
      */
     public byte[] dump() {
         int totSize = size();
-        ArrayList<Byte> ret = new ArrayList<Byte>();
+        ArrayList<Byte> ret = new ArrayList<>();
 
         // write length
         for(int i = 0;i < 4;i ++) {

@@ -31,7 +31,7 @@ public class RFrame extends JFrame {
     private RMenuTreeViewer treeViewer;
     private RInfoViewer infoViewer;
     private DCAlgorithm dc = new DCHuffmanAlgorithm();
-    private CatchAlgorithm ca = new CatchASCIIAlgorithm();
+    private CatchAlgorithm<? extends Token> ca = new CatchASCIIAlgorithm();
     private DCM dcm = new BlockDCM(dc, ca, 64 * 1024);
 
     public static RFrame getFrame() {
@@ -46,7 +46,7 @@ public class RFrame extends JFrame {
         super("RapiD's GZ Demo " + Config.version);
 
         // quit auto
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         // set Size
         setSize(600, 450);
@@ -126,10 +126,9 @@ public class RFrame extends JFrame {
     }
 
     void setCurrentFileNode(FileNode fn) {
-        FileNode currentFn = fn;
         if(! (fn instanceof  Root))
             putNormalInfo("Selected file/menu: " + fn.getPath());
-        tableViewer.refreshWithFileNode(currentFn);
+        tableViewer.refreshWithFileNode(fn);
     }
 
     void openNewFile() {
@@ -219,10 +218,7 @@ public class RFrame extends JFrame {
                 dcm.setCA(ca);
                 dcm.setDC(dc);
                 root.compress(f.getAbsolutePath(), dcm);
-            } catch (TarException e) {
-                putErrorInfo(e.getMessage());
-                return;
-            } catch (DCException e) {
+            } catch (TarException | DCException e) {
                 putErrorInfo(e.getMessage());
                 return;
             }
@@ -264,10 +260,7 @@ public class RFrame extends JFrame {
 
             try {
                 root.decompress(outputDir.getAbsolutePath(), fns, srcFile.getPath());
-            } catch (TarException e) {
-                putErrorInfo(e.getMessage());
-                root = null;
-            } catch (DCException e) {
+            } catch (TarException | DCException e) {
                 putErrorInfo(e.getMessage());
                 root = null;
             }
@@ -283,7 +276,7 @@ public class RFrame extends JFrame {
         this.dc = dc;
     }
 
-    void setCa(CatchAlgorithm ca) {
+    void setCa(CatchAlgorithm<? extends Token> ca) {
         this.ca = ca;
     }
 

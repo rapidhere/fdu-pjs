@@ -9,14 +9,19 @@ import excs.DCException;
  * Version :
  * Usage :
  */
-public class DCRaw implements DCAlgorithm{
+public class DCRaw <T extends Token> implements DCAlgorithm<T>{
     @Override
-    public byte[] compress(Token[] tokens, CatchAlgorithm ca) throws DCException {
+    public byte[] compress(T[] tokens, CatchAlgorithm<T> ca) throws DCException {
         return ca.dump(tokens);
     }
 
     @Override
-    public Token[] decompress(byte[] bytes, int offset, int length, CatchAlgorithm<Token> ca) throws DCException {
+    public T[] decompress(byte[] bytes, int offset, int length, CatchAlgorithm<T> ca) throws DCException {
         return ca.load(bytes, offset, length).getKey();
+    }
+
+    @Override
+    public byte getDCId() {
+        return 1;
     }
 }
