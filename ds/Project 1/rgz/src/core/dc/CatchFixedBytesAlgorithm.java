@@ -6,13 +6,10 @@ import javafx.util.Pair;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-
+import java.util.ArrayList;
 
 public class CatchFixedBytesAlgorithm implements CatchAlgorithm <FixedBytesToken> {
     public CatchFixedBytesAlgorithm() {}
-    public CatchFixedBytesAlgorithm(byte byteLength) {
-        setByteLength(byteLength);
-    }
 
     private byte byteLength;
     public void setByteLength(byte byteLength) {
@@ -24,26 +21,26 @@ public class CatchFixedBytesAlgorithm implements CatchAlgorithm <FixedBytesToken
     }
 
     @Override
-    public byte[] dump(FixedBytesToken[] tokens) throws DCException {
-        byte[] bytes = new byte[tokens.length * byteLength + 4];
+    public byte[] dump(ArrayList<FixedBytesToken> tokens) throws DCException {
+        byte[] bytes = new byte[tokens.size() * byteLength + 4];
         // write length
-        int tokenLength = tokens.length;
+        int tokenLength = tokens.size();
         for(int i = 0;i < 4; ++ i) {
             bytes[i] = (byte)(tokenLength & 0xff);
             tokenLength >>= 8;
         }
 
         // write tokens
-        for(int i = 0;i < tokens.length;i ++) {
-            System.arraycopy(tokens[i].getToken(), 0, bytes, 4 + i * byteLength, byteLength);
+        for(int i = 0;i < tokens.size();i ++) {
+            System.arraycopy(tokens.get(i).getToken(), 0, bytes, 4 + i * byteLength, byteLength);
         }
 
         return bytes;
     }
 
     @Override
-    public Pair<FixedBytesToken[], Integer> load(byte[] bytes, int offset, int length)
-    throws DCException {
+    public Pair<ArrayList<FixedBytesToken>, Integer> load(byte[] bytes, int offset, int length)
+        throws DCException {
         if(length < 4)
             throw new DCException("load failed: cannot load size info");
         // load length
@@ -55,38 +52,38 @@ public class CatchFixedBytesAlgorithm implements CatchAlgorithm <FixedBytesToken
             throw new DCException("load failed: wrong length info");
 
         // load token
-        FixedBytesToken[] tokens = new FixedBytesToken[tokenLength];
-        for(int i = 0;i < tokens.length;i ++) {
+        ArrayList<FixedBytesToken> tokens = new ArrayList<>();
+        for(int i = 0;i < tokenLength;i ++) {
             byte[] cb = new byte[byteLength];
             System.arraycopy(bytes, offset + 4 + i * byteLength, cb, 0, byteLength);
-            tokens[i] = new FixedBytesToken(byteLength);
-            tokens[i].setToken(cb);
+            tokens.add(new FixedBytesToken(byteLength));
+            tokens.get(i).setToken(cb);
         }
 
-        return new Pair<>(tokens, offset + 4 + tokens.length * byteLength);
+        return new Pair<>(tokens, offset + 4 + tokens.size() * byteLength);
     }
 
     @Override
-    public Pair<FixedBytesToken[], Integer> parse(byte[] bytes, int offset, int length)
-    throws DCException {
+    public Pair<ArrayList<FixedBytesToken>, Integer> parse(byte[] bytes, int offset, int length)
+        throws DCException {
         int tokenLength = length / byteLength;
-        FixedBytesToken[] tokens = new FixedBytesToken[tokenLength];
+        ArrayList<FixedBytesToken> tokens = new ArrayList<>();
         for(int i = 0;i < tokenLength;i ++) {
             byte[] cb = new byte[byteLength];
             System.arraycopy(bytes, offset + i * byteLength, cb, 0, byteLength);
-            tokens[i] = new FixedBytesToken(byteLength);
-            tokens[i].setToken(cb);
+            tokens.add(new FixedBytesToken(byteLength));
+            tokens.get(i).setToken(cb);
         }
 
         return new Pair<>(tokens, offset + tokenLength * byteLength);
     }
 
     @Override
-    public byte[] merge(FixedBytesToken[] tokens) throws DCException {
-        byte[] bytes = new byte[tokens.length * byteLength];
+    public byte[] merge(ArrayList<FixedBytesToken> tokens) throws DCException {
+        byte[] bytes = new byte[tokens.size() * byteLength];
 
-        for(int i = 0;i < tokens.length;i ++) {
-            System.arraycopy(tokens[i].getToken(), 0, bytes, i * byteLength, byteLength);
+        for(int i = 0;i < tokens.size();i ++) {
+            System.arraycopy(tokens.get(i).getToken(), 0, bytes, i * byteLength, byteLength);
         }
 
         return bytes;
@@ -94,7 +91,7 @@ public class CatchFixedBytesAlgorithm implements CatchAlgorithm <FixedBytesToken
 
     @Override
     public void dumpHeader(OutputStream out)
-    throws DCException {
+        throws DCException {
         try {
             out.write(getByteLength());
         } catch (IOException e) {
@@ -104,7 +101,7 @@ public class CatchFixedBytesAlgorithm implements CatchAlgorithm <FixedBytesToken
 
     @Override
     public void loadHeader(InputStream in)
-    throws DCException {
+        throws DCException {
         try {
             int b = in.read();
             if(b == -1)

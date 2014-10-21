@@ -8,6 +8,7 @@ import javafx.util.Pair;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
 
 /**
  * Copyright : all rights reserved,rapidhere@gmail.com
@@ -16,28 +17,19 @@ import java.io.OutputStream;
  * Version :
  * Usage :
  */
-public class BlockDCM extends DCM {
+public class BlockDCM <T extends Token> extends DCM<T> {
+    public BlockDCM() {}
+
     public void setBlockSize(int blockSize) {
         this.blockSize = blockSize;
     }
 
     private int blockSize;
 
-    public BlockDCM(Class<? extends Token> tokenClass, DCAlgorithm dc, int blockSize) {
-        super(tokenClass, dc);
-        setBlockSize(blockSize);
-    }
-
-    public BlockDCM() {
-        super(null, null);
-    }
-
     @Override
     public void compress(InputStream in, OutputStream out)
     throws DCException {
         try {
-            dumpDCCA(out);
-
             int bufferLength = 0;
             byte[] buffer = new byte[blockSize];
 
@@ -68,8 +60,8 @@ public class BlockDCM extends DCM {
                 bufferLength += readLength;
 
                 // use catch algorithm to generate token sequence
-                Pair<Token[], Integer> p = catchAlg.parse(buffer, 0, bufferLength);
-                Token[] tokens = p.getKey();
+                Pair<ArrayList<T>, Integer> p = catchAlg.parse(buffer, 0, bufferLength);
+                ArrayList<T> tokens = p.getKey();
                 int remainOffset = p.getValue();
 
                 // compress
@@ -98,9 +90,6 @@ public class BlockDCM extends DCM {
     public void decompress(InputStream in, OutputStream out)
     throws DCException {
         try {
-            // load dc ca info
-            loadDCCA(in);
-
             while(true) {
                 // read in buffer length
                 int bufferLength = 0;
@@ -132,7 +121,7 @@ public class BlockDCM extends DCM {
                     throw new DCException("Wrong file syntax: buffer length illegal");
 
                 // decompress
-                Token[] tokens = dcAlg.decompress(buffer, 0, bufferLength, catchAlg);
+                ArrayList<T> tokens = dcAlg.decompress(buffer, 0, bufferLength, catchAlg);
 
                 // format tokens into bytes
                 out.write(catchAlg.merge(tokens));

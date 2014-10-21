@@ -7,7 +7,38 @@ package core.dc;
  * Version :
  * Usage :
  */
-public class FixedBytesToken extends Token<byte[]>{
+
+public class DCFixedBytesFactory extends DCFactory<FixedBytesToken> {
+    DCHuffmanAlgorithm<FixedBytesToken> dcHuffman = new DCHuffmanAlgorithm<>();
+    DCRaw<FixedBytesToken> dcRaw = new DCRaw<>();
+    BlockDCM<FixedBytesToken> blockDCM = new BlockDCM<>();
+    CatchFixedBytesAlgorithm ca = new CatchFixedBytesAlgorithm();
+
+    public DCFixedBytesFactory() {
+    }
+
+    @Override
+    public DCHuffmanAlgorithm<FixedBytesToken> getHuffmanDC() {
+        return dcHuffman;
+    }
+
+    @Override
+    public DCRaw<FixedBytesToken> getRawDC() {
+        return dcRaw;
+    }
+
+    @Override
+    public CatchFixedBytesAlgorithm getCA() {
+        return ca;
+    }
+
+    @Override
+    public BlockDCM<FixedBytesToken> getBlockDCM() {
+        return blockDCM;
+    }
+}
+
+class FixedBytesToken extends Token<byte[]>{
     private byte byteLength;
     public FixedBytesToken(byte byteLength) {
         this.byteLength = byteLength;
@@ -43,3 +74,4 @@ public class FixedBytesToken extends Token<byte[]>{
         return 0;
     }
 }
+

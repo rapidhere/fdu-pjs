@@ -27,10 +27,11 @@ public class DCHuffmanAlgorithm<T extends Token> implements DCAlgorithm<T> {
      * @param tm how to merge two token pair
      * @return new huffman tree
      */
-    static <T extends Token> HuffmanTreeNode<T> buildHuffmanTree(Pair<Integer, T>[] tokens, TokenArgMerger tm) {
+    static <T extends Token> HuffmanTreeNode<T>
+    buildHuffmanTree(ArrayList<Pair<Integer, T>> tokens, TokenArgMerger tm) {
         // debug error: we assume that there always should be more than one token
-        if(tokens.length == 1) {
-            return new HuffmanTreeNode<>(new HuffmanTreeLeaf<>(tokens[0].getValue()), null);
+        if(tokens.size() == 1) {
+            return new HuffmanTreeNode<>(new HuffmanTreeLeaf<>(tokens.get(0).getValue()), null);
         }
 
         // create heap
@@ -68,12 +69,13 @@ public class DCHuffmanAlgorithm<T extends Token> implements DCAlgorithm<T> {
      * @param tokens token array
      * @return new huffman tree
      */
-    static <T extends Token> HuffmanTreeNode<T> buildHuffmanTreeWithFrequency(int []frequency, T[] tokens) {
-        assert frequency.length == tokens.length;
+    static <T extends Token> HuffmanTreeNode<T>
+    buildHuffmanTreeWithFrequency(int []frequency, ArrayList<T> tokens) {
+        assert frequency.length == tokens.size();
 
-        Pair<Integer, T>[] t = new Pair[frequency.length];
+        ArrayList<Pair<Integer, T>> t = new ArrayList<>();
         for(int i = 0;i < frequency.length;i ++) {
-            t[i] = new Pair<>(frequency[i], tokens[i]);
+            t.add(new Pair<>(frequency[i], tokens.get(i)));
         }
 
         return buildHuffmanTree(t, (key1, key2) -> key1 + key2);
@@ -85,13 +87,13 @@ public class DCHuffmanAlgorithm<T extends Token> implements DCAlgorithm<T> {
      * @param tokens tokens array
      * @return new huffman tree
      */
-    static <T extends Token> HuffmanTreeNode<T> buildHuffmanTreeWithDepth(int []depth, T[] tokens) {
-        assert depth.length == tokens.length;
+    static <T extends Token> HuffmanTreeNode<T> buildHuffmanTreeWithDepth(int []depth, ArrayList<T> tokens) {
+        assert depth.length == tokens.size();
 
-        Pair<Integer, T>[] t = new Pair[depth.length];
+        ArrayList<Pair<Integer, T>> t = new ArrayList<>();
 
         for(int i = 0;i < depth.length;i ++) {
-            t[i] = new Pair<>(-depth[i], tokens[i]);
+            t.add(new Pair<>(-depth[i], tokens.get(i)));
         }
 
         return buildHuffmanTree(t, (key1, key2) -> {
@@ -130,7 +132,7 @@ public class DCHuffmanAlgorithm<T extends Token> implements DCAlgorithm<T> {
     }
 
     @Override
-    public byte[] compress(T[] tokenSequence, CatchAlgorithm<T> ca)
+    public byte[] compress(ArrayList<T> tokenSequence, CatchAlgorithm<T> ca)
     throws DCException {
         Map<T, Integer> tokenMap = new HashMap<>();
 
@@ -145,12 +147,13 @@ public class DCHuffmanAlgorithm<T extends Token> implements DCAlgorithm<T> {
         }
 
         // build frequency array and tokens array
-        T[] tokens = (T[])tokenMap.keySet().toArray();
+        ArrayList<T> tokens = new ArrayList<>();
+        tokens.addAll(tokenMap.keySet());
 
         // get freq
-        int freq[] = new int[tokens.length];
-        for(int i = 0;i < tokens.length;i ++)
-            freq[i] = tokenMap.get(tokens[i]);
+        int freq[] = new int[tokens.size()];
+        for(int i = 0;i < tokens.size();i ++)
+            freq[i] = tokenMap.get(tokens.get(i));
 
         // build tree
         HuffmanTreeNode<T> root = buildHuffmanTreeWithFrequency(freq, tokens);
@@ -176,9 +179,9 @@ public class DCHuffmanAlgorithm<T extends Token> implements DCAlgorithm<T> {
             }
         }
 
-        int[] depth = new int[tokens.length];
-        for(int i = 0;i < tokens.length;i ++)
-            depth[i] = tokenMap.get(tokens[i]);
+        int[] depth = new int[tokens.size()];
+        for(int i = 0;i < tokens.size();i ++)
+            depth[i] = tokenMap.get(tokens.get(i));
 
         // rebuild huffman tree
         root = buildHuffmanTreeWithDepth(depth, tokens);
@@ -205,8 +208,8 @@ public class DCHuffmanAlgorithm<T extends Token> implements DCAlgorithm<T> {
         byte[] huffmanTreeBytes = ca.dump(tokens);
 
         // dump huffman tree depth, < 2 ^ 16
-        byte[] huffmanTreeDepthBytes = new byte[tokens.length * 2];
-        for(int i = 0;i < tokens.length;i ++) {
+        byte[] huffmanTreeDepthBytes = new byte[tokens.size() * 2];
+        for(int i = 0;i < tokens.size();i ++) {
             assert depth[i] < (1 << 16) && depth[i] >= 0;
             huffmanTreeDepthBytes[i * 2] = (byte)(depth[i] & 0xff);
             huffmanTreeDepthBytes[i * 2 + 1] = (byte)((depth[i] >> 8) & 0xff);
@@ -229,19 +232,19 @@ public class DCHuffmanAlgorithm<T extends Token> implements DCAlgorithm<T> {
     }
 
     @Override
-    public T[] decompress(byte[] bytes, int startOffset, int length, CatchAlgorithm<T> ca)
+    public ArrayList<T> decompress(byte[] bytes, int startOffset, int length, CatchAlgorithm<T> ca)
     throws DCException {
         // load tokens
-        T[] tokens;
+        ArrayList<T> tokens;
         int offset;
 
-        Pair<T[], Integer> p = ca.load(bytes, startOffset, length);
+        Pair<ArrayList<T>, Integer> p = ca.load(bytes, startOffset, length);
         tokens = p.getKey();
         offset = p.getValue();
 
         // load depth info
-        int[] depth = new int[tokens.length];
-        for(int i = 0;i < tokens.length;i ++) {
+        int[] depth = new int[tokens.size()];
+        for(int i = 0;i < tokens.size();i ++) {
             depth[i] = (bytes[offset] & 0xff) | (((bytes[offset + 1] & 0xff)<< 8));
             offset += 2;
         }
@@ -280,12 +283,7 @@ public class DCHuffmanAlgorithm<T extends Token> implements DCAlgorithm<T> {
 
         assert cur == root;
 
-        return (T[])ret.toArray();
-    }
-
-    @Override
-    public byte getDCId() {
-        return 0;
+        return ret;
     }
 }
 

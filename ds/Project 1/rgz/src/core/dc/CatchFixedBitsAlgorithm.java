@@ -7,12 +7,10 @@ import javafx.util.Pair;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
 
 public class CatchFixedBitsAlgorithm implements CatchAlgorithm <FixedBitsToken> {
     public CatchFixedBitsAlgorithm() {}
-    public CatchFixedBitsAlgorithm(byte bitLength) {
-        setBitLength(bitLength);
-    }
 
     private byte bitLength;
 
@@ -25,8 +23,8 @@ public class CatchFixedBitsAlgorithm implements CatchAlgorithm <FixedBitsToken> 
     }
 
     @Override
-    public byte[] dump(FixedBitsToken[] tokens)
-    throws DCException {
+    public byte[] dump(ArrayList<FixedBitsToken> tokens)
+        throws DCException {
         BitArray ret = new BitArray();
 
         for (Token token : tokens)
@@ -36,8 +34,8 @@ public class CatchFixedBitsAlgorithm implements CatchAlgorithm <FixedBitsToken> 
     }
 
     @Override
-    public Pair<FixedBitsToken[], Integer> load(byte[] bytes, int offset, int length)
-    throws DCException {
+    public Pair<ArrayList<FixedBitsToken>, Integer> load(byte[] bytes, int offset, int length)
+        throws DCException {
         try {
             BitArray ba = new BitArray();
             int remainOffset = ba.load(bytes, offset, length);
@@ -46,15 +44,15 @@ public class CatchFixedBitsAlgorithm implements CatchAlgorithm <FixedBitsToken> 
                 throw new DCException("load failed: Wrong bit size!");
             }
 
-            FixedBitsToken[] tokens = new FixedBitsToken[ba.size() / bitLength];
-            for(int i = 0;i < tokens.length;i ++) {
+            ArrayList<FixedBitsToken> tokens = new ArrayList<>();
+            for(int i = 0;i < ba.size() / bitLength;i ++) {
                 BitArray cba = new BitArray();
                 for(int j = 0;j < bitLength;j ++) {
                     cba.addBit(ba.get(i * bitLength + j));
                 }
 
-                tokens[i] = new FixedBitsToken(bitLength);
-                tokens[i].setToken(cba);
+                tokens.add(new FixedBitsToken(bitLength));
+                tokens.get(i).setToken(cba);
             }
 
             return new Pair<>(tokens, remainOffset);
@@ -77,16 +75,16 @@ public class CatchFixedBitsAlgorithm implements CatchAlgorithm <FixedBitsToken> 
     }
 
     @Override
-    public Pair<FixedBitsToken[], Integer> parse(byte[] bytes, int offset, int length)
-    throws DCException {
+    public Pair<ArrayList<FixedBitsToken>, Integer> parse(byte[] bytes, int offset, int length)
+        throws DCException {
         int blkSize = bitLength * 8 / gcd(bitLength, 8);
         int tokenSize = length * 8 / blkSize * (blkSize / bitLength);
-        FixedBitsToken[] tokens = new FixedBitsToken[tokenSize];
+        ArrayList<FixedBitsToken> tokens = new ArrayList<>();
         int maxOffset = offset + length;
 
         byte remainBit = 0, remainLength = 0;
-        for(int i = 0; i < tokens.length;i ++) {
-            tokens[i] = new FixedBitsToken(bitLength);
+        for(int i = 0; i < tokenSize;i ++) {
+            tokens.add(new FixedBitsToken(bitLength));
             BitArray ba = new BitArray();
 
             int j = 0;
@@ -98,7 +96,7 @@ public class CatchFixedBitsAlgorithm implements CatchAlgorithm <FixedBitsToken> 
 
             if(remainLength == 0) {
                 if(offset == maxOffset) {
-                    tokens[i].setToken(ba);
+                    tokens.get(i).setToken(ba);
                     break;
                 }
                 remainBit = bytes[offset ++];
@@ -110,7 +108,7 @@ public class CatchFixedBitsAlgorithm implements CatchAlgorithm <FixedBitsToken> 
                 remainBit >>= 1;
                 remainLength --;
             }
-            tokens[i].setToken(ba);
+            tokens.get(i).setToken(ba);
         }
 
         // trick: offset - 1
@@ -118,7 +116,7 @@ public class CatchFixedBitsAlgorithm implements CatchAlgorithm <FixedBitsToken> 
     }
 
     @Override
-    public byte[] merge(FixedBitsToken[] tokens) throws DCException {
+    public byte[] merge(ArrayList<FixedBitsToken> tokens) throws DCException {
         BitArray ba = new BitArray();
         for(Token t: tokens) {
             BitArray newBa = new BitArray(),
@@ -138,7 +136,7 @@ public class CatchFixedBitsAlgorithm implements CatchAlgorithm <FixedBitsToken> 
 
     @Override
     public void dumpHeader(OutputStream out)
-    throws DCException {
+        throws DCException {
         try {
             out.write(getBitLength());
         } catch (IOException e) {

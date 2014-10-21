@@ -158,8 +158,4 @@ public class Menu extends FileNode {
         for(FileNode ch: getChildren())
             ch.remarkSize();
     }
-
-    public void removeChild(FileNode fn) {
-        children.remove(fn.getName());
-    }
 }

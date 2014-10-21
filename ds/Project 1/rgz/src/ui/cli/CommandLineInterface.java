@@ -24,6 +24,7 @@ import java.util.Arrays;
  */
 public class CommandLineInterface {
     private final static String DC_HUFFMAN = "huffman";
+    private final static String DC_RAW = "raw";
 
     private final static String CA_ASCII = "ascii";
     private final static String CA_FIXED_BYTES_1 = "fixed-byte-1";
@@ -52,43 +53,65 @@ public class CommandLineInterface {
     private Option<Boolean> optionCompress;
     private Option<Boolean> optionDecompress;
     private Option<String>  optionDecompressRoot;
-    private Option<Integer> optionNumThreads;
+    //private Option<Integer> optionNumThreads;
     private Option<String>  optionDCAlgorithm;
     private Option<String>  optionCAAlgorithm;
     private Option<String>  optionDCM;
 
     private Option<Boolean> optionDebug;
 
-    public static DCM loadDCM(String dcmString, DCAlgorithm dc, CatchAlgorithm<? extends Token> ca) {
+    private Config conf = new Config();
+
+    public void loadDCM(String dcmString)
+        throws RGZException {
         switch (dcmString) {
             case DCM_BLOCK_64K:
-                return new BlockDCM(dc, ca, 64 * 1024);
+                conf.setDcmId(Config.DCM_BLOCK);
+                conf.getFactory().getBlockDCM().setBlockSize(64 * 1024);
+                break;
             case DCM_BLOCK_128K:
-                return new BlockDCM(dc, ca, 128 * 1024);
+                conf.setDcmId(Config.DCM_BLOCK);
+                conf.getFactory().getBlockDCM().setBlockSize(128 * 1024);
+                break;
             case DCM_BLOCK_256K:
-                return new BlockDCM(dc, ca, 256 * 1024);
+                conf.setDcmId(Config.DCM_BLOCK);
+                conf.getFactory().getBlockDCM().setBlockSize(256 * 1024);
+                break;
             case DCM_BLOCK_512K:
-                return new BlockDCM(dc, ca, 512 * 1024);
+                conf.setDcmId(Config.DCM_BLOCK);
+                conf.getFactory().getBlockDCM().setBlockSize(512 * 1024);
+                break;
             case DCM_BLOCK_1M:
-                return new BlockDCM(dc, ca, 1024 * 1024);
+                conf.setDcmId(Config.DCM_BLOCK);
+                conf.getFactory().getBlockDCM().setBlockSize(1024 * 1024);
+                break;
             case DCM_BLOCK_4M:
-                return new BlockDCM(dc, ca, 4 * 1024 * 1024);
+                conf.setDcmId(Config.DCM_BLOCK);
+                conf.getFactory().getBlockDCM().setBlockSize(4 * 1024 * 1024);
+                break;
             case DCM_BLOCK_16M:
-                return new BlockDCM(dc, ca, 16 * 1024 * 1024);
+                conf.setDcmId(Config.DCM_BLOCK);
+                conf.getFactory().getBlockDCM().setBlockSize(16 * 1024 * 1024);
+                break;
+            default:
+                throw new RGZException("unknown dcm " + dcmString);
         }
-
-        return null;
     }
 
-    public static DCAlgorithm loadDC(String dcString) {
-        if(dcString.equals(DC_HUFFMAN)) {
-            return new DCHuffmanAlgorithm();
+    public void loadDC(String dcString)
+        throws RGZException {
+        switch (dcString) {
+            case DC_HUFFMAN:
+                conf.setDcId(Config.DC_HUFFMAN);
+                break;
+            case DC_RAW:
+                conf.setDcId(Config.DC_RAW);
+            default:
+                throw new RGZException("unknown dc-algorithm " + dcString);
         }
-
-        return null;
     }
 
-    public static void loadNotifiers() {
+    public void loadNotifiers() {
         Notifier notifier = Notifier.getNotifier();
 
         notifier.register(MSGBlockDCMStartNew.class, msg -> System.out.println(
@@ -120,27 +143,52 @@ public class CommandLineInterface {
         notifier.register(MSGDCMDecompressNewFile.class, msg -> System.out.println("   +> " + msg.getPath()));
     }
 
-    public static CatchAlgorithm<? extends Token> loadCA(String caString) {
+    public void loadCA(String caString)
+        throws RGZException {
+        DCFixedBytesFactory byteFc;
+        DCFixedBitsFactory bitFc;
         switch (caString) {
             case CA_ASCII:
-                return new CatchASCIIAlgorithm();
+                conf.setFcId(Config.FACTORY_ASCII);
+                break;
             case CA_FIXED_BYTES_1:
-                return new CatchFixedBytesAlgorithm((byte) 1);
+                byteFc = new DCFixedBytesFactory();
+                byteFc.getCA().setByteLength((byte )1);
+                conf.setFactory(byteFc);
+                break;
             case CA_FIXED_BYTES_2:
-                return new CatchFixedBytesAlgorithm((byte) 2);
+                byteFc = new DCFixedBytesFactory();
+                byteFc.getCA().setByteLength((byte )2);
+                conf.setFactory(byteFc);
+                break;
             case CA_FIXED_BYTES_3:
-                return new CatchFixedBytesAlgorithm((byte) 3);
+                byteFc = new DCFixedBytesFactory();
+                byteFc.getCA().setByteLength((byte )3);
+                conf.setFactory(byteFc);
+                break;
             case CA_FIXED_BYTES_4:
-                return new CatchFixedBytesAlgorithm((byte) 4);
+                byteFc = new DCFixedBytesFactory();
+                byteFc.getCA().setByteLength((byte )4);
+                conf.setFactory(byteFc);
+                break;
             case CA_FIXED_BITS_1:
-                return new CatchFixedBitsAlgorithm((byte) 1);
+                bitFc = new DCFixedBitsFactory();
+                bitFc.getCA().setBitLength((byte) 1);
+                conf.setFactory(bitFc);
+                break;
             case CA_FIXED_BITS_2:
-                return new CatchFixedBitsAlgorithm((byte) 2);
+                bitFc = new DCFixedBitsFactory();
+                bitFc.getCA().setBitLength((byte )2);
+                conf.setFactory(bitFc);
+                break;
             case CA_FIXED_BITS_4:
-                return new CatchFixedBitsAlgorithm((byte) 4);
+                bitFc = new DCFixedBitsFactory();
+                bitFc.getCA().setBitLength((byte )4);
+                conf.setFactory(bitFc);
+                break;
+            default:
+                throw new RGZException("unknown ca-algorithm " + caString);
         }
-
-        return null;
     }
 
     public CommandLineInterface() {
@@ -152,7 +200,7 @@ public class CommandLineInterface {
         optionCompress          = parser.addBooleanOption('c', "compress");
         optionDecompress        = parser.addBooleanOption('d', "decompress");
         optionDecompressRoot    = parser.addStringOption('o', "output");
-        optionNumThreads        = parser.addIntegerOption('j', "threads");
+        //optionNumThreads        = parser.addIntegerOption('j', "threads");
         optionDCAlgorithm       = parser.addStringOption("dc-algorithm");
         optionCAAlgorithm       = parser.addStringOption("ca-algorithm");
         optionDCM               = parser.addStringOption("dcm");
@@ -268,29 +316,18 @@ public class CommandLineInterface {
                 for(String t: targetFiles)
                     root.addSource(t);
 
-                // load up dc ca dcm
-                DCM dcm;
-                DCAlgorithm dc;
-                CatchAlgorithm<? extends Token> ca;
-
                 // load strings
                 String dcString = parser.getOptionValue(optionDCAlgorithm, DC_HUFFMAN);
                 String caString = parser.getOptionValue(optionCAAlgorithm, CA_ASCII);
                 String dcmSting = parser.getOptionValue(optionDCM, DCM_BLOCK_256K);
 
                 // load dc
-                dc = loadDC(dcString);
-                if(dc == null)
-                    throw new RGZException("unknown dc-algorithm " + dcString);
-                ca = loadCA(caString);
-                if(ca == null)
-                    throw new RGZException("unknown ca-algorithm " + caString);
-                dcm = loadDCM(dcmSting, dc, ca);
-                if(dcm == null)
-                    throw new RGZException("unknown dcm-algorithm " + dcmSting);
+                loadCA(caString);
+                loadDC(dcString);
+                loadDCM(dcmSting);
 
                 // compress
-                root.compress(srcFile, dcm);
+                root.compress(srcFile, conf);
 
                 System.exit(0);
             } else if(parser.getOptionValue(optionDecompress, false)) {

@@ -3,6 +3,10 @@ package ui;
 import core.dc.*;
 import excs.*;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+
 
 /**
  * Copyright : all rights reserved,rapidhere@gmail.com
@@ -14,108 +18,118 @@ import excs.*;
 final public class Config {
     public static String version = "ver 0.1";
 
+    private DCFactory factory;
+    private byte dcmId;
+    private byte dcId;
+
+    public DCFactory getFactory() {
+        return factory;
+    }
+    public DCM getDCM() {
+        return getFactory().getDCM(dcmId, dcId);
+    }
+
+    public void setFactory(DCFactory factory) {
+        this.factory = factory;
+    }
+
+    public void setFcId(byte fcId) throws UnknownFactoryId {
+        try {
+            this.factory = getFactoryById(fcId).newInstance();
+        } catch (InstantiationException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void setDcId(byte dcId)
+    throws UnknownDCAlgorithmId {
+        switch (dcId) {
+            case DC_HUFFMAN: this.dcId = dcId; return;
+            case DC_RAW: this.dcId = dcId; return;
+        }
+        throw new UnknownDCAlgorithmId(dcId);
+    }
+
+    public void setDcmId(byte dcmId)
+    throws UnknownDCMId {
+        switch (dcmId) {
+            case DCM_BLOCK: this.dcmId = dcmId; return;
+        }
+
+        throw new UnknownDCMId(dcmId);
+    }
+
+    public void dumpMeta(OutputStream out)
+    throws DCException {
+        try {
+            out.write(getFactoryId(factory.getClass()));
+            out.write(dcmId);
+            out.write(dcId);
+            factory.getCA().dumpHeader(out);
+        } catch (IOException e) {
+            throw new DCException(e.getMessage());
+        } catch (UnknownFactory unknownFactory) {
+            // never reach here
+            unknownFactory.printStackTrace();
+        }
+    }
+
+    public void loadMeta(InputStream in)
+    throws DCException {
+        try {
+            setFcId((byte) in.read());
+            setDcmId((byte) in.read());
+            setDcId((byte) in.read());
+            factory.getCA().loadHeader(in);
+        } catch (IOException | UnknownFactoryId | UnknownDCMId | UnknownDCAlgorithmId e) {
+            throw new DCException(e.getMessage());
+        }
+    }
+
     // DCM Algorithm
     // Huffman tree algorithm
     public static final byte DC_HUFFMAN = 0;
+    public static final byte DC_RAW = 1;
 
-    /**
-     * get algorithm id of dc
-     * @param dc the dc algorithm
-     * @return the id of dc algorithm
-     * @throws UnknownDCAlgorithm
-     */
-    public static byte getDCAlgorithmId(DCAlgorithm dc)
-    throws UnknownDCAlgorithm {
-        if(dc instanceof DCHuffmanAlgorithm) {
-            return DC_HUFFMAN;
-        }
-
-        throw new UnknownDCAlgorithm(dc);
-    }
-
-    /**
-     * get the dc algorithm by algId
-     * @param algId the algorithm id
-     * @return new dc
-     * @throws UnknownDCAlgorithmId
-     */
-    public static Class<? extends DCAlgorithm> getDCAlgorithmById(byte algId)
-    throws UnknownDCAlgorithmId {
-        switch (algId) {
-            case DC_HUFFMAN: return DCHuffmanAlgorithm.class;
-            default: throw new UnknownDCAlgorithmId(algId);
-        }
-    }
-
-
-    // Token IDs
-    public static final byte TOKEN_ASCII = 0;
-    public static final byte TOKEN_FIXED_BIT = 1;
-    public static final byte TOKEN_FIXED_BYTE = 2;
+    // Factory IDs
+    public static final byte FACTORY_ASCII = 0;
+    public static final byte FACTORY_FIXED_BIT = 1;
+    public static final byte FACTORY_FIXED_BYTE = 2;
 
     /**
      * get ca id by ca
-     * @param tkClass the catch algorithm
+     * @param fcClass the catch algorithm
      * @return the id of the ca
-     * @throws excs.UnknownToken
+     * @throws excs.UnknownFactory
      */
-    public static byte getTokenId(Class<? extends Token> tkClass)
-    throws UnknownToken {
-        if(tkClass.equals(ASCIIToken.class)) {
-            return TOKEN_ASCII;
-        } else if(tkClass.equals(FixedBitsToken.class)) {
-            return TOKEN_FIXED_BIT;
-        } else if(tkClass.equals(FixedBytesToken.class)) {
-            return TOKEN_FIXED_BYTE;
+    public static byte getFactoryId(Class<? extends DCFactory> fcClass)
+    throws UnknownFactory {
+        if(fcClass.equals(DCASCIIFactory.class)) {
+            return FACTORY_ASCII;
+        } else if(fcClass.equals(DCFixedBitsFactory.class)) {
+            return FACTORY_FIXED_BIT;
+        } else if(fcClass.equals(DCFixedBytesFactory.class)) {
+            return FACTORY_FIXED_BYTE;
         }
-        throw new UnknownToken(tkClass);
+        throw new UnknownFactory(fcClass);
     }
 
     /**
      * get the catch algorithm by id
-     * @param tkId the catch algorithm
+     * @param fcId the catch algorithm
      * @return the catch algorithm
-     * @throws excs.UnknownTokenId
+     * @throws excs.UnknownFactoryId
      */
-    public static Class<? extends Token> getTokenById(byte tkId)
-    throws UnknownTokenId {
-        switch (tkId) {
-            case TOKEN_ASCII: return ASCIIToken.class;
-            case TOKEN_FIXED_BIT: return FixedBitsToken.class;
-            case TOKEN_FIXED_BYTE: return FixedBytesToken.class;
-            default: throw new UnknownTokenId(tkId);
+    public static Class<? extends DCFactory> getFactoryById(byte fcId)
+    throws UnknownFactoryId {
+        switch (fcId) {
+            case FACTORY_ASCII: return DCASCIIFactory.class;
+            case FACTORY_FIXED_BIT: return DCFixedBitsFactory.class;
+            case FACTORY_FIXED_BYTE: return DCFixedBitsFactory.class;
+            default: throw new UnknownFactoryId(fcId);
         }
     }
 
     // DC_MAN
     public static final byte DCM_BLOCK = 0;
-
-    /**
-     * get dcm id
-     * @param dcm the dcm
-     * @return dcm id
-     * @throws UnknownDCM
-     */
-    public static byte getDCMId(DCM dcm)
-    throws UnknownDCM {
-        if(dcm instanceof BlockDCM) {
-            return DCM_BLOCK;
-        }
-
-        throw new UnknownDCM(dcm);
-    }
-
-    /**
-     * get dcm by id
-     * @param dcmId dcm id
-     * @return new DCM
-     * @throws UnknownDCMId
-     */
-    public static DCM getDCMbyId(byte dcmId)
-    throws UnknownDCMId {
-        switch(dcmId) {
-            case DCM_BLOCK: return new BlockDCM();
-            default: throw new UnknownDCMId(dcmId);
-        }
-    }
 }

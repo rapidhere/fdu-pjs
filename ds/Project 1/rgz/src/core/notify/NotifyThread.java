@@ -23,6 +23,7 @@ public class NotifyThread extends Thread {
     public void run() {
         Notifier notifier = Notifier.getNotifier();
 
+        //noinspection InfiniteLoopStatement
         while(true) {
             try {
                 NotifyMessage msg = notifier.pollNotifyMessage();

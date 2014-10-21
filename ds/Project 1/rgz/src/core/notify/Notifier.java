@@ -39,6 +39,7 @@ public class Notifier {
 
     private <T extends NotifyMessage> ArrayList<NotifyListener<T>>
     getListeners(Class<T> msgClass) {
+        //noinspection unchecked cast
         return (ArrayList<NotifyListener<T>>) notifyListeners.get(msgClass);
     }
 

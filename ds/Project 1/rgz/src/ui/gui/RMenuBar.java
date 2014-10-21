@@ -1,6 +1,10 @@
 package ui.gui;
 
 import core.dc.*;
+import excs.UnknownDCAlgorithmId;
+import excs.UnknownDCMId;
+import excs.UnknownFactoryId;
+import ui.Config;
 
 import javax.swing.*;
 import javax.swing.plaf.metal.MetalIconFactory;
@@ -88,15 +92,41 @@ public class RMenuBar extends JMenuBar {
             "16m block dcm",
         };
         createMenuButtonGroup(dcmMenu, dcmLabels, (e4, index) -> {
-            RFrame fr = RFrame.getFrame();
-            switch (index) {
-                case 0: fr.setDcm(new BlockDCM(null, null, 64 * 1024)); break;
-                case 1: fr.setDcm(new BlockDCM(null, null, 128 * 1024)); break;
-                case 2: fr.setDcm(new BlockDCM(null, null, 256 * 1024)); break;
-                case 3: fr.setDcm(new BlockDCM(null, null, 512 * 1024)); break;
-                case 4: fr.setDcm(new BlockDCM(null, null, 1024 * 1024)); break;
-                case 5: fr.setDcm(new BlockDCM(null, null, 4 * 1024 * 1024)); break;
-                case 6: fr.setDcm(new BlockDCM(null, null, 16 * 1024 * 1024)); break;
+            Config conf = RFrame.getFrame().getConfig();
+            try {
+                switch (index) {
+                    case 0:
+                        conf.setDcmId(Config.DCM_BLOCK);
+                        conf.getFactory().getBlockDCM().setBlockSize(64 * 1024);
+                        break;
+                    case 1:
+                        conf.setDcmId(Config.DCM_BLOCK);
+                        conf.getFactory().getBlockDCM().setBlockSize(128 * 1024);
+                        break;
+                    case 2:
+                        conf.setDcmId(Config.DCM_BLOCK);
+                        conf.getFactory().getBlockDCM().setBlockSize(256 * 1024);
+                        break;
+                    case 3:
+                        conf.setDcmId(Config.DCM_BLOCK);
+                        conf.getFactory().getBlockDCM().setBlockSize(512 * 1024);
+                        break;
+                    case 4:
+                        conf.setDcmId(Config.DCM_BLOCK);
+                        conf.getFactory().getBlockDCM().setBlockSize(1024 * 1024);
+                        break;
+                    case 5:
+                        conf.setDcmId(Config.DCM_BLOCK);
+                        conf.getFactory().getBlockDCM().setBlockSize(4 * 1024 * 1024);
+                        break;
+                    case 6:
+                        conf.setDcmId(Config.DCM_BLOCK);
+                        conf.getFactory().getBlockDCM().setBlockSize(16 * 1024 * 1024);
+                        break;
+                }
+            } catch (UnknownDCMId e) {
+                // never reach here
+                e.printStackTrace();
             }
         });
 
@@ -108,10 +138,18 @@ public class RMenuBar extends JMenuBar {
         // Config -> dc algorithm -> algorithm
         String[] dcLabels = {
             "huffman tree",
+            "raw",
         };
         createMenuButtonGroup(dcMenu, dcLabels, (e3, index) -> {
-            switch (index) {
-                case 0: RFrame.getFrame().setDc(new DCHuffmanAlgorithm());
+            Config conf = RFrame.getFrame().getConfig();
+            try {
+                switch (index) {
+                    case 0: conf.setDcId(Config.DC_HUFFMAN); break;
+                    case 1: conf.setDcId(Config.DC_RAW); break;
+                }
+            } catch (UnknownDCAlgorithmId e) {
+                // never reach here
+                e.printStackTrace();
             }
         });
 
@@ -132,16 +170,53 @@ public class RMenuBar extends JMenuBar {
             "4-byte"
         };
         createMenuButtonGroup(caMenu, caLabels, (e2, index) -> {
-            RFrame fr = RFrame.getFrame();
-            switch (index) {
-                case 0: fr.setCa(new CatchASCIIAlgorithm()); break;
-                case 1: fr.setCa(new CatchFixedBitsAlgorithm((byte)1)); break;
-                case 2: fr.setCa(new CatchFixedBitsAlgorithm((byte)2)); break;
-                case 3: fr.setCa(new CatchFixedBitsAlgorithm((byte)4)); break;
-                case 4: fr.setCa(new CatchFixedBytesAlgorithm((byte)1)); break;
-                case 5: fr.setCa(new CatchFixedBytesAlgorithm((byte)2)); break;
-                case 6: fr.setCa(new CatchFixedBytesAlgorithm((byte)3)); break;
-                case 7: fr.setCa(new CatchFixedBytesAlgorithm((byte)4)); break;
+            Config conf = RFrame.getFrame().getConfig();
+            DCFixedBytesFactory byteFc;
+            DCFixedBitsFactory bitFc;
+            try {
+                switch (index) {
+                    case 0:
+                        conf.setFcId(Config.FACTORY_ASCII);
+                        break;
+                    case 1:
+                        byteFc = new DCFixedBytesFactory();
+                        byteFc.getCA().setByteLength((byte )1);
+                        conf.setFactory(byteFc);
+                        break;
+                    case 2:
+                        byteFc = new DCFixedBytesFactory();
+                        byteFc.getCA().setByteLength((byte )2);
+                        conf.setFactory(byteFc);
+                        break;
+                    case 3:
+                        byteFc = new DCFixedBytesFactory();
+                        byteFc.getCA().setByteLength((byte )3);
+                        conf.setFactory(byteFc);
+                        break;
+                    case 4:
+                        byteFc = new DCFixedBytesFactory();
+                        byteFc.getCA().setByteLength((byte )4);
+                        conf.setFactory(byteFc);
+                        break;
+                    case 5:
+                        bitFc = new DCFixedBitsFactory();
+                        bitFc.getCA().setBitLength((byte) 1);
+                        conf.setFactory(bitFc);
+                        break;
+                    case 6:
+                        bitFc = new DCFixedBitsFactory();
+                        bitFc.getCA().setBitLength((byte )2);
+                        conf.setFactory(bitFc);
+                        break;
+                    case 7:
+                        bitFc = new DCFixedBitsFactory();
+                        bitFc.getCA().setBitLength((byte )4);
+                        conf.setFactory(bitFc);
+                        break;
+                }
+            } catch (UnknownFactoryId e) {
+                // never reach here;
+                e.printStackTrace();
             }
         });
 
@@ -173,7 +248,6 @@ public class RMenuBar extends JMenuBar {
     }
 
     private void createMenuButtonGroup(JMenu m, String[] labels, menuButtonGroupCB _cb) {
-        final menuButtonGroupCB cb = _cb;
         ButtonGroup bg = new ButtonGroup();
 
         for(int i = 0;i < labels.length;i ++) {
@@ -184,7 +258,7 @@ public class RMenuBar extends JMenuBar {
                 rb.setSelected(false);
 
             final int ii = i;
-            rb.addActionListener(e -> cb.action(e, ii));
+            rb.addActionListener(e -> _cb.action(e, ii));
 
             m.add(rb);
             bg.add(rb);

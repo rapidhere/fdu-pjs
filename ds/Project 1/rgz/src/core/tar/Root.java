@@ -6,8 +6,6 @@ import core.io.MemoryMappedFileInputStream;
 import core.notify.*;
 import excs.DCException;
 import excs.TarException;
-import excs.UnknownDCM;
-import excs.UnknownDCMId;
 import ui.Config;
 
 import java.io.*;
@@ -185,7 +183,7 @@ public class Root extends Menu {
         return !canon.getCanonicalFile().equals(canon.getAbsoluteFile());
     }
 
-    public void compress(String outputFile, DCM dcm)
+    public void compress(String outputFile, Config conf)
     throws TarException, DCException {
         // create Output stream
         OutputStream out;
@@ -195,12 +193,8 @@ public class Root extends Menu {
             throw new TarException(e.getMessage());
         }
 
-        // dump dcm info
-        try {
-            out.write(Config.getDCMId(dcm));
-        } catch (UnknownDCM | IOException e) {
-            throw new TarException("compress failed: " + e.getMessage());
-        }
+        // dump meta
+        conf.dumpMeta(out);
 
         // index has build up
         // then compress files
@@ -225,7 +219,7 @@ public class Root extends Menu {
 
             f.setDataOffset(((CountableBufferedOutputStream)out).getWroteBytes());
             int startOffset = ((CountableBufferedOutputStream) out).getWroteBytes();
-            dcm.compress(in, out);
+            conf.getDCM().compress(in, out);
             int endOffset = ((CountableBufferedOutputStream) out).getWroteBytes();
             f.compressedSize = endOffset - startOffset;
             f.size = cFileSize;
@@ -245,15 +239,11 @@ public class Root extends Menu {
     public void decompress(String rootDirString, FileNode[] fileNodes, String srcFile)
     throws TarException, DCException {
         // load dcm
-        DCM dcm;
+        Config conf = new Config();
         try {
-            byte dcmId = (byte)(new FileInputStream(srcFile).read());
-            if(dcmId == -1)
-               throw new TarException("decompress failed: cannot read out dcm id");
-
-            dcm = Config.getDCMbyId(dcmId);
-        } catch (IOException | UnknownDCMId e) {
-            throw new TarException("decompress failed: " + e.getMessage());
+            conf.loadMeta(new FileInputStream(srcFile));
+        } catch (FileNotFoundException e) {
+            throw new TarException(e.getMessage());
         }
 
         // load root dir
@@ -277,7 +267,7 @@ public class Root extends Menu {
             Notifier.getNotifier().addNotifyMessage(new MSGDCMDecompressNew(fn.getPath(), findex, tot));
 
             try {
-                doDecompress(rootDir, fn, dcm, src);
+                doDecompress(rootDir, fn, conf.getDCM(), src);
             } catch (IOException e) {
                 e.printStackTrace();
                 throw new TarException("decompress failed: " + e.getMessage());

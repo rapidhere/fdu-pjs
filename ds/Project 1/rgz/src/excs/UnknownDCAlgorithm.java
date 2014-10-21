@@ -10,7 +10,7 @@ import core.dc.DCAlgorithm;
  * Usage :
  */
 public class UnknownDCAlgorithm extends RGZException {
-    public UnknownDCAlgorithm(DCAlgorithm dc) {
-        super("Unknown DC Algorithm: " + dc.getClass().getName());
+    public UnknownDCAlgorithm(Class<? extends DCAlgorithm> dcClass) {
+        super("Unknown DC Algorithm: " + dcClass.getName());
     }
 }

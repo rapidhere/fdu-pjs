@@ -10,7 +10,7 @@ import core.dc.DCM;
  * Usage :
  */
 public class UnknownDCM extends RGZException {
-    public UnknownDCM(DCM dcm) {
-        super("Unknown DC Algorithm: " + dcm.getClass().getName());
+    public UnknownDCM(Class<? extends DCM> dcmClass) {
+        super("Unknown DCM Algorithm: " + dcmClass.getName());
     }
 }

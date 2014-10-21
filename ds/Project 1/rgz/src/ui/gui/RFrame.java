@@ -1,10 +1,8 @@
 package ui.gui;
 
-import core.dc.*;
 import core.tar.FileNode;
 import core.tar.Root;
-import excs.DCException;
-import excs.TarException;
+import excs.*;
 import ui.Config;
 
 import javax.swing.*;
@@ -30,9 +28,7 @@ public class RFrame extends JFrame {
     private RMenuTableViewer tableViewer;
     private RMenuTreeViewer treeViewer;
     private RInfoViewer infoViewer;
-    private DCAlgorithm dc = new DCHuffmanAlgorithm();
-    private CatchAlgorithm<? extends Token> ca = new CatchASCIIAlgorithm();
-    private DCM dcm = new BlockDCM(dc, ca, 64 * 1024);
+    private Config conf;
 
     public static RFrame getFrame() {
         if(theFrame == null) {
@@ -63,6 +59,18 @@ public class RFrame extends JFrame {
 
         // clear root;
         root = null;
+
+        // default conf
+        try {
+            conf = new Config();
+            conf.setFcId(Config.FACTORY_ASCII);
+            conf.setDcId(Config.DC_HUFFMAN);
+            conf.setDcmId(Config.DCM_BLOCK);
+            conf.getFactory().getBlockDCM().setBlockSize(64 * 1024);
+        } catch (UnknownFactoryId | UnknownDCMId | UnknownDCAlgorithmId e) {
+            // never reach here
+            e.printStackTrace();
+        }
     }
 
     private void setUpLayout() {
@@ -215,9 +223,7 @@ public class RFrame extends JFrame {
             }
 
             try {
-                dcm.setCA(ca);
-                dcm.setDC(dc);
-                root.compress(f.getAbsolutePath(), dcm);
+                root.compress(f.getAbsolutePath(), conf);
             } catch (TarException | DCException e) {
                 putErrorInfo(e.getMessage());
                 return;
@@ -268,17 +274,7 @@ public class RFrame extends JFrame {
         }
     }
 
-    void setDcm(DCM dcm) {
-        this.dcm = dcm;
-    }
-
-    void setDc(DCAlgorithm dc) {
-        this.dc = dc;
-    }
-
-    void setCa(CatchAlgorithm<? extends Token> ca) {
-        this.ca = ca;
-    }
+    Config getConfig() {return conf;}
 
     void exit() {
         if(! checkRootUpdated()) {

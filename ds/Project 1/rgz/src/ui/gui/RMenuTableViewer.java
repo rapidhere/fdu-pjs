@@ -17,13 +17,13 @@ import java.util.Arrays;
  * Usage :
  */
 public class RMenuTableViewer extends JTable {
-    private String[] cNames = {" ", "File Name", "Size", "C-Size"};
     DefaultTableModel tm;
     private FileNode[] currentFns;
     JMenuItem decompresMenuItem;
 
     public RMenuTableViewer() {
         // set model
+        String[] cNames = {" ", "File Name", "Size", "C-Size"};
         tm = new DefaultTableModel(null, cNames) {
             @Override
             public Class<?> getColumnClass(int index) {

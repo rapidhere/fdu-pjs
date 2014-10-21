@@ -8,7 +8,33 @@ package core.dc;
  * Usage :
  */
 
-public class FixedBitsToken extends Token <BitArray> {
+public class DCFixedBitsFactory extends DCFactory<FixedBitsToken> {
+    DCHuffmanAlgorithm<FixedBitsToken> dcHuffman = new DCHuffmanAlgorithm<>();
+    DCRaw<FixedBitsToken> dcRaw = new DCRaw<>();
+    BlockDCM<FixedBitsToken> blockDCM = new BlockDCM<>();
+    CatchFixedBitsAlgorithm ca = new CatchFixedBitsAlgorithm();
+
+    @Override
+    public DCHuffmanAlgorithm<FixedBitsToken> getHuffmanDC() {
+        return dcHuffman;
+    }
+
+    @Override
+    public DCRaw<FixedBitsToken> getRawDC() {
+        return dcRaw;
+    }
+
+    @Override
+    public CatchFixedBitsAlgorithm getCA() {
+        return ca;
+    }
+
+    @Override
+    public BlockDCM<FixedBitsToken> getBlockDCM() {
+        return blockDCM;
+    }
+}
+class FixedBitsToken extends Token <BitArray> {
     private final int bitLength;
 
     public FixedBitsToken(int bitLength) {
@@ -46,3 +72,4 @@ public class FixedBitsToken extends Token <BitArray> {
         return 0;
     }
 }
+
