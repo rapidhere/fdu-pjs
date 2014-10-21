@@ -60,7 +60,7 @@ public class CommandLineInterface {
 
     private Option<Boolean> optionDebug;
 
-    private Config conf = new Config();
+    public Config conf = new Config();
 
     public void loadDCM(String dcmString)
         throws RGZException {
@@ -328,7 +328,6 @@ public class CommandLineInterface {
 
                 // compress
                 root.compress(srcFile, conf);
-
                 System.exit(0);
             } else if(parser.getOptionValue(optionDecompress, false)) {
                 root.loadIndexFromFile(srcFile);

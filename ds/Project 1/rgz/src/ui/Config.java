@@ -132,4 +132,17 @@ final public class Config {
 
     // DC_MAN
     public static final byte DCM_BLOCK = 0;
+
+    // only for test
+    public static long startTime, endTime;
+    public static long totalTime = 0;
+
+    public static void markStart() {
+        startTime = System.nanoTime();
+    }
+
+    public static void markEnd() {
+        endTime = System.nanoTime();
+        totalTime += endTime - startTime;
+    }
 }

@@ -3,6 +3,7 @@ package core.dc;
 import excs.BitArrayException;
 import excs.DCException;
 import javafx.util.Pair;
+import ui.Config;
 
 import java.util.*;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -18,6 +19,12 @@ import java.util.concurrent.LinkedBlockingQueue;
 public class DCHuffmanAlgorithm<T extends Token> implements DCAlgorithm<T> {
     interface TokenArgMerger {
         int merge(int key1, int key2);
+    }
+
+    class IncInteger {
+        int val;
+
+        IncInteger() {val = 0;}
     }
 
     /**
@@ -134,15 +141,17 @@ public class DCHuffmanAlgorithm<T extends Token> implements DCAlgorithm<T> {
     @Override
     public byte[] compress(ArrayList<T> tokenSequence, CatchAlgorithm<T> ca)
     throws DCException {
-        Map<T, Integer> tokenMap = new HashMap<>();
+        Map<T, IncInteger> tokenMap = new HashMap<>();
 
         // count tokens
         for(T t: tokenSequence) {
-            Integer cnt = tokenMap.get(t);
+            IncInteger cnt = tokenMap.get(t);
             if(cnt != null) {
-                tokenMap.put(t, cnt + 1);
+                cnt.val ++;
             } else {
-                tokenMap.put(t, 1);
+                IncInteger inc = new IncInteger();
+                inc.val ++;
+                tokenMap.put(t, inc);
             }
         }
 
@@ -153,7 +162,7 @@ public class DCHuffmanAlgorithm<T extends Token> implements DCAlgorithm<T> {
         // get freq
         int freq[] = new int[tokens.size()];
         for(int i = 0;i < tokens.size();i ++)
-            freq[i] = tokenMap.get(tokens.get(i));
+            freq[i] = tokenMap.get(tokens.get(i)).val;
 
         // build tree
         HuffmanTreeNode<T> root = buildHuffmanTreeWithFrequency(freq, tokens);
@@ -163,6 +172,7 @@ public class DCHuffmanAlgorithm<T extends Token> implements DCAlgorithm<T> {
             new LinkedBlockingQueue<>();
         queue.add(new Pair<>(root, 0));
 
+        Map<T, Integer> depthMap = new HashMap<>();
         while(! queue.isEmpty()) {
             AbstractHuffmanTreeNode<T> curNode = queue.peek().getKey();
             int curDepth = queue.poll().getValue();
@@ -170,7 +180,7 @@ public class DCHuffmanAlgorithm<T extends Token> implements DCAlgorithm<T> {
             if(curNode == null) continue;
 
             if(curNode.isLeaf()) {
-                tokenMap.put(curNode.getToken(), curDepth);
+                depthMap.put(curNode.getToken(), curDepth);
             } else {
                 queue.add(new Pair<>(
                     curNode.getLeftTree(), curDepth +1));
@@ -181,23 +191,33 @@ public class DCHuffmanAlgorithm<T extends Token> implements DCAlgorithm<T> {
 
         int[] depth = new int[tokens.size()];
         for(int i = 0;i < tokens.size();i ++)
-            depth[i] = tokenMap.get(tokens.get(i));
+            depth[i] = depthMap.get(tokens.get(i));
 
         // rebuild huffman tree
         root = buildHuffmanTreeWithDepth(depth, tokens);
 
         // build encoding map
-        Map<T, String> encodingMap = getEncodingMap(root);
+        Map<T, String> rawEncodingMap = getEncodingMap(root);
+        Map<T, UnjoinableBitArray> encodingMap = new HashMap<>();
+
+        for(T t: rawEncodingMap.keySet()) {
+            String rawEncode = rawEncodingMap.get(t);
+            UnjoinableBitArray encode = new UnjoinableBitArray();
+            for(int i = 0;i < rawEncode.length();i ++)
+                encode.addBit((byte) (rawEncode.charAt(i) - '0'));
+            encodingMap.put(t, encode);
+        }
 
         // compress
-        BitArray compressedData = new BitArray();
+        UnjoinableBitArray compressedData = new UnjoinableBitArray();
         for(T t: tokenSequence) {
             // get encode
-            String encode = encodingMap.get(t);
+            UnjoinableBitArray encode = encodingMap.get(t);
 
             // put into bit array
-            for(int i = 0;i < encode.length();i ++)
-               compressedData.addBit((byte)(encode.charAt(i) - '0'));
+            compressedData.addBitArray(encode);
+            //for(int i = 0;i < encode.size();i ++)
+            //    compressedData.addBit(encode.get(i));
         }
         byte[] compressedBytes = compressedData.dump();
 
@@ -228,6 +248,7 @@ public class DCHuffmanAlgorithm<T extends Token> implements DCAlgorithm<T> {
 
         for(int i = 0;i < ret.size();i ++)
             r[i] = ret.get(i);
+
         return r;
     }
 
@@ -249,7 +270,7 @@ public class DCHuffmanAlgorithm<T extends Token> implements DCAlgorithm<T> {
             offset += 2;
         }
         // load compressed bits
-        BitArray compressedData = new BitArray();
+        UnjoinableBitArray compressedData = new UnjoinableBitArray();
         try {
             compressedData.load(bytes, offset, bytes.length);
         } catch (BitArrayException e) {
