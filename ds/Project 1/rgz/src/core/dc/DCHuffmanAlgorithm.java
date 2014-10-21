@@ -216,8 +216,6 @@ public class DCHuffmanAlgorithm<T extends Token> implements DCAlgorithm<T> {
 
             // put into bit array
             compressedData.addBitArray(encode);
-            //for(int i = 0;i < encode.size();i ++)
-            //    compressedData.addBit(encode.get(i));
         }
         byte[] compressedBytes = compressedData.dump();
 

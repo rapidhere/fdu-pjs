@@ -77,45 +77,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="DCRaw.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/core/dc/DCRaw.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="24" selection-start="541" selection-end="541" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="435">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DCHuffmanAlgorithm.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/core/dc/DCHuffmanAlgorithm.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="302" column="9" selection-start="9537" selection-end="9537" vertical-scroll-proportion="0.0" vertical-offset="4057" max-vertical-offset="5670">
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#10301#10302#0" expanded="true" />
-                <element signature="e#10332#10333#0" expanded="true" />
-                <element signature="e#10402#10403#0" expanded="true" />
-                <element signature="e#10434#10435#0" expanded="true" />
-                <element signature="e#10715#10716#0" expanded="true" />
-                <element signature="e#10743#10744#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CommandLineInterface.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/ui/cli/CommandLineInterface.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="349" column="0" selection-start="12762" selection-end="12762" vertical-scroll-proportion="0.79454255" vertical-offset="4545" max-vertical-offset="5505">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BitArray.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="BitArray.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/core/dc/BitArray.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="142" column="47" selection-start="3902" selection-end="3902" vertical-scroll-proportion="0.0" vertical-offset="892" max-vertical-offset="2955">
+            <state line="79" column="21" selection-start="1808" selection-end="1808" vertical-scroll-proportion="0.39807382" vertical-offset="892" max-vertical-offset="2955">
               <folding />
             </state>
           </provider>
@@ -180,8 +145,8 @@
         <option value="$PROJECT_DIR$/src/ui/cli/CLIEntry.java" />
         <option value="$PROJECT_DIR$/src/ui/Config.java" />
         <option value="$PROJECT_DIR$/src/core/dc/UnjoinableBitArray.java" />
-        <option value="$PROJECT_DIR$/src/core/dc/DCHuffmanAlgorithm.java" />
         <option value="$PROJECT_DIR$/src/ui/cli/CommandLineInterface.java" />
+        <option value="$PROJECT_DIR$/src/core/dc/DCHuffmanAlgorithm.java" />
       </list>
     </option>
   </component>
@@ -774,12 +739,12 @@
       <workItem from="1413869088834" duration="6277000" />
       <workItem from="1413876497230" duration="6723000" />
       <workItem from="1413883491078" duration="1019000" />
-      <workItem from="1413895611435" duration="7138000" />
+      <workItem from="1413895611435" duration="8442000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="218775000" />
+    <option name="totallyTimeSpent" value="220079000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -803,7 +768,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1366" height="744" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32872504" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1170,13 +1135,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/dc/BitArray.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="142" column="47" selection-start="3902" selection-end="3902" vertical-scroll-proportion="0.0" vertical-offset="892" max-vertical-offset="2955">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/core/dc/UnjoinableBitArray.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="139" column="84" selection-start="3710" selection-end="3710" vertical-scroll-proportion="0.0" vertical-offset="1627" max-vertical-offset="2250">
@@ -1195,22 +1153,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/dc/DCHuffmanAlgorithm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="302" column="9" selection-start="9537" selection-end="9537" vertical-scroll-proportion="0.0" vertical-offset="4057" max-vertical-offset="5670">
+        <state line="214" column="58" selection-start="6777" selection-end="6777" vertical-scroll-proportion="0.13322632" vertical-offset="3127" max-vertical-offset="5640">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#10301#10302#0" expanded="true" />
-            <element signature="e#10332#10333#0" expanded="true" />
-            <element signature="e#10402#10403#0" expanded="true" />
-            <element signature="e#10434#10435#0" expanded="true" />
-            <element signature="e#10715#10716#0" expanded="true" />
-            <element signature="e#10743#10744#0" expanded="true" />
+            <element signature="e#10193#10194#0" expanded="true" />
+            <element signature="e#10224#10225#0" expanded="true" />
+            <element signature="e#10294#10295#0" expanded="true" />
+            <element signature="e#10326#10327#0" expanded="true" />
+            <element signature="e#10607#10608#0" expanded="true" />
+            <element signature="e#10635#10636#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ui/cli/CommandLineInterface.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="349" column="0" selection-start="12762" selection-end="12762" vertical-scroll-proportion="0.79454255" vertical-offset="4545" max-vertical-offset="5505">
+        <state line="331" column="55" selection-start="12072" selection-end="12072" vertical-scroll-proportion="3.1781702" vertical-offset="2790" max-vertical-offset="5505">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/dc/BitArray.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="79" column="21" selection-start="1808" selection-end="1808" vertical-scroll-proportion="0.39807382" vertical-offset="892" max-vertical-offset="2955">
           <folding />
         </state>
       </provider>
