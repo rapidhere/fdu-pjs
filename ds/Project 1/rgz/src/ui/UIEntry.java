@@ -13,7 +13,7 @@ abstract public class UIEntry {
     abstract protected void run();
 
     final public void start() {
-        // init works
+        // reset works
         // create notifier thread
         Thread notifierThread = NotifyThread.getNotifyThread();
         notifierThread.start();

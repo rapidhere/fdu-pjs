@@ -366,7 +366,7 @@ public class RFrame extends JFrame {
             runningThread = new Thread() {
                 public void run() {
                     try {
-                        root.compress(f.getAbsolutePath(), conf);
+                        root.compress(f.getAbsolutePath(), conf, 0);
                     } catch (TarException | DCException e) {
                         Notifier.getNotifier().addNotifyMessage(new MSGDumpedIndex());
                         putErrorInfo(e.getMessage());
@@ -406,7 +406,7 @@ public class RFrame extends JFrame {
             runningThread = new Thread() {
                 public void run() {
                     try {
-                        root.decompress(outputDir.getAbsolutePath(), fns, srcFile.getPath());
+                        root.decompress(outputDir.getAbsolutePath(), fns, srcFile.getPath(), 0);
                     } catch (TarException | DCException e) {
                         Notifier.getNotifier().addNotifyMessage(new MSGDecompressDone());
                         putErrorInfo(e.getMessage());

@@ -106,6 +106,7 @@ public class CommandLineInterface {
                 break;
             case DC_RAW:
                 conf.setDcId(Config.DC_RAW);
+                break;
             default:
                 throw new RGZException("unknown dc-algorithm " + dcString);
         }
@@ -327,7 +328,7 @@ public class CommandLineInterface {
                 loadDCM(dcmSting);
 
                 // compress
-                root.compress(srcFile, conf);
+                root.compress(srcFile, conf, 4);
                 System.exit(0);
             } else if(parser.getOptionValue(optionDecompress, false)) {
                 root.loadIndexFromFile(srcFile);
@@ -346,7 +347,7 @@ public class CommandLineInterface {
                 }
 
                 // decompress
-                root.decompress(outputRoot, fn.toArray(new FileNode[fn.size()]), srcFile);
+                root.decompress(outputRoot, fn.toArray(new FileNode[fn.size()]), srcFile, 0);
 
                 System.exit(0);
             } else if(parser.getOptionValue(optionListUp, false)) {

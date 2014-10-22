@@ -21,7 +21,7 @@ public class CatchFixedBytesAlgorithm implements CatchAlgorithm <FixedBytesToken
     }
 
     @Override
-    public byte[] dump(ArrayList<FixedBytesToken> tokens) throws DCException {
+    synchronized public byte[] dump(ArrayList<FixedBytesToken> tokens) throws DCException {
         byte[] bytes = new byte[tokens.size() * byteLength + 4];
         // write length
         int tokenLength = tokens.size();
@@ -39,7 +39,7 @@ public class CatchFixedBytesAlgorithm implements CatchAlgorithm <FixedBytesToken
     }
 
     @Override
-    public Pair<ArrayList<FixedBytesToken>, Integer> load(byte[] bytes, int offset, int length)
+    synchronized public Pair<ArrayList<FixedBytesToken>, Integer> load(byte[] bytes, int offset, int length)
         throws DCException {
         if(length < 4)
             throw new DCException("load failed: cannot load size info");
@@ -64,7 +64,7 @@ public class CatchFixedBytesAlgorithm implements CatchAlgorithm <FixedBytesToken
     }
 
     @Override
-    public Pair<ArrayList<FixedBytesToken>, Integer> parse(byte[] bytes, int offset, int length)
+    synchronized public Pair<ArrayList<FixedBytesToken>, Integer> parse(byte[] bytes, int offset, int length)
         throws DCException {
         int tokenLength = length / byteLength;
         ArrayList<FixedBytesToken> tokens = new ArrayList<>();
@@ -79,7 +79,7 @@ public class CatchFixedBytesAlgorithm implements CatchAlgorithm <FixedBytesToken
     }
 
     @Override
-    public byte[] merge(ArrayList<FixedBytesToken> tokens) throws DCException {
+    synchronized public byte[] merge(ArrayList<FixedBytesToken> tokens) throws DCException {
         byte[] bytes = new byte[tokens.size() * byteLength];
 
         for(int i = 0;i < tokens.size();i ++) {

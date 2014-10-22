@@ -1,6 +1,7 @@
 package core.tar;
 
 import core.dc.DCM;
+import core.dc.SequentialThreadingPool;
 import core.io.CountableBufferedOutputStream;
 import core.io.MemoryMappedFileInputStream;
 import core.notify.*;
@@ -188,7 +189,7 @@ public class Root extends Menu {
         return !canon.getCanonicalFile().equals(canon.getAbsoluteFile());
     }
 
-    public void compress(String outputFile, Config conf)
+    public void compress(String outputFile, Config conf, int nThread)
     throws TarException, DCException {
         // create Output stream
         OutputStream out;
@@ -205,6 +206,8 @@ public class Root extends Menu {
         // then compress files
         int tot = regularFilePathsMap.keySet().size(),
             findex = 0;
+        // create tp
+        SequentialThreadingPool tp = new SequentialThreadingPool(nThread);
         for(RegularFile f: regularFilePathsMap.keySet()) {
             findex ++;
             Notifier.getNotifier().addNotifyMessage(new MSGDCMCompressNew(f.getPath(), findex, tot));
@@ -224,11 +227,14 @@ public class Root extends Menu {
 
             f.setDataOffset(((CountableBufferedOutputStream)out).getWroteBytes());
             int startOffset = ((CountableBufferedOutputStream) out).getWroteBytes();
-            conf.getDCM().compress(in, out);
+            conf.getDCM().compress(in, out, tp);
             int endOffset = ((CountableBufferedOutputStream) out).getWroteBytes();
             f.compressedSize = endOffset - startOffset;
             f.size = cFileSize;
         }
+
+        // join jobs
+        tp.joinAll();
 
         // close output stream
         try {
@@ -242,7 +248,7 @@ public class Root extends Menu {
         }
     }
 
-    public void decompress(String rootDirString, FileNode[] fileNodes, String srcFile)
+    public void decompress(String rootDirString, FileNode[] fileNodes, String srcFile, int nThread)
     throws TarException, DCException {
         // load dcm
         Config conf = new Config();
@@ -264,6 +270,8 @@ public class Root extends Menu {
         File src = new File(srcFile);
         if(! src.exists())
             throw new TarException("decompress failed: cannot found src file " + srcFile);
+        // load tp
+        SequentialThreadingPool tp = new SequentialThreadingPool(nThread);
 
         // decompress each file
         int tot = fileNodes.length,
@@ -273,16 +281,20 @@ public class Root extends Menu {
             Notifier.getNotifier().addNotifyMessage(new MSGDCMDecompressNew(fn.getPath(), findex, tot));
 
             try {
-                doDecompress(rootDir, fn, conf.getDCM(), src);
+                doDecompress(rootDir, fn, conf.getDCM(), src, tp);
             } catch (IOException e) {
                 e.printStackTrace();
                 throw new TarException("decompress failed: " + e.getMessage());
             }
         }
+
+        // join jobs
+        tp.joinAll();
+
         Notifier.getNotifier().addNotifyMessage(new MSGDecompressDone());
     }
 
-    static void doDecompress(File m, FileNode fn, DCM dcm, File src)
+    static void doDecompress(File m, FileNode fn, DCM dcm, File src, SequentialThreadingPool tp)
     throws IOException, DCException, TarException {
         File f = new File(m, fn.getName());
 
@@ -297,7 +309,7 @@ public class Root extends Menu {
             OutputStream out = new BufferedOutputStream(new FileOutputStream(f));
 
             // do compress
-            dcm.decompress(in, out);
+            dcm.decompress(in, out, tp);
 
             // close stream
             in.close();
@@ -311,7 +323,7 @@ public class Root extends Menu {
             }
 
             for(FileNode ch: ((Menu)fn).getChildren()) {
-                doDecompress(f, ch, dcm, src);
+                doDecompress(f, ch, dcm, src, tp);
             }
         }
     }

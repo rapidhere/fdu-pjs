@@ -27,8 +27,9 @@ public class BlockDCM <T extends Token> extends DCM<T> {
     private int blockSize;
 
     @Override
-    public void compress(InputStream in, OutputStream out)
+    public void compress(InputStream in, OutputStream out, SequentialThreadingPool tp)
     throws DCException {
+        // create threading poll
         try {
             int bufferLength = 0;
             byte[] buffer = new byte[blockSize];
@@ -44,18 +45,9 @@ public class BlockDCM <T extends Token> extends DCM<T> {
                 // read in bytes
                 int readLength = in.read(buffer, bufferLength, blockSize - bufferLength);
                 if(readLength == -1) {
-                    Notifier.getNotifier().addNotifyMessage(new MSGBlockDCMStartNew(blockIndex, totalBlock));
-                    // write remain buffer
-                    int minusBufferLength = - bufferLength;
-                    for(int i = 0;i < 4;i ++) {
-                        out.write((byte)(minusBufferLength & 0xff));
-                        minusBufferLength >>= 8;
-                    }
-                    out.write(buffer, 0, bufferLength);
+                    tp.addTask(new CompressLastThreadingTask(buffer, bufferLength, out, blockIndex, totalBlock));
                     break;
                 }
-
-                Notifier.getNotifier().addNotifyMessage(new MSGBlockDCMStartNew(blockIndex, totalBlock));
 
                 bufferLength += readLength;
 
@@ -65,17 +57,8 @@ public class BlockDCM <T extends Token> extends DCM<T> {
                 int remainOffset = p.getValue();
 
                 // compress
-                byte[] compressedData = dcAlg.compress(tokens, catchAlg);
-
-                // write bytes length
-                int compressedDataLength = compressedData.length;
-                for(int i = 0;i < 4;i ++) {
-                    out.write((byte)(compressedDataLength & 0xff));
-                    compressedDataLength >>= 8;
-                }
-
-                // write bytes
-                out.write(compressedData);
+                CompressThreadingTask task = new CompressThreadingTask(tokens, out, blockIndex, totalBlock);
+                tp.addTask(task);
 
                 // calculate remain bytes
                 bufferLength = bufferLength - remainOffset;
@@ -87,7 +70,7 @@ public class BlockDCM <T extends Token> extends DCM<T> {
     }
 
     @Override
-    public void decompress(InputStream in, OutputStream out)
+    public void decompress(InputStream in, OutputStream out, SequentialThreadingPool tp)
     throws DCException {
         try {
             while(true) {
@@ -130,4 +113,87 @@ public class BlockDCM <T extends Token> extends DCM<T> {
             throw new DCException(ioe);
         }
     }
+
+
+    class CompressThreadingTask extends SequentialThreadingPool.ThreadingSequentialTask {
+        private ArrayList<T> tokens;
+        private OutputStream out;
+        private byte[] compressedData;
+        private int blockIndex;
+        private int totalBlock;
+
+        public CompressThreadingTask(ArrayList<T> tokens, OutputStream out, int blockIndex, int totalIndex) {
+            this.tokens = tokens;
+            this.out = out;
+            this.blockIndex = blockIndex;
+            this.totalBlock = totalIndex;
+        }
+
+        @Override
+        public void run() {
+            Notifier.getNotifier().addNotifyMessage(new MSGBlockDCMStartNew(blockIndex, totalBlock));
+            try {
+                compressedData = dcAlg.compress(tokens, catchAlg);
+            } catch (DCException e) {
+                e.printStackTrace();
+            }
+        }
+
+        @Override
+        public void sequentialTaskRun() {
+            try {
+                // write bytes length
+                int compressedDataLength = compressedData.length;
+                for(int i = 0;i < 4;i ++) {
+                    out.write((byte)(compressedDataLength & 0xff));
+                    compressedDataLength >>= 8;
+                }
+
+                // write bytes
+                out.write(compressedData);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    class CompressLastThreadingTask extends SequentialThreadingPool.ThreadingSequentialTask {
+        private byte[] buffer;
+        private int length;
+        private OutputStream out;
+        private int blockIndex;
+        private int totalBlock;
+
+        public CompressLastThreadingTask(byte[] buffer, int length, OutputStream out, int blockIndex, int totalIndex) {
+            this.buffer = buffer;
+            this.length = length;
+            this.out = out;
+            this.blockIndex = blockIndex;
+            this.totalBlock = totalIndex;
+        }
+
+        @Override
+        public void run() {
+            // do thing
+        }
+
+        @Override
+        public void sequentialTaskRun() {
+            Notifier.getNotifier().addNotifyMessage(new MSGBlockDCMStartNew(blockIndex, totalBlock));
+            try {
+                // write remain buffer
+                int minusBufferLength = - length;
+                for(int i = 0;i < 4;i ++) {
+                    out.write((byte)(minusBufferLength & 0xff));
+                    minusBufferLength >>= 8;
+                }
+
+                // waiting for other jobs
+                out.write(buffer, 0, length);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }
+

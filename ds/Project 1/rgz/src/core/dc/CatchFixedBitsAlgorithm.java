@@ -23,7 +23,7 @@ public class CatchFixedBitsAlgorithm implements CatchAlgorithm <FixedBitsToken> 
     }
 
     @Override
-    public byte[] dump(ArrayList<FixedBitsToken> tokens)
+    synchronized public byte[] dump(ArrayList<FixedBitsToken> tokens)
         throws DCException {
         BitArray ret = new BitArray();
 
@@ -34,7 +34,7 @@ public class CatchFixedBitsAlgorithm implements CatchAlgorithm <FixedBitsToken> 
     }
 
     @Override
-    public Pair<ArrayList<FixedBitsToken>, Integer> load(byte[] bytes, int offset, int length)
+    synchronized public Pair<ArrayList<FixedBitsToken>, Integer> load(byte[] bytes, int offset, int length)
         throws DCException {
         try {
             BitArray ba = new BitArray();
@@ -75,7 +75,7 @@ public class CatchFixedBitsAlgorithm implements CatchAlgorithm <FixedBitsToken> 
     }
 
     @Override
-    public Pair<ArrayList<FixedBitsToken>, Integer> parse(byte[] bytes, int offset, int length)
+    synchronized public Pair<ArrayList<FixedBitsToken>, Integer> parse(byte[] bytes, int offset, int length)
         throws DCException {
         int blkSize = bitLength * 8 / gcd(bitLength, 8);
         int tokenSize = length * 8 / blkSize * (blkSize / bitLength);
@@ -116,7 +116,7 @@ public class CatchFixedBitsAlgorithm implements CatchAlgorithm <FixedBitsToken> 
     }
 
     @Override
-    public byte[] merge(ArrayList<FixedBitsToken> tokens) throws DCException {
+    synchronized public byte[] merge(ArrayList<FixedBitsToken> tokens) throws DCException {
         BitArray ba = new BitArray();
         for(Token t: tokens) {
             BitArray newBa = new BitArray(),

@@ -9,15 +9,13 @@ package core.dc;
  */
 
 public class DCASCIIFactory extends DCFactory<ASCIIToken> {
-    DCHuffmanAlgorithm<ASCIIToken> dcHuffman = new DCHuffmanAlgorithm<>();
     DCRaw<ASCIIToken> dcRaw = new DCRaw<>();
+    DCHuffmanAlgorithm<ASCIIToken> dcHuffman = new DCHuffmanAlgorithm<>();
     BlockDCM<ASCIIToken> blockDCM = new BlockDCM<>();
     CatchASCIIAlgorithm ca = new CatchASCIIAlgorithm();
 
     @Override
-    public DCHuffmanAlgorithm<ASCIIToken> getHuffmanDC() {
-        return dcHuffman;
-    }
+    public DCHuffmanAlgorithm<ASCIIToken> getHuffmanDC() {return dcHuffman;}
 
     @Override
     public DCRaw<ASCIIToken> getRawDC() {

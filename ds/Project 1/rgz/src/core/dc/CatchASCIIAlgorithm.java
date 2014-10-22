@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class CatchASCIIAlgorithm implements CatchAlgorithm <ASCIIToken> {
     @Override
-    public byte[] dump(ArrayList<ASCIIToken> tokens)
+    synchronized public byte[] dump(ArrayList<ASCIIToken> tokens)
         throws DCException {
         // create buffer
         byte[] buffer = new byte[tokens.size() + 4];
@@ -27,7 +27,7 @@ public class CatchASCIIAlgorithm implements CatchAlgorithm <ASCIIToken> {
     }
 
     @Override
-    public Pair<ArrayList<ASCIIToken>, Integer> load(byte[] bytes, int offset, int length)
+    synchronized public Pair<ArrayList<ASCIIToken>, Integer> load(byte[] bytes, int offset, int length)
         throws DCException {
         // load length
         int tokenLength = 0;
@@ -46,7 +46,7 @@ public class CatchASCIIAlgorithm implements CatchAlgorithm <ASCIIToken> {
     }
 
     @Override
-    public Pair<ArrayList<ASCIIToken>, Integer> parse(byte[] bytes, int offset, int length)
+    synchronized public Pair<ArrayList<ASCIIToken>, Integer> parse(byte[] bytes, int offset, int length)
         throws DCException {
         ArrayList<ASCIIToken> tokens = new ArrayList<>();
         for(int i = 0;i < length;i ++) {
@@ -57,7 +57,7 @@ public class CatchASCIIAlgorithm implements CatchAlgorithm <ASCIIToken> {
     }
 
     @Override
-    public byte[] merge(ArrayList<ASCIIToken> tokens) throws DCException {
+    synchronized public byte[] merge(ArrayList<ASCIIToken> tokens) throws DCException {
         byte[] bytes = new byte[tokens.size()];
         for(int i = 0;i < tokens.size();i ++)
             bytes[i] = tokens.get(i).getToken();
