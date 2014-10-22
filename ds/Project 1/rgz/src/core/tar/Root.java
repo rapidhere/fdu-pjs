@@ -279,6 +279,7 @@ public class Root extends Menu {
                 throw new TarException("decompress failed: " + e.getMessage());
             }
         }
+        Notifier.getNotifier().addNotifyMessage(new MSGDecompressDone());
     }
 
     static void doDecompress(File m, FileNode fn, DCM dcm, File src)

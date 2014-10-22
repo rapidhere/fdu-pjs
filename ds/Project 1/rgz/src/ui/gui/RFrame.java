@@ -134,7 +134,38 @@ public class RFrame extends JFrame {
         notifier.register(MSGAddingSource.class, msg -> mainProgressBar.setIndeterminate(true));
         notifier.register(MSGTarBuildingIndex.class, msg ->
             putNormalInfo("  Found source file: " + msg.getPath()));
-        notifier.register(MSGAddedSource.class, msg -> mainProgressBar.setIndeterminate(false));
+        notifier.register(MSGAddedSource.class, msg -> {
+            mainProgressBar.setIndeterminate(false);
+            try {
+                runningThread.join();
+            } catch (InterruptedException e) {
+                putErrorInfo("Join thread failed: " + e.getMessage());
+            }
+        });
+
+        notifier.register(MSGDCMDecompressNew.class, msg -> {
+            putNormalInfo("  Decompressing: " + msg.getPath());
+            mainProgressBar.setMaximum(msg.getTotFile());
+            mainProgressBar.setValue(msg.getNFile());
+        });
+
+        notifier.register(MSGDCMDecompressNewFile.class, msg -> {
+            subProgressBar.setIndeterminate(true);
+            subProgressBar.setString(msg.getPath());
+            subProgressBar.setStringPainted(true);
+            putNormalInfo("    +> " + msg.getPath());
+        });
+
+        notifier.register(MSGDecompressDone.class, msg -> {
+            putNormalInfo("Decompress Done");
+            subProgressBar.setStringPainted(false);
+            subProgressBar.setIndeterminate(false);
+            try {
+                runningThread.join();
+            } catch (InterruptedException e) {
+                putErrorInfo("Join thread failed: " + e.getMessage());
+            }
+        });
     }
 
     private void disableFrontEnd() {
@@ -293,6 +324,7 @@ public class RFrame extends JFrame {
                     try {
                         root.addSource(f.getPath());
                     } catch (TarException e) {
+                        Notifier.getNotifier().addNotifyMessage(new MSGAddedSource());
                         putErrorInfo(e.getMessage());
                         root = null;
                     }
@@ -336,7 +368,8 @@ public class RFrame extends JFrame {
                     try {
                         root.compress(f.getAbsolutePath(), conf);
                     } catch (TarException | DCException e) {
-                        e.printStackTrace();
+                        Notifier.getNotifier().addNotifyMessage(new MSGDumpedIndex());
+                        putErrorInfo(e.getMessage());
                     }
                     enableFrontEnd();
                 }
@@ -368,16 +401,21 @@ public class RFrame extends JFrame {
         int retVal = fc.showOpenDialog(this);
 
         if(retVal == JFileChooser.APPROVE_OPTION) {
-            putNormalInfo("Starting decompress ...");
             File outputDir = fc.getSelectedFile();
 
-            try {
-                root.decompress(outputDir.getAbsolutePath(), fns, srcFile.getPath());
-            } catch (TarException | DCException e) {
-                putErrorInfo(e.getMessage());
-                root = null;
-            }
-            putNormalInfo("Decompress done.");
+            runningThread = new Thread() {
+                public void run() {
+                    try {
+                        root.decompress(outputDir.getAbsolutePath(), fns, srcFile.getPath());
+                    } catch (TarException | DCException e) {
+                        Notifier.getNotifier().addNotifyMessage(new MSGDecompressDone());
+                        putErrorInfo(e.getMessage());
+                    }
+                    enableFrontEnd();
+                }
+            };
+            disableFrontEnd();
+            runningThread.start();
         }
     }
 
