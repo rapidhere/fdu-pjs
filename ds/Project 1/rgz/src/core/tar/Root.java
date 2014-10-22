@@ -92,7 +92,9 @@ public class Root extends Menu {
             fc.read(b);
 
             // load index
+            Notifier.getNotifier().addNotifyMessage(new MSGLoadingIndex());
             loadIndex(new ByteArrayInputStream(b.array()));
+            Notifier.getNotifier().addNotifyMessage(new MSGLoadedIndex());
         } catch (IOException e) {
             throw new TarException("cannot load index: " + e.getMessage());
         }
@@ -108,6 +110,7 @@ public class Root extends Menu {
 
     public void addSource(String srcFileName)
     throws TarException {
+        Notifier.getNotifier().addNotifyMessage(new MSGAddingSource());
         Path srcPath = Paths.get(srcFileName);
         if(! srcPath.toFile().exists())
             throw new TarException("cannot found source file or directory " + srcFileName);
@@ -134,6 +137,8 @@ public class Root extends Menu {
                 throw new TarException("cannot discover directory: " + e.getMessage());
             }
         }
+
+        Notifier.getNotifier().addNotifyMessage(new MSGAddedSource());
     }
 
     public void discoverDirectory(Menu m, Path p)
@@ -231,6 +236,7 @@ public class Root extends Menu {
             Notifier.getNotifier().addNotifyMessage(new MSGDumpingIndex());
             dumpIndex(out);
             out.close();
+            Notifier.getNotifier().addNotifyMessage(new MSGDumpedIndex());
         } catch (IOException e) {
             throw new TarException(e.getMessage());
         }

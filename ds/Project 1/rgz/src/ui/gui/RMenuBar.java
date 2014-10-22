@@ -24,13 +24,14 @@ public class RMenuBar extends JMenuBar {
     }
 
     JMenuItem compressMenuItem, addSourceMenuItem;
-    JMenu dcmMenu, dcMenu, caMenu, configMenu;
+    JMenu dcmMenu, dcMenu, caMenu, configMenu, fileMenu, helpMenu;
 
     public void loadMenuBarConfig() {
         JMenuItem menuItem;
 
         // File Menu
         JMenu menu = new JMenu("File");
+        fileMenu = menu;
         menu.setMnemonic('F');
         add(menu);
 
@@ -222,6 +223,7 @@ public class RMenuBar extends JMenuBar {
 
         // Help Menu
         menu = new JMenu("Help");
+        helpMenu = menu;
         menu.setMnemonic('H');
         add(menu);
 

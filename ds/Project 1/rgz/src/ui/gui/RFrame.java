@@ -1,5 +1,6 @@
 package ui.gui;
 
+import core.notify.*;
 import core.tar.FileNode;
 import core.tar.Root;
 import excs.*;
@@ -29,6 +30,8 @@ public class RFrame extends JFrame {
     private RMenuTreeViewer treeViewer;
     private RInfoViewer infoViewer;
     private Config conf;
+    private JProgressBar mainProgressBar, subProgressBar;
+    Thread runningThread = null;
 
     public static RFrame getFrame() {
         if(theFrame == null) {
@@ -45,7 +48,7 @@ public class RFrame extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         // set Size
-        setSize(600, 450);
+        setSize(600, 500);
 
         // set Location to the middle of window
         setLocationRelativeTo(null);
@@ -71,6 +74,84 @@ public class RFrame extends JFrame {
             // never reach here
             e.printStackTrace();
         }
+
+        // load notifier
+        loadNotifier();
+    }
+
+    private void loadNotifier() {
+        Notifier notifier = Notifier.getNotifier();
+
+        notifier.register(MSGDCMCompressNew.class, msg -> {
+            putNormalInfo("  Compressing: " + msg.getPath());
+            mainProgressBar.setStringPainted(true);
+            mainProgressBar.setMaximum(msg.getTotFile());
+            mainProgressBar.setValue(msg.getNFile());
+        });
+
+        notifier.register(MSGBlockDCMStartNew.class, msg -> {
+            subProgressBar.setStringPainted(true);
+            subProgressBar.setString(String.format("Processing Block %d/%d",
+                msg.getNumberBlock(), msg.getTotalBlock()));
+            subProgressBar.setMaximum(msg.getTotalBlock());
+            subProgressBar.setValue(msg.getNumberBlock());
+        });
+
+        notifier.register(MSGLoadingIndex.class, msg -> {
+            putNormalInfo("  Loading index");
+            mainProgressBar.setString("Loading Index ...");
+            mainProgressBar.setIndeterminate(true);
+        });
+
+        notifier.register(MSGLoadedIndex.class, msg -> {
+            putNormalInfo("  Loaded index");
+            mainProgressBar.setString("");
+            mainProgressBar.setIndeterminate(false);
+        });
+
+        notifier.register(MSGDumpingIndex.class, msg -> {
+            putNormalInfo("  Dumping index");
+            mainProgressBar.setString("  Dumping index");
+            mainProgressBar.setIndeterminate(true);
+        });
+
+        notifier.register(MSGDumpedIndex.class, msg -> {
+            putNormalInfo("  Dumped Index, update info");
+            mainProgressBar.setString("");
+            subProgressBar.setString("");
+            mainProgressBar.setIndeterminate(false);
+            rootUpdated = false;
+            updateMenuState();
+            root.remarkSize();
+            treeViewer.buildFromRoot(root);
+            try {
+                runningThread.join();
+            } catch (InterruptedException e) {
+                putErrorInfo("Join thread failed: " + e.getMessage());
+            }
+        });
+
+        notifier.register(MSGAddingSource.class, msg -> mainProgressBar.setIndeterminate(true));
+        notifier.register(MSGTarBuildingIndex.class, msg ->
+            putNormalInfo("  Found source file: " + msg.getPath()));
+        notifier.register(MSGAddedSource.class, msg -> mainProgressBar.setIndeterminate(false));
+    }
+
+    private void disableFrontEnd() {
+        treeViewer.setEnabled(false);
+        menuBar.configMenu.setEnabled(false);
+        menuBar.fileMenu.setEnabled(false);
+        menuBar.helpMenu.setEnabled(false);
+        tableViewer.setEnabled(false);
+    }
+
+    private void enableFrontEnd() {
+        treeViewer.setEnabled(true);
+        menuBar.configMenu.setEnabled(true);
+        menuBar.fileMenu.setEnabled(true);
+        menuBar.helpMenu.setEnabled(true);
+        tableViewer.setEnabled(true);
+
     }
 
     private void setUpLayout() {
@@ -82,29 +163,47 @@ public class RFrame extends JFrame {
         treeViewer = new RMenuTreeViewer();
         tableViewer = new RMenuTableViewer();
         infoViewer = new RInfoViewer();
+        mainProgressBar = new JProgressBar(0, 100);
+        subProgressBar = new JProgressBar(0, 100);
 
         // add to layout
         c.fill = GridBagConstraints.BOTH;
         c.gridx = 0;
         c.gridy = 0;
         c.weightx = 0.2;
-        c.weighty = 0.7;
+        c.weighty = 0.6;
         add(new JScrollPane(treeViewer), c);
 
         c.fill = GridBagConstraints.BOTH;
         c.gridx = 1;
         c.gridy = 0;
         c.weightx = 0.8;
-        c.weighty = 0.7;
+        c.weighty = 0.6;
         add(new JScrollPane(tableViewer), c);
 
         c.fill = GridBagConstraints.BOTH;
         c.gridx = 0;
         c.gridy = 1;
         c.weightx = 1.0;
-        c.weighty = 0.3;
+        c.weighty = 0.34;
         c.gridwidth = 2;
         add(new JScrollPane(infoViewer), c);
+
+        c.fill = GridBagConstraints.BOTH;
+        c.gridx = 0;
+        c.gridy = 2;
+        c.weightx = 1.0;
+        c.weighty = 0.03;
+        c.gridwidth = 2;
+        add(mainProgressBar, c);
+
+        c.fill = GridBagConstraints.BOTH;
+        c.gridx = 0;
+        c.gridy = 3;
+        c.weightx = 1.0;
+        c.weighty = 0.03;
+        c.gridwidth = 2;
+        add(subProgressBar, c);
 
         // sync menu
         updateMenuState();
@@ -113,6 +212,8 @@ public class RFrame extends JFrame {
         treeViewer.setVisible(true);
         tableViewer.setVisible(true);
         infoViewer.setVisible(true);
+        mainProgressBar.setVisible(true);
+        subProgressBar.setVisible(true);
     }
 
     private boolean checkRootUpdated() {
@@ -187,17 +288,24 @@ public class RFrame extends JFrame {
 
         if(retVal == JFileChooser.APPROVE_OPTION) {
             File f = fc.getSelectedFile();
-            try {
-                root.addSource(f.getPath());
-            } catch (TarException e) {
-                putErrorInfo(e.getMessage());
-                root = null;
-            }
-        }
+            runningThread = new Thread() {
+                public void run() {
+                    try {
+                        root.addSource(f.getPath());
+                    } catch (TarException e) {
+                        putErrorInfo(e.getMessage());
+                        root = null;
+                    }
 
-        // update
-        treeViewer.buildFromRoot(root);
-        setCurrentFileNode(root);
+                    // update
+                    treeViewer.buildFromRoot(root);
+                    setCurrentFileNode(root);
+                    enableFrontEnd();
+                }
+            };
+            disableFrontEnd();
+            runningThread.start();
+        }
     }
 
     void compress() {
@@ -208,7 +316,6 @@ public class RFrame extends JFrame {
         int retVal = fc.showOpenDialog(this);
 
         if(retVal == JFileChooser.APPROVE_OPTION) {
-            putNormalInfo("Starting compress ...");
             File f = fc.getSelectedFile();
             if(f.exists()) {
                 int choice = JOptionPane.showConfirmDialog(
@@ -222,20 +329,20 @@ public class RFrame extends JFrame {
                 }
             }
 
-            try {
-                root.compress(f.getAbsolutePath(), conf);
-            } catch (TarException | DCException e) {
-                putErrorInfo(e.getMessage());
-                return;
-            }
+            putNormalInfo("Starting compress ...");
+            disableFrontEnd();
+            runningThread = new Thread() {
+                public void run() {
+                    try {
+                        root.compress(f.getAbsolutePath(), conf);
+                    } catch (TarException | DCException e) {
+                        e.printStackTrace();
+                    }
+                    enableFrontEnd();
+                }
+            };
 
-            putNormalInfo("Compress done, updating info ...");
-
-            rootUpdated = false;
-            updateMenuState();
-            root.remarkSize();
-            treeViewer.buildFromRoot(root);
-            putNormalInfo("info updated.");
+            runningThread.start();
         }
     }
 
