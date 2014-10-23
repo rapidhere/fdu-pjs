@@ -22,7 +22,7 @@ public class Notifier {
 
     private BlockingQueue<NotifyMessage> messageQueue = new LinkedBlockingQueue<>();
 
-    synchronized public static Notifier getNotifier() {
+    public static Notifier getNotifier() {
         if(theNotifier == null) {
             theNotifier = new Notifier();
         }
@@ -43,7 +43,7 @@ public class Notifier {
         return (ArrayList<NotifyListener<T>>) notifyListeners.get(msgClass);
     }
 
-    synchronized public <T extends NotifyMessage> void notify(T msg) {
+    public <T extends NotifyMessage> void notify(T msg) {
         ArrayList<? extends NotifyListener> listeners = notifyListeners.get(msg.getClass());
         if(listeners == null)
             return;
@@ -52,7 +52,7 @@ public class Notifier {
             listener.notify(msg);
     }
 
-    synchronized public <T extends NotifyMessage> void
+    public <T extends NotifyMessage> void
     register(Class<T> msgClass, NotifyListener<T> listener) {
         if(notifyListeners.get(msgClass) == null) {
             notifyListeners.put(msgClass, new ArrayList<>());

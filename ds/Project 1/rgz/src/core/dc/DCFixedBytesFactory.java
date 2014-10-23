@@ -13,6 +13,7 @@ public class DCFixedBytesFactory extends DCFactory<FixedBytesToken> {
     DCRaw<FixedBytesToken> dcRaw = new DCRaw<>();
     BlockDCM<FixedBytesToken> blockDCM = new BlockDCM<>();
     CatchFixedBytesAlgorithm ca = new CatchFixedBytesAlgorithm();
+    SequentialBlockDCM<FixedBytesToken> sequentialBlockDCM = new SequentialBlockDCM<>();
 
     public DCFixedBytesFactory() {
     }
@@ -35,6 +36,11 @@ public class DCFixedBytesFactory extends DCFactory<FixedBytesToken> {
     @Override
     public BlockDCM<FixedBytesToken> getBlockDCM() {
         return blockDCM;
+    }
+
+    @Override
+    public SequentialBlockDCM<FixedBytesToken> getSequentialDCM() {
+        return sequentialBlockDCM;
     }
 }
 

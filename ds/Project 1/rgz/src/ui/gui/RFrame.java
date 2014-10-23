@@ -406,7 +406,7 @@ public class RFrame extends JFrame {
             runningThread = new Thread() {
                 public void run() {
                     try {
-                        root.decompress(outputDir.getAbsolutePath(), fns, srcFile.getPath(), 0);
+                        root.decompress(outputDir.getAbsolutePath(), fns, srcFile.getPath());
                     } catch (TarException | DCException e) {
                         Notifier.getNotifier().addNotifyMessage(new MSGDecompressDone());
                         putErrorInfo(e.getMessage());

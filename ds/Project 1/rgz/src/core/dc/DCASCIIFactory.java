@@ -13,6 +13,7 @@ public class DCASCIIFactory extends DCFactory<ASCIIToken> {
     DCHuffmanAlgorithm<ASCIIToken> dcHuffman = new DCHuffmanAlgorithm<>();
     BlockDCM<ASCIIToken> blockDCM = new BlockDCM<>();
     CatchASCIIAlgorithm ca = new CatchASCIIAlgorithm();
+    SequentialBlockDCM<ASCIIToken> sequentialBlockDCM = new SequentialBlockDCM<>();
 
     @Override
     public DCHuffmanAlgorithm<ASCIIToken> getHuffmanDC() {return dcHuffman;}
@@ -30,6 +31,11 @@ public class DCASCIIFactory extends DCFactory<ASCIIToken> {
     @Override
     public BlockDCM<ASCIIToken> getBlockDCM() {
         return blockDCM;
+    }
+
+    @Override
+    public SequentialBlockDCM<ASCIIToken> getSequentialDCM() {
+        return sequentialBlockDCM;
     }
 }
 

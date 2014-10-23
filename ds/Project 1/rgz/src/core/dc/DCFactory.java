@@ -14,6 +14,7 @@ abstract public class DCFactory <T extends Token> {
     abstract public DCRaw<T> getRawDC();
     abstract public CatchAlgorithm<T> getCA();
     abstract public BlockDCM<T> getBlockDCM();
+    abstract public SequentialBlockDCM<T> getSequentialDCM();
 
     public DCM<T> getDCM(byte dcmId, byte algId) {
         DCAlgorithm<T> alg = null;
@@ -27,7 +28,8 @@ abstract public class DCFactory <T extends Token> {
 
         DCM<T> dcm = null;
         switch (dcmId) {
-            case Config.DCM_BLOCK: dcm =  getBlockDCM(); break;
+            case Config.DCM_BLOCK: dcm = getBlockDCM(); break;
+            case Config.DCM_SEQ_BLOCK: dcm = getSequentialDCM(); break;
         }
 
         assert dcm != null;

@@ -13,6 +13,7 @@ public class DCFixedBitsFactory extends DCFactory<FixedBitsToken> {
     DCRaw<FixedBitsToken> dcRaw = new DCRaw<>();
     BlockDCM<FixedBitsToken> blockDCM = new BlockDCM<>();
     CatchFixedBitsAlgorithm ca = new CatchFixedBitsAlgorithm();
+    SequentialBlockDCM<FixedBitsToken> sequentialBlockDCM = new SequentialBlockDCM<>();
 
     @Override
     public DCHuffmanAlgorithm<FixedBitsToken> getHuffmanDC() {
@@ -32,6 +33,11 @@ public class DCFixedBitsFactory extends DCFactory<FixedBitsToken> {
     @Override
     public BlockDCM<FixedBitsToken> getBlockDCM() {
         return blockDCM;
+    }
+
+    @Override
+    public SequentialBlockDCM<FixedBitsToken> getSequentialDCM() {
+        return sequentialBlockDCM;
     }
 }
 class FixedBitsToken extends Token <BitArray> {

@@ -54,6 +54,7 @@ final public class Config {
     throws UnknownDCMId {
         switch (dcmId) {
             case DCM_BLOCK: this.dcmId = dcmId; return;
+            case DCM_SEQ_BLOCK: this.dcmId = dcmId; return;
         }
 
         throw new UnknownDCMId(dcmId);
@@ -132,6 +133,7 @@ final public class Config {
 
     // DC_MAN
     public static final byte DCM_BLOCK = 0;
+    public static final byte DCM_SEQ_BLOCK = 1;
 
     // only for test
     public static long startTime, endTime;

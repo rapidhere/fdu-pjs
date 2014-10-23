@@ -97,32 +97,32 @@ public class RMenuBar extends JMenuBar {
             try {
                 switch (index) {
                     case 0:
-                        conf.setDcmId(Config.DCM_BLOCK);
-                        conf.getFactory().getBlockDCM().setBlockSize(64 * 1024);
+                        conf.setDcmId(Config.DCM_SEQ_BLOCK);
+                        conf.getFactory().getSequentialDCM().setBlockSize(64 * 1024);
                         break;
                     case 1:
-                        conf.setDcmId(Config.DCM_BLOCK);
-                        conf.getFactory().getBlockDCM().setBlockSize(128 * 1024);
+                        conf.setDcmId(Config.DCM_SEQ_BLOCK);
+                        conf.getFactory().getSequentialDCM().setBlockSize(128 * 1024);
                         break;
                     case 2:
-                        conf.setDcmId(Config.DCM_BLOCK);
-                        conf.getFactory().getBlockDCM().setBlockSize(256 * 1024);
+                        conf.setDcmId(Config.DCM_SEQ_BLOCK);
+                        conf.getFactory().getSequentialDCM().setBlockSize(256 * 1024);
                         break;
                     case 3:
-                        conf.setDcmId(Config.DCM_BLOCK);
-                        conf.getFactory().getBlockDCM().setBlockSize(512 * 1024);
+                        conf.setDcmId(Config.DCM_SEQ_BLOCK);
+                        conf.getFactory().getSequentialDCM().setBlockSize(512 * 1024);
                         break;
                     case 4:
-                        conf.setDcmId(Config.DCM_BLOCK);
-                        conf.getFactory().getBlockDCM().setBlockSize(1024 * 1024);
+                        conf.setDcmId(Config.DCM_SEQ_BLOCK);
+                        conf.getFactory().getSequentialDCM().setBlockSize(1024 * 1024);
                         break;
                     case 5:
-                        conf.setDcmId(Config.DCM_BLOCK);
-                        conf.getFactory().getBlockDCM().setBlockSize(4 * 1024 * 1024);
+                        conf.setDcmId(Config.DCM_SEQ_BLOCK);
+                        conf.getFactory().getSequentialDCM().setBlockSize(4 * 1024 * 1024);
                         break;
                     case 6:
-                        conf.setDcmId(Config.DCM_BLOCK);
-                        conf.getFactory().getBlockDCM().setBlockSize(16 * 1024 * 1024);
+                        conf.setDcmId(Config.DCM_SEQ_BLOCK);
+                        conf.getFactory().getSequentialDCM().setBlockSize(16 * 1024 * 1024);
                         break;
                 }
             } catch (UnknownDCMId e) {

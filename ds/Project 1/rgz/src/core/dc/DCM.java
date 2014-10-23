@@ -26,5 +26,5 @@ abstract public class DCM<T extends Token> {
     }
 
     abstract public void compress(InputStream in, OutputStream out, SequentialThreadingPool tp) throws DCException;
-    abstract public void decompress(InputStream in, OutputStream out, SequentialThreadingPool tp) throws DCException;
+    abstract public void decompress(InputStream in, OutputStream out) throws DCException;
 }

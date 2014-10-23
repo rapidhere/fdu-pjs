@@ -53,7 +53,7 @@ public class CommandLineInterface {
     private Option<Boolean> optionCompress;
     private Option<Boolean> optionDecompress;
     private Option<String>  optionDecompressRoot;
-    //private Option<Integer> optionNumThreads;
+    private Option<Integer> optionNumThreads;
     private Option<String>  optionDCAlgorithm;
     private Option<String>  optionCAAlgorithm;
     private Option<String>  optionDCM;
@@ -62,36 +62,43 @@ public class CommandLineInterface {
 
     public Config conf = new Config();
 
-    public void loadDCM(String dcmString)
+    public void loadDCM(String dcmString, int nThread)
         throws RGZException {
         switch (dcmString) {
             case DCM_BLOCK_64K:
-                conf.setDcmId(Config.DCM_BLOCK);
+                conf.setDcmId(nThread >= 2 ? Config.DCM_BLOCK : Config.DCM_SEQ_BLOCK);
                 conf.getFactory().getBlockDCM().setBlockSize(64 * 1024);
+                conf.getFactory().getSequentialDCM().setBlockSize(64 * 1024);
                 break;
             case DCM_BLOCK_128K:
-                conf.setDcmId(Config.DCM_BLOCK);
+                conf.setDcmId(nThread >= 2 ? Config.DCM_BLOCK : Config.DCM_SEQ_BLOCK);
                 conf.getFactory().getBlockDCM().setBlockSize(128 * 1024);
+                conf.getFactory().getSequentialDCM().setBlockSize(128 * 1024);
                 break;
             case DCM_BLOCK_256K:
-                conf.setDcmId(Config.DCM_BLOCK);
+                conf.setDcmId(nThread >= 2 ? Config.DCM_BLOCK : Config.DCM_SEQ_BLOCK);
                 conf.getFactory().getBlockDCM().setBlockSize(256 * 1024);
+                conf.getFactory().getSequentialDCM().setBlockSize(256 * 1024);
                 break;
             case DCM_BLOCK_512K:
-                conf.setDcmId(Config.DCM_BLOCK);
+                conf.setDcmId(nThread >= 2 ? Config.DCM_BLOCK : Config.DCM_SEQ_BLOCK);
                 conf.getFactory().getBlockDCM().setBlockSize(512 * 1024);
+                conf.getFactory().getSequentialDCM().setBlockSize(512 * 1024);
                 break;
             case DCM_BLOCK_1M:
-                conf.setDcmId(Config.DCM_BLOCK);
+                conf.setDcmId(nThread >= 2 ? Config.DCM_BLOCK : Config.DCM_SEQ_BLOCK);
                 conf.getFactory().getBlockDCM().setBlockSize(1024 * 1024);
+                conf.getFactory().getSequentialDCM().setBlockSize(1024 * 1024);
                 break;
             case DCM_BLOCK_4M:
-                conf.setDcmId(Config.DCM_BLOCK);
+                conf.setDcmId(nThread >= 2 ? Config.DCM_BLOCK : Config.DCM_SEQ_BLOCK);
                 conf.getFactory().getBlockDCM().setBlockSize(4 * 1024 * 1024);
+                conf.getFactory().getSequentialDCM().setBlockSize(4 * 1024 * 1024);
                 break;
             case DCM_BLOCK_16M:
-                conf.setDcmId(Config.DCM_BLOCK);
+                conf.setDcmId(nThread >= 2 ? Config.DCM_BLOCK : Config.DCM_SEQ_BLOCK);
                 conf.getFactory().getBlockDCM().setBlockSize(16 * 1024 * 1024);
+                conf.getFactory().getSequentialDCM().setBlockSize(16 * 1024 * 1024);
                 break;
             default:
                 throw new RGZException("unknown dcm " + dcmString);
@@ -201,7 +208,7 @@ public class CommandLineInterface {
         optionCompress          = parser.addBooleanOption('c', "compress");
         optionDecompress        = parser.addBooleanOption('d', "decompress");
         optionDecompressRoot    = parser.addStringOption('o', "output");
-        //optionNumThreads        = parser.addIntegerOption('j', "threads");
+        optionNumThreads        = parser.addIntegerOption('j', "threads");
         optionDCAlgorithm       = parser.addStringOption("dc-algorithm");
         optionCAAlgorithm       = parser.addStringOption("ca-algorithm");
         optionDCM               = parser.addStringOption("dcm");
@@ -323,12 +330,12 @@ public class CommandLineInterface {
                 String dcmSting = parser.getOptionValue(optionDCM, DCM_BLOCK_256K);
 
                 // load dc
+                int nThread = parser.getOptionValue(optionNumThreads, 0);
                 loadCA(caString);
                 loadDC(dcString);
-                loadDCM(dcmSting);
+                loadDCM(dcmSting, nThread);
 
-                // compress
-                root.compress(srcFile, conf, 4);
+                root.compress(srcFile, conf, nThread);
                 System.exit(0);
             } else if(parser.getOptionValue(optionDecompress, false)) {
                 root.loadIndexFromFile(srcFile);
@@ -347,7 +354,7 @@ public class CommandLineInterface {
                 }
 
                 // decompress
-                root.decompress(outputRoot, fn.toArray(new FileNode[fn.size()]), srcFile, 0);
+                root.decompress(outputRoot, fn.toArray(new FileNode[fn.size()]), srcFile);
 
                 System.exit(0);
             } else if(parser.getOptionValue(optionListUp, false)) {
@@ -361,6 +368,8 @@ public class CommandLineInterface {
                     listUp(fn, 0);
                     System.out.println();
                 }
+
+                System.exit(0);
             } else {
                 System.err.println("Nothing to do!");
                 System.exit(1);
