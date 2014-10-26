@@ -68,8 +68,8 @@ public class RFrame extends JFrame {
             conf = new Config();
             conf.setFcId(Config.FACTORY_ASCII);
             conf.setDcId(Config.DC_HUFFMAN);
-            conf.setDcmId(Config.DCM_BLOCK);
-            conf.getFactory().getBlockDCM().setBlockSize(64 * 1024);
+            conf.setDcmId(Config.DCM_SEQ_BLOCK);
+            conf.getFactory().getSequentialDCM().setBlockSize(64 * 1024);
         } catch (UnknownFactoryId | UnknownDCMId | UnknownDCAlgorithmId e) {
             // never reach here
             e.printStackTrace();
@@ -360,6 +360,8 @@ public class RFrame extends JFrame {
                     return ;
                 }
             }
+
+            srcFile = f;
 
             putNormalInfo("Starting compress ...");
             disableFrontEnd();
