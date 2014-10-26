@@ -25,11 +25,12 @@ public class Menu extends FileNode {
         // this is a menu, write 0
         out.write(127);
 
+        byte[] nameBytes = getName().getBytes();
         // write name
         for(int i = 0;i < 4;i ++) {
-            out.write((byte) ((getName().length() >> (i * 8)) & 0xff));
+            out.write((byte) ((nameBytes.length >> (i * 8)) & 0xff));
         } 
-        out.write(getName().getBytes());
+        out.write(nameBytes);
 
         // dump children
         int childrenCount = children.size();
@@ -54,14 +55,14 @@ public class Menu extends FileNode {
         }
 
         // read name
-        char[] name = new char[nameLength];
+        byte[] name = new byte[nameLength];
         for(int i = 0;i < nameLength;i ++) {
             int c = in.read();
             if(c == -1)
                 throw new TarException("load index failed: wrong index format - cannot get name");
-            name[i] = (char)c;
+            name[i] = (byte)c;
         }
-        setName(String.valueOf(name));
+        setName(new String(name, 0, nameLength));
 
         // load children
         // get children count
