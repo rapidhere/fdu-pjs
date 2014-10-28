@@ -9,15 +9,32 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 
+/**
+ * Copyright : all rights reserved,rapidhere@gmail.com
+ * Mail: rapidhere@gmail.com
+ * do translate on bytes to tokens
+ * Translate fixed size bits into a token
+ *
+ * WARNING: this algorithm is not fully tested and have serious problems
+ */
+
 public class CatchFixedBitsAlgorithm implements CatchAlgorithm <FixedBitsToken> {
     public CatchFixedBitsAlgorithm() {}
 
     private byte bitLength;
 
+    /**
+     * set the length of the fixed bit
+     * @param bitLength
+     */
     public void setBitLength(byte bitLength) {
         this.bitLength = bitLength;
     }
 
+    /**
+     * get the fixed length of the bit
+     * @return
+     */
     public byte getBitLength() {
         return bitLength;
     }
@@ -61,7 +78,7 @@ public class CatchFixedBitsAlgorithm implements CatchAlgorithm <FixedBitsToken> 
         }
     }
 
-    static int gcd(int a, int b) {
+    static private int gcd(int a, int b) {
         if(a < b)
             return gcd(b, a);
 

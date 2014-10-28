@@ -3,9 +3,7 @@ package core.dc;
 /**
  * Copyright : all rights reserved,rapidhere@gmail.com
  * Mail: rapidhere@gmail.com
- * Class :
- * Version :
- * Usage :
+ * The factory based on ASCII tokens
  */
 
 public class DCASCIIFactory extends DCFactory<ASCIIToken> {
@@ -39,6 +37,9 @@ public class DCASCIIFactory extends DCFactory<ASCIIToken> {
     }
 }
 
+/**
+ * the token used by ASCII Factory
+ */
 class ASCIIToken extends Token <Byte> {
     @Override
     public int hashCode() {

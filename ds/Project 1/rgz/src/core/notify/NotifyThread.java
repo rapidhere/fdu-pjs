@@ -3,13 +3,16 @@ package core.notify;
 /**
  * Copyright : all rights reserved,rapidhere@gmail.com
  * Mail: rapidhere@gmail.com
- * Class :
- * Version :
- * Usage :
+ * The thread to run notifier
+ * SINGLETON
  */
 public class NotifyThread extends Thread {
     public static NotifyThread notifyThread;
 
+    /**
+     * get the only notify thread in the program
+     * @return the only notify thread
+     */
     public static NotifyThread getNotifyThread() {
         if(notifyThread == null) {
             notifyThread = new NotifyThread();

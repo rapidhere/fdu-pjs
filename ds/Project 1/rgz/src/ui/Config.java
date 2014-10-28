@@ -11,9 +11,6 @@ import java.io.OutputStream;
 /**
  * Copyright : all rights reserved,rapidhere@gmail.com
  * Mail: rapidhere@gmail.com
- * Class :
- * Version :
- * Usage :
  */
 final public class Config {
     public static String version = "ver 0.1";
@@ -22,17 +19,35 @@ final public class Config {
     private byte dcmId;
     private byte dcId;
 
+    /**
+     * get the factory of config
+     * @return the factory
+     */
     public DCFactory getFactory() {
         return factory;
     }
+
+    /**
+     * get the dcm
+     * @return the dcm
+     */
     public DCM getDCM() {
         return getFactory().getDCM(dcmId, dcId);
     }
 
+    /**
+     * set the factory of config
+     * @param factory the factory
+     */
     public void setFactory(DCFactory factory) {
         this.factory = factory;
     }
 
+    /**
+     * set the factory id
+     * @param fcId the factory id
+     * @throws UnknownFactoryId
+     */
     public void setFcId(byte fcId) throws UnknownFactoryId {
         try {
             this.factory = getFactoryById(fcId).newInstance();
@@ -41,6 +56,11 @@ final public class Config {
         }
     }
 
+    /**
+     * set the dc id
+     * @param dcId the dc id
+     * @throws UnknownDCAlgorithmId
+     */
     public void setDcId(byte dcId)
     throws UnknownDCAlgorithmId {
         switch (dcId) {
@@ -50,6 +70,11 @@ final public class Config {
         throw new UnknownDCAlgorithmId(dcId);
     }
 
+    /**
+     * set the dcm id
+     * @param dcmId dcm id
+     * @throws UnknownDCMId
+     */
     public void setDcmId(byte dcmId)
     throws UnknownDCMId {
         switch (dcmId) {
@@ -60,6 +85,11 @@ final public class Config {
         throw new UnknownDCMId(dcmId);
     }
 
+    /**
+     * dump config info to output stream
+     * @param out the output stream
+     * @throws DCException
+     */
     public void dumpMeta(OutputStream out)
     throws DCException {
         try {
@@ -75,6 +105,11 @@ final public class Config {
         }
     }
 
+    /**
+     * load meta from input stream
+     * @param in the input stream
+     * @throws DCException
+     */
     public void loadMeta(InputStream in)
     throws DCException {
         try {
@@ -134,17 +169,4 @@ final public class Config {
     // DC_MAN
     public static final byte DCM_BLOCK = 0;
     public static final byte DCM_SEQ_BLOCK = 1;
-
-    // only for test
-    public static long startTime, endTime;
-    public static long totalTime = 0;
-
-    public static void markStart() {
-        startTime = System.nanoTime();
-    }
-
-    public static void markEnd() {
-        endTime = System.nanoTime();
-        totalTime += endTime - startTime;
-    }
 }

@@ -5,6 +5,13 @@ import javafx.util.Pair;
 
 import java.util.ArrayList;
 
+/**
+ * Copyright : all rights reserved,rapidhere@gmail.com
+ * Mail: rapidhere@gmail.com
+ * do translate on bytes to tokens
+ * Catch as ASCII codes
+ */
+
 public class CatchASCIIAlgorithm implements CatchAlgorithm <ASCIIToken> {
     @Override
     public byte[] dump(ArrayList<ASCIIToken> tokens)

@@ -9,9 +9,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 /**
  * Copyright : all rights reserved,rapidhere@gmail.com
  * Mail: rapidhere@gmail.com
- * Class :
- * Version :
- * Usage :
+ * The OutputStream can count bytes, threading safe
  */
 public class CountableBufferedOutputStream extends BufferedOutputStream {
     int wroteBytes;
@@ -22,9 +20,17 @@ public class CountableBufferedOutputStream extends BufferedOutputStream {
         wroteBytes = 0;
     }
 
+    /**
+     * get wrote bytes of this stream
+     * @return wrote bytes
+     */
     public int getWroteBytes() {
         return wroteBytes;
     }
+
+    /**
+     * clear the counter
+     */
     public void clearCounter() {wroteBytes = 0;}
 
     @Override

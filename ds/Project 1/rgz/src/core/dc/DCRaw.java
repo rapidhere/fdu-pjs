@@ -7,9 +7,7 @@ import java.util.ArrayList;
 /**
  * Copyright : all rights reserved,rapidhere@gmail.com
  * Mail: rapidhere@gmail.com
- * Class :
- * Version :
- * Usage :
+ * Raw dc: get something and just put it back
  */
 public class DCRaw <T extends Token> implements DCAlgorithm<T>{
     @Override

@@ -9,16 +9,22 @@ import java.io.OutputStream;
 /**
  * Copyright : all rights reserved,rapidhere@gmail.com
  * Mail: rapidhere@gmail.com
- * Class :
- * Version :
- * Usage :
+ * Regular file is the content of the tree
  */
 
 public class RegularFile extends FileNode {
+    /**
+     * get the offset in the tar file
+     * @return
+     */
     public int getDataOffset() {
         return dataOffset;
     }
 
+    /**
+     * set the offset in the tar file
+     * @param dataOffset
+     */
     public void setDataOffset(int dataOffset) {
         this.dataOffset = dataOffset;
     }

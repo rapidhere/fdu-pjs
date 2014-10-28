@@ -12,9 +12,7 @@ import java.util.HashMap;
 /**
  * Copyright : all rights reserved,rapidhere@gmail.com
  * Mail: rapidhere@gmail.com
- * Class :
- * Version :
- * Usage :
+ * A Menu is the container in the file node
  */
 public class Menu extends FileNode {
     protected HashMap<String, FileNode> children = new HashMap<>();
@@ -116,6 +114,11 @@ public class Menu extends FileNode {
         return compressedSize;
     }
 
+    /**
+     * find a file node in current menu
+     * @param pathString the path string
+     * @return the file node if found or null
+     */
     public FileNode findFileNode(String pathString) {
         Path path = Paths.get(pathString).normalize();
 
@@ -131,6 +134,11 @@ public class Menu extends FileNode {
         return cur;
     }
 
+    /**
+     * add the file node as a child into menu
+     * @param fn file node
+     * @throws TarException
+     */
     public void addFileNode(FileNode fn) throws TarException {
         if(children.containsKey(fn.getName()))
             throw new TarException(fn.getName() + "is already existed");
@@ -138,10 +146,19 @@ public class Menu extends FileNode {
         size = compressedSize = -1;
     }
 
+    /**
+     * get the children array
+     * @return array of file nodes
+     */
     public FileNode[] getChildren() {
         return children.values().toArray(new FileNode[children.size()]);
     }
 
+    /**
+     * find a child by name
+     * @param name the name
+     * @return the child or null
+     */
     public FileNode findChild(String name) {
         if(name.equals(".") || name.equals(""))
             return this;
@@ -149,6 +166,11 @@ public class Menu extends FileNode {
         return children.get(name);
     }
 
+    /**
+     * test if menu has this child
+     * @param name the name of child
+     * @return true if has
+     */
     public boolean hasChild(String name) {
         return children.containsKey(name);
     }

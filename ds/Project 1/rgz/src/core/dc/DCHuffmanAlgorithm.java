@@ -3,25 +3,27 @@ package core.dc;
 import excs.BitArrayException;
 import excs.DCException;
 import javafx.util.Pair;
-import ui.Config;
-
 import java.util.*;
 import java.util.concurrent.LinkedBlockingQueue;
 
 /**
  * Copyright : all rights reserved,rapidhere@gmail.com
  * Mail: rapidhere@gmail.com
- * Class :
- * Version :
- * Usage :
+ * The huffman tree DC algorithm
  */
 
 public class DCHuffmanAlgorithm<T extends Token> implements DCAlgorithm<T> {
-    interface TokenArgMerger {
+    /**
+     * used in huffman tree building
+     */
+    private interface TokenArgMerger {
         int merge(int key1, int key2);
     }
 
-    class IncInteger {
+    /**
+     * a small trick in put map
+     */
+    private class IncInteger {
         int val;
 
         IncInteger() {val = 0;}
@@ -306,6 +308,10 @@ public class DCHuffmanAlgorithm<T extends Token> implements DCAlgorithm<T> {
     }
 }
 
+/**
+ * Huffman tress
+ * @param <T> the token used in the huffman tree
+ */
 abstract class AbstractHuffmanTreeNode <T extends Token>{
     abstract public T getToken();
     abstract public AbstractHuffmanTreeNode<T> getLeftTree();
@@ -313,6 +319,10 @@ abstract class AbstractHuffmanTreeNode <T extends Token>{
     abstract public boolean isLeaf();
 }
 
+/**
+ * the tree node, not leaf
+ * @param <T> the token used in huffman tree
+ */
 class HuffmanTreeNode <T extends Token> extends AbstractHuffmanTreeNode <T> {
     AbstractHuffmanTreeNode<T> leftTree, rightTree;
 
@@ -342,6 +352,10 @@ class HuffmanTreeNode <T extends Token> extends AbstractHuffmanTreeNode <T> {
     }
 }
 
+/**
+ * the tree leaf
+ * @param <T> the token used by huffman tree
+ */
 class HuffmanTreeLeaf <T extends Token> extends AbstractHuffmanTreeNode <T> {
     T token;
 

@@ -7,9 +7,8 @@ import java.util.ArrayList;
 /**
  * Copyright : all rights reserved,rapidhere@gmail.com
  * Mail: rapidhere@gmail.com
- * Class :
- * Version :
- * Usage :
+ *
+ * the effective version of BitArray
  */
 public class UnjoinableBitArray {
     private ArrayList<Byte> bits = new ArrayList<>();
@@ -126,6 +125,10 @@ public class UnjoinableBitArray {
         return (byte)(((int)b >> index) & 1);
     }
 
+    /**
+     * add a bit array into bit array
+     * @param ba the bit array to append
+     */
     public void addBitArray(UnjoinableBitArray ba) {
         for(byte b: ba.bits) {
             bits.add((byte)((b << currentByteLength) | currentByte));

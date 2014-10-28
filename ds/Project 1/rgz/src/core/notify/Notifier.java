@@ -9,9 +9,8 @@ import java.util.concurrent.LinkedBlockingQueue;
 /**
  * Copyright : all rights reserved,rapidhere@gmail.com
  * Mail: rapidhere@gmail.com
- * Class :
- * Version :
- * Usage :
+ * Notifier is used to distribute notify messages into listeners
+ * SINGLETON
  */
 
 public class Notifier {
@@ -22,6 +21,10 @@ public class Notifier {
 
     private BlockingQueue<NotifyMessage> messageQueue = new LinkedBlockingQueue<>();
 
+    /**
+     * return the only notifier in the program
+     * @return the singleton notifier
+     */
     public static Notifier getNotifier() {
         if(theNotifier == null) {
             theNotifier = new Notifier();
@@ -29,10 +32,19 @@ public class Notifier {
         return theNotifier;
     }
 
+    /**
+     * add a notify message into queue
+     * @param msg notify message
+     */
     public void addNotifyMessage(NotifyMessage msg) {
         messageQueue.offer(msg);
     }
 
+    /**
+     * poll a notify message from queue, blocking on none
+     * @return a notify message
+     * @throws InterruptedException
+     */
     public NotifyMessage pollNotifyMessage() throws InterruptedException {
         return messageQueue.take();
     }
@@ -43,6 +55,11 @@ public class Notifier {
         return (ArrayList<NotifyListener<T>>) notifyListeners.get(msgClass);
     }
 
+    /**
+     * notify the message to listeners
+     * @param msg the notify message
+     * @param <T> the type of NotifyMessage
+     */
     public <T extends NotifyMessage> void notify(T msg) {
         ArrayList<? extends NotifyListener> listeners = notifyListeners.get(msg.getClass());
         if(listeners == null)
@@ -52,6 +69,12 @@ public class Notifier {
             listener.notify(msg);
     }
 
+    /**
+     * register a listener
+     * @param msgClass the class of message
+     * @param listener the listener
+     * @param <T> the type of message
+     */
     public <T extends NotifyMessage> void
     register(Class<T> msgClass, NotifyListener<T> listener) {
         if(notifyListeners.get(msgClass) == null) {

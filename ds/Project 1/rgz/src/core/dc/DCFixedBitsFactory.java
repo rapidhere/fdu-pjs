@@ -3,9 +3,7 @@ package core.dc;
 /**
  * Copyright : all rights reserved,rapidhere@gmail.com
  * Mail: rapidhere@gmail.com
- * Class :
- * Version :
- * Usage :
+ * The factory base on the FixedBitsTokens
  */
 
 public class DCFixedBitsFactory extends DCFactory<FixedBitsToken> {
@@ -40,6 +38,10 @@ public class DCFixedBitsFactory extends DCFactory<FixedBitsToken> {
         return sequentialBlockDCM;
     }
 }
+
+/**
+ * The token used by fixed bits algorithm
+ */
 class FixedBitsToken extends Token <BitArray> {
     private final int bitLength;
 

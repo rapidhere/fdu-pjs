@@ -3,9 +3,7 @@ package core.notify;
 /**
  * Copyright : all rights reserved,rapidhere@gmail.com
  * Mail: rapidhere@gmail.com
- * Class :
- * Version :
- * Usage :
+ * MSG: the new source has added into root
  */
 public class MSGAddedSource extends NotifyMessage {
     public MSGAddedSource() {}

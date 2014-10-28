@@ -5,9 +5,7 @@ import ui.Config;
 /**
  * Copyright : all rights reserved,rapidhere@gmail.com
  * Mail: rapidhere@gmail.com
- * Class :
- * Version :
- * Usage :
+ * Factory to manage a set of dc, ca, dcm
  */
 abstract public class DCFactory <T extends Token> {
     abstract public DCHuffmanAlgorithm<T> getHuffmanDC();
@@ -41,6 +39,10 @@ abstract public class DCFactory <T extends Token> {
     }
 }
 
+/**
+ * the token of the factory
+ * @param <T> inner data of token
+ */
 abstract class Token<T> implements Comparable<Token<T>> {
     private T token;
 

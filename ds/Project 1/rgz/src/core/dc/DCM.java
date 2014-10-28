@@ -8,9 +8,7 @@ import java.io.OutputStream;
 /**
  * Copyright : all rights reserved,rapidhere@gmail.com
  * Mail: rapidhere@gmail.com
- * Class :
- * Version :
- * Usage :
+ * DCM is the tool to manage dc and ca and do real compress and decompress
  */
 
 abstract public class DCM<T extends Token> {

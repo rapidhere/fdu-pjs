@@ -5,9 +5,7 @@ import core.notify.NotifyThread;
 /**
  * Copyright : all rights reserved,rapidhere@gmail.com
  * Mail: rapidhere@gmail.com
- * Class :
- * Version :
- * Usage :
+ * Entry of the ui
  */
 abstract public class UIEntry {
     abstract protected void run();

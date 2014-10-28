@@ -10,9 +10,8 @@ import java.util.ArrayList;
 /**
  * Copyright : all rights reserved,rapidhere@gmail.com
  * Mail: rapidhere@gmail.com
- * Class :
- * Version :
- * Usage :
+ * do translate on bytes to tokens
+ * Each CatchAlgorithm can only translate a single token
  */
 public interface CatchAlgorithm <T extends Token> {
     /**
@@ -57,8 +56,18 @@ public interface CatchAlgorithm <T extends Token> {
      */
     byte[] merge(ArrayList<T> tokens) throws DCException;
 
+    /**
+     * Dump header of the ca algorithm into output stream
+     * @param out the output stream
+     * @throws DCException
+     */
     default void dumpHeader(OutputStream out) throws DCException {}
 
+    /**
+     * load header of the ca from input stream
+     * @param in the input stream
+     * @throws DCException
+     */
     default void loadHeader(InputStream in) throws DCException {}
 }
 

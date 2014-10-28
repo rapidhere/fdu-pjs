@@ -7,9 +7,7 @@ import java.nio.channels.FileChannel;
 /**
  * Copyright : all rights reserved,rapidhere@gmail.com
  * Mail: rapidhere@gmail.com
- * Class :
- * Version :
- * Usage :
+ * The output stream use memory-mapped file
  */
 public class MemoryMappedFileInputStream extends InputStream {
     private final static int memoryMappedBufferSize = 64 * 1024 * 1024;
@@ -20,6 +18,12 @@ public class MemoryMappedFileInputStream extends InputStream {
     protected FileChannel fc;
     protected long filePosition;
 
+    /**
+     * create a memory-mapped input stream
+     * @param file the file
+     * @param position the position of file
+     * @throws IOException
+     */
     public MemoryMappedFileInputStream(File file, long position)
     throws IOException {
         fc = new FileInputStream(file).getChannel();
@@ -27,7 +31,7 @@ public class MemoryMappedFileInputStream extends InputStream {
         fileSize = fc.size();
     }
 
-    public void fill()
+    private void fill()
     throws IOException {
         length = (int)Math.min(memoryMappedBufferSize, fileSize - filePosition);
 

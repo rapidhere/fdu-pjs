@@ -20,9 +20,7 @@ import java.util.Map;
 /**
  * Copyright : all rights reserved,rapidhere@gmail.com
  * Mail: rapidhere@gmail.com
- * Class :
- * Version :
- * Usage :
+ * Root is the final menu in the tree, and manage decompress/compress of the tree
  */
 public class Root extends Menu {
     Map<RegularFile, String> regularFilePathsMap = new HashMap<>();
@@ -32,6 +30,9 @@ public class Root extends Menu {
         parent = null;
     }
 
+    /**
+     * clear up the root
+     */
     public void reset() {
         regularFilePathsMap.clear();
         children.clear();
@@ -60,10 +61,16 @@ public class Root extends Menu {
         }
         super.loadIndex(in);
 
+        // redundant bytes in the file
         if(in.available() != 0)
             throw new TarException("cannot load index: wrong index format - redundant bytes");
     }
 
+    /**
+     * load index from file
+     * @param srcFile file name
+     * @throws TarException
+     */
     public void loadIndexFromFile(String srcFile)
     throws TarException{
         // create file channel
@@ -109,6 +116,11 @@ public class Root extends Menu {
         }
     }
 
+    /**
+     * add the file into the tree
+     * @param srcFileName fiel name
+     * @throws TarException
+     */
     public void addSource(String srcFileName)
     throws TarException {
         Notifier.getNotifier().addNotifyMessage(new MSGAddingSource());
@@ -142,7 +154,14 @@ public class Root extends Menu {
         Notifier.getNotifier().addNotifyMessage(new MSGAddedSource());
     }
 
-    public void discoverDirectory(Menu m, Path p)
+    /**
+     * discover the menu to add sources
+     * @param m the menu
+     * @param p the path of menu
+     * @throws TarException
+     * @throws IOException
+     */
+    private void discoverDirectory(Menu m, Path p)
     throws TarException, IOException {
         File dir = p.toFile();
 
@@ -154,7 +173,7 @@ public class Root extends Menu {
 
             FileNode t;
 
-            if(isSymlink(cf)) {
+            if(isSymlink(cf)) { // symbol link will take problems, ignored
                 continue;
             }
 
@@ -176,6 +195,12 @@ public class Root extends Menu {
         }
     }
 
+    /**
+     * test file is symbol link
+     * @param file the file to test
+     * @return true if is
+     * @throws IOException
+     */
     static boolean isSymlink(File file) throws IOException {
         if (file == null)
             throw new NullPointerException("File must not be null");
@@ -189,6 +214,14 @@ public class Root extends Menu {
         return !canon.getCanonicalFile().equals(canon.getAbsoluteFile());
     }
 
+    /**
+     * compress the tree
+     * @param outputFile output file
+     * @param conf the config to do compress
+     * @param nThread number of thread to do compress
+     * @throws TarException
+     * @throws DCException
+     */
     public void compress(String outputFile, Config conf, int nThread)
     throws TarException, DCException {
         // create Output stream
@@ -228,10 +261,16 @@ public class Root extends Menu {
                 throw new TarException("compress failed: " + e.getMessage());
             }
 
+            // set the offset
             f.setDataOffset(((CountableBufferedOutputStream)out).getWroteBytes());
             int startOffset = ((CountableBufferedOutputStream) out).getWroteBytes();
+
+            // compress
             conf.getDCM().compress(in, out, tp);
+
             int endOffset = ((CountableBufferedOutputStream) out).getWroteBytes();
+
+            // set size
             f.compressedSize = endOffset - startOffset;
             f.size = cFileSize;
         }
@@ -252,6 +291,14 @@ public class Root extends Menu {
         }
     }
 
+    /**
+     * decompress the file in the tree
+     * @param rootDirString the root dir to put output
+     * @param fileNodes file nodes to decompress
+     * @param srcFile source files
+     * @throws TarException
+     * @throws DCException
+     */
     public void decompress(String rootDirString, FileNode[] fileNodes, String srcFile)
     throws TarException, DCException {
         // load dcm
@@ -293,7 +340,18 @@ public class Root extends Menu {
         Notifier.getNotifier().addNotifyMessage(new MSGDecompressDone());
     }
 
-    static void doDecompress(File m, FileNode fn, DCM dcm, File src)
+
+    /**
+     * do true decompress
+     * @param m parent menu
+     * @param fn the file node to decompress
+     * @param dcm dcm to do decompress
+     * @param src source file
+     * @throws IOException
+     * @throws DCException
+     * @throws TarException
+     */
+    private static void doDecompress(File m, FileNode fn, DCM dcm, File src)
     throws IOException, DCException, TarException {
         File f = new File(m, fn.getName());
 

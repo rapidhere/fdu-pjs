@@ -8,14 +8,32 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 
+/**
+ * Copyright : all rights reserved,rapidhere@gmail.com
+ * Mail: rapidhere@gmail.com
+ * do translate on bytes to tokens
+ * Catch fixed bytes as token
+ * WARNING: this ca algorithm have serious running speed problem,
+ *          and in must case is not necessary to use
+ */
+
 public class CatchFixedBytesAlgorithm implements CatchAlgorithm <FixedBytesToken> {
     public CatchFixedBytesAlgorithm() {}
 
     private byte byteLength;
+
+    /**
+     * set the fixed byte length of the algorithm
+     * @param byteLength the byte length
+     */
     public void setByteLength(byte byteLength) {
         this.byteLength = byteLength;
     }
 
+    /**
+     * get the fixed byte length of the algorithm
+     * @return the byte length
+     */
     public byte getByteLength() {
         return this.byteLength;
     }

@@ -8,10 +8,11 @@ import java.util.Vector;
 /**
  * Copyright : all rights reserved,rapidhere@gmail.com
  * Mail: rapidhere@gmail.com
- * Class :
- * Version :
- * Usage :
+ *
+ * BitArray: a container to store and retrieve bit
+ * WARNING: use UnjoinableBitArray instead if you don't want to use append function
  */
+
 public class BitArray {
     private Vector<Byte> bytes = new Vector<>();
     private byte currentByte;

@@ -3,9 +3,7 @@ package core.dc;
 /**
  * Copyright : all rights reserved,rapidhere@gmail.com
  * Mail: rapidhere@gmail.com
- * Class :
- * Version :
- * Usage :
+ * The factory used by fixed bytes algorithm
  */
 
 public class DCFixedBytesFactory extends DCFactory<FixedBytesToken> {
@@ -44,6 +42,9 @@ public class DCFixedBytesFactory extends DCFactory<FixedBytesToken> {
     }
 }
 
+/**
+ * the token used by fixed-bytes algorithm
+ */
 class FixedBytesToken extends Token<byte[]>{
     private byte byteLength;
     public FixedBytesToken(byte byteLength) {

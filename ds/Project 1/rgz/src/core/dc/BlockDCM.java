@@ -8,19 +8,21 @@ import javafx.util.Pair;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
  * Copyright : all rights reserved,rapidhere@gmail.com
  * Mail: rapidhere@gmail.com
- * Class :
- * Version :
- * Usage :
+ * BlockDCM: the DCM split files into blocks and do dc on each block concurrently
+ * WARNING: this module is not fully tested and have serious problems
  */
 public class BlockDCM <T extends Token> extends DCM<T> {
     public BlockDCM() {}
 
+    /**
+     * set the block size of the dcm
+     * @param blockSize the block size, must not be negative
+     */
     public void setBlockSize(int blockSize) {
         this.blockSize = blockSize;
     }
@@ -117,6 +119,9 @@ public class BlockDCM <T extends Token> extends DCM<T> {
         }
     }
 
+    /**
+     * the threading task to do compress
+     */
     class CompressThreadingTask extends SequentialThreadingPool.ThreadingSequentialTask {
         private ArrayList<T> tokens;
         private OutputStream out;
