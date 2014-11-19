@@ -348,6 +348,7 @@ public class CommandLineInterface {
                 for(String t: targetFiles) {
                     FileNode f = root.findFileNode(t);
                     if(f == null) {
+
                         throw new TarException("cannot found target file " + t);
                     }
                     fn.add(f);
