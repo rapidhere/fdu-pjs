@@ -3,6 +3,8 @@ import alg.ShortestPathWithMustPassVertex;
 import graph.Edge;
 import graph.MetroGraph;
 
+import java.io.*;
+
 /**
  * Copyright : all rights reserved,rapidhere@gmail.com
  * Mail: rapidhere@gmail.com
@@ -30,7 +32,43 @@ public class Main {
     }
 
     private static MetroGraph readIn() {
-        return null;
+        // get reader
+        BufferedReader reader = null;
+        try {
+            reader = new BufferedReader(
+                new InputStreamReader(
+                    new FileInputStream("data/metrolines.txt"), "UTF8"));
+        } catch (FileNotFoundException | UnsupportedEncodingException e) {
+            e.printStackTrace();
+            System.exit(1);
+        }
+
+        try {
+            String line;
+            int curLineNumber;
+            boolean isNumber;
+            while((line = reader.readLine()) != null) {
+                // ignore empty line
+                line = line.trim();
+                if(line.length() == 0)
+                    continue;
+
+                // this
+                isNumber = true;
+                try {
+                    curLineNumber = Integer.valueOf(line);
+                } catch (NumberFormatException e) {
+                     isNumber = false;
+                }
+
+                if(isNumber)
+                    continue;
+            }
+            return null;
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.exit(1);
+        }
     }
 
     private static String[] readRequire() {

@@ -1,5 +1,7 @@
 package graph;
 
+import alg.Utils;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,7 +11,7 @@ import java.util.Map;
  */
 public class MetroGraph {
     private Vertex[] V;
-    private Map<String, Integer> stationIndexMap = new HashMap<String, Integer>();
+    private Map<Long, Integer> stationIndexMap = new HashMap<>();
     private int stationIndex = 0;
 
 
@@ -22,11 +24,13 @@ public class MetroGraph {
     }
 
     public int getStationIndex(String station) {
-        return stationIndexMap.get(station);
+        return stationIndexMap.get(Utils.hashString(station));
     }
 
     public void putStation(String station) {
-        assert stationIndexMap.get(station) == null;
-        stationIndexMap.put(station, stationIndex ++);
+        long h = Utils.hashString(station);
+        if(stationIndexMap.get(h) == null) {
+            stationIndexMap.put(h, stationIndex ++);
+        }
     }
 }
