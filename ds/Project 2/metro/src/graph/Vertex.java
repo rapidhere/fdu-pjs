@@ -1,5 +1,7 @@
 package graph;
 
+import java.util.ArrayList;
+
 /**
  * Copyright : all rights reserved,rapidhere@gmail.com
  * Mail: rapidhere@gmail.com
@@ -14,7 +16,9 @@ public class Vertex {
     private int stationIndex;
     private int lineIndex;
 
-    private Edge edges[];
+    private boolean isExchange;
+
+    private ArrayList<Edge> edges = new ArrayList<>();
 
     public String getStationName() {
         return stationName;
@@ -32,12 +36,15 @@ public class Vertex {
         this.index = index;
     }
 
-    public Edge[] getEdges() {
+    public ArrayList<Edge> getEdges() {
         return edges;
     }
 
-    public void setEdges(Edge[] edges) {
-        this.edges = edges;
+    public void addEdge(int v, Edge.CostT cost) {
+        Edge ce = new Edge();
+        ce.setCost(cost);
+        ce.setV(v);
+        this.edges.add(ce);
     }
 
     public int getStationIndex() {
@@ -54,5 +61,9 @@ public class Vertex {
 
     public void setLineIndex(int lineIndex) {
         this.lineIndex = lineIndex;
+    }
+
+    public void setExchange(boolean isExchange) {
+        this.isExchange = isExchange;
     }
 }
