@@ -7,11 +7,18 @@ import java.util.*;
 /**
  * Copyright : all rights reserved,rapidhere@gmail.com
  * Mail: rapidhere@gmail.com
+ *
+ * the metro graph
  */
 public class MetroGraph {
+    // vertexes
     private Vertex[] V;
+
+    // index map
     private Map<Long, Integer> stationIndexMap = new HashMap<>();
     private int stationIndex = 0;
+
+    // index table
     private int stationIndexTable[][];
 
     public Vertex[] getG() {

@@ -5,9 +5,6 @@ import java.util.ArrayList;
 /**
  * Copyright : all rights reserved,rapidhere@gmail.com
  * Mail: rapidhere@gmail.com
- * Class :
- * Version :
- * Usage :
  */
 public class Vertex {
     private String stationName;
@@ -15,8 +12,6 @@ public class Vertex {
 
     private int stationIndex;
     private int lineIndex;
-
-    private boolean isExchange;
 
     private ArrayList<Edge> edges = new ArrayList<>();
 
@@ -61,9 +56,5 @@ public class Vertex {
 
     public void setLineIndex(int lineIndex) {
         this.lineIndex = lineIndex;
-    }
-
-    public void setExchange(boolean isExchange) {
-        this.isExchange = isExchange;
     }
 }

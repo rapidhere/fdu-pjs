@@ -11,6 +11,7 @@ import java.util.PriorityQueue;
  * Mail: rapidhere@gmail.com
  */
 public class AllPairShortestPath {
+    // run floyd
     static public Edge.CostT[][] runFloyd(MetroGraph G) {
         Vertex[] g = G.getG();
         Edge.CostT[][] dist = new Edge.CostT[g.length][g.length];
@@ -42,6 +43,7 @@ public class AllPairShortestPath {
         return dist;
     }
 
+    // use dijkstra
     static public Edge.CostT[][] runDijkstra(MetroGraph G) {
         Vertex[] g = G.getG();
         Edge.CostT[][] ret = new Edge.CostT[g.length][g.length];

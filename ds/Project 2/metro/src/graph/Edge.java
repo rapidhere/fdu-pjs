@@ -3,6 +3,8 @@ package graph;
 /**
  * Copyright : all rights reserved,rapidhere@gmail.com
  * Mail: rapidhere@gmail.com
+ *
+ * Edge of graph
  */
 public class Edge {
     public int getV() {
@@ -22,6 +24,7 @@ public class Edge {
     }
 
     public static class CostT implements Comparable<CostT>{
+        // time cost and exchange cost
         public int time, change;
 
         public CostT() {
@@ -45,6 +48,10 @@ public class Edge {
 
     public static final CostT INFINITY_COST = new CostT(0x3f3f3f3f, 0x3f3f3f3f);
 
+
+    // destination point
     private int v;
+
+    // cost
     private CostT cost;
 }
