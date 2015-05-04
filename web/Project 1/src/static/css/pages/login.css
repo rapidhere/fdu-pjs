@@ -1,0 +1,186 @@
+header {
+  background-image: url('../../img/header-bg.jpg');
+  background-position: 0 -420px;
+  background-repeat: no-repeat;
+  margin-bottom: 10px;
+  height: 400px;
+  padding-left: 10px;
+  padding-right: 10px;
+  box-shadow: -20px 0 30px rgba(10, 10, 10, 0.1), 20px 0 30px rgba(10, 10, 10, 0.1),
+    inset -20px 0 20px rgba(10, 10, 10, 0.95), inset 20px 0 20px rgba(10, 10, 10, 0.95);
+}
+
+header h1,h2 {
+  font-family: sans-serif;
+}
+
+header h1 {
+  color: #efefef;
+  font-size: 48px;
+}
+
+header h2 {
+  color: #ffffff;
+  font-size: 20px;
+}
+
+h3 {
+  font-family: sans-serif;
+  color: #1f1f1f;
+  font-size: 24px;
+  padding-bottom: 5px;
+  border-bottom: solid 1px #cfcfcf;
+}
+
+#header-left {
+  margin-top: 120px;
+  float: left;
+}
+
+#header-right {
+  margin-top: 70px;
+  float: right;
+  width: 200px;
+}
+
+#header-right input {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 190px;
+  margin-top: 10px;
+}
+
+#header-right button {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+  margin-top: 5px;
+  width: 190px;
+}
+
+@media (max-width: 699px) {
+  #header-right {
+    width: 150px;
+  }
+
+  #header-right input {
+    width: 140px;
+  }
+
+  #header-right button {
+    width: 140px;
+  }
+}
+
+#login-register-nav {
+  text-align: right;
+}
+
+#login-register-nav a {
+  color: #fff;
+  margin-right: 8px;
+}
+
+#login-register-nav a:hover {
+  margin-right: 5px;
+  color: #efefef;
+}
+
+#header-background {
+  background-color: rgba(10, 10, 15, 1.0);
+  height: 400px;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: -1000;
+  box-shadow: 0 1px 0 #1f1f1f;
+}
+
+#login-container {
+  display: none;
+}
+
+#register-container {
+}
+
+div.section {
+  margin-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+div.portrait-container {
+  padding: 20px;
+}
+
+img.portrait {
+  border: solid 5px #cfcfcf;
+  float: left;
+  margin-right: 10px;
+}
+
+img.portrait:hover {
+  border-width: 0;
+}
+
+div.portrait-section {
+  display: inline-block;
+  margin-bottom: 30px;
+}
+
+#hot-user {
+  margin-top: 50px;
+}
+
+#hot-problem ul {
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+#hot-problem ul>li {
+  margin-bottom: 10px;
+}
+
+#hot-problem ul>li>a {
+  color: #3f3f3f;
+}
+
+#hot-problem ul>li>a:hover {
+  color: #7f7f7f;
+}
+
+@media (max-width: 1299px) {
+  div.description-section {
+    width: 100px;
+  }
+}
+
+@media (min-width: 1300px) {
+  div.description-section {
+    width: 140px;
+  }
+}
+
+div.description-section {
+  display: inline-block;
+  float: right;
+  margin-top: 10px;
+}
+
+div.description-section p.name {
+  font-size: 20px;
+  font-family: sans-serif;
+  margin-bottom: 10px;
+  display: inline-block;
+  overflow: hidden;
+  width: 100%;
+}
+
+div.description-section p.description {
+  font-size: 14px;
+  font-family: sans-serif;
+  color: #3f7f7f;
+}

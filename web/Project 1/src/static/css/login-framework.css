@@ -1,0 +1,144 @@
+header {
+  height: 44px;
+  position: fixed;
+  top: 0;
+  background-color: #0a0f0f;
+}
+
+div.header-background {
+  height: 44px;
+  position: fixed;
+  background-color: #0a0f0f;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1000;
+  box-shadow: 0 1px 1px rgba(10, 10, 15, 0.8);
+}
+
+h1 {
+  display: inline-block;
+  color: #efefef;
+  font-family: sans-serif;
+  font-size: 24px;
+  margin-top: 6px;
+  font-weight: bold;
+}
+
+div.search-container {
+  display: inline-block;
+  position: absolute;
+  top: 8px;
+  left: 150px;
+}
+
+div.search-container input {
+  height: 24px;
+  width: 240px;
+  margin-right: 3px;
+  padding-bottom: 5px;
+}
+
+div.search-container button {
+  height: 25px;
+  width: 100px;
+  color: #efefef;
+  background-color: #7f7f7f;
+  border-color: #3f3f3f;
+}
+
+div.search-container i {
+  position: absolute;
+  top: 4px;
+  left: 220px;
+  color: #7f7f7f;
+}
+
+@media (max-width: 999px) {
+  nav {
+    display: none;
+  }
+}
+
+@media (max-width: 699px) {
+  div.portrait-section {
+    display: none;
+  }
+}
+
+@media (min-width: 700px) {
+  div.portrait-section {
+    display: inline-block;
+  }
+}
+
+nav {
+  position: absolute;
+  top: 9px;
+  left: 500px;
+}
+
+nav>a{
+  color: #efefef;
+  margin-left: 20px;
+}
+
+div.portrait-section {
+  position: absolute;
+  padding: 5px 10px;
+  right: 10px;
+}
+
+div.portrait-section:hover {
+  background-color: #1a1f1f;
+}
+
+div.portrait-section img {
+  float: left;
+  position: relative;
+  margin-right: 15px;
+}
+
+div.portrait-section p.name {
+  display: inline-block;
+  color: #efefef;
+  font-family: sans-serif;
+  float: left;
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+div#main-content-container {
+  margin-top: 80px;
+}
+
+
+div.portrait-section:hover div.menu {
+  display: block;
+}
+
+div.menu {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  width: 100%;
+  display: none;
+  padding-top: 4px;
+}
+
+div.menu-item {
+  border-top: solid 1px #afafaf;
+  width: 100%;
+  height: 44px;
+  vertical-align: middle;
+  padding-top: 12px;
+  padding-left: 20px;
+  font-size: 16px;
+  background-color: #0a0f0f;
+  color: #efefef;
+}
+
+div.menu-item:hover {
+  cursor: pointer;
+  background-color: #1a1f1f;
+}

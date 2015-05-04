@@ -1,0 +1,70 @@
+//- Author: rapidhere@gmail.com
+//- FDU Web Project 1
+//-
+//- The login page
+
+extends framework
+
+block title
+  title登录到Metal Only
+
+append statics
+    link(rel="stylesheet" type="text/css" href="#{static}/css/pages/login.css")
+    script(src="#{static}/js/pages/login.js")
+
+block header
+  header.clearfix
+    #header-background
+    #header-left
+      h1 Metal Only
+      h2 Only Metal, NO GOD NO MASTERS.
+    #header-right
+      #login-register-nav
+        a(href="javascript:;")
+          登录
+          &nbsp;
+          i.fa.fa-caret-right
+
+      #login-container
+        form(action="." method="POST")
+          input(type="text" placeholder="邮箱")
+          input(type="password" placeholder="密码")
+
+        button 登录
+
+      #register-container
+        form(action="." method="POST")
+          input(type="text" placeholder="用户名")
+          input(type="text" placeholder="邮箱")
+          input(type="password" placeholder="密码")
+
+        button 立即注册
+
+block content
+  #hot-user.section
+    h3
+      i.fa.fa-user
+      &nbsp;
+      热门用户
+
+    .portrait-container.clearfix
+      each val in hotUsers
+        .portrait-section.clearfix
+          img.portrait(src="#{val.portrait}")
+          .description-section
+            p.name #{val.name}
+            p.description #{val.description}
+
+  #hot-problem.section
+    h3
+      i.fa.fa-question-circle
+      &nbsp;
+      热门问题
+
+    ul
+      li: a.problem(href="javascript:;") 染涂这个厂牌怎么样
+      li: a.problem(href="javascript:;") 染涂厂牌下的dhm,py等人是如何出道的
+      li: a.problem(href="javascript:;") 关于中国金属的出路
+      li: a.problem(href="javascript:;") 五月份上海livehouse有什么演出
+      li: a.problem(href="javascript:;") 关于ss和他们的前任主唱，有什么评价
+      li: a.problem(href="javascript:;") 技术死，老式死，以及其他死亡金属的区别和发展

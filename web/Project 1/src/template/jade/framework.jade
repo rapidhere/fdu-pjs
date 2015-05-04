@@ -1,0 +1,42 @@
+//- Author: rapidhere@gmail.com
+//- FDU Web project 1
+//-
+//- This is the base framwork jade file
+doctype html
+
+//
+  Author: rapidhere@gmail.com
+
+  FDU 13ss Web Project 1
+
+  Powered by: jade, jquery, underscore
+
+head
+  //- title, set by specific pages
+  block title
+    title Plase set the title
+
+  //- meta infos
+  block meta
+    meta(charset="UTF-8")
+    meta(name="description" content="FDU 13ss web project 1")
+    meta(name="author" content="rapidhere")
+
+  //- statics
+  block statics
+    script(src="#{static}/js/jquery-2.1.3.min.js")
+    script(src="#{static}/js/underscore-min.js")
+    link(rel="stylesheet" type="text/css" href="#{static}/css/framework.css")
+    link(rel="stylesheet" type="text/css" href="#{static}/css/font-awesome.min.css")
+
+body
+  div#body-container
+    //- put the header here
+    block header
+
+    //- put content here
+    block content
+
+    //- the footer
+    footer.full-container
+      &copy; 2015 Ranttu Inc

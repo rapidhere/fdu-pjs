@@ -1,0 +1,50 @@
+extends framework
+
+append statics
+  link(rel="stylesheet" type="text/css" href="#{static}/css/login-framework.css")
+  script(src="#{static}/js/login-framework.js")
+
+block header
+  header.full-container
+    .header-background
+    h1 Metal Only
+    div.search-container
+      i.fa.fa-search
+      input(type="text" placeholder="搜索问题或用户")
+      button Search
+
+    nav
+      a(href="javascript:;") 首页
+      a(href="javascript:;") 话题
+      a(href="javascript:;") 发现
+
+    div.portrait-section
+      div.clearfix
+        img.square-portrait(src="#{static}/img/portrait-mark morton.jpg")
+        p.name Mark Morton
+
+      div.menu
+        div.menu-item
+          i.fa.fa-user
+          &nbsp;
+          我的主页
+        div.menu-item
+          i.fa.fa-envelope
+          &nbsp;
+          私信
+        div.menu-item
+          i.fa.fa-gear
+          &nbsp;
+          设置
+        div.menu-item
+          i.fa.fa-sign-out
+          &nbsp;
+          退出
+
+block content
+  div.clearfix#main-content-container
+    div.left-container
+      block left-content
+
+    div.right-container
+      block right-content
