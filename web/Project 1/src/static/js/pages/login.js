@@ -62,4 +62,111 @@ $(document).ready(function() {
 
   _resizePortrait();
   $(window).on('resize', _resizePortrait);
+
+  // filter
+  var passwordFilter = function(password) {
+    if(password.length < 6)
+      return '密码长度过短';
+    if(password.length > 16)
+      return '密码过长';
+
+    if(! password.match(/^[a-zA-Z0-9]+$/))
+      return '密码只能包含英文和数字';
+
+    if(password.match(/^[0-9]+$/))
+      return '密码不能是纯数字';
+
+    return null;
+  };
+
+  var usernameFilter = function(username) {
+    if(username.length < 2)
+      return '用户名过短';
+
+    if(username.length > 16)
+      return '用户名过长';
+
+    return null;
+  };
+
+  var emailPattern = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+  var emailFilter = function(email) {
+    if(! email.match(emailPattern))
+      return '邮箱格式不正确';
+
+    return null;
+  };
+
+  // handle login
+  var $loginErrorInfo = $('#login-error-info');
+
+  $('#login-container button').click(function() {
+    // check email
+    var val = $('#login-container input[name="email"]').val();
+    var err = emailFilter(val);
+
+    if(err) {
+      $loginErrorInfo.text(err);
+      $loginErrorInfo.show();
+      return ;
+    }
+
+    // check password
+    val = $('#login-container input[name="password"]').val();
+    err = passwordFilter(val);
+
+    if(err) {
+      $loginErrorInfo.text(err);
+      $loginErrorInfo.show();
+      return ;
+    }
+
+    // TODO: submit form
+    // refresh form in this version
+    $('#login-container form')[0].reset();
+    $loginErrorInfo.hide();
+
+    window.location.href = './question.html';
+  });
+
+  // handle register
+  var $registerErrorInfo = $('#register-error-info');
+
+  $('#register-container button').click(function() {
+    // check username
+    var val = $('#register-container input[name="username"]').val();
+    var err = usernameFilter(val);
+
+    if(err) {
+      $registerErrorInfo.text(err);
+      $registerErrorInfo.show();
+      return ;
+    }
+
+    // check email
+    val = $('#register-container input[name="email"]').val();
+    err = emailFilter(val);
+
+    if(err) {
+      $registerErrorInfo.text(err);
+      $registerErrorInfo.show();
+      return ;
+    }
+
+    // check password
+    val = $('#register-container input[name="password"]').val();
+    err = passwordFilter(val);
+
+    if(err) {
+      $registerErrorInfo.text(err);
+      $registerErrorInfo.show();
+      return ;
+    }
+
+    // TODO: submit form
+    // refresh form in this version
+    $('#register-container form')[0].reset();
+    $registerErrorInfo.hide();
+  });
+
 });

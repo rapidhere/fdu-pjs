@@ -53,37 +53,37 @@ if __name__ == "__main__":
     simplejson.dump({
             "static": "../static",
             "hotUsers": [{
-                "name": "Mark Morton tttt",
-                "portrait": "../static/img/portrait-mark morton.jpg",
-                "description": "Guitarist From Lamb of God"
+                "name": "Rapid Here",
+                "portrait": "../static/img/portrait-rapidherehaha.jpg",
+                "description": "Ranttu厂牌创始人"
             }, {
                 "name": "Mark Morton",
                 "portrait": "../static/img/portrait-mark morton.jpg",
                 "description": "Guitarist From Lamb of God"
             }, {
-                "name": "Mark Morton",
-                "portrait": "../static/img/portrait-mark morton.jpg",
-                "description": "Guitarist From Lamb of God"
+                "name": "Bunker Hill",
+                "portrait": "../static/img/portrait-bunkerhill.jpg",
+                "description": "Ranttu厂牌背后的集团"
             }, {
-                "name": "Mark Morton",
-                "portrait": "../static/img/portrait-mark morton.jpg",
-                "description": "Guitarist From Lamb of God"
+                "name": "Tony Lommi",
+                "portrait": "../static/img/portrait-tony lommi.jpg",
+                "description": "Black Sabbath乐队的吉他手"
             }, {
-                "name": "Mark Morton",
-                "portrait": "../static/img/portrait-mark morton.jpg",
-                "description": "Guitarist From Lamb of God"
+                "name": "Lamb of God",
+                "portrait": "../static/img/portrait-lambofgod.jpg",
+                "description": "Lamb of God乐队"
             }, {
-                "name": "Mark Morton",
-                "portrait": "../static/img/portrait-mark morton.jpg",
-                "description": "Guitarist From Lamb of God"
+                "name": "Mitch Lucker",
+                "portrait": "../static/img/portrait-mitch lucker.jpg",
+                "description": "Suicide Silence乐队已故主唱"
             }, {
-                "name": "Mark Morton",
-                "portrait": "../static/img/portrait-mark morton.jpg",
-                "description": "Guitarist From Lamb of God"
+                "name": "Cryptopsy",
+                "portrait": "../static/img/portrait-cryptopsy.jpg",
+                "description": "死亡金属代表乐队Cryptopsy"
             }, {
-                "name": "Mark Morton",
-                "portrait": "../static/img/portrait-mark morton.jpg",
-                "description": "Guitarist From Lamb of God"
+                "name": "李成龙",
+                "portrait": "../static/img/portrait-lcl.jpg",
+                "description": "霾晦乐队主音吉他"
             }]
         },
         file(os.path.join(WORKING_DIR, "scripts", "options.json"), "w"))

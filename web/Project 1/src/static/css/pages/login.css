@@ -10,10 +10,6 @@ header {
     inset -20px 0 20px rgba(10, 10, 10, 0.95), inset 20px 0 20px rgba(10, 10, 10, 0.95);
 }
 
-header h1,h2 {
-  font-family: sans-serif;
-}
-
 header h1 {
   color: #efefef;
   font-size: 48px;
@@ -25,7 +21,6 @@ header h2 {
 }
 
 h3 {
-  font-family: sans-serif;
   color: #1f1f1f;
   font-size: 24px;
   padding-bottom: 5px;
@@ -172,7 +167,6 @@ div.description-section {
 
 div.description-section p.name {
   font-size: 20px;
-  font-family: sans-serif;
   margin-bottom: 10px;
   display: inline-block;
   overflow: hidden;
@@ -181,6 +175,18 @@ div.description-section p.name {
 
 div.description-section p.description {
   font-size: 14px;
-  font-family: sans-serif;
   color: #3f7f7f;
+}
+
+p#login-error-info, p#register-error-info {
+  display: none;
+  font-size: 14px;
+  padding: 3px 5px;
+  background-color: #7f101f;
+  color: #efefef;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 6px;
+  margin-bottom: 3px;
+  font-weight: bold;
 }

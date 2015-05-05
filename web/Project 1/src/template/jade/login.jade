@@ -5,38 +5,52 @@
 
 extends framework
 
+//- set title
 block title
   title登录到Metal Only
 
+//- add new statics
 append statics
     link(rel="stylesheet" type="text/css" href="#{static}/css/pages/login.css")
     script(src="#{static}/js/pages/login.js")
 
+// set login header
 block header
   header.clearfix
     #header-background
+    
+    //- logo
     #header-left
       h1 Metal Only
       h2 Only Metal, NO GOD NO MASTERS.
+
+    //- login/register div
     #header-right
+      //- nav
       #login-register-nav
         a(href="javascript:;")
           登录
           &nbsp;
           i.fa.fa-caret-right
 
+      //- login page
       #login-container
         form(action="." method="POST")
-          input(type="text" placeholder="邮箱")
-          input(type="password" placeholder="密码")
+          input(type="text" placeholder="邮箱" name="email")
+          input(type="password" placeholder="密码" name="password")
+
+        p#login-error-info
 
         button 登录
 
+      //- register page
       #register-container
         form(action="." method="POST")
-          input(type="text" placeholder="用户名")
-          input(type="text" placeholder="邮箱")
-          input(type="password" placeholder="密码")
+          input(type="text" placeholder="用户名" name="username")
+          input(type="text" placeholder="邮箱" name="email")
+          input(type="password" placeholder="密码" name="password")
+
+        p#register-error-info
 
         button 立即注册
 
