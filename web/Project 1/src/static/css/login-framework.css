@@ -16,12 +16,14 @@ div.header-background {
   box-shadow: 0 1px 1px rgba(10, 10, 15, 0.8);
 }
 
-h1 {
+header h1 {
   display: inline-block;
   color: #efefef;
   font-size: 24px;
   margin-top: 6px;
   font-weight: bold;
+  position: absolute;
+  left: 0;
 }
 
 div.search-container {
