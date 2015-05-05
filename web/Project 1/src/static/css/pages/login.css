@@ -176,6 +176,7 @@ div.description-section p.name {
 div.description-section p.description {
   font-size: 14px;
   color: #3f7f7f;
+  overflow: hidden;
 }
 
 p#login-error-info, p#register-error-info {

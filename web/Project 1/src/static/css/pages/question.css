@@ -185,3 +185,7 @@ div.answer-input button {
   float: right;
   width: 100px;
 }
+
+p.name a {
+	overflow: hidden;
+}
