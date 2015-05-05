@@ -186,6 +186,6 @@ div.answer-input button {
   width: 100px;
 }
 
-p.name a {
-	overflow: hidden;
+p.name {
+  overflow: hidden;
 }
